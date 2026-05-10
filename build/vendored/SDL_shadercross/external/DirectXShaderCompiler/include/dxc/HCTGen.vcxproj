@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{723188C7-6406-3FA5-A23D-6FBC8AE7ADA9}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>HCTGen</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\HCT.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Test\TestConfig.h.in;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\config.h.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\HCT.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Test\TestConfig.h.in;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\config.h.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\HCT.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Test\TestConfig.h.in;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\config.h.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\HCT.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Test\TestConfig.h.in;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\config.h.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\development\Engine\build\ZERO_CHECK.vcxproj">
+      <Project>{88AACD1C-C064-38E8-86A3-8C6F7CA0A6EC}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\DxcDisassembler.vcxproj">
+      <Project>{5C1D98BB-435C-3A61-B0F3-06342FD7E03C}</Project>
+      <Name>DxcDisassembler</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\HLSL\DxcOptimizer.vcxproj">
+      <Project>{907871E5-9107-30B6-9C55-794B27839A31}</Project>
+      <Name>DxcOptimizer</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Sema\DxilIntrinsicTables.vcxproj">
+      <Project>{A9E24F3B-FA5B-3074-848C-E4677A2CF8AF}</Project>
+      <Name>DxilIntrinsicTables</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilPIXPasses\DxilPIXPasses.vcxproj">
+      <Project>{6248726C-FA1D-3763-90A6-A717CF3D2E44}</Project>
+      <Name>DxilPIXPasses</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilValidation\DxilValidation.vcxproj">
+      <Project>{EE7F3F64-9EAF-3550-9B0F-46F5B216D180}</Project>
+      <Name>DxilValidation</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilValidation\DxilValidationInc.vcxproj">
+      <Project>{F053E415-3165-3853-A705-EE415B5A5EAD}</Project>
+      <Name>DxilValidationInc</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

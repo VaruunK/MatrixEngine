@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\7488a8f0ac750c51b86b67388dc0a0e6\DiagnosticLexKinds.inc.tmp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\7488a8f0ac750c51b86b67388dc0a0e6\DiagnosticLexKinds.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\d7198b7e6ad9128b4157efa28b4e4e15\ClangDiagnosticLex.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\CMakeFiles\ClangDiagnosticLex" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{C2DCCA17-C3A4-3CD8-8EE0-D241F3FDE300}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C3DEE5DD-9BBA-31A1-8BE3-2237EADF455A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>spirv-tools-tables</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Tools;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\bb3ae153c57967a8fc609dd72017a81c\core_tables_body.inc.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generate grammar tables</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+C:\Python314\python.exe C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Tools/utils/ggt.py --core-tables-body-output=C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/core_tables_body.inc --core-tables-header-output=C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/core_tables_header.inc --spirv-core-grammar=C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/spirv.core.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.glsl.std.450.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.opencl.std.100.grammar.json --extinst=CLDEBUG100_,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.opencl.debuginfo.100.grammar.json --extinst=SHDEBUG100_,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.nonsemantic.shader.debuginfo.100.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.spv-amd-shader-explicit-vertex-parameter.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.spv-amd-shader-trinary-minmax.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.spv-amd-gcn-shader.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.spv-amd-shader-ballot.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.debuginfo.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.nonsemantic.clspvreflection.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.nonsemantic.vkspreflection.grammar.json --extinst=TOSA_,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.tosa.001000.1.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.arm.motion-engine.100.grammar.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Tools\utils\ggt.py;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\spirv.core.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.glsl.std.450.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.opencl.std.100.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.opencl.debuginfo.100.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.nonsemantic.shader.debuginfo.100.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.spv-amd-shader-explicit-vertex-parameter.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.spv-amd-shader-trinary-minmax.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.spv-amd-gcn-shader.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.spv-amd-shader-ballot.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.debuginfo.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.nonsemantic.clspvreflection.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.nonsemantic.vkspreflection.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.tosa.001000.1.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.arm.motion-engine.100.grammar.json;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\core_tables_body.inc;C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\core_tables_header.inc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generate grammar tables</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+C:\Python314\python.exe C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Tools/utils/ggt.py --core-tables-body-output=C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/core_tables_body.inc --core-tables-header-output=C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/core_tables_header.inc --spirv-core-grammar=C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/spirv.core.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.glsl.std.450.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.opencl.std.100.grammar.json --extinst=CLDEBUG100_,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.opencl.debuginfo.100.grammar.json --extinst=SHDEBUG100_,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.nonsemantic.shader.debuginfo.100.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.spv-amd-shader-explicit-vertex-parameter.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.spv-amd-shader-trinary-minmax.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.spv-amd-gcn-shader.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.spv-amd-shader-ballot.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.debuginfo.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.nonsemantic.clspvreflection.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.nonsemantic.vkspreflection.grammar.json --extinst=TOSA_,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.tosa.001000.1.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.arm.motion-engine.100.grammar.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Tools\utils\ggt.py;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\spirv.core.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.glsl.std.450.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.opencl.std.100.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.opencl.debuginfo.100.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.nonsemantic.shader.debuginfo.100.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.spv-amd-shader-explicit-vertex-parameter.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.spv-amd-shader-trinary-minmax.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.spv-amd-gcn-shader.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.spv-amd-shader-ballot.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.debuginfo.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.nonsemantic.clspvreflection.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.nonsemantic.vkspreflection.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.tosa.001000.1.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.arm.motion-engine.100.grammar.json;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\core_tables_body.inc;C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\core_tables_header.inc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generate grammar tables</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+C:\Python314\python.exe C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Tools/utils/ggt.py --core-tables-body-output=C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/core_tables_body.inc --core-tables-header-output=C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/core_tables_header.inc --spirv-core-grammar=C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/spirv.core.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.glsl.std.450.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.opencl.std.100.grammar.json --extinst=CLDEBUG100_,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.opencl.debuginfo.100.grammar.json --extinst=SHDEBUG100_,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.nonsemantic.shader.debuginfo.100.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.spv-amd-shader-explicit-vertex-parameter.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.spv-amd-shader-trinary-minmax.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.spv-amd-gcn-shader.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.spv-amd-shader-ballot.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.debuginfo.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.nonsemantic.clspvreflection.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.nonsemantic.vkspreflection.grammar.json --extinst=TOSA_,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.tosa.001000.1.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.arm.motion-engine.100.grammar.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Tools\utils\ggt.py;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\spirv.core.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.glsl.std.450.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.opencl.std.100.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.opencl.debuginfo.100.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.nonsemantic.shader.debuginfo.100.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.spv-amd-shader-explicit-vertex-parameter.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.spv-amd-shader-trinary-minmax.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.spv-amd-gcn-shader.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.spv-amd-shader-ballot.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.debuginfo.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.nonsemantic.clspvreflection.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.nonsemantic.vkspreflection.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.tosa.001000.1.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.arm.motion-engine.100.grammar.json;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\core_tables_body.inc;C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\core_tables_header.inc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generate grammar tables</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+C:\Python314\python.exe C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Tools/utils/ggt.py --core-tables-body-output=C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/core_tables_body.inc --core-tables-header-output=C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/core_tables_header.inc --spirv-core-grammar=C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/spirv.core.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.glsl.std.450.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.opencl.std.100.grammar.json --extinst=CLDEBUG100_,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.opencl.debuginfo.100.grammar.json --extinst=SHDEBUG100_,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.nonsemantic.shader.debuginfo.100.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.spv-amd-shader-explicit-vertex-parameter.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.spv-amd-shader-trinary-minmax.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.spv-amd-gcn-shader.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.spv-amd-shader-ballot.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.debuginfo.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.nonsemantic.clspvreflection.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.nonsemantic.vkspreflection.grammar.json --extinst=TOSA_,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.tosa.001000.1.grammar.json --extinst=,C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include/spirv/unified1/extinst.arm.motion-engine.100.grammar.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Tools\utils\ggt.py;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\spirv.core.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.glsl.std.450.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.opencl.std.100.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.opencl.debuginfo.100.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.nonsemantic.shader.debuginfo.100.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.spv-amd-shader-explicit-vertex-parameter.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.spv-amd-shader-trinary-minmax.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.spv-amd-gcn-shader.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.spv-amd-shader-ballot.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.debuginfo.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.nonsemantic.clspvreflection.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.nonsemantic.vkspreflection.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.tosa.001000.1.grammar.json;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Headers\include\spirv\unified1\extinst.arm.motion-engine.100.grammar.json;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\core_tables_body.inc;C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\core_tables_header.inc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\baf0d32382b86aacb024a7853b13cff1\spirv-tools-tables.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\core_tables_body.inc;C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\core_tables_header.inc;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\source\CMakeFiles\spirv-tools-tables</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\core_tables_body.inc;C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\core_tables_header.inc;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\source\CMakeFiles\spirv-tools-tables</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\core_tables_body.inc;C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\core_tables_header.inc;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\source\CMakeFiles\spirv-tools-tables</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\core_tables_body.inc;C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\core_tables_header.inc;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\source\CMakeFiles\spirv-tools-tables</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Tools\source\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Tools/source/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/source/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\source\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Tools/source/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/source/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\source\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Tools/source/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/source/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\source\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Tools/source/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/source/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\source\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\source\CMakeFiles\spirv-tools-tables">
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\development\Engine\build\ZERO_CHECK.vcxproj">
+      <Project>{88AACD1C-C064-38E8-86A3-8C6F7CA0A6EC}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

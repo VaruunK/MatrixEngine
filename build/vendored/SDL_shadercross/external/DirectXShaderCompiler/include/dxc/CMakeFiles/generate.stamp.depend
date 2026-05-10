@@ -1,0 +1,6 @@
+# CMake generation dependency list for this directory.
+C:/development/Engine/build/CMakeFiles/cmake.verify_globs
+C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/cmake/modules/HCT.cmake
+C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/CMakeLists.txt
+C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/Test/TestConfig.h.in
+C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/config.h.cmake

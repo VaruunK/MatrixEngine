@@ -1,0 +1,4 @@
+# CMake generation dependency list for this directory.
+C:/development/Engine/build/CMakeFiles/cmake.verify_globs
+C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Tools/test/diff/CMakeLists.txt
+C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Tools/test/diff/diff_files/diff_test_files_autogen.cmake

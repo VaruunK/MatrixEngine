@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DF311CDC-F0A6-3D1C-AFFB-51740B280972}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>SDL3_shadercross-static</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\Debug\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">SDL3_shadercross-static.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">SDL3_shadercross-static</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\Release\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">SDL3_shadercross-static.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">SDL3_shadercross-static</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\MinSizeRel\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">SDL3_shadercross-static.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">SDL3_shadercross-static</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\RelWithDebInfo\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">SDL3_shadercross-static.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">SDL3_shadercross-static</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\include;C:\development\Engine\build\vendored\SDL3\include-revision;C:\development\Engine\vendored\SDL3\include;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level2</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;SDL_SHADERCROSS_DXC;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;SDL_SHADERCROSS_DXC;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\include;C:\development\Engine\build\vendored\SDL3\include-revision;C:\development\Engine\vendored\SDL3\include;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\include;C:\development\Engine\build\vendored\SDL3\include-revision;C:\development\Engine\vendored\SDL3\include;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\include;C:\development\Engine\build\vendored\SDL3\include-revision;C:\development\Engine\vendored\SDL3\include;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level2</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SDL_SHADERCROSS_DXC;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SDL_SHADERCROSS_DXC;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\include;C:\development\Engine\build\vendored\SDL3\include-revision;C:\development\Engine\vendored\SDL3\include;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\include;C:\development\Engine\build\vendored\SDL3\include-revision;C:\development\Engine\vendored\SDL3\include;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\include;C:\development\Engine\build\vendored\SDL3\include-revision;C:\development\Engine\vendored\SDL3\include;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level2</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SDL_SHADERCROSS_DXC;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SDL_SHADERCROSS_DXC;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\include;C:\development\Engine\build\vendored\SDL3\include-revision;C:\development\Engine\vendored\SDL3\include;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\include;C:\development\Engine\build\vendored\SDL3\include-revision;C:\development\Engine\vendored\SDL3\include;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\include;C:\development\Engine\build\vendored\SDL3\include-revision;C:\development\Engine\vendored\SDL3\include;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level2</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SDL_SHADERCROSS_DXC;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SDL_SHADERCROSS_DXC;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\include;C:\development\Engine\build\vendored\SDL3\include-revision;C:\development\Engine\vendored\SDL3\include;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\include;C:\development\Engine\build\vendored\SDL3\include-revision;C:\development\Engine\vendored\SDL3\include;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\GNUInstallDirs.cmake;C:\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\development\Engine\vendored\SDL_shadercross\cmake\GetGitRevisionDescription.cmake;C:\development\Engine\vendored\SDL_shadercross\cmake\PrivateSdlFunctions.cmake;C:\development\Engine\vendored\SDL_shadercross\cmake\sdlcpu.cmake;C:\development\Engine\vendored\SDL_shadercross\cmake\sdlmanpages.cmake;C:\development\Engine\vendored\SDL_shadercross\cmake\sdlplatform.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\caches\PredefinedParams.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\GNUInstallDirs.cmake;C:\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\development\Engine\vendored\SDL_shadercross\cmake\GetGitRevisionDescription.cmake;C:\development\Engine\vendored\SDL_shadercross\cmake\PrivateSdlFunctions.cmake;C:\development\Engine\vendored\SDL_shadercross\cmake\sdlcpu.cmake;C:\development\Engine\vendored\SDL_shadercross\cmake\sdlmanpages.cmake;C:\development\Engine\vendored\SDL_shadercross\cmake\sdlplatform.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\caches\PredefinedParams.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\GNUInstallDirs.cmake;C:\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\development\Engine\vendored\SDL_shadercross\cmake\GetGitRevisionDescription.cmake;C:\development\Engine\vendored\SDL_shadercross\cmake\PrivateSdlFunctions.cmake;C:\development\Engine\vendored\SDL_shadercross\cmake\sdlcpu.cmake;C:\development\Engine\vendored\SDL_shadercross\cmake\sdlmanpages.cmake;C:\development\Engine\vendored\SDL_shadercross\cmake\sdlplatform.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\caches\PredefinedParams.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\GNUInstallDirs.cmake;C:\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\development\Engine\vendored\SDL_shadercross\cmake\GetGitRevisionDescription.cmake;C:\development\Engine\vendored\SDL_shadercross\cmake\PrivateSdlFunctions.cmake;C:\development\Engine\vendored\SDL_shadercross\cmake\sdlcpu.cmake;C:\development\Engine\vendored\SDL_shadercross\cmake\sdlmanpages.cmake;C:\development\Engine\vendored\SDL_shadercross\cmake\sdlplatform.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\caches\PredefinedParams.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\include\SDL3_shadercross\SDL_shadercross.h" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\src\SDL_shadercross.c" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\development\Engine\build\ZERO_CHECK.vcxproj">
+      <Project>{88AACD1C-C064-38E8-86A3-8C6F7CA0A6EC}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcompiler.vcxproj">
+      <Project>{594AF850-F3ED-379E-BB01-AE654B413A6D}</Project>
+      <Name>dxcompiler</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross\spirv-cross-c-shared.vcxproj">
+      <Project>{93EBA851-89D1-300B-8F75-A85E43CFAE87}</Project>
+      <Name>spirv-cross-c-shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

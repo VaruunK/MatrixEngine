@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-diff\llvm-diff.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-diff\DiffConsumer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-diff\DiffLog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-diff\DifferenceEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-diff\DiffConsumer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-diff\DiffLog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-diff\DifferenceEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-diff\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\resources\windows_version_resource.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{8C1580A0-303C-3B73-A19C-EED5A815C64E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{7430B8ED-BA79-3904-9FC0-70290ED5002A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{CED6078E-1E1D-377E-81E2-5B45E001190D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

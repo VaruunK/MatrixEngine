@@ -1,0 +1,552 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{68BAF9BA-75D0-30F2-8EE8-D5EB5A5579A4}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>clangToolingCore</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\Debug\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">clangToolingCore.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">clangToolingCore</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\Release\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">clangToolingCore.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">clangToolingCore</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\MinSizeRel\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">clangToolingCore.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">clangToolingCore</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\RelWithDebInfo\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">clangToolingCore.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">clangToolingCore</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:sizedDealloc-</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4324</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;SUPPORT_QUERY_GIT_COMMIT_INFO;ENABLE_SPIRV_CODEGEN;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;_GNU_SOURCE;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;SUPPORT_QUERY_GIT_COMMIT_INFO;ENABLE_SPIRV_CODEGEN;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;_GNU_SOURCE;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:sizedDealloc-</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4324</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SUPPORT_QUERY_GIT_COMMIT_INFO;ENABLE_SPIRV_CODEGEN;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;_GNU_SOURCE;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SUPPORT_QUERY_GIT_COMMIT_INFO;ENABLE_SPIRV_CODEGEN;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;_GNU_SOURCE;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:sizedDealloc-</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <DisableSpecificWarnings>4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4324</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SUPPORT_QUERY_GIT_COMMIT_INFO;ENABLE_SPIRV_CODEGEN;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;_GNU_SOURCE;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SUPPORT_QUERY_GIT_COMMIT_INFO;ENABLE_SPIRV_CODEGEN;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;_GNU_SOURCE;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:sizedDealloc-</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4324</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SUPPORT_QUERY_GIT_COMMIT_INFO;ENABLE_SPIRV_CODEGEN;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;_GNU_SOURCE;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SUPPORT_QUERY_GIT_COMMIT_INFO;ENABLE_SPIRV_CODEGEN;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;_GNU_SOURCE;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/lib/Tooling/Core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/lib/Tooling/Core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/lib/Tooling/Core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/lib/Tooling/Core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/lib/Tooling/Core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/lib/Tooling/Core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/lib/Tooling/Core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/lib/Tooling/Core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core\Replacement.cpp" />
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Tooling\Core\Replacement.h" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\development\Engine\build\ZERO_CHECK.vcxproj">
+      <Project>{88AACD1C-C064-38E8-86A3-8C6F7CA0A6EC}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\ClangAttrClasses.vcxproj">
+      <Project>{F3AD4BF7-53D3-3A85-A4F1-F04AA420C32B}</Project>
+      <Name>ClangAttrClasses</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\ClangAttrDump.vcxproj">
+      <Project>{B5207E9F-A54F-3C3B-94F2-0378F429EC72}</Project>
+      <Name>ClangAttrDump</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ClangAttrHasAttributeImpl.vcxproj">
+      <Project>{292C4A71-2D9A-32B4-8A3E-DECF7C5520E7}</Project>
+      <Name>ClangAttrHasAttributeImpl</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\ClangAttrImpl.vcxproj">
+      <Project>{B41D9710-E6C9-3AB6-B105-3EE159A74700}</Project>
+      <Name>ClangAttrImpl</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ClangAttrList.vcxproj">
+      <Project>{4050F9BD-6E2D-31BD-A586-16B8BD023183}</Project>
+      <Name>ClangAttrList</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Serialization\ClangAttrPCHRead.vcxproj">
+      <Project>{519612F3-90A9-3075-BF0B-4D45500B0EF0}</Project>
+      <Name>ClangAttrPCHRead</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Serialization\ClangAttrPCHWrite.vcxproj">
+      <Project>{F10185BC-2169-30EE-802E-1555DC0E5DE6}</Project>
+      <Name>ClangAttrPCHWrite</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Sema\ClangAttrParsedAttrImpl.vcxproj">
+      <Project>{45D088C9-50D2-367C-A241-79EB14CE0FDB}</Project>
+      <Name>ClangAttrParsedAttrImpl</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Sema\ClangAttrParsedAttrKinds.vcxproj">
+      <Project>{D3A6BBEF-767C-3941-AA63-464623C96D81}</Project>
+      <Name>ClangAttrParsedAttrKinds</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Sema\ClangAttrParsedAttrList.vcxproj">
+      <Project>{CB47CC76-D093-395A-829B-88DE0AA7281E}</Project>
+      <Name>ClangAttrParsedAttrList</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Parse\ClangAttrParserStringSwitches.vcxproj">
+      <Project>{050C22AE-1636-326D-84CF-642780A40562}</Project>
+      <Name>ClangAttrParserStringSwitches</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Sema\ClangAttrSpellingListIndex.vcxproj">
+      <Project>{8D7897AB-2EE8-39E4-AC52-9E049FC464B9}</Project>
+      <Name>ClangAttrSpellingListIndex</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Sema\ClangAttrTemplateInstantiate.vcxproj">
+      <Project>{C64837F7-08EB-3855-99E2-4CEC6ED066A0}</Project>
+      <Name>ClangAttrTemplateInstantiate</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\ClangAttrVisitor.vcxproj">
+      <Project>{47D77D8A-86E6-39D5-A07F-4B5DD515C0C2}</Project>
+      <Name>ClangAttrVisitor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\ClangCommentCommandInfo.vcxproj">
+      <Project>{25612FBF-CA68-3325-A300-1D41B056803D}</Project>
+      <Name>ClangCommentCommandInfo</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\ClangCommentCommandList.vcxproj">
+      <Project>{DDB89F1C-BEF5-350A-BE27-27365E6CDD5F}</Project>
+      <Name>ClangCommentCommandList</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\ClangCommentHTMLNamedCharacterReferences.vcxproj">
+      <Project>{AEE839F7-598C-3E0C-B7E9-4509F37EE41D}</Project>
+      <Name>ClangCommentHTMLNamedCharacterReferences</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\ClangCommentHTMLTags.vcxproj">
+      <Project>{55CF544D-9B17-3001-803C-F95404C67397}</Project>
+      <Name>ClangCommentHTMLTags</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\ClangCommentHTMLTagsProperties.vcxproj">
+      <Project>{B658134B-4060-34E2-9A66-88718EA58B24}</Project>
+      <Name>ClangCommentHTMLTagsProperties</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\ClangCommentNodes.vcxproj">
+      <Project>{C9A77AB9-51BB-3E70-A315-F6E88D902EAF}</Project>
+      <Name>ClangCommentNodes</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\ClangDeclNodes.vcxproj">
+      <Project>{0429A241-075F-3799-AB02-75850C88BE01}</Project>
+      <Name>ClangDeclNodes</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ClangDiagnosticAST.vcxproj">
+      <Project>{10EA1948-0DC6-36EF-ABFC-5B3EE448D3A4}</Project>
+      <Name>ClangDiagnosticAST</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ClangDiagnosticAnalysis.vcxproj">
+      <Project>{7B14F1FD-CEDD-3727-AAB5-9BE2DEA933D0}</Project>
+      <Name>ClangDiagnosticAnalysis</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ClangDiagnosticComment.vcxproj">
+      <Project>{4CE3C6B2-EB7F-36E2-9276-9213860CD4E8}</Project>
+      <Name>ClangDiagnosticComment</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ClangDiagnosticCommon.vcxproj">
+      <Project>{2BBB94F5-E927-3F9B-A3AD-8CF4D264097C}</Project>
+      <Name>ClangDiagnosticCommon</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ClangDiagnosticDriver.vcxproj">
+      <Project>{F2833129-EE3C-39CB-95FA-52E413BB56DF}</Project>
+      <Name>ClangDiagnosticDriver</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ClangDiagnosticFrontend.vcxproj">
+      <Project>{6BBA1881-F877-3B48-AC59-637D1DFDCC15}</Project>
+      <Name>ClangDiagnosticFrontend</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ClangDiagnosticGroups.vcxproj">
+      <Project>{639E9B03-A873-3D69-B75C-4C3DA3747CD2}</Project>
+      <Name>ClangDiagnosticGroups</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ClangDiagnosticIndexName.vcxproj">
+      <Project>{BFAFF4C9-D43D-33AC-8E0A-BCAEEBF5BF5C}</Project>
+      <Name>ClangDiagnosticIndexName</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ClangDiagnosticLex.vcxproj">
+      <Project>{70550AEE-6D2B-3AD8-B421-6B8FCAB5C008}</Project>
+      <Name>ClangDiagnosticLex</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ClangDiagnosticParse.vcxproj">
+      <Project>{FD14AC8D-E50C-372D-9FAD-2B9B03B009D8}</Project>
+      <Name>ClangDiagnosticParse</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ClangDiagnosticSema.vcxproj">
+      <Project>{0B235C7D-268E-3C09-B9E5-2507613B4F4B}</Project>
+      <Name>ClangDiagnosticSema</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ClangDiagnosticSerialization.vcxproj">
+      <Project>{5971B578-A1F5-30EB-8A66-2CD36C77B9F2}</Project>
+      <Name>ClangDiagnosticSerialization</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\ClangStmtNodes.vcxproj">
+      <Project>{5E087905-A77D-36E4-A33E-75ADEEF7BEE1}</Project>
+      <Name>ClangStmtNodes</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\HCTGen.vcxproj">
+      <Project>{723188C7-6406-3FA5-A23D-6FBC8AE7ADA9}</Project>
+      <Name>HCTGen</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

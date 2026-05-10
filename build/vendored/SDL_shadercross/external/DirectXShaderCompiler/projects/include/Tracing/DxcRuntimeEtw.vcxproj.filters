@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\fa62fd9ebc7e1121ee74b37b493b98af\tmpdxcruntimeetw.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\fa62fd9ebc7e1121ee74b37b493b98af\DxcRuntimeEtw.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\11bdc76299f83cf7fd5d81618a782bef\DxcRuntimeEtw.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntime.man" />
+    <None Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeFiles\DxcRuntimeEtw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{C2DCCA17-C3A4-3CD8-8EE0-D241F3FDE300}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

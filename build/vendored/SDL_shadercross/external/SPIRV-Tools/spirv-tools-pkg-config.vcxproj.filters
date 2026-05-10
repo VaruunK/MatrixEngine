@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\bb3ae153c57967a8fc609dd72017a81c\SPIRV-Tools-shared.pc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\bb3ae153c57967a8fc609dd72017a81c\SPIRV-Tools.pc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\8b4d42a8901321d4f29fe735925b04ab\spirv-tools-pkg-config.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Tools\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\CMakeFiles\spirv-tools-pkg-config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{C2DCCA17-C3A4-3CD8-8EE0-D241F3FDE300}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

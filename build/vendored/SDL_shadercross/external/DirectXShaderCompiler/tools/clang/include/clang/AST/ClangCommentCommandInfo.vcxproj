@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{25612FBF-CA68-3325-A300-1D41B056803D}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>ClangCommentCommandInfo</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\e591cb90c7394dbbc6554573cb6d56db\CommentCommandInfo.inc.tmp.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building CommentCommandInfo.inc...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+..\..\..\..\..\Debug\bin\clang-tblgen.exe -gen-clang-comment-command-info -I C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST -I C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/lib/Target -I C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CommentCommands.td -o C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CommentCommandInfo.inc.tmp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\Debug\bin\clang-tblgen.exe;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentCommands.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentHTMLNamedCharacterReferences.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentHTMLTags.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\CodeGen\ValueTypes.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\Intrinsics.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsAArch64.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsAMDGPU.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsARM.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsBPF.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsHexagon.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsMips.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsNVVM.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsPowerPC.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsSystemZ.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsWebAssembly.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsX86.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsXCore.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Option\OptParser.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\Target.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetCallingConv.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetItinerary.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetSchedule.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetSelectionDAG.td;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentCommandInfo.inc.tmp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building CommentCommandInfo.inc...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+..\..\..\..\..\Release\bin\clang-tblgen.exe -gen-clang-comment-command-info -I C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST -I C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/lib/Target -I C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CommentCommands.td -o C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CommentCommandInfo.inc.tmp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\Release\bin\clang-tblgen.exe;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentCommands.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentHTMLNamedCharacterReferences.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentHTMLTags.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\CodeGen\ValueTypes.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\Intrinsics.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsAArch64.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsAMDGPU.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsARM.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsBPF.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsHexagon.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsMips.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsNVVM.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsPowerPC.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsSystemZ.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsWebAssembly.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsX86.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsXCore.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Option\OptParser.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\Target.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetCallingConv.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetItinerary.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetSchedule.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetSelectionDAG.td;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentCommandInfo.inc.tmp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building CommentCommandInfo.inc...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+..\..\..\..\..\MinSizeRel\bin\clang-tblgen.exe -gen-clang-comment-command-info -I C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST -I C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/lib/Target -I C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CommentCommands.td -o C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CommentCommandInfo.inc.tmp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\MinSizeRel\bin\clang-tblgen.exe;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentCommands.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentHTMLNamedCharacterReferences.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentHTMLTags.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\CodeGen\ValueTypes.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\Intrinsics.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsAArch64.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsAMDGPU.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsARM.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsBPF.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsHexagon.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsMips.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsNVVM.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsPowerPC.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsSystemZ.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsWebAssembly.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsX86.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsXCore.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Option\OptParser.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\Target.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetCallingConv.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetItinerary.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetSchedule.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetSelectionDAG.td;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentCommandInfo.inc.tmp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building CommentCommandInfo.inc...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+..\..\..\..\..\RelWithDebInfo\bin\clang-tblgen.exe -gen-clang-comment-command-info -I C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST -I C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/lib/Target -I C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CommentCommands.td -o C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CommentCommandInfo.inc.tmp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\RelWithDebInfo\bin\clang-tblgen.exe;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentCommands.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentHTMLNamedCharacterReferences.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentHTMLTags.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\CodeGen\ValueTypes.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\Intrinsics.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsAArch64.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsAMDGPU.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsARM.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsBPF.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsHexagon.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsMips.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsNVVM.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsPowerPC.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsSystemZ.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsWebAssembly.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsX86.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\IntrinsicsXCore.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Option\OptParser.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\Target.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetCallingConv.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetItinerary.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetSchedule.td;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetSelectionDAG.td;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentCommandInfo.inc.tmp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\e591cb90c7394dbbc6554573cb6d56db\CommentCommandInfo.inc.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Updating CommentCommandInfo.inc...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CommentCommandInfo.inc.tmp C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CommentCommandInfo.inc
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentCommandInfo.inc.tmp;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentCommandInfo.inc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Updating CommentCommandInfo.inc...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CommentCommandInfo.inc.tmp C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CommentCommandInfo.inc
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentCommandInfo.inc.tmp;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentCommandInfo.inc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Updating CommentCommandInfo.inc...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CommentCommandInfo.inc.tmp C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CommentCommandInfo.inc
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentCommandInfo.inc.tmp;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentCommandInfo.inc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Updating CommentCommandInfo.inc...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CommentCommandInfo.inc.tmp C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CommentCommandInfo.inc
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentCommandInfo.inc.tmp;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentCommandInfo.inc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\b1ba5591c39705dee623daebd9ac0d43\ClangCommentCommandInfo.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentCommandInfo.inc;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CMakeFiles\ClangCommentCommandInfo</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentCommandInfo.inc;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CMakeFiles\ClangCommentCommandInfo</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentCommandInfo.inc;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CMakeFiles\ClangCommentCommandInfo</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CommentCommandInfo.inc;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CMakeFiles\ClangCommentCommandInfo</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/AST/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CMakeFiles\ClangCommentCommandInfo">
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\development\Engine\build\ZERO_CHECK.vcxproj">
+      <Project>{88AACD1C-C064-38E8-86A3-8C6F7CA0A6EC}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\HCTGen.vcxproj">
+      <Project>{723188C7-6406-3FA5-A23D-6FBC8AE7ADA9}</Project>
+      <Name>HCTGen</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\utils\TableGen\clang-tblgen.vcxproj">
+      <Project>{894A7AA2-33DC-3419-92D1-7445C18D1AFD}</Project>
+      <Name>clang-tblgen</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

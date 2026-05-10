@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_assert.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_common.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_compare.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_crc32.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_font.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_fuzzer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_harness.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_log.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_md5.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_memory.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\development\Engine\vendored\SDL3\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{ACAB9CB3-59AB-35FF-AC8B-09A5E70299ED}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2F7D69D2-3352-3CB7-A86D-86A26146C9F8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,518 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveNugetPackages>false</ResolveNugetPackages>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6436BBC1-3EF8-30E1-861D-AFFFBBF52F23}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\AddFileDependencies.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPython\Support.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPython3.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\TestBigEndian.cmake;C:\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\LLVMBuild.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\config-ix.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\AddLLVM.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\AddLLVMDefinitions.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\AddOCaml.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\CheckAtomic.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\ChooseMSVCCRT.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\CoverageReport.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\FindOCaml.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\GetHostTriple.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\HandleLLVMOptions.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\HandleLLVMStdlib.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\LLVM-Config.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\LLVMProcessSources.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\TableGen.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\VersionFromVCS.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\docs\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\examples\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\AsmParsers.def.in;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\AsmPrinters.def.in;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\Disassemblers.def.in;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\Targets.def.in;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\abi-breaking.h.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\config.h.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\llvm-config.h.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Support\DataTypes.h.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Analysis\IPA\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Analysis\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\AsmParser\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Bitcode\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Bitcode\Reader\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Bitcode\Writer\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\CodeGen\AsmPrinter\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\CodeGen\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\CodeGen\MIRParser\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\CodeGen\SelectionDAG\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DXIL\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DebugInfo\DWARF\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DebugInfo\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DebugInfo\PDB\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxcBindingTable\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxcSupport\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilCompression\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilContainer\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilDia\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilPIXPasses\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilPdbInfo\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilRootSignature\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxrFallback\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\IntelJITEvents\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\Interpreter\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\MCJIT\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\OProfileJIT\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\Orc\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\RuntimeDyld\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\HLSL\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\IR\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\IRReader\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Linker\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\MC\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\MC\MCDisassembler\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\MC\MCParser\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Object\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Option\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\PassPrinters\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Passes\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ProfileData\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Support\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\TableGen\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Target\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\IPO\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\InstCombine\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Instrumentation\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\ObjCARC\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Utils\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Vectorize\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\dsymutil\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llc\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\lli\ChildTarget\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\lli\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-as\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-bcanalyzer\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-cov\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-diff\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-dis\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-dwarfdump\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-extract\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-link\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-mc\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-mcmarkup\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-nm\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-objdump\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-pdbdump\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-profdata\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-rtdyld\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-size\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\macho-dump\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\opt\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\verify-uselistorder\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\TableGen\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvm-build;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvmbuild\__init__.py;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvmbuild\componentinfo.py;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvmbuild\configutil.py;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvmbuild\main.py;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvmbuild\util.py;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\AddFileDependencies.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPython\Support.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPython3.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\TestBigEndian.cmake;C:\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\LLVMBuild.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\config-ix.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\AddLLVM.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\AddLLVMDefinitions.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\AddOCaml.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\CheckAtomic.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\ChooseMSVCCRT.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\CoverageReport.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\FindOCaml.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\GetHostTriple.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\HandleLLVMOptions.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\HandleLLVMStdlib.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\LLVM-Config.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\LLVMProcessSources.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\TableGen.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\VersionFromVCS.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\docs\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\examples\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\AsmParsers.def.in;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\AsmPrinters.def.in;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\Disassemblers.def.in;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\Targets.def.in;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\abi-breaking.h.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\config.h.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\llvm-config.h.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Support\DataTypes.h.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Analysis\IPA\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Analysis\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\AsmParser\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Bitcode\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Bitcode\Reader\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Bitcode\Writer\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\CodeGen\AsmPrinter\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\CodeGen\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\CodeGen\MIRParser\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\CodeGen\SelectionDAG\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DXIL\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DebugInfo\DWARF\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DebugInfo\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DebugInfo\PDB\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxcBindingTable\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxcSupport\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilCompression\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilContainer\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilDia\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilPIXPasses\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilPdbInfo\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilRootSignature\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxrFallback\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\IntelJITEvents\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\Interpreter\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\MCJIT\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\OProfileJIT\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\Orc\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\RuntimeDyld\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\HLSL\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\IR\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\IRReader\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Linker\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\MC\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\MC\MCDisassembler\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\MC\MCParser\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Object\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Option\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\PassPrinters\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Passes\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ProfileData\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Support\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\TableGen\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Target\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\IPO\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\InstCombine\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Instrumentation\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\ObjCARC\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Utils\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Vectorize\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\dsymutil\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llc\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\lli\ChildTarget\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\lli\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-as\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-bcanalyzer\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-cov\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-diff\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-dis\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-dwarfdump\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-extract\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-link\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-mc\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-mcmarkup\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-nm\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-objdump\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-pdbdump\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-profdata\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-rtdyld\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-size\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\macho-dump\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\opt\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\verify-uselistorder\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\TableGen\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvm-build;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvmbuild\__init__.py;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvmbuild\componentinfo.py;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvmbuild\configutil.py;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvmbuild\main.py;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvmbuild\util.py;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\AddFileDependencies.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPython\Support.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPython3.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\TestBigEndian.cmake;C:\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\LLVMBuild.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\config-ix.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\AddLLVM.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\AddLLVMDefinitions.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\AddOCaml.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\CheckAtomic.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\ChooseMSVCCRT.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\CoverageReport.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\FindOCaml.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\GetHostTriple.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\HandleLLVMOptions.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\HandleLLVMStdlib.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\LLVM-Config.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\LLVMProcessSources.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\TableGen.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\VersionFromVCS.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\docs\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\examples\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\AsmParsers.def.in;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\AsmPrinters.def.in;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\Disassemblers.def.in;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\Targets.def.in;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\abi-breaking.h.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\config.h.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\llvm-config.h.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Support\DataTypes.h.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Analysis\IPA\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Analysis\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\AsmParser\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Bitcode\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Bitcode\Reader\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Bitcode\Writer\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\CodeGen\AsmPrinter\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\CodeGen\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\CodeGen\MIRParser\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\CodeGen\SelectionDAG\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DXIL\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DebugInfo\DWARF\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DebugInfo\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DebugInfo\PDB\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxcBindingTable\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxcSupport\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilCompression\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilContainer\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilDia\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilPIXPasses\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilPdbInfo\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilRootSignature\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxrFallback\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\IntelJITEvents\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\Interpreter\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\MCJIT\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\OProfileJIT\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\Orc\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\RuntimeDyld\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\HLSL\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\IR\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\IRReader\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Linker\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\MC\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\MC\MCDisassembler\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\MC\MCParser\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Object\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Option\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\PassPrinters\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Passes\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ProfileData\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Support\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\TableGen\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Target\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\IPO\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\InstCombine\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Instrumentation\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\ObjCARC\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Utils\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Vectorize\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\dsymutil\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llc\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\lli\ChildTarget\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\lli\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-as\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-bcanalyzer\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-cov\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-diff\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-dis\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-dwarfdump\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-extract\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-link\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-mc\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-mcmarkup\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-nm\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-objdump\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-pdbdump\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-profdata\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-rtdyld\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-size\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\macho-dump\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\opt\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\verify-uselistorder\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\TableGen\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvm-build;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvmbuild\__init__.py;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvmbuild\componentinfo.py;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvmbuild\configutil.py;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvmbuild\main.py;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvmbuild\util.py;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\AddFileDependencies.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPython\Support.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPython3.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\TestBigEndian.cmake;C:\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\LLVMBuild.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\config-ix.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\AddLLVM.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\AddLLVMDefinitions.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\AddOCaml.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\CheckAtomic.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\ChooseMSVCCRT.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\CoverageReport.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\FindOCaml.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\GetHostTriple.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\HandleLLVMOptions.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\HandleLLVMStdlib.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\LLVM-Config.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\LLVMProcessSources.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\TableGen.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\cmake\modules\VersionFromVCS.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\docs\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\examples\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\AsmParsers.def.in;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\AsmPrinters.def.in;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\Disassemblers.def.in;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\Targets.def.in;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\abi-breaking.h.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\config.h.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Config\llvm-config.h.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Support\DataTypes.h.cmake;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Analysis\IPA\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Analysis\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\AsmParser\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Bitcode\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Bitcode\Reader\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Bitcode\Writer\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\CodeGen\AsmPrinter\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\CodeGen\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\CodeGen\MIRParser\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\CodeGen\SelectionDAG\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DXIL\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DebugInfo\DWARF\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DebugInfo\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DebugInfo\PDB\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxcBindingTable\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxcSupport\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilCompression\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilContainer\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilDia\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilPIXPasses\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilPdbInfo\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilRootSignature\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxrFallback\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\IntelJITEvents\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\Interpreter\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\MCJIT\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\OProfileJIT\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\Orc\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ExecutionEngine\RuntimeDyld\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\HLSL\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\IR\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\IRReader\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Linker\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\MC\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\MC\MCDisassembler\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\MC\MCParser\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Object\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Option\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\PassPrinters\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Passes\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ProfileData\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Support\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\TableGen\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Target\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\IPO\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\InstCombine\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Instrumentation\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\ObjCARC\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Utils\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Vectorize\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\dsymutil\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llc\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\lli\ChildTarget\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\lli\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-as\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-bcanalyzer\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-cov\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-diff\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-dis\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-dwarfdump\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-extract\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-link\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-mc\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-mcmarkup\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-nm\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-objdump\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-pdbdump\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-profdata\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-rtdyld\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-size\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\macho-dump\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\opt\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\verify-uselistorder\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\TableGen\LLVMBuild.txt;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvm-build;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvmbuild\__init__.py;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvmbuild\componentinfo.py;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvmbuild\configutil.py;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvmbuild\main.py;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\llvm-build\llvmbuild\util.py;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\development\Engine\build\ZERO_CHECK.vcxproj">
+      <Project>{88AACD1C-C064-38E8-86A3-8C6F7CA0A6EC}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\dxilconv\lib\DxbcConverter\DxbcConverter.vcxproj">
+      <Project>{99D024F6-55B8-3F04-8594-E9ED834D13C2}</Project>
+      <Name>DxbcConverter</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\dxilconv\lib\DxilConvPasses\DxilConvPasses.vcxproj">
+      <Project>{5CDD58AD-C00F-3507-94ED-EE7ACC3F0E1E}</Project>
+      <Name>DxilConvPasses</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Analysis\LLVMAnalysis.vcxproj">
+      <Project>{C6BE6515-7ABC-3E36-AFC4-D9AA0160051F}</Project>
+      <Name>LLVMAnalysis</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\AsmParser\LLVMAsmParser.vcxproj">
+      <Project>{78C599B2-2391-3BDB-B440-476F525AF132}</Project>
+      <Name>LLVMAsmParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Bitcode\Reader\LLVMBitReader.vcxproj">
+      <Project>{B991DA21-7EB8-33CB-A629-3200A9D72DC5}</Project>
+      <Name>LLVMBitReader</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Bitcode\Writer\LLVMBitWriter.vcxproj">
+      <Project>{4BADB8AC-A04F-3530-BB0B-BBC278A25C10}</Project>
+      <Name>LLVMBitWriter</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\IR\LLVMCore.vcxproj">
+      <Project>{A4336902-DA38-3759-BEB1-5D1D6C68C052}</Project>
+      <Name>LLVMCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DXIL\LLVMDXIL.vcxproj">
+      <Project>{90A641A2-5267-37A0-8540-2182F738A3CD}</Project>
+      <Name>LLVMDXIL</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxcBindingTable\LLVMDxcBindingTable.vcxproj">
+      <Project>{589DE8C1-CF83-3F19-913A-F65A00C178C4}</Project>
+      <Name>LLVMDxcBindingTable</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxcSupport\LLVMDxcSupport.vcxproj">
+      <Project>{B8D10149-DC36-3597-97C6-25431FB4E683}</Project>
+      <Name>LLVMDxcSupport</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilCompression\LLVMDxilCompression.vcxproj">
+      <Project>{8ADB6A0A-C56B-34C0-A010-102D562FCE8B}</Project>
+      <Name>LLVMDxilCompression</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilContainer\LLVMDxilContainer.vcxproj">
+      <Project>{57A72625-8328-35D4-932C-1DAF265B1F63}</Project>
+      <Name>LLVMDxilContainer</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilDia\LLVMDxilDia.vcxproj">
+      <Project>{FC5DFA74-1CD3-3ECE-BEB2-4DF0E9528A71}</Project>
+      <Name>LLVMDxilDia</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilHash\LLVMDxilHash.vcxproj">
+      <Project>{58F0B956-4686-3832-B5C4-A5106AD1D60A}</Project>
+      <Name>LLVMDxilHash</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilPIXPasses\LLVMDxilPIXPasses.vcxproj">
+      <Project>{06A0C6F9-77C1-35DC-A456-AB6BBF7508A0}</Project>
+      <Name>LLVMDxilPIXPasses</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilPdbInfo\LLVMDxilPdbInfo.vcxproj">
+      <Project>{FE8F6814-7FB6-3AA7-97FA-1039B9BC7C2B}</Project>
+      <Name>LLVMDxilPdbInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilRootSignature\LLVMDxilRootSignature.vcxproj">
+      <Project>{42AB689B-F5E5-3D7C-A8B9-75DCE4636874}</Project>
+      <Name>LLVMDxilRootSignature</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilValidation\LLVMDxilValidation.vcxproj">
+      <Project>{EFAAE9F1-619D-3A1C-A4CF-9F7E64B2E8C4}</Project>
+      <Name>LLVMDxilValidation</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxrFallback\LLVMDxrFallback.vcxproj">
+      <Project>{E01C50C6-1E87-334E-A546-C30B7EA6EBB7}</Project>
+      <Name>LLVMDxrFallback</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\HLSL\LLVMHLSL.vcxproj">
+      <Project>{A4CD173E-046A-3529-9186-48C08DA6FFDA}</Project>
+      <Name>LLVMHLSL</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\IRReader\LLVMIRReader.vcxproj">
+      <Project>{5BAFBB63-0078-3EA5-8A3A-7D33453D63C7}</Project>
+      <Name>LLVMIRReader</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\InstCombine\LLVMInstCombine.vcxproj">
+      <Project>{5B71206F-588A-36F6-86A0-B0B1EACA6D6B}</Project>
+      <Name>LLVMInstCombine</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Linker\LLVMLinker.vcxproj">
+      <Project>{D1F6828D-C411-3901-8500-2102CACB6034}</Project>
+      <Name>LLVMLinker</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\MSSupport\LLVMMSSupport.vcxproj">
+      <Project>{FE8A85BF-8572-3FF1-90CD-A62192A25A53}</Project>
+      <Name>LLVMMSSupport</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Option\LLVMOption.vcxproj">
+      <Project>{64A195D4-EE2C-3070-8291-BCE8FFA8967E}</Project>
+      <Name>LLVMOption</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\PassPrinters\LLVMPassPrinters.vcxproj">
+      <Project>{FB9DA497-E6AA-3623-AF3B-2B10887804A2}</Project>
+      <Name>LLVMPassPrinters</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Passes\LLVMPasses.vcxproj">
+      <Project>{F207DA34-6CD7-31BF-A34C-027B953C745B}</Project>
+      <Name>LLVMPasses</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\ProfileData\LLVMProfileData.vcxproj">
+      <Project>{0FD6DFFE-B277-39BC-AAF0-D14086A5D930}</Project>
+      <Name>LLVMProfileData</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\LLVMScalarOpts.vcxproj">
+      <Project>{165A6169-C847-393E-BA10-56FA0FB63A8C}</Project>
+      <Name>LLVMScalarOpts</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Support\LLVMSupport.vcxproj">
+      <Project>{4EFFC1AF-39C3-3FA5-836C-FB36C72367E3}</Project>
+      <Name>LLVMSupport</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\TableGen\LLVMTableGen.vcxproj">
+      <Project>{35282236-8CEE-3898-9ECB-0996C728FAEC}</Project>
+      <Name>LLVMTableGen</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Target\LLVMTarget.vcxproj">
+      <Project>{C8ACE20F-E785-3C08-A267-91E901B2FCA2}</Project>
+      <Name>LLVMTarget</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Utils\LLVMTransformUtils.vcxproj">
+      <Project>{62E6414F-2B12-3AE8-8B26-FC82C88C15EE}</Project>
+      <Name>LLVMTransformUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Vectorize\LLVMVectorize.vcxproj">
+      <Project>{425657EF-4E71-3520-8835-350BC8D97A6E}</Project>
+      <Name>LLVMVectorize</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Analysis\IPA\LLVMipa.vcxproj">
+      <Project>{D96BE993-B209-360A-AAA5-7CE4EEAFD31F}</Project>
+      <Name>LLVMipa</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\IPO\LLVMipo.vcxproj">
+      <Project>{856AC845-E59E-3DC1-9F6C-BBA57E0FD954}</Project>
+      <Name>LLVMipo</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\dxilconv\lib\ShaderBinary\ShaderBinary.vcxproj">
+      <Project>{08C18DAE-DB5B-3104-8BC0-E1622FE27019}</Project>
+      <Name>ShaderBinary</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\utils\TableGen\clang-tblgen.vcxproj">
+      <Project>{894A7AA2-33DC-3419-92D1-7445C18D1AFD}</Project>
+      <Name>clang-tblgen</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\AST\clangAST.vcxproj">
+      <Project>{8B83E024-84AF-3DFC-8BAE-BAA4D19B6792}</Project>
+      <Name>clangAST</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\ASTMatchers\clangASTMatchers.vcxproj">
+      <Project>{CF0EA131-643A-3EDF-A790-FC7045D6A694}</Project>
+      <Name>clangASTMatchers</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Analysis\clangAnalysis.vcxproj">
+      <Project>{5FE9D0FF-7D7E-3036-B4DC-F40AF054F86E}</Project>
+      <Name>clangAnalysis</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\clangBasic.vcxproj">
+      <Project>{8F094BCC-61BE-32D2-A129-E9DEF161BDA0}</Project>
+      <Name>clangBasic</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\CodeGen\clangCodeGen.vcxproj">
+      <Project>{ED6B1D2D-D600-3821-9D19-045A76976488}</Project>
+      <Name>clangCodeGen</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Driver\clangDriver.vcxproj">
+      <Project>{32A399CF-F0BF-3EF3-BD21-7E74990731AD}</Project>
+      <Name>clangDriver</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Edit\clangEdit.vcxproj">
+      <Project>{30D0BF7F-B82B-3474-82CF-1E14BDE99B2E}</Project>
+      <Name>clangEdit</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Format\clangFormat.vcxproj">
+      <Project>{248C6C0C-3231-3B83-B8C9-9B6F625BA1DC}</Project>
+      <Name>clangFormat</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Frontend\clangFrontend.vcxproj">
+      <Project>{4BE92D43-80A6-3E9D-9EF9-13F8C02E004C}</Project>
+      <Name>clangFrontend</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\FrontendTool\clangFrontendTool.vcxproj">
+      <Project>{B1CE5853-7E35-3A0A-99E4-80A9EC3A5C00}</Project>
+      <Name>clangFrontendTool</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Index\clangIndex.vcxproj">
+      <Project>{536EA33B-B219-3A6A-ADE3-02012007F7AC}</Project>
+      <Name>clangIndex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\clangLex.vcxproj">
+      <Project>{1B49D17F-C803-3A3E-982E-6FBF04181264}</Project>
+      <Name>clangLex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Parse\clangParse.vcxproj">
+      <Project>{C59A71FC-3AE7-382B-A47E-FDFDF5AA2AF5}</Project>
+      <Name>clangParse</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Rewrite\clangRewrite.vcxproj">
+      <Project>{3240640D-06DE-32AA-B184-81948971A6E7}</Project>
+      <Name>clangRewrite</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Frontend\Rewrite\clangRewriteFrontend.vcxproj">
+      <Project>{561C718F-07EC-366C-8231-AB64CA30292A}</Project>
+      <Name>clangRewriteFrontend</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\SPIRV\clangSPIRV.vcxproj">
+      <Project>{E5806C77-1C93-319A-B45D-525926405C6A}</Project>
+      <Name>clangSPIRV</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Sema\clangSema.vcxproj">
+      <Project>{B22F05EC-7770-3D55-A591-DF6D86008AE8}</Project>
+      <Name>clangSema</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\clangTooling.vcxproj">
+      <Project>{62E2608D-ED3B-374B-BD1F-CB32B578439C}</Project>
+      <Name>clangTooling</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Tooling\Core\clangToolingCore.vcxproj">
+      <Project>{68BAF9BA-75D0-30F2-8EE8-D5EB5A5579A4}</Project>
+      <Name>clangToolingCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\d3dcomp\d3dcompiler_dxc_bridge.vcxproj">
+      <Project>{83C6E55D-9844-3E39-B45A-ED45489488E4}</Project>
+      <Name>d3dcompiler_dxc_bridge</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dotnetc\dndxc.csproj">
+      <Project>{0A863FD1-FD94-42CF-8190-A3CA605A6459}</Project>
+      <Name>dndxc</Name>
+      <SkipGetTargetFrameworkProperties>true</SkipGetTargetFrameworkProperties>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxa\dxa.vcxproj">
+      <Project>{D4579819-EE43-3DDE-8F25-D00ED65CDD6F}</Project>
+      <Name>dxa</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\dxilconv\tools\dxbc2dxil\dxbc2dxil.vcxproj">
+      <Project>{52F3EC09-0B96-3957-B00B-80F6D5462597}</Project>
+      <Name>dxbc2dxil</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxc\dxc.vcxproj">
+      <Project>{2702A654-9B4D-3BFB-92E1-19F09F131A04}</Project>
+      <Name>dxc</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxclib\dxclib.vcxproj">
+      <Project>{B28DACCD-E963-3611-AB4E-E9CCC662DF1B}</Project>
+      <Name>dxclib</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcompiler.vcxproj">
+      <Project>{594AF850-F3ED-379E-BB01-AE654B413A6D}</Project>
+      <Name>dxcompiler</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcvalidator\dxcvalidator.vcxproj">
+      <Project>{85FF34D1-AA68-3376-8CB0-D0D9F7D94FC9}</Project>
+      <Name>dxcvalidator</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\dxexp\dxexp.vcxproj">
+      <Project>{0C106634-C70F-36C7-A45E-AA735077671D}</Project>
+      <Name>dxexp</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\dxilconv\tools\dxilconv\dxilconv.vcxproj">
+      <Project>{B0785A41-11F7-3987-B48C-1CF477C94A26}</Project>
+      <Name>dxilconv</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxildll\dxildll.vcxproj">
+      <Project>{6F9604E9-2626-3326-9393-53BF8A34E4B1}</Project>
+      <Name>dxildll</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxl\dxl.vcxproj">
+      <Project>{A00319D5-B75C-303E-8DDB-ECD1B6B6097A}</Project>
+      <Name>dxl</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxlib-sample\dxlib_sample.vcxproj">
+      <Project>{3855BDB5-AFEC-3299-825A-68E44818F036}</Project>
+      <Name>dxlib_sample</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxopt\dxopt.vcxproj">
+      <Project>{6EC298C6-1572-370C-B237-FF43FE233BAE}</Project>
+      <Name>dxopt</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxr\dxr.vcxproj">
+      <Project>{874264A8-0B4F-3EFB-A551-3CE223696A1A}</Project>
+      <Name>dxr</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxrfallbackcompiler\dxrfallbackcompiler.vcxproj">
+      <Project>{C58A3425-1009-3DEA-989C-9241DD8EED8D}</Project>
+      <Name>dxrfallbackcompiler</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxv\dxv.vcxproj">
+      <Project>{E78DDBEF-8037-3A14-BD84-867E57FC557C}</Project>
+      <Name>dxv</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\libclang\libclang.vcxproj">
+      <Project>{5A565145-7AD7-3BF2-BD0B-965C76B3A410}</Project>
+      <Name>libclang</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-bcanalyzer\llvm-bcanalyzer.vcxproj">
+      <Project>{DE6195E4-8C6C-3333-9CF7-4E8DDA38228D}</Project>
+      <Name>llvm-bcanalyzer</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-config\llvm-config.vcxproj">
+      <Project>{69447B10-51AE-3C21-8746-1E7149C8F650}</Project>
+      <Name>llvm-config</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-diff\llvm-diff.vcxproj">
+      <Project>{8FF80BFE-FA62-36A2-AAD5-89DC3AE74EF0}</Project>
+      <Name>llvm-diff</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-extract\llvm-extract.vcxproj">
+      <Project>{C546E29B-6BE4-3DC9-81AD-8E5062CB4233}</Project>
+      <Name>llvm-extract</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-link\llvm-link.vcxproj">
+      <Project>{A6653B95-F6C4-3DB7-A1BD-1E9B93EA90A5}</Project>
+      <Name>llvm-link</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\llvm-stress\llvm-stress.vcxproj">
+      <Project>{F612C0EB-2A27-3F39-B0A9-DDFE386349BA}</Project>
+      <Name>llvm-stress</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\utils\TableGen\llvm-tblgen.vcxproj">
+      <Project>{9AEAFF6C-3EF7-33F8-8C40-019F936F583B}</Project>
+      <Name>llvm-tblgen</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\opt\opt.vcxproj">
+      <Project>{D2801E66-D7E2-31CA-AE9E-9FD8032DD27C}</Project>
+      <Name>opt</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\verify-uselistorder\verify-uselistorder.vcxproj">
+      <Project>{CA12453E-D275-378C-AD3A-AC781A5AA008}</Project>
+      <Name>verify-uselistorder</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

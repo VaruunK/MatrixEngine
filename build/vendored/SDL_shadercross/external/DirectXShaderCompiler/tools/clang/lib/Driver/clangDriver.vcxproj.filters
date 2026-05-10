@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Driver\DriverOptions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\Action.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\Compilation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\Driver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\DriverDiagnostic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\Job.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\Multilib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\Options.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\Phases.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\SanitizerArgs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\Tool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\ToolChain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\Types.def">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\Types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\Util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\CC1Options.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\CLCompatOptions.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\Options.td">
+      <Filter>TableGen descriptions</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Driver\InputInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Driver\ToolChains.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Driver\Tools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Driver\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{8C1580A0-303C-3B73-A19C-EED5A815C64E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{CED6078E-1E1D-377E-81E2-5B45E001190D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TableGen descriptions">
+      <UniqueIdentifier>{1F95FE58-A47F-31CE-BA0A-9610E786E4B1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

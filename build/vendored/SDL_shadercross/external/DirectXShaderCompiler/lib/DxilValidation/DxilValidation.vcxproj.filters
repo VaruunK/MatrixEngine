@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\e9defe74b2764a854cac1d2a30a38aa1\DxilValidationImpl.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\9a801bc96b80240355ecba9bc8829dbf\DxilValidationImpl.inc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\e9defe74b2764a854cac1d2a30a38aa1\DxilValidationImpl.inc.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\22925a258ed52d350123848eba565985\DxilValidation.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilValidation\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilValidation\CMakeFiles\DxilValidation" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{C2DCCA17-C3A4-3CD8-8EE0-D241F3FDE300}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

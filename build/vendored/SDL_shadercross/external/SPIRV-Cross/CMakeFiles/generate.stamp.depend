@@ -1,0 +1,8 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-4.2/Modules/FindGit.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/GNUInstallDirs.cmake
+C:/development/Engine/build/CMakeFiles/cmake.verify_globs
+C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Cross/CMakeLists.txt
+C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Cross/cmake/gitversion.in.h

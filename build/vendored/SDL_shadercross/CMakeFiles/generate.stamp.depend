@@ -1,0 +1,15 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDependentOption.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeParseArguments.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/CMakePushCheckState.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/CheckCCompilerFlag.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/CheckCSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/GNUInstallDirs.cmake
+C:/development/Engine/build/CMakeFiles/cmake.verify_globs
+C:/development/Engine/vendored/SDL_shadercross/CMakeLists.txt
+C:/development/Engine/vendored/SDL_shadercross/cmake/GetGitRevisionDescription.cmake
+C:/development/Engine/vendored/SDL_shadercross/cmake/PrivateSdlFunctions.cmake
+C:/development/Engine/vendored/SDL_shadercross/cmake/sdlcpu.cmake
+C:/development/Engine/vendored/SDL_shadercross/cmake/sdlmanpages.cmake
+C:/development/Engine/vendored/SDL_shadercross/cmake/sdlplatform.cmake
+C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/cmake/caches/PredefinedParams.cmake

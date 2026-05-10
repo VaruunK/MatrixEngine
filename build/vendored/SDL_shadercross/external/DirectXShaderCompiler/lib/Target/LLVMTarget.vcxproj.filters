@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Target\Target.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Target\TargetIntrinsicInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Target\TargetLoweringObjectFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Target\TargetMachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Target\TargetMachineC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Target\TargetRecip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Target\TargetSubtargetInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\CostTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetCallingConv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetFrameLowering.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetInstrInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetIntrinsicInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetLowering.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetLoweringObjectFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetMachine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetOpcodes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetOptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetRecip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetRegisterInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetSelectionDAGInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Target\TargetSubtargetInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Target\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{8C1580A0-303C-3B73-A19C-EED5A815C64E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{CED6078E-1E1D-377E-81E2-5B45E001190D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

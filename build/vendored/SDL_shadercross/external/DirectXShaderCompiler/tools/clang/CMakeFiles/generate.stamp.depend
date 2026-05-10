@@ -1,0 +1,10 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeParseArguments.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/FindLibXml2.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/FindPkgConfig.cmake
+C:/development/Engine/build/CMakeFiles/cmake.verify_globs
+C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/CMakeLists.txt
+C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/Basic/Version.inc.in
+C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang/Config/config.h.cmake

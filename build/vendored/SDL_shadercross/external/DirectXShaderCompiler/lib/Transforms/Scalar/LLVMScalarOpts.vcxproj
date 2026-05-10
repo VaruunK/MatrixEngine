@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{165A6169-C847-393E-BA10-56FA0FB63A8C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>LLVMScalarOpts</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\Debug\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">LLVMScalarOpts.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">LLVMScalarOpts</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\Release\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">LLVMScalarOpts.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">LLVMScalarOpts</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\MinSizeRel\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">LLVMScalarOpts.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">LLVMScalarOpts</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\RelWithDebInfo\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">LLVMScalarOpts.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">LLVMScalarOpts</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:sizedDealloc-</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4324</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;SUPPORT_QUERY_GIT_COMMIT_INFO;ENABLE_SPIRV_CODEGEN;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;SUPPORT_QUERY_GIT_COMMIT_INFO;ENABLE_SPIRV_CODEGEN;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:sizedDealloc-</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4324</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SUPPORT_QUERY_GIT_COMMIT_INFO;ENABLE_SPIRV_CODEGEN;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SUPPORT_QUERY_GIT_COMMIT_INFO;ENABLE_SPIRV_CODEGEN;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:sizedDealloc-</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <DisableSpecificWarnings>4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4324</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SUPPORT_QUERY_GIT_COMMIT_INFO;ENABLE_SPIRV_CODEGEN;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SUPPORT_QUERY_GIT_COMMIT_INFO;ENABLE_SPIRV_CODEGEN;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:sizedDealloc-</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4146;4180;4244;4258;4267;4291;4345;4351;4355;4456;4457;4458;4459;4503;4624;4722;4800;4100;4127;4512;4505;4610;4510;4702;4245;4706;4310;4701;4703;4389;4611;4805;4204;4324</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatSpecificWarningsAsErrors>4238</TreatSpecificWarningsAsErrors>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SUPPORT_QUERY_GIT_COMMIT_INFO;ENABLE_SPIRV_CODEGEN;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SUPPORT_QUERY_GIT_COMMIT_INFO;ENABLE_SPIRV_CODEGEN;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_NONSTDC_NO_WARNINGS;_SCL_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;__STDC_CONSTANT_MACROS;__STDC_FORMAT_MACROS;__STDC_LIMIT_MACROS;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/lib/Transforms/Scalar/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/lib/Transforms/Scalar/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/lib/Transforms/Scalar/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/lib/Transforms/Scalar/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/lib/Transforms/Scalar/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/lib/Transforms/Scalar/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/lib/Transforms/Scalar/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/lib/Transforms/Scalar/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\ADCE.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\AlignmentFromAssumptions.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\BDCE.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\ConstantHoisting.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\ConstantProp.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\CorrelatedValuePropagation.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\DCE.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\DeadStoreElimination.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\EarlyCSE.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\FlattenCFGPass.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\Float2Int.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\GVN.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\HoistConstantArray.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\InductiveRangeCheckElimination.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\IndVarSimplify.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\JumpThreading.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\LICM.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\LoadCombine.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\LoopDeletion.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\LoopDistribute.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\LoopIdiomRecognize.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\LoopInstSimplify.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\LoopInterchange.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\LoopRerollPass.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\LoopRotation.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\LoopStrengthReduce.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\LoopUnrollPass.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\LoopUnswitch.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\LowerAtomic.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\LowerExpectIntrinsic.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\LowerTypePasses.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\MemCpyOptimizer.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\MergedLoadStoreMotion.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\NaryReassociate.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\PartiallyInlineLibCalls.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\PlaceSafepoints.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\Reassociate.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\Reg2Mem.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\Reg2MemHLSL.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\RewriteStatepointsForGC.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\SCCP.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\SROA.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\SampleProfile.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\Scalar.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\ScalarReplAggregates.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\ScalarReplAggregatesHLSL.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\DxilLoopUnroll.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\DxilRemoveDeadBlocks.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\DxilEraseDeadRegion.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\DxilFixConstArrayInitializer.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\DxilEliminateVector.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\DxilConditionalMem2Reg.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\DxilRemoveUnstructuredLoopExits.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\Scalarizer.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\SeparateConstOffsetFromGEP.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\SimplifyCFGPass.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\Sink.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\SpeculativeExecution.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\StraightLineStrengthReduce.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\StructurizeCFG.cpp" />
+    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\TailRecursionElimination.cpp" />
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Scalar\DxilRemoveUnstructuredLoopExits.h" />
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Transforms\IPO.h" />
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Transforms\Instrumentation.h" />
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Transforms\ObjCARC.h" />
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Transforms\Scalar.h" />
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Transforms\Vectorize.h" />
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Transforms\Scalar\EarlyCSE.h" />
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Transforms\Scalar\LowerExpectIntrinsic.h" />
+    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\Transforms\Scalar\SimplifyCFG.h" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\development\Engine\build\ZERO_CHECK.vcxproj">
+      <Project>{88AACD1C-C064-38E8-86A3-8C6F7CA0A6EC}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\HCTGen.vcxproj">
+      <Project>{723188C7-6406-3FA5-A23D-6FBC8AE7ADA9}</Project>
+      <Name>HCTGen</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Analysis\LLVMAnalysis.vcxproj">
+      <Project>{C6BE6515-7ABC-3E36-AFC4-D9AA0160051F}</Project>
+      <Name>LLVMAnalysis</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Bitcode\Reader\LLVMBitReader.vcxproj">
+      <Project>{B991DA21-7EB8-33CB-A629-3200A9D72DC5}</Project>
+      <Name>LLVMBitReader</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Bitcode\Writer\LLVMBitWriter.vcxproj">
+      <Project>{4BADB8AC-A04F-3530-BB0B-BBC278A25C10}</Project>
+      <Name>LLVMBitWriter</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\IR\LLVMCore.vcxproj">
+      <Project>{A4336902-DA38-3759-BEB1-5D1D6C68C052}</Project>
+      <Name>LLVMCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DXIL\LLVMDXIL.vcxproj">
+      <Project>{90A641A2-5267-37A0-8540-2182F738A3CD}</Project>
+      <Name>LLVMDXIL</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxcBindingTable\LLVMDxcBindingTable.vcxproj">
+      <Project>{589DE8C1-CF83-3F19-913A-F65A00C178C4}</Project>
+      <Name>LLVMDxcBindingTable</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxcSupport\LLVMDxcSupport.vcxproj">
+      <Project>{B8D10149-DC36-3597-97C6-25431FB4E683}</Project>
+      <Name>LLVMDxcSupport</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\DxilContainer\LLVMDxilContainer.vcxproj">
+      <Project>{57A72625-8328-35D4-932C-1DAF265B1F63}</Project>
+      <Name>LLVMDxilContainer</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\HLSL\LLVMHLSL.vcxproj">
+      <Project>{A4CD173E-046A-3529-9186-48C08DA6FFDA}</Project>
+      <Name>LLVMHLSL</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\MSSupport\LLVMMSSupport.vcxproj">
+      <Project>{FE8A85BF-8572-3FF1-90CD-A62192A25A53}</Project>
+      <Name>LLVMMSSupport</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Support\LLVMSupport.vcxproj">
+      <Project>{4EFFC1AF-39C3-3FA5-836C-FB36C72367E3}</Project>
+      <Name>LLVMSupport</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Transforms\Utils\LLVMTransformUtils.vcxproj">
+      <Project>{62E6414F-2B12-3AE8-8B26-FC82C88C15EE}</Project>
+      <Name>LLVMTransformUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\lib\Analysis\IPA\LLVMipa.vcxproj">
+      <Project>{D96BE993-B209-360A-AAA5-7CE4EEAFD31F}</Project>
+      <Name>LLVMipa</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\IR\intrinsics_gen.vcxproj">
+      <Project>{6C91A0AE-8E35-3C31-9BED-6D73AAE3D039}</Project>
+      <Name>intrinsics_gen</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

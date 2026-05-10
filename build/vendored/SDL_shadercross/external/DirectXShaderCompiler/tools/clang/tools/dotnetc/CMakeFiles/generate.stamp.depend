@@ -1,0 +1,4 @@
+# CMake generation dependency list for this directory.
+C:/development/Engine/build/CMakeFiles/cmake.verify_globs
+C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/tools/dotnetc/CMakeLists.txt
+C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/tools/dotnetc/dndxc.csproj.txt
