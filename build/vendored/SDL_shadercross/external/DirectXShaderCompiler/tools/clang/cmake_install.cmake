@@ -1,4 +1,4 @@
-# Install script for directory: C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang
+# Install script for directory: C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,47 +34,47 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES
-    "C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang"
-    "C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang-c"
+    "C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang"
+    "C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang-c"
     FILES_MATCHING REGEX "/[^/]*\\.def$" REGEX "/[^/]*\\.h$" REGEX "/config\\.h$" EXCLUDE REGEX "/\\.svn$" EXCLUDE)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang" FILES_MATCHING REGEX "/cmakefiles$" EXCLUDE REGEX "/[^/]*\\.inc$" REGEX "/[^/]*\\.h$")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang" FILES_MATCHING REGEX "/cmakefiles$" EXCLUDE REGEX "/[^/]*\\.inc$" REGEX "/[^/]*\\.h$")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang-c" FILES_MATCHING REGEX "/[^/]*\\.h$" REGEX "/\\.svn$" EXCLUDE)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/clang-c" FILES_MATCHING REGEX "/[^/]*\\.h$" REGEX "/\\.svn$" EXCLUDE)
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/utils/TableGen/cmake_install.cmake")
+  include("C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/utils/TableGen/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/cmake_install.cmake")
+  include("C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/include/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/lib/cmake_install.cmake")
+  include("C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/lib/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/tools/cmake_install.cmake")
+  include("C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/tools/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/runtime/cmake_install.cmake")
+  include("C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/runtime/cmake_install.cmake")
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/install_local_manifest.txt"
+  file(WRITE "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

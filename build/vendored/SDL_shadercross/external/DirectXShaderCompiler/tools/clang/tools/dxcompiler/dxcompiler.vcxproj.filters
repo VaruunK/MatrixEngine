@@ -1,85 +1,85 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcapi.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcapi.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcassembler.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcassembler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxclibrary.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxclibrary.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcompilerobj.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcompilerobj.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcvalidator.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcvalidator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\DXCompiler.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\DXCompiler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcfilesystem.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcfilesystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxillib.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxillib.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcutil.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcutil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcdisassembler.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcdisassembler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcpdbutils.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcpdbutils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxclinker.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxclinker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcshadersourceinfo.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcshadersourceinfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcompileradapter.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcompileradapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcshadersourceinfo.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcshadersourceinfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcutil.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxcutil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxillib.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\dxillib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\DXCompiler.def">
+    <None Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\DXCompiler.def">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\DXCompiler.rc">
+    <ResourceCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\DXCompiler.rc">
       <Filter>Source Files</Filter>
     </ResourceCompile>
-    <ResourceCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\resources\windows_version_resource.rc">
+    <ResourceCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\resources\windows_version_resource.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{8C1580A0-303C-3B73-A19C-EED5A815C64E}</UniqueIdentifier>
+      <UniqueIdentifier>{1C035F30-FDDA-38E7-A39E-6AD94FA9E029}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resource Files">
-      <UniqueIdentifier>{7430B8ED-BA79-3904-9FC0-70290ED5002A}</UniqueIdentifier>
+      <UniqueIdentifier>{5AC9C5F1-E34C-3F73-8926-208FEB1D2AD3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{CED6078E-1E1D-377E-81E2-5B45E001190D}</UniqueIdentifier>
+      <UniqueIdentifier>{D97D4147-5074-33EA-B6FE-96FCA78D8D6C}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

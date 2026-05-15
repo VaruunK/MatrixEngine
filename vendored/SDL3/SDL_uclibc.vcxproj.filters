@@ -1,88 +1,88 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\e_atan2.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\e_atan2.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\e_exp.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\e_exp.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\e_fmod.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\e_fmod.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\e_log.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\e_log.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\e_log10.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\e_log10.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\e_pow.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\e_pow.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\e_rem_pio2.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\e_rem_pio2.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\e_sqrt.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\e_sqrt.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\k_cos.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\k_cos.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\k_rem_pio2.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\k_rem_pio2.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\k_sin.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\k_sin.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\k_tan.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\k_tan.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\s_atan.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\s_atan.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\s_copysign.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\s_copysign.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\s_cos.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\s_cos.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\s_fabs.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\s_fabs.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\s_floor.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\s_floor.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\s_isinf.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\s_isinf.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\s_isinff.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\s_isinff.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\s_isnan.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\s_isnan.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\s_isnanf.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\s_isnanf.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\s_modf.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\s_modf.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\s_scalbn.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\s_scalbn.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\s_sin.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\s_sin.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\libm\s_tan.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\libm\s_tan.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\development\Engine\vendored\SDL3\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\varuu\development\Engine\vendored\SDL3\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{2F7D69D2-3352-3CB7-A86D-86A26146C9F8}</UniqueIdentifier>
+      <UniqueIdentifier>{C9A6968E-4E68-3AAD-80F9-AB94BFE5B655}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -1,4 +1,5 @@
 #include "ShaderManager.hpp"
+#include <iostream>
 
 ShaderManager::ShaderManager(SDL_GPUDevice* device) : device(device) {
     if (!device) {
@@ -58,22 +59,25 @@ void ShaderManager::ClearCache() {
 //    return pipeline;
 //}
 
-SDL_GPUShader* ShaderManager::LoadShader(const std::string& sourcePath, const std::string& entryPoint) {
-    std::string cacheKey = sourcePath;
-
+SDL_GPUShader* ShaderManager::LoadShader(const std::string& shaderPath, const std::string& entryPoint) {
+    // need load shader to accept arguments to modify compiledshader
+    // or something similar
+    
+    std::string cacheKey = shaderPath;
+    
     // Check if we already have the GPU shader
     if (shaderCache.contains(cacheKey)) {
         return shaderCache[cacheKey];
     }
 
-    SDL_GPUShaderStage stage = GetTargetStage(sourcePath);
+    SDL_GPUShaderStage stage = GetTargetStage(shaderPath);
     CompiledShader compiled;
     SDL_GPUShader* shader = nullptr;
     bool needsCompile = false;
 
     // Check memory cache
     if (memoryCache.contains(cacheKey)) {
-        uint64_t currentHash = HashFile(sourcePath);
+        uint64_t currentHash = HashFile(shaderPath);
         if (memoryCache[cacheKey].sourceHash == currentHash) {
             compiled = memoryCache[cacheKey];
         }
@@ -83,9 +87,9 @@ SDL_GPUShader* ShaderManager::LoadShader(const std::string& sourcePath, const st
     }
     else {
         // Check disk cache
-        std::string diskCachePath = GetCachePath(sourcePath, stage);
+        std::string diskCachePath = GetCachePath(shaderPath, stage);
         if (LoadFromDiskCache(diskCachePath, compiled)) {
-            uint64_t currentHash = HashFile(sourcePath);
+            uint64_t currentHash = HashFile(shaderPath);
             if (compiled.sourceHash != currentHash) {
                 needsCompile = true;
             }
@@ -96,9 +100,64 @@ SDL_GPUShader* ShaderManager::LoadShader(const std::string& sourcePath, const st
     }
 
     if (needsCompile) {
-        shader = CompileShader(sourcePath, stage, entryPoint, compiled);
+        shader = CompileShader(shaderPath, stage, entryPoint, compiled);
         memoryCache[cacheKey] = compiled;
-        SaveToDiskCache(GetCachePath(sourcePath, stage), compiled);
+        SaveToDiskCache(GetCachePath(shaderPath, stage), compiled);
+    }
+    else {
+        // Create shader from cached SPIRV
+        shader = CreateShaderFromSPIRV(compiled, stage, entryPoint);
+    }
+
+    shaderCache[cacheKey] = shader;
+    return shader;
+}
+
+SDL_GPUShader* ShaderManager::LoadShader(const std::string& shaderPath, const ShaderOptions *options, const std::string& entryPoint) {
+    std::string cacheKey = shaderPath;
+
+    // Check if we already have the GPU shader
+    if (shaderCache.contains(cacheKey)) {
+        return shaderCache[cacheKey];
+    }
+
+    SDL_GPUShaderStage stage = GetTargetStage(shaderPath);
+    CompiledShader compiled;
+    compiled.num_samplers = options->num_samplers;
+    compiled.num_storage_buffers = options->num_storage_buffers;
+    compiled.num_storage_textures = options->num_storage_textures;
+    compiled.num_uniform_buffers = options->num_uniform_buffers;
+    SDL_GPUShader* shader = nullptr;
+    bool needsCompile = false;
+
+    // Check memory cache
+    if (memoryCache.contains(cacheKey)) {
+        uint64_t currentHash = HashFile(shaderPath);
+        if (memoryCache[cacheKey].sourceHash == currentHash) {
+            compiled = memoryCache[cacheKey];
+        }
+        else {
+            needsCompile = true;
+        }
+    }
+    else {
+        // Check disk cache
+        std::string diskCachePath = GetCachePath(shaderPath, stage);
+        if (LoadFromDiskCache(diskCachePath, compiled)) {
+            uint64_t currentHash = HashFile(shaderPath);
+            if (compiled.sourceHash != currentHash) {
+                needsCompile = true;
+            }
+        }
+        else {
+            needsCompile = true;
+        }
+    }
+
+    if (needsCompile) {
+        shader = CompileShader(shaderPath, stage, entryPoint, compiled);
+        memoryCache[cacheKey] = compiled;
+        SaveToDiskCache(GetCachePath(shaderPath, stage), compiled);
     }
     else {
         // Create shader from cached SPIRV
@@ -169,6 +228,8 @@ SDL_GPUShader* ShaderManager::CompileShader(const std::string& sourcePath, SDL_G
     SDL_free(sourceData);
 
     if (!spirvBytecode) {
+        const char* err = SDL_GetError();
+        SDL_Log("ShaderCross error: %s", err ? err : "no error message");
         throw std::runtime_error("Failed to compile HLSL to SPIRV: " + sourcePath);
     }
 

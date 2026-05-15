@@ -1,174 +1,174 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\HeaderMap.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\HeaderMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\HeaderSearch.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\HeaderSearch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\HLSLMacroExpander.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\HLSLMacroExpander.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\Lexer.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\Lexer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\LiteralSupport.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\LiteralSupport.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\MacroArgs.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\MacroArgs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\MacroInfo.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\MacroInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\ModuleMap.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\ModuleMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\PPCaching.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\PPCaching.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\PPCallbacks.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\PPCallbacks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\PPConditionalDirectiveRecord.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\PPConditionalDirectiveRecord.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\PPDirectives.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\PPDirectives.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\PPExpressions.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\PPExpressions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\PPLexerChange.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\PPLexerChange.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\PPMacroExpansion.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\PPMacroExpansion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\PTHLexer.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\PTHLexer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\Pragma.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\Pragma.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\PreprocessingRecord.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\PreprocessingRecord.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\Preprocessor.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\Preprocessor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\PreprocessorLexer.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\PreprocessorLexer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\ScratchBuffer.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\ScratchBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\TokenConcatenation.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\TokenConcatenation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\TokenLexer.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\TokenLexer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\CodeCompletionHandler.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\CodeCompletionHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\DirectoryLookup.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\DirectoryLookup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\ExternalPreprocessorSource.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\ExternalPreprocessorSource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\HLSLMacroExpander.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\HLSLMacroExpander.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\HeaderMap.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\HeaderMap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\HeaderSearch.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\HeaderSearch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\HeaderSearchOptions.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\HeaderSearchOptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\LexDiagnostic.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\LexDiagnostic.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\Lexer.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\Lexer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\LiteralSupport.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\LiteralSupport.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\MacroArgs.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\MacroArgs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\MacroInfo.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\MacroInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\ModuleLoader.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\ModuleLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\ModuleMap.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\ModuleMap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\MultipleIncludeOpt.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\MultipleIncludeOpt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\PPCallbacks.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\PPCallbacks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\PPConditionalDirectiveRecord.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\PPConditionalDirectiveRecord.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\PTHLexer.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\PTHLexer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\PTHManager.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\PTHManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\Pragma.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\Pragma.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\PreprocessingRecord.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\PreprocessingRecord.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\Preprocessor.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\Preprocessor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\PreprocessorLexer.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\PreprocessorLexer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\PreprocessorOptions.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\PreprocessorOptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\ScratchBuffer.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\ScratchBuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\Token.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\Token.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\TokenConcatenation.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\TokenConcatenation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\TokenLexer.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Lex\TokenLexer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\UnicodeCharSets.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\UnicodeCharSets.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Lex\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{8C1580A0-303C-3B73-A19C-EED5A815C64E}</UniqueIdentifier>
+      <UniqueIdentifier>{1C035F30-FDDA-38E7-A39E-6AD94FA9E029}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{CED6078E-1E1D-377E-81E2-5B45E001190D}</UniqueIdentifier>
+      <UniqueIdentifier>{D97D4147-5074-33EA-B6FE-96FCA78D8D6C}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

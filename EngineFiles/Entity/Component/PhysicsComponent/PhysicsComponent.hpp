@@ -4,8 +4,6 @@
 #include "Core/PhysicsManager/PhysicsStructs.hpp"
 #include <optional>
 
-using namespace std;
-
 class PhysicsComponent : public Component {
 public:
 	void Initialize(Entity* compOwner, vec2f initVelocity = vec2f(0.0f, 0.0f), bool gravityEnabled = true, float gravity = 9.8f, float mass = 1.0f);

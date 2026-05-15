@@ -1,372 +1,372 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\Attributes.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\Attributes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\Builtins.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\Builtins.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\CharInfo.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\CharInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\Diagnostic.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\Diagnostic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\DiagnosticIDs.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\DiagnosticIDs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\DiagnosticOptions.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\DiagnosticOptions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\FileManager.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\FileManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\FileSystemStatCache.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\FileSystemStatCache.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\IdentifierTable.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\IdentifierTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\LangOptions.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\LangOptions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\Module.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\Module.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\ObjCRuntime.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\ObjCRuntime.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\OpenMPKinds.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\OpenMPKinds.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\OperatorPrecedence.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\OperatorPrecedence.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\SanitizerBlacklist.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\SanitizerBlacklist.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\Sanitizers.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\Sanitizers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\SourceLocation.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\SourceLocation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\SourceManager.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\SourceManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\TargetInfo.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\TargetInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\Targets.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\Targets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\TokenKinds.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\TokenKinds.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\Version.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\Version.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\VersionTuple.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\VersionTuple.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\VirtualFileSystem.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\VirtualFileSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\Warnings.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\Warnings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ABI.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ABI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\AddressSpaces.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\AddressSpaces.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\AllDiagnostics.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\AllDiagnostics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\AttrKinds.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\AttrKinds.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Attributes.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Attributes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Builtins.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Builtins.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Builtins.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Builtins.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsAArch64.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsAArch64.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsAMDGPU.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsAMDGPU.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsARM.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsARM.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsDXIL.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsDXIL.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsHexagon.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsHexagon.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsLe64.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsLe64.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsMips.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsMips.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsNEON.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsNEON.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsNVPTX.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsNVPTX.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsPPC.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsPPC.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsSystemZ.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsSystemZ.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsX86.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsX86.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsXCore.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\BuiltinsXCore.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\CapturedStmt.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\CapturedStmt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\CharInfo.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\CharInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\CommentOptions.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\CommentOptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Diagnostic.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Diagnostic.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticCategories.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticCategories.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticIDs.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticIDs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticOptions.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticOptions.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticOptions.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticOptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ExceptionSpecificationType.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ExceptionSpecificationType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ExpressionTraits.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ExpressionTraits.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\FileManager.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\FileManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\FileSystemOptions.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\FileSystemOptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\FileSystemStatCache.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\FileSystemStatCache.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\IdentifierTable.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\IdentifierTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\LLVM.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\LLVM.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Lambda.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Lambda.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\LangOptions.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\LangOptions.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\LangOptions.fixed.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\LangOptions.fixed.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\LangOptions.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\LangOptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Linkage.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Linkage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\MacroBuilder.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\MacroBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Module.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Module.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ObjCRuntime.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\ObjCRuntime.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\OpenCLExtensions.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\OpenCLExtensions.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\OpenMPKinds.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\OpenMPKinds.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\OpenMPKinds.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\OpenMPKinds.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\OperatorKinds.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\OperatorKinds.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\OperatorKinds.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\OperatorKinds.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\OperatorPrecedence.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\OperatorPrecedence.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\PartialDiagnostic.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\PartialDiagnostic.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\PlistSupport.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\PlistSupport.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\PrettyStackTrace.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\PrettyStackTrace.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\SanitizerBlacklist.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\SanitizerBlacklist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Sanitizers.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Sanitizers.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Sanitizers.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Sanitizers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\SourceLocation.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\SourceLocation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\SourceManager.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\SourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\SourceManagerInternals.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\SourceManagerInternals.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Specifiers.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Specifiers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\TargetBuiltins.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\TargetBuiltins.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\TargetCXXABI.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\TargetCXXABI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\TargetInfo.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\TargetInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\TargetOptions.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\TargetOptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\TemplateKinds.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\TemplateKinds.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\TokenKinds.def">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\TokenKinds.def">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\TokenKinds.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\TokenKinds.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\TypeTraits.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\TypeTraits.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Version.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Version.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\VersionTuple.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\VersionTuple.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\VirtualFileSystem.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\VirtualFileSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Visibility.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Visibility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Attr.td">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Attr.td">
       <Filter>TableGen descriptions</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\AttrDocs.td">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\AttrDocs.td">
       <Filter>TableGen descriptions</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\CommentNodes.td">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\CommentNodes.td">
       <Filter>TableGen descriptions</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DeclNodes.td">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DeclNodes.td">
       <Filter>TableGen descriptions</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Diagnostic.td">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\Diagnostic.td">
       <Filter>TableGen descriptions</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticASTKinds.td">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticASTKinds.td">
       <Filter>TableGen descriptions</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticAnalysisKinds.td">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticAnalysisKinds.td">
       <Filter>TableGen descriptions</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticCategories.td">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticCategories.td">
       <Filter>TableGen descriptions</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticCommentKinds.td">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticCommentKinds.td">
       <Filter>TableGen descriptions</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticCommonKinds.td">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticCommonKinds.td">
       <Filter>TableGen descriptions</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticDriverKinds.td">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticDriverKinds.td">
       <Filter>TableGen descriptions</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticFrontendKinds.td">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticFrontendKinds.td">
       <Filter>TableGen descriptions</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticGroups.td">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticGroups.td">
       <Filter>TableGen descriptions</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticLexKinds.td">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticLexKinds.td">
       <Filter>TableGen descriptions</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticParseKinds.td">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticParseKinds.td">
       <Filter>TableGen descriptions</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticSemaKinds.td">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticSemaKinds.td">
       <Filter>TableGen descriptions</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticSerializationKinds.td">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\DiagnosticSerializationKinds.td">
       <Filter>TableGen descriptions</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\StmtNodes.td">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\StmtNodes.td">
       <Filter>TableGen descriptions</Filter>
     </ClInclude>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\arm_neon.td">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Basic\arm_neon.td">
       <Filter>TableGen descriptions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\3e59e1ad21e6866b6b76bf5c040ec6f8\GitCommitInfo.inc.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\d85f8a2baec6bd9f77a2641825f2bc79\GitCommitInfo.inc.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Basic\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{C2DCCA17-C3A4-3CD8-8EE0-D241F3FDE300}</UniqueIdentifier>
+      <UniqueIdentifier>{7F44CD31-D3C3-37D1-ADCC-254E31A0631D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{8C1580A0-303C-3B73-A19C-EED5A815C64E}</UniqueIdentifier>
+      <UniqueIdentifier>{1C035F30-FDDA-38E7-A39E-6AD94FA9E029}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{CED6078E-1E1D-377E-81E2-5B45E001190D}</UniqueIdentifier>
+      <UniqueIdentifier>{D97D4147-5074-33EA-B6FE-96FCA78D8D6C}</UniqueIdentifier>
     </Filter>
     <Filter Include="TableGen descriptions">
-      <UniqueIdentifier>{1F95FE58-A47F-31CE-BA0A-9610E786E4B1}</UniqueIdentifier>
+      <UniqueIdentifier>{057DA261-0DAB-3348-91A2-BE53E6B047BA}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

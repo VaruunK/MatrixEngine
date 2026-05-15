@@ -30,6 +30,13 @@ struct CompiledShader {
     uint32_t num_uniform_buffers;
 };
 
+struct ShaderOptions {
+    uint32_t num_samplers = 0;
+    uint32_t num_storage_textures = 0;
+    uint32_t num_storage_buffers = 0;
+    uint32_t num_uniform_buffers = 0;
+};
+
 class ShaderManager {
 public:
 
@@ -38,6 +45,7 @@ public:
     void Initialize();
     void Shutdown();
 
+    SDL_GPUShader* LoadShader(const std::string& shaderPath, const ShaderOptions *options, const std::string& entryPoint = "main");
     SDL_GPUShader* LoadShader(const std::string& shaderPath, const std::string& entryPoint = "main");
     //SDL_GPUComputePipeline* CreateComputePipelineFromShader(SDL_GPUDevice* device, const string& shaderFilename, const string& entrypoint = "main", SDL_GPUComputePipelineCreateInfo* createInfo);
     SDL_GPUShader* GetShader(const std::string& name);

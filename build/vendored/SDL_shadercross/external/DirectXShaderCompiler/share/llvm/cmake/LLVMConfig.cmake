@@ -2,16 +2,16 @@
 
 
 # LLVM_BUILD_* values available only from LLVM build tree.
-set(LLVM_BUILD_BINARY_DIR "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler")
-set(LLVM_BUILD_LIBRARY_DIR "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/$(Configuration)/lib")
-set(LLVM_BUILD_MAIN_INCLUDE_DIR "C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include")
-set(LLVM_BUILD_MAIN_SRC_DIR "C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler")
+set(LLVM_BUILD_BINARY_DIR "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler")
+set(LLVM_BUILD_LIBRARY_DIR "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/$(Configuration)/lib")
+set(LLVM_BUILD_MAIN_INCLUDE_DIR "C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include")
+set(LLVM_BUILD_MAIN_SRC_DIR "C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler")
 
 
 set(LLVM_VERSION_MAJOR 3)
 set(LLVM_VERSION_MINOR 7)
 set(LLVM_VERSION_PATCH 0)
-set(LLVM_PACKAGE_VERSION 3.7-4f136f74d)
+set(LLVM_PACKAGE_VERSION 3.7-80a737544)
 
 set(LLVM_COMMON_DEPENDS HCTGen)
 
@@ -88,14 +88,14 @@ set(LLVM_ON_WIN32 1)
 
 set(LLVM_LIBDIR_SUFFIX )
 
-set(LLVM_INCLUDE_DIRS "C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include;C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/include")
-set(LLVM_LIBRARY_DIRS "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/$(Configuration)/lib")
+set(LLVM_INCLUDE_DIRS "C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include;C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/include")
+set(LLVM_LIBRARY_DIRS "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/$(Configuration)/lib")
 set(LLVM_DEFINITIONS "-D__STDC_LIMIT_MACROS" "-D__STDC_CONSTANT_MACROS")
-set(LLVM_CMAKE_DIR "C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/cmake/modules")
-set(LLVM_TOOLS_BINARY_DIR "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/$(Configuration)/bin")
+set(LLVM_CMAKE_DIR "C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/cmake/modules")
+set(LLVM_TOOLS_BINARY_DIR "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/$(Configuration)/bin")
 
 if(NOT TARGET LLVMSupport)
-  include("C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/share/llvm/cmake/LLVMExports.cmake")
+  include("C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/share/llvm/cmake/LLVMExports.cmake")
 endif()
 
 include(${LLVM_CMAKE_DIR}/LLVM-Config.cmake)

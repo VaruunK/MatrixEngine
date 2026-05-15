@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\f91f1790dbb4caf1acab0b93afc9de7f\tmpdxcetw.h.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\c95ee6e3dc8e3b90be34d6330efadfb1\tmpdxcetw.h.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\f91f1790dbb4caf1acab0b93afc9de7f\dxcetw.h.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\c95ee6e3dc8e3b90be34d6330efadfb1\dxcetw.h.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\17506d803b8e09ca654d2dda3f1e0693\DxcEtw.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\5a758d3aeb700d672358da7a01ae011c\DxcEtw.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing\dxcetw.man" />
-    <None Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing\CMakeFiles\DxcEtw" />
+    <None Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing\dxcetw.man" />
+    <None Include="C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing\CMakeFiles\DxcEtw" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{C2DCCA17-C3A4-3CD8-8EE0-D241F3FDE300}</UniqueIdentifier>
+      <UniqueIdentifier>{7F44CD31-D3C3-37D1-ADCC-254E31A0631D}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

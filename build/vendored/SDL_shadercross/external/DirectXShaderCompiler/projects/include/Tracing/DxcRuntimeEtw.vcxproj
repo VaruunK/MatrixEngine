@@ -22,7 +22,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{E1A6E3B8-1E14-3E8A-8AF3-D223991A52AF}</ProjectGuid>
+    <ProjectGuid>{52F00B9E-A202-3DE9-AC5F-DEE453DECB0C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
@@ -66,7 +66,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -76,7 +76,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -86,7 +86,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -96,7 +96,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\llvm\llvm_assert;C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\include;C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\include\dxc\Tracing;\directx;\wsl\stubs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -105,10 +105,10 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\fa62fd9ebc7e1121ee74b37b493b98af\tmpdxcruntimeetw.h.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\7d98d952848c48e44dfe0e1beed3b4b6\tmpdxcruntimeetw.h.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building instrumentation manifest ...</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-mc -r C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing -h C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing -p DxcRuntimeEtw_ -um -z tmpdxcruntimeetw C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntime.man
+mc -r C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing -h C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing -p DxcRuntimeEtw_ -um -z tmpdxcruntimeetw C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntime.man
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -116,12 +116,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntime.man;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\tmpdxcruntimeetw.h</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntime.man;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\tmpdxcruntimeetw.h</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building instrumentation manifest ...</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-mc -r C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing -h C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing -p DxcRuntimeEtw_ -um -z tmpdxcruntimeetw C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntime.man
+mc -r C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing -h C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing -p DxcRuntimeEtw_ -um -z tmpdxcruntimeetw C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntime.man
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -129,12 +129,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntime.man;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\tmpdxcruntimeetw.h</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntime.man;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\tmpdxcruntimeetw.h</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building instrumentation manifest ...</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-mc -r C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing -h C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing -p DxcRuntimeEtw_ -um -z tmpdxcruntimeetw C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntime.man
+mc -r C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing -h C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing -p DxcRuntimeEtw_ -um -z tmpdxcruntimeetw C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntime.man
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -142,12 +142,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntime.man;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\tmpdxcruntimeetw.h</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntime.man;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\tmpdxcruntimeetw.h</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building instrumentation manifest ...</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-mc -r C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing -h C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing -p DxcRuntimeEtw_ -um -z tmpdxcruntimeetw C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntime.man
+mc -r C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing -h C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing -p DxcRuntimeEtw_ -um -z tmpdxcruntimeetw C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntime.man
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -155,22 +155,22 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntime.man;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\tmpdxcruntimeetw.h</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntime.man;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\tmpdxcruntimeetw.h</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\fa62fd9ebc7e1121ee74b37b493b98af\DxcRuntimeEtw.h.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\7d98d952848c48e44dfe0e1beed3b4b6\DxcRuntimeEtw.h.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Updating instrumentation manifest ...</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw.h C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw.h
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw.h C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw.h
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw.rc C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw.rc
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw.rc C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw.rc
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetwTEMP.bin C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtwtemp.BIN
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetwTEMP.bin C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtwtemp.BIN
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw_msg00001.bin C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw_msg00001.bin
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw_msg00001.bin C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw_msg00001.bin
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -178,18 +178,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\tmpdxcruntimeetw.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntimeEtw.h</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\tmpdxcruntimeetw.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntimeEtw.h</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Updating instrumentation manifest ...</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw.h C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw.h
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw.h C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw.h
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw.rc C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw.rc
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw.rc C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw.rc
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetwTEMP.bin C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtwtemp.BIN
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetwTEMP.bin C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtwtemp.BIN
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw_msg00001.bin C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw_msg00001.bin
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw_msg00001.bin C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw_msg00001.bin
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -197,18 +197,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\tmpdxcruntimeetw.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntimeEtw.h</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\tmpdxcruntimeetw.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntimeEtw.h</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Updating instrumentation manifest ...</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw.h C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw.h
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw.h C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw.h
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw.rc C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw.rc
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw.rc C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw.rc
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetwTEMP.bin C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtwtemp.BIN
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetwTEMP.bin C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtwtemp.BIN
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw_msg00001.bin C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw_msg00001.bin
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw_msg00001.bin C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw_msg00001.bin
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -216,18 +216,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\tmpdxcruntimeetw.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntimeEtw.h</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\tmpdxcruntimeetw.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntimeEtw.h</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Updating instrumentation manifest ...</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw.h C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw.h
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw.h C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw.h
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw.rc C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw.rc
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw.rc C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw.rc
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetwTEMP.bin C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtwtemp.BIN
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetwTEMP.bin C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtwtemp.BIN
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw_msg00001.bin C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw_msg00001.bin
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/tmpdxcruntimeetw_msg00001.bin C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/DxcRuntimeEtw_msg00001.bin
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -235,13 +235,13 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\tmpdxcruntimeetw.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntimeEtw.h</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\tmpdxcruntimeetw.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntimeEtw.h</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\11bdc76299f83cf7fd5d81618a782bef\DxcRuntimeEtw.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\08879fc02d08d39876e63f8382d0ddff\DxcRuntimeEtw.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"></Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 :cmEnd
@@ -250,8 +250,8 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntimeEtw.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeFiles\DxcRuntimeEtw</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntimeEtw.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeFiles\DxcRuntimeEtw</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'"></Message>
@@ -262,8 +262,8 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntimeEtw.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeFiles\DxcRuntimeEtw</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntimeEtw.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeFiles\DxcRuntimeEtw</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"></Message>
@@ -274,8 +274,8 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntimeEtw.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeFiles\DxcRuntimeEtw</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntimeEtw.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeFiles\DxcRuntimeEtw</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'"></Message>
@@ -286,18 +286,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntimeEtw.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeFiles\DxcRuntimeEtw</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntimeEtw.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeFiles\DxcRuntimeEtw</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeLists.txt">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/varuu/development/Engine -BC:/Users/varuu/development/Engine/build --check-stamp-file C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -305,12 +305,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\varuu\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/varuu/development/Engine -BC:/Users/varuu/development/Engine/build --check-stamp-file C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -318,12 +318,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\varuu\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/varuu/development/Engine -BC:/Users/varuu/development/Engine/build --check-stamp-file C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -331,12 +331,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\varuu\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/varuu/development/Engine -BC:/Users/varuu/development/Engine/build --check-stamp-file C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/include/Tracing/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -344,21 +344,21 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\varuu\development\Engine\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntime.man">
+    <None Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\DxcRuntime.man">
     </None>
-    <None Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeFiles\DxcRuntimeEtw">
+    <None Include="C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\projects\include\Tracing\CMakeFiles\DxcRuntimeEtw">
     </None>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="C:\development\Engine\build\ZERO_CHECK.vcxproj">
-      <Project>{88AACD1C-C064-38E8-86A3-8C6F7CA0A6EC}</Project>
+    <ProjectReference Include="C:\Users\varuu\development\Engine\build\ZERO_CHECK.vcxproj">
+      <Project>{1DF78AB3-0FB1-336B-B36E-E0F9EB4F129B}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

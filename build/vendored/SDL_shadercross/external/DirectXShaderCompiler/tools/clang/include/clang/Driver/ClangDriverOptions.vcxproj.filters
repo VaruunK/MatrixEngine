@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\76c977d97be3e9c8f7fe4ceda1f09ce3\Options.inc.tmp.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\509397c4c6434fe91d4b0e504dac286a\Options.inc.tmp.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\76c977d97be3e9c8f7fe4ceda1f09ce3\Options.inc.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\509397c4c6434fe91d4b0e504dac286a\Options.inc.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\c6d100e79ce8c03d624edecf33819ce9\ClangDriverOptions.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\9b0453f42fa5ec566ecabc4127d94aa6\ClangDriverOptions.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\CMakeFiles\ClangDriverOptions" />
+    <None Include="C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Driver\CMakeFiles\ClangDriverOptions" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{C2DCCA17-C3A4-3CD8-8EE0-D241F3FDE300}</UniqueIdentifier>
+      <UniqueIdentifier>{7F44CD31-D3C3-37D1-ADCC-254E31A0631D}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

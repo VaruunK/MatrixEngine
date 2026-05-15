@@ -50,7 +50,7 @@ unset(_cmake_expected_targets)
 add_library(SPIRV-Tools-static STATIC IMPORTED)
 
 set_target_properties(SPIRV-Tools-static PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Tools/include"
+  INTERFACE_INCLUDE_DIRECTORIES "C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/SPIRV-Tools/include"
 )
 
 # Create imported target SPIRV-Tools-shared
@@ -58,63 +58,63 @@ add_library(SPIRV-Tools-shared SHARED IMPORTED)
 
 set_target_properties(SPIRV-Tools-shared PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "SPIRV_TOOLS_SHAREDLIB"
-  INTERFACE_INCLUDE_DIRECTORIES "C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Tools/include"
+  INTERFACE_INCLUDE_DIRECTORIES "C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/SPIRV-Tools/include"
 )
 
 # Import target "SPIRV-Tools-static" for configuration "Debug"
 set_property(TARGET SPIRV-Tools-static APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(SPIRV-Tools-static PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/development/Engine/build/Debug/lib/SPIRV-Tools.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/SPIRV-Tools.lib"
   )
 
 # Import target "SPIRV-Tools-shared" for configuration "Debug"
 set_property(TARGET SPIRV-Tools-shared APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(SPIRV-Tools-shared PROPERTIES
-  IMPORTED_IMPLIB_DEBUG "C:/development/Engine/build/Debug/lib/SPIRV-Tools-shared.lib"
-  IMPORTED_LOCATION_DEBUG "C:/development/Engine/build/Debug/SPIRV-Tools-shared.dll"
+  IMPORTED_IMPLIB_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/SPIRV-Tools-shared.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/SPIRV-Tools-shared.dll"
   )
 
 # Import target "SPIRV-Tools-static" for configuration "Release"
 set_property(TARGET SPIRV-Tools-static APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(SPIRV-Tools-static PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "C:/development/Engine/build/Release/lib/SPIRV-Tools.lib"
+  IMPORTED_LOCATION_RELEASE "C:/Users/varuu/development/Engine/build/Release/lib/SPIRV-Tools.lib"
   )
 
 # Import target "SPIRV-Tools-shared" for configuration "Release"
 set_property(TARGET SPIRV-Tools-shared APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(SPIRV-Tools-shared PROPERTIES
-  IMPORTED_IMPLIB_RELEASE "C:/development/Engine/build/Release/lib/SPIRV-Tools-shared.lib"
-  IMPORTED_LOCATION_RELEASE "C:/development/Engine/build/Release/SPIRV-Tools-shared.dll"
+  IMPORTED_IMPLIB_RELEASE "C:/Users/varuu/development/Engine/build/Release/lib/SPIRV-Tools-shared.lib"
+  IMPORTED_LOCATION_RELEASE "C:/Users/varuu/development/Engine/build/Release/SPIRV-Tools-shared.dll"
   )
 
 # Import target "SPIRV-Tools-static" for configuration "MinSizeRel"
 set_property(TARGET SPIRV-Tools-static APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
 set_target_properties(SPIRV-Tools-static PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_MINSIZEREL "CXX"
-  IMPORTED_LOCATION_MINSIZEREL "C:/development/Engine/build/MinSizeRel/lib/SPIRV-Tools.lib"
+  IMPORTED_LOCATION_MINSIZEREL "C:/Users/varuu/development/Engine/build/MinSizeRel/lib/SPIRV-Tools.lib"
   )
 
 # Import target "SPIRV-Tools-shared" for configuration "MinSizeRel"
 set_property(TARGET SPIRV-Tools-shared APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
 set_target_properties(SPIRV-Tools-shared PROPERTIES
-  IMPORTED_IMPLIB_MINSIZEREL "C:/development/Engine/build/MinSizeRel/lib/SPIRV-Tools-shared.lib"
-  IMPORTED_LOCATION_MINSIZEREL "C:/development/Engine/build/MinSizeRel/SPIRV-Tools-shared.dll"
+  IMPORTED_IMPLIB_MINSIZEREL "C:/Users/varuu/development/Engine/build/MinSizeRel/lib/SPIRV-Tools-shared.lib"
+  IMPORTED_LOCATION_MINSIZEREL "C:/Users/varuu/development/Engine/build/MinSizeRel/SPIRV-Tools-shared.dll"
   )
 
 # Import target "SPIRV-Tools-static" for configuration "RelWithDebInfo"
 set_property(TARGET SPIRV-Tools-static APPEND PROPERTY IMPORTED_CONFIGURATIONS RELWITHDEBINFO)
 set_target_properties(SPIRV-Tools-static PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELWITHDEBINFO "CXX"
-  IMPORTED_LOCATION_RELWITHDEBINFO "C:/development/Engine/build/RelWithDebInfo/lib/SPIRV-Tools.lib"
+  IMPORTED_LOCATION_RELWITHDEBINFO "C:/Users/varuu/development/Engine/build/RelWithDebInfo/lib/SPIRV-Tools.lib"
   )
 
 # Import target "SPIRV-Tools-shared" for configuration "RelWithDebInfo"
 set_property(TARGET SPIRV-Tools-shared APPEND PROPERTY IMPORTED_CONFIGURATIONS RELWITHDEBINFO)
 set_target_properties(SPIRV-Tools-shared PROPERTIES
-  IMPORTED_IMPLIB_RELWITHDEBINFO "C:/development/Engine/build/RelWithDebInfo/lib/SPIRV-Tools-shared.lib"
-  IMPORTED_LOCATION_RELWITHDEBINFO "C:/development/Engine/build/RelWithDebInfo/SPIRV-Tools-shared.dll"
+  IMPORTED_IMPLIB_RELWITHDEBINFO "C:/Users/varuu/development/Engine/build/RelWithDebInfo/lib/SPIRV-Tools-shared.lib"
+  IMPORTED_LOCATION_RELWITHDEBINFO "C:/Users/varuu/development/Engine/build/RelWithDebInfo/SPIRV-Tools-shared.dll"
   )
 
 # This file does not depend on other imported targets which have

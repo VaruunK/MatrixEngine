@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\e591cb90c7394dbbc6554573cb6d56db\AttrDump.inc.tmp.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\234a0dd2bc79c0ee0991d65239562529\AttrDump.inc.tmp.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\e591cb90c7394dbbc6554573cb6d56db\AttrDump.inc.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\234a0dd2bc79c0ee0991d65239562529\AttrDump.inc.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\b1ba5591c39705dee623daebd9ac0d43\ClangAttrDump.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\eddf36e5ccc609cec983a48d50e34939\ClangAttrDump.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CMakeFiles\ClangAttrDump" />
+    <None Include="C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\AST\CMakeFiles\ClangAttrDump" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{C2DCCA17-C3A4-3CD8-8EE0-D241F3FDE300}</UniqueIdentifier>
+      <UniqueIdentifier>{7F44CD31-D3C3-37D1-ADCC-254E31A0631D}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

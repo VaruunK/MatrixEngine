@@ -1,0 +1,17 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDependentOption.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/CMakePackageConfigHelpers.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeParseArguments.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/CMakePushCheckState.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/CheckCCompilerFlag.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/CheckCSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/CheckLinkerFlag.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/GNUInstallDirs.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/WriteBasicConfigVersionFile.cmake
+C:/Users/varuu/development/Engine/build/CMakeFiles/cmake.verify_globs
+C:/Users/varuu/development/Engine/vendored/SDL_image/CMakeLists.txt
+C:/Users/varuu/development/Engine/vendored/SDL_image/cmake/GetGitRevisionDescription.cmake
+C:/Users/varuu/development/Engine/vendored/SDL_image/cmake/PrivateSdlFunctions.cmake
+C:/Users/varuu/development/Engine/vendored/SDL_image/cmake/sdlcpu.cmake
+C:/Users/varuu/development/Engine/vendored/SDL_image/cmake/sdlmanpages.cmake
+C:/Users/varuu/development/Engine/vendored/SDL_image/cmake/sdlplatform.cmake

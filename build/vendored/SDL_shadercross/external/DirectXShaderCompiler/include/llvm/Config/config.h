@@ -322,7 +322,7 @@
 /* #undef HAVE_SYS_TIME_H */
 
 /* Define to 1 if you have the <sys/types.h> header file. */
-/* #undef HAVE_SYS_TYPES_H */
+#define HAVE_SYS_TYPES_H 1
 
 /* Define to 1 if you have the <sys/uio.h> header file. */
 /* #undef HAVE_SYS_UIO_H */
@@ -502,7 +502,7 @@
 #define LLVM_VERSION_PATCH 0
 
 /* LLVM version string */
-#define LLVM_VERSION_STRING "3.7-4f136f74d"
+#define LLVM_VERSION_STRING "3.7-80a737544"
 
 /* Define if we link Polly to the tools */
 /* #undef LINK_POLLY_INTO_TOOLS */
@@ -534,13 +534,13 @@
 #define PACKAGE_NAME "LLVM"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "LLVM 3.7-4f136f74d"
+#define PACKAGE_STRING "LLVM 3.7-80a737544"
 
 /* Define to the one symbol short name of this package. */
 #undef PACKAGE_TARNAME
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "3.7-4f136f74d"
+#define PACKAGE_VERSION "3.7-80a737544"
 
 /* Define as the return type of signal handlers (`int' or `void'). */
 #define RETSIGTYPE void

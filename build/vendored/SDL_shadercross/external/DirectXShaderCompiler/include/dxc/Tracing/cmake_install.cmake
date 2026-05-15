@@ -1,4 +1,4 @@
-# Install script for directory: C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/Tracing
+# Install script for directory: C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/Tracing
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -35,6 +35,6 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/Tracing/install_local_manifest.txt"
+  file(WRITE "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/Tracing/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

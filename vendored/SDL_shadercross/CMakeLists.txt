@@ -22,11 +22,11 @@ include("${CMAKE_CURRENT_LIST_DIR}/cmake/sdlcpu.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/cmake/sdlplatform.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/cmake/sdlmanpages.cmake")
 
-if(NOT TARGET SDL3::SDL3-static)
-    find_package(SDL3 ${SDL_REQUIRED_VERSION})
+if(NOT (TARGET SDL3::Headers AND TARGET SDL3::SDL3 AND (TARGET SDL3::SDL3-static OR TARGET SDL3::SDL3-shared)))
+	find_package(SDL3 ${SDL_REQUIRED_VERSION})
 endif()
 
-if(BUILD_SHARED_LIBS)
+if(TARGET SDL3::SDL3-shared)
 	set(SDLSHADERCROSS_SHARED_DEFAULT ON)
 	set(SDLSHADERCROSS_STATIC_DEFAULT OFF)
 else()
@@ -174,8 +174,8 @@ set(SOURCE_FILES
 set(SDL3_shadercross_targets)
 if(SDLSHADERCROSS_SHARED)
 	list(APPEND SDL3_shadercross_targets SDL3_shadercross-shared)
-	if(NOT TARGET SDL3::Headers OR NOT TARGET SDL3::SDL3-shared)
-		find_package(SDL3 ${SDL_REQUIRED_VERSION} REQUIRED COMPONENTS Headers SDL3-shared)
+	if(NOT TARGET SDL3::SDL3-shared)
+		find_package(SDL3 ${SDL_REQUIRED_VERSION} REQUIRED COMPONENTS SDL3-shared)
 	endif()
 
 	add_library(SDL3_shadercross-shared SHARED ${SOURCE_FILES})
@@ -376,16 +376,16 @@ if(SDLSHADERCROSS_INSTALL)
 		)
 	endif()
 
-    if(IS_ABSOLUTE "${CMAKE_INSTALL_INCLUDEDIR}")
-        set(INCLUDEDIR_FOR_PKG_CONFIG "${CMAKE_INSTALL_INCLUDEDIR}")
-    else()
-        set(INCLUDEDIR_FOR_PKG_CONFIG "\${prefix}/${CMAKE_INSTALL_INCLUDEDIR}")
-    endif()
-    if(IS_ABSOLUTE "${CMAKE_INSTALL_LIBDIR}")
-        set(LIBDIR_FOR_PKG_CONFIG "${CMAKE_INSTALL_LIBDIR}")
-    else()
-        set(LIBDIR_FOR_PKG_CONFIG "\${prefix}/${CMAKE_INSTALL_LIBDIR}")
-    endif()
+	if(IS_ABSOLUTE "${CMAKE_INSTALL_INCLUDEDIR}")
+		set(INCLUDEDIR_FOR_PKG_CONFIG "${CMAKE_INSTALL_INCLUDEDIR}")
+	else()
+		set(INCLUDEDIR_FOR_PKG_CONFIG "\${prefix}/${CMAKE_INSTALL_INCLUDEDIR}")
+	endif()
+	if(IS_ABSOLUTE "${CMAKE_INSTALL_LIBDIR}")
+		set(LIBDIR_FOR_PKG_CONFIG "${CMAKE_INSTALL_LIBDIR}")
+	else()
+		set(LIBDIR_FOR_PKG_CONFIG "\${prefix}/${CMAKE_INSTALL_LIBDIR}")
+	endif()
 
 	file(RELATIVE_PATH SDL_PATH_PREFIX_RELATIVE_TO_PKGCONFIG "${CMAKE_INSTALL_PREFIX}/${SDLSHADERCROSS_PKGCONFIG_INSTALLDIR}" "${CMAKE_INSTALL_PREFIX}")
 	string(REGEX REPLACE "[/]+$" "" SDL_PATH_PREFIX_RELATIVE_TO_PKGCONFIG "${SDL_PATH_PREFIX_RELATIVE_TO_PKGCONFIG}")
@@ -524,8 +524,8 @@ if(SDLSHADERCROSS_INSTALL_RUNTIME)
 		find_package(BISON REQUIRED)
 		ExternalProject_Add(vkd3d
 			DEPENDS 			spirv_headers vulkan_headers vulkan_loader
-			URL					"https://dl.winehq.org/vkd3d/source/vkd3d-1.18.tar.xz"
-			URL_HASH			"SHA256=576284b5e66c1f10ef90e9d0408e8c920c4a84729e463071ed070662dc876b32"
+			URL					"https://dl.winehq.org/vkd3d/source/vkd3d-1.19.tar.xz"
+			URL_HASH			"SHA256=034613605baab8ba84674f8d272cf22b5e86bc6bc03fc5728ef9bce07308baa6"
 			DOWNLOAD_EXTRACT_TIMESTAMP "1"
 			CONFIGURE_COMMAND 	"sh" "<SOURCE_DIR>/configure" "--prefix=<INSTALL_DIR>" "--enable-tests=no" "--enable-demos=no" "--disable-doxygen-doc" "CFLAGS=-I${spirv_headers_install_dir}/include -I${vulkan_headers_install_dir}/include -I${vulkan_loader_install_dir}/include ${configure_CFLAGS}" "LDFLAGS=-L${vulkan_loader_install_dir}/lib" "BISON=${BISON_EXECUTABLE}"
 			BUILD_COMMAND	 	"make"

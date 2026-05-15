@@ -1,4 +1,4 @@
 namespace {
-  const uint32_t kGitCommitCount = 4794u;
-  const char kGitCommitHash[] = "4f136f74";
+  const uint32_t kGitCommitCount = 4795u;
+  const char kGitCommitHash[] = "80a73754";
 }

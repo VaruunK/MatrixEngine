@@ -17,9 +17,9 @@ Engine::Engine() {
 }
 
 int Engine::Run() {
+
     if (!renderer->Initialize("Matrix Engine", "Engine.png", 1080, 720)) {
         renderer->Shutdown();
-        cerr << "couldn't initialize renderer" << endl;
         return -1;
     }
 
@@ -85,6 +85,7 @@ int Engine::Run() {
         }
     }
     renderer->Shutdown();
+    SDL_ShaderCross_Quit();
     SDL_Quit();
     return 0;
 }
@@ -100,10 +101,16 @@ int main() {
             fflush(file);
             }, logFile);
     }
-
     SDL_SetLogPriorities(SDL_LOG_PRIORITY_VERBOSE);
 
-    Engine::GetEngine().Run();
+    // Initialize ShaderCross (REQUIRED for runtime shader compilation!)
+    if (!SDL_ShaderCross_Init()) {
+        SDL_Log("ERROR: SDL_ShaderCross_Init failed!");
+        if (logFile) fclose(logFile);
+        return -1;
+    }
+
+    int result = Engine::GetEngine().Run();
 
     if (logFile) {
         fclose(logFile);

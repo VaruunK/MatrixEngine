@@ -13,7 +13,8 @@
       "variables": [
         {
           "name": "CMAKE_TOOLCHAIN_FILE",
-          "value": ""
+          "value": "",
+          "type": "STRING"
         }
       ]
     }

@@ -50,7 +50,7 @@ unset(_cmake_expected_targets)
 add_library(SPIRV-Tools-link STATIC IMPORTED)
 
 set_target_properties(SPIRV-Tools-link PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Tools/include;C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include"
+  INTERFACE_INCLUDE_DIRECTORIES "C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/SPIRV-Tools/include;C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/SPIRV-Headers/include"
   INTERFACE_LINK_LIBRARIES "SPIRV-Tools-opt"
 )
 
@@ -58,28 +58,28 @@ set_target_properties(SPIRV-Tools-link PROPERTIES
 set_property(TARGET SPIRV-Tools-link APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(SPIRV-Tools-link PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/development/Engine/build/Debug/lib/SPIRV-Tools-link.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/SPIRV-Tools-link.lib"
   )
 
 # Import target "SPIRV-Tools-link" for configuration "Release"
 set_property(TARGET SPIRV-Tools-link APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(SPIRV-Tools-link PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "C:/development/Engine/build/Release/lib/SPIRV-Tools-link.lib"
+  IMPORTED_LOCATION_RELEASE "C:/Users/varuu/development/Engine/build/Release/lib/SPIRV-Tools-link.lib"
   )
 
 # Import target "SPIRV-Tools-link" for configuration "MinSizeRel"
 set_property(TARGET SPIRV-Tools-link APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
 set_target_properties(SPIRV-Tools-link PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_MINSIZEREL "CXX"
-  IMPORTED_LOCATION_MINSIZEREL "C:/development/Engine/build/MinSizeRel/lib/SPIRV-Tools-link.lib"
+  IMPORTED_LOCATION_MINSIZEREL "C:/Users/varuu/development/Engine/build/MinSizeRel/lib/SPIRV-Tools-link.lib"
   )
 
 # Import target "SPIRV-Tools-link" for configuration "RelWithDebInfo"
 set_property(TARGET SPIRV-Tools-link APPEND PROPERTY IMPORTED_CONFIGURATIONS RELWITHDEBINFO)
 set_target_properties(SPIRV-Tools-link PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELWITHDEBINFO "CXX"
-  IMPORTED_LOCATION_RELWITHDEBINFO "C:/development/Engine/build/RelWithDebInfo/lib/SPIRV-Tools-link.lib"
+  IMPORTED_LOCATION_RELWITHDEBINFO "C:/Users/varuu/development/Engine/build/RelWithDebInfo/lib/SPIRV-Tools-link.lib"
   )
 
 # Make sure the targets which have been exported in some other

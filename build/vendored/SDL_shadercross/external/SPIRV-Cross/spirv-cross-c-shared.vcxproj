@@ -22,7 +22,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{93EBA851-89D1-300B-8F75-A85E43CFAE87}</ProjectGuid>
+    <ProjectGuid>{53098DA6-2BB8-332D-ADE3-D451A1A70B68}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
@@ -59,25 +59,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\varuu\development\Engine\build\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">spirv-cross-c-shared.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">spirv-cross-c-sharedd</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\varuu\development\Engine\build\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">spirv-cross-c-shared.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">spirv-cross-c-shared</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\varuu\development\Engine\build\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">spirv-cross-c-shared.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">spirv-cross-c-shared</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\varuu\development\Engine\build\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">spirv-cross-c-shared.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">spirv-cross-c-shared</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
@@ -87,7 +87,7 @@
   <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -113,10 +113,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;HAVE_SPIRV_CROSS_GIT_VERSION;SPIRV_CROSS_C_API_GLSL=1;SPIRV_CROSS_C_API_HLSL=1;SPIRV_CROSS_C_API_MSL=1;SPIRV_CROSS_C_API_CPP=1;SPIRV_CROSS_C_API_REFLECT=1;SPVC_EXPORT_SYMBOLS;CMAKE_INTDIR=\"Debug\";spirv_cross_c_shared_EXPORTS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -131,9 +131,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
-      <ImportLibrary>C:/development/Engine/build/Debug/lib/spirv-cross-c-sharedd.lib</ImportLibrary>
+      <ImportLibrary>C:/Users/varuu/development/Engine/build/Debug/lib/spirv-cross-c-sharedd.lib</ImportLibrary>
       <LinkErrorReporting></LinkErrorReporting>
-      <ProgramDataBaseFile>C:/development/Engine/build/Debug/lib/spirv-cross-c-sharedd.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>C:/Users/varuu/development/Engine/build/Debug/lib/spirv-cross-c-sharedd.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
       <SubSystem></SubSystem>
       <Version>0.68</Version>
@@ -144,7 +144,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
@@ -170,10 +170,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;HAVE_SPIRV_CROSS_GIT_VERSION;SPIRV_CROSS_C_API_GLSL=1;SPIRV_CROSS_C_API_HLSL=1;SPIRV_CROSS_C_API_MSL=1;SPIRV_CROSS_C_API_CPP=1;SPIRV_CROSS_C_API_REFLECT=1;SPVC_EXPORT_SYMBOLS;CMAKE_INTDIR=\"Release\";spirv_cross_c_shared_EXPORTS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -188,9 +188,9 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
-      <ImportLibrary>C:/development/Engine/build/Release/lib/spirv-cross-c-shared.lib</ImportLibrary>
+      <ImportLibrary>C:/Users/varuu/development/Engine/build/Release/lib/spirv-cross-c-shared.lib</ImportLibrary>
       <LinkErrorReporting></LinkErrorReporting>
-      <ProgramDataBaseFile>C:/development/Engine/build/Release/lib/spirv-cross-c-shared.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>C:/Users/varuu/development/Engine/build/Release/lib/spirv-cross-c-shared.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
       <SubSystem></SubSystem>
       <Version>0.68</Version>
@@ -201,7 +201,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
@@ -227,10 +227,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;HAVE_SPIRV_CROSS_GIT_VERSION;SPIRV_CROSS_C_API_GLSL=1;SPIRV_CROSS_C_API_HLSL=1;SPIRV_CROSS_C_API_MSL=1;SPIRV_CROSS_C_API_CPP=1;SPIRV_CROSS_C_API_REFLECT=1;SPVC_EXPORT_SYMBOLS;CMAKE_INTDIR=\"MinSizeRel\";spirv_cross_c_shared_EXPORTS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -245,9 +245,9 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
-      <ImportLibrary>C:/development/Engine/build/MinSizeRel/lib/spirv-cross-c-shared.lib</ImportLibrary>
+      <ImportLibrary>C:/Users/varuu/development/Engine/build/MinSizeRel/lib/spirv-cross-c-shared.lib</ImportLibrary>
       <LinkErrorReporting></LinkErrorReporting>
-      <ProgramDataBaseFile>C:/development/Engine/build/MinSizeRel/lib/spirv-cross-c-shared.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>C:/Users/varuu/development/Engine/build/MinSizeRel/lib/spirv-cross-c-shared.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
       <SubSystem></SubSystem>
       <Version>0.68</Version>
@@ -258,7 +258,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
@@ -283,10 +283,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;HAVE_SPIRV_CROSS_GIT_VERSION;SPIRV_CROSS_C_API_GLSL=1;SPIRV_CROSS_C_API_HLSL=1;SPIRV_CROSS_C_API_MSL=1;SPIRV_CROSS_C_API_CPP=1;SPIRV_CROSS_C_API_REFLECT=1;SPVC_EXPORT_SYMBOLS;CMAKE_INTDIR=\"RelWithDebInfo\";spirv_cross_c_shared_EXPORTS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross;C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -301,9 +301,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
-      <ImportLibrary>C:/development/Engine/build/RelWithDebInfo/lib/spirv-cross-c-shared.lib</ImportLibrary>
+      <ImportLibrary>C:/Users/varuu/development/Engine/build/RelWithDebInfo/lib/spirv-cross-c-shared.lib</ImportLibrary>
       <LinkErrorReporting></LinkErrorReporting>
-      <ProgramDataBaseFile>C:/development/Engine/build/RelWithDebInfo/lib/spirv-cross-c-shared.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>C:/Users/varuu/development/Engine/build/RelWithDebInfo/lib/spirv-cross-c-shared.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
       <SubSystem></SubSystem>
       <Version>0.68</Version>
@@ -313,11 +313,11 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\CMakeLists.txt">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Cross/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/SPIRV-Cross/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Cross/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/varuu/development/Engine -BC:/Users/varuu/development/Engine/build --check-stamp-file C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Cross/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -325,12 +325,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\GNUInstallDirs.cmake;C:\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\cmake\gitversion.in.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\GNUInstallDirs.cmake;C:\Users\varuu\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\cmake\gitversion.in.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Cross/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/SPIRV-Cross/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Cross/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/varuu/development/Engine -BC:/Users/varuu/development/Engine/build --check-stamp-file C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Cross/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -338,12 +338,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\GNUInstallDirs.cmake;C:\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\cmake\gitversion.in.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\GNUInstallDirs.cmake;C:\Users\varuu\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\cmake\gitversion.in.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Cross/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/SPIRV-Cross/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Cross/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/varuu/development/Engine -BC:/Users/varuu/development/Engine/build --check-stamp-file C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Cross/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -351,12 +351,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\GNUInstallDirs.cmake;C:\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\cmake\gitversion.in.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\GNUInstallDirs.cmake;C:\Users\varuu\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\cmake\gitversion.in.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Cross/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/SPIRV-Cross/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/development/Engine -BC:/development/Engine/build --check-stamp-file C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Cross/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/varuu/development/Engine -BC:/Users/varuu/development/Engine/build --check-stamp-file C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Cross/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -364,43 +364,43 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\GNUInstallDirs.cmake;C:\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\cmake\gitversion.in.h;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\GNUInstallDirs.cmake;C:\Users\varuu\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\cmake\gitversion.in.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Cross\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\GLSL.std.450.h" />
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_common.hpp" />
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cross_containers.hpp" />
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cross_error_handling.hpp" />
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv.hpp" />
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cross.hpp" />
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cross.cpp" />
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_parser.hpp" />
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_parser.cpp" />
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cross_parsed_ir.hpp" />
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cross_parsed_ir.cpp" />
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cfg.hpp" />
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cfg.cpp" />
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv.h" />
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cross_c.cpp" />
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cross_c.h" />
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_glsl.cpp" />
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_glsl.hpp" />
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_hlsl.cpp" />
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_hlsl.hpp" />
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_msl.cpp" />
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_msl.hpp" />
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cpp.cpp" />
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cpp.hpp" />
-    <ClCompile Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_reflect.cpp" />
-    <ClInclude Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_reflect.hpp" />
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\GLSL.std.450.h" />
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_common.hpp" />
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cross_containers.hpp" />
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cross_error_handling.hpp" />
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv.hpp" />
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cross.hpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cross.cpp" />
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_parser.hpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_parser.cpp" />
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cross_parsed_ir.hpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cross_parsed_ir.cpp" />
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cfg.hpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cfg.cpp" />
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv.h" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cross_c.cpp" />
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cross_c.h" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_glsl.cpp" />
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_glsl.hpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_hlsl.cpp" />
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_hlsl.hpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_msl.cpp" />
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_msl.hpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cpp.cpp" />
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_cpp.hpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_reflect.cpp" />
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Cross\spirv_reflect.hpp" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="C:\development\Engine\build\ZERO_CHECK.vcxproj">
-      <Project>{88AACD1C-C064-38E8-86A3-8C6F7CA0A6EC}</Project>
+    <ProjectReference Include="C:\Users\varuu\development\Engine\build\ZERO_CHECK.vcxproj">
+      <Project>{1DF78AB3-0FB1-336B-B36E-E0F9EB4F129B}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

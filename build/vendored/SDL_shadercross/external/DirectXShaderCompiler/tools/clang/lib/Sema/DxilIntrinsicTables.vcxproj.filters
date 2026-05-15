@@ -1,26 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\18cdc2309725251a5d68773e245f4874\gen_intrin_main_tables_15.h.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\f5052df126787d12dafcce2dcb865d43\gen_intrin_main_tables_15.h.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\06b1bb4ecd54588fc68119a3285913f2\gen_intrin_main_tables_15.h.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\f13421b372e490cca08956e3f2c73c55\gen_intrin_main_tables_15.h.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\18cdc2309725251a5d68773e245f4874\gen_intrin_main_tables_15.h.stamp.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\f5052df126787d12dafcce2dcb865d43\gen_intrin_main_tables_15.h.stamp.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\ee024af4c21685c4d03b3eaa059e53f1\DxilIntrinsicTables.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\ae79bfb04da79bdc247b636dd81b6ee0\DxilIntrinsicTables.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Sema\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Sema\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Sema\CMakeFiles\DxilIntrinsicTables" />
+    <None Include="C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\lib\Sema\CMakeFiles\DxilIntrinsicTables" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{C2DCCA17-C3A4-3CD8-8EE0-D241F3FDE300}</UniqueIdentifier>
+      <UniqueIdentifier>{7F44CD31-D3C3-37D1-ADCC-254E31A0631D}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

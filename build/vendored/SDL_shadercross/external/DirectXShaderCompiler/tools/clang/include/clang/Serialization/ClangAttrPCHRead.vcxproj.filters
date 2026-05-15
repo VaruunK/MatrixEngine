@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\335843bae24d284a9facda56563635cb\AttrPCHRead.inc.tmp.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\ffd5a5d195002d629ca5c45eed90db39\AttrPCHRead.inc.tmp.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\335843bae24d284a9facda56563635cb\AttrPCHRead.inc.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\ffd5a5d195002d629ca5c45eed90db39\AttrPCHRead.inc.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\8e129ca4fc42dff19b6912d0d5f0fdca\ClangAttrPCHRead.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\0fde3e377c927e0d8051182368c43b50\ClangAttrPCHRead.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Serialization\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Serialization\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Serialization\CMakeFiles\ClangAttrPCHRead" />
+    <None Include="C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Serialization\CMakeFiles\ClangAttrPCHRead" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{C2DCCA17-C3A4-3CD8-8EE0-D241F3FDE300}</UniqueIdentifier>
+      <UniqueIdentifier>{7F44CD31-D3C3-37D1-ADCC-254E31A0631D}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

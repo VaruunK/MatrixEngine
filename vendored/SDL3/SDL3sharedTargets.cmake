@@ -52,7 +52,7 @@ add_library(SDL3::SDL3-shared SHARED IMPORTED)
 set_target_properties(SDL3::SDL3-shared PROPERTIES
   COMPATIBLE_INTERFACE_BOOL "SDL3_SHARED"
   COMPATIBLE_INTERFACE_STRING "SDL_VERSION"
-  INTERFACE_LINK_DEPENDS "C:/development/Engine/vendored/SDL3/src/dynapi/SDL_dynapi.sym"
+  INTERFACE_LINK_DEPENDS "C:/Users/varuu/development/Engine/vendored/SDL3/src/dynapi/SDL_dynapi.sym"
   INTERFACE_LINK_LIBRARIES "SDL3::Headers"
   INTERFACE_SDL3_SHARED "TRUE"
   INTERFACE_SDL_VERSION "SDL3"
@@ -61,29 +61,29 @@ set_target_properties(SDL3::SDL3-shared PROPERTIES
 # Import target "SDL3::SDL3-shared" for configuration "Debug"
 set_property(TARGET SDL3::SDL3-shared APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(SDL3::SDL3-shared PROPERTIES
-  IMPORTED_IMPLIB_DEBUG "C:/development/Engine/lib/Debug/SDL3.lib"
-  IMPORTED_LOCATION_DEBUG "C:/development/Engine/lib/Debug/SDL3.dll"
+  IMPORTED_IMPLIB_DEBUG "C:/Users/varuu/development/Engine/Debug/lib/SDL3.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/Debug/SDL3.dll"
   )
 
 # Import target "SDL3::SDL3-shared" for configuration "Release"
 set_property(TARGET SDL3::SDL3-shared APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(SDL3::SDL3-shared PROPERTIES
-  IMPORTED_IMPLIB_RELEASE "C:/development/Engine/lib/Release/SDL3.lib"
-  IMPORTED_LOCATION_RELEASE "C:/development/Engine/lib/Release/SDL3.dll"
+  IMPORTED_IMPLIB_RELEASE "C:/Users/varuu/development/Engine/Release/lib/SDL3.lib"
+  IMPORTED_LOCATION_RELEASE "C:/Users/varuu/development/Engine/Release/SDL3.dll"
   )
 
 # Import target "SDL3::SDL3-shared" for configuration "MinSizeRel"
 set_property(TARGET SDL3::SDL3-shared APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
 set_target_properties(SDL3::SDL3-shared PROPERTIES
-  IMPORTED_IMPLIB_MINSIZEREL "C:/development/Engine/lib/MinSizeRel/SDL3.lib"
-  IMPORTED_LOCATION_MINSIZEREL "C:/development/Engine/lib/MinSizeRel/SDL3.dll"
+  IMPORTED_IMPLIB_MINSIZEREL "C:/Users/varuu/development/Engine/MinSizeRel/lib/SDL3.lib"
+  IMPORTED_LOCATION_MINSIZEREL "C:/Users/varuu/development/Engine/MinSizeRel/SDL3.dll"
   )
 
 # Import target "SDL3::SDL3-shared" for configuration "RelWithDebInfo"
 set_property(TARGET SDL3::SDL3-shared APPEND PROPERTY IMPORTED_CONFIGURATIONS RELWITHDEBINFO)
 set_target_properties(SDL3::SDL3-shared PROPERTIES
-  IMPORTED_IMPLIB_RELWITHDEBINFO "C:/development/Engine/lib/RelWithDebInfo/SDL3.lib"
-  IMPORTED_LOCATION_RELWITHDEBINFO "C:/development/Engine/lib/RelWithDebInfo/SDL3.dll"
+  IMPORTED_IMPLIB_RELWITHDEBINFO "C:/Users/varuu/development/Engine/RelWithDebInfo/lib/SDL3.lib"
+  IMPORTED_LOCATION_RELWITHDEBINFO "C:/Users/varuu/development/Engine/RelWithDebInfo/SDL3.dll"
   )
 
 # Make sure the targets which have been exported in some other

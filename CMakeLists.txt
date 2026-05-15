@@ -60,11 +60,23 @@ target_include_directories(Matrix
 # -----------------------------
 add_subdirectory(vendored/SDL3 EXCLUDE_FROM_ALL)
 
+set(SDLIMAGE_AVIF OFF CACHE BOOL "" FORCE)
+set(SDLIMAGE_AV1  OFF CACHE BOOL "" FORCE)
+set(SDLIMAGE_JXL  OFF CACHE BOOL "" FORCE)
+set(SDLIMAGE_WEBP OFF CACHE BOOL "" FORCE)
+set(SDLIMAGE_TIF  OFF CACHE BOOL "" FORCE)
+set(SDLIMAGE_HEIF OFF CACHE BOOL "" FORCE)
+set(SDLIMAGE_QOI  OFF CACHE BOOL "" FORCE)
+set(SDLIMAGE_RENDER ON CACHE BOOL "" FORCE)
+
+add_subdirectory(vendored/SDL_image EXCLUDE_FROM_ALL)
+
 set(SDLSHADERCROSS_VENDORED ON CACHE BOOL "" FORCE)
 set(SDL_SHADERCROSS_SPIRV ON CACHE BOOL "" FORCE)
 set(SDL_SHADERCROSS_GLSL  ON CACHE BOOL "" FORCE)
 set(SDL_SHADERCROSS_HLSL  ON CACHE BOOL "" FORCE)
 set(SDL_SHADERCROSS_MSL   ON CACHE BOOL "" FORCE)
+
 add_subdirectory(vendored/SDL_shadercross EXCLUDE_FROM_ALL)
 
 #set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
@@ -74,6 +86,7 @@ add_subdirectory(vendored/SDL_shadercross EXCLUDE_FROM_ALL)
 #set(BUILD_OPENGL3_DEMOS OFF CACHE BOOL "" FORCE)
 #set(BUILD_EXTRAS OFF CACHE BOOL "" FORCE)
 #set(BUILD_UNIT_TESTS OFF CACHE BOOL "" FORCE)
+
 #add_subdirectory(vendored/Bullet EXCLUDE_FROM_ALL)
 
 add_subdirectory(vendored/glm EXCLUDE_FROM_ALL)
@@ -82,6 +95,7 @@ target_link_libraries(Matrix
     PRIVATE
         SDL3::SDL3
         SDL3_shadercross::SDL3_shadercross
+        SDL3_image::SDL3_image
         #BulletDynamics
         #BulletCollision
         #LinearMath

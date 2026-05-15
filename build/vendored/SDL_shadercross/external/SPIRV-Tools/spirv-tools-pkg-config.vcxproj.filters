@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\bb3ae153c57967a8fc609dd72017a81c\SPIRV-Tools-shared.pc.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\e1c507efe926ebdbccaab6ed82051cc0\SPIRV-Tools-shared.pc.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\bb3ae153c57967a8fc609dd72017a81c\SPIRV-Tools.pc.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\e1c507efe926ebdbccaab6ed82051cc0\SPIRV-Tools.pc.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\8b4d42a8901321d4f29fe735925b04ab\spirv-tools-pkg-config.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\194cafd438f4697222be8b0d5d6a8ec7\spirv-tools-pkg-config.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\SPIRV-Tools\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\SPIRV-Tools\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\CMakeFiles\spirv-tools-pkg-config" />
+    <None Include="C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\SPIRV-Tools\CMakeFiles\spirv-tools-pkg-config" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{C2DCCA17-C3A4-3CD8-8EE0-D241F3FDE300}</UniqueIdentifier>
+      <UniqueIdentifier>{7F44CD31-D3C3-37D1-ADCC-254E31A0631D}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

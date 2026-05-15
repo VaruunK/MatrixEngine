@@ -59,28 +59,28 @@ set_target_properties(SDL3::SDL3_test PROPERTIES
 set_property(TARGET SDL3::SDL3_test APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(SDL3::SDL3_test PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "C"
-  IMPORTED_LOCATION_DEBUG "C:/development/Engine/build/Debug/lib/SDL3_test.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/SDL3_test.lib"
   )
 
 # Import target "SDL3::SDL3_test" for configuration "Release"
 set_property(TARGET SDL3::SDL3_test APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(SDL3::SDL3_test PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "C"
-  IMPORTED_LOCATION_RELEASE "C:/development/Engine/build/Release/lib/SDL3_test.lib"
+  IMPORTED_LOCATION_RELEASE "C:/Users/varuu/development/Engine/build/Release/lib/SDL3_test.lib"
   )
 
 # Import target "SDL3::SDL3_test" for configuration "MinSizeRel"
 set_property(TARGET SDL3::SDL3_test APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
 set_target_properties(SDL3::SDL3_test PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_MINSIZEREL "C"
-  IMPORTED_LOCATION_MINSIZEREL "C:/development/Engine/build/MinSizeRel/lib/SDL3_test.lib"
+  IMPORTED_LOCATION_MINSIZEREL "C:/Users/varuu/development/Engine/build/MinSizeRel/lib/SDL3_test.lib"
   )
 
 # Import target "SDL3::SDL3_test" for configuration "RelWithDebInfo"
 set_property(TARGET SDL3::SDL3_test APPEND PROPERTY IMPORTED_CONFIGURATIONS RELWITHDEBINFO)
 set_target_properties(SDL3::SDL3_test PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELWITHDEBINFO "C"
-  IMPORTED_LOCATION_RELWITHDEBINFO "C:/development/Engine/build/RelWithDebInfo/lib/SDL3_test.lib"
+  IMPORTED_LOCATION_RELWITHDEBINFO "C:/Users/varuu/development/Engine/build/RelWithDebInfo/lib/SDL3_test.lib"
   )
 
 # Make sure the targets which have been exported in some other

@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\ca1eeb01d934736ce5480cf8f86b3195\AttrParserStringSwitches.inc.tmp.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\314b882d3638c29101c09d4c5b644f95\AttrParserStringSwitches.inc.tmp.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\ca1eeb01d934736ce5480cf8f86b3195\AttrParserStringSwitches.inc.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\314b882d3638c29101c09d4c5b644f95\AttrParserStringSwitches.inc.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\build\CMakeFiles\3842b7a8051aa90ec84594e1d1dca6a5\ClangAttrParserStringSwitches.rule">
+    <CustomBuild Include="C:\Users\varuu\development\Engine\build\CMakeFiles\e551f84fa77101160fe9ffec0c7d8ee9\ClangAttrParserStringSwitches.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Parse\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\varuu\development\Engine\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Parse\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Parse\CMakeFiles\ClangAttrParserStringSwitches" />
+    <None Include="C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\include\clang\Parse\CMakeFiles\ClangAttrParserStringSwitches" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{C2DCCA17-C3A4-3CD8-8EE0-D241F3FDE300}</UniqueIdentifier>
+      <UniqueIdentifier>{7F44CD31-D3C3-37D1-ADCC-254E31A0631D}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

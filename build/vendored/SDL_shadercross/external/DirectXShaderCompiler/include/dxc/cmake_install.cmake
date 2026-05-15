@@ -1,4 +1,4 @@
-# Install script for directory: C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc
+# Install script for directory: C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,36 +34,36 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/DXIL/cmake_install.cmake")
+  include("C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/DXIL/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/DxilContainer/cmake_install.cmake")
+  include("C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/DxilContainer/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/Support/cmake_install.cmake")
+  include("C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/Support/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/Tracing/cmake_install.cmake")
+  include("C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/Tracing/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "dxc-headers" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/dxc" TYPE FILE FILES
-    "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/config.h"
-    "C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/dxcapi.h"
-    "C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/dxcerrors.h"
-    "C:/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/dxcisense.h"
+    "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/config.h"
+    "C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/dxcapi.h"
+    "C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/dxcerrors.h"
+    "C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/dxcisense.h"
     )
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/install_local_manifest.txt"
+  file(WRITE "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/include/dxc/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

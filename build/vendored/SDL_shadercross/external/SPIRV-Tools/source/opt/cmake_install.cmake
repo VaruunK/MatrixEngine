@@ -1,4 +1,4 @@
-# Install script for directory: C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Tools/source/opt
+# Install script for directory: C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/SPIRV-Tools/source/opt
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,13 +34,13 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/development/Engine/build/Debug/lib/SPIRV-Tools-opt.lib")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/Users/varuu/development/Engine/build/Debug/lib/SPIRV-Tools-opt.lib")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/development/Engine/build/Release/lib/SPIRV-Tools-opt.lib")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/Users/varuu/development/Engine/build/Release/lib/SPIRV-Tools-opt.lib")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Mm][Ii][Nn][Ss][Ii][Zz][Ee][Rr][Ee][Ll])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/development/Engine/build/MinSizeRel/lib/SPIRV-Tools-opt.lib")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/Users/varuu/development/Engine/build/MinSizeRel/lib/SPIRV-Tools-opt.lib")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ww][Ii][Tt][Hh][Dd][Ee][Bb][Ii][Nn][Ff][Oo])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/development/Engine/build/RelWithDebInfo/lib/SPIRV-Tools-opt.lib")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/Users/varuu/development/Engine/build/RelWithDebInfo/lib/SPIRV-Tools-opt.lib")
   endif()
 endif()
 
@@ -48,7 +48,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/SPIRV-Tools-opt/cmake/SPIRV-Tools-optTargets.cmake")
     file(DIFFERENT _cmake_export_file_changed FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/SPIRV-Tools-opt/cmake/SPIRV-Tools-optTargets.cmake"
-         "C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/source/opt/CMakeFiles/Export/4232da7741db55829e154343a88a80c6/SPIRV-Tools-optTargets.cmake")
+         "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/source/opt/CMakeFiles/Export/4232da7741db55829e154343a88a80c6/SPIRV-Tools-optTargets.cmake")
     if(_cmake_export_file_changed)
       file(GLOB _cmake_old_config_files "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/SPIRV-Tools-opt/cmake/SPIRV-Tools-optTargets-*.cmake")
       if(_cmake_old_config_files)
@@ -61,28 +61,28 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     endif()
     unset(_cmake_export_file_changed)
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/SPIRV-Tools-opt/cmake" TYPE FILE FILES "C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/source/opt/CMakeFiles/Export/4232da7741db55829e154343a88a80c6/SPIRV-Tools-optTargets.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/SPIRV-Tools-opt/cmake" TYPE FILE FILES "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/source/opt/CMakeFiles/Export/4232da7741db55829e154343a88a80c6/SPIRV-Tools-optTargets.cmake")
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/SPIRV-Tools-opt/cmake" TYPE FILE FILES "C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/source/opt/CMakeFiles/Export/4232da7741db55829e154343a88a80c6/SPIRV-Tools-optTargets-debug.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/SPIRV-Tools-opt/cmake" TYPE FILE FILES "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/source/opt/CMakeFiles/Export/4232da7741db55829e154343a88a80c6/SPIRV-Tools-optTargets-debug.cmake")
   endif()
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Mm][Ii][Nn][Ss][Ii][Zz][Ee][Rr][Ee][Ll])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/SPIRV-Tools-opt/cmake" TYPE FILE FILES "C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/source/opt/CMakeFiles/Export/4232da7741db55829e154343a88a80c6/SPIRV-Tools-optTargets-minsizerel.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/SPIRV-Tools-opt/cmake" TYPE FILE FILES "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/source/opt/CMakeFiles/Export/4232da7741db55829e154343a88a80c6/SPIRV-Tools-optTargets-minsizerel.cmake")
   endif()
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ww][Ii][Tt][Hh][Dd][Ee][Bb][Ii][Nn][Ff][Oo])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/SPIRV-Tools-opt/cmake" TYPE FILE FILES "C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/source/opt/CMakeFiles/Export/4232da7741db55829e154343a88a80c6/SPIRV-Tools-optTargets-relwithdebinfo.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/SPIRV-Tools-opt/cmake" TYPE FILE FILES "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/source/opt/CMakeFiles/Export/4232da7741db55829e154343a88a80c6/SPIRV-Tools-optTargets-relwithdebinfo.cmake")
   endif()
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/SPIRV-Tools-opt/cmake" TYPE FILE FILES "C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/source/opt/CMakeFiles/Export/4232da7741db55829e154343a88a80c6/SPIRV-Tools-optTargets-release.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/SPIRV-Tools-opt/cmake" TYPE FILE FILES "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/source/opt/CMakeFiles/Export/4232da7741db55829e154343a88a80c6/SPIRV-Tools-optTargets-release.cmake")
   endif()
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/SPIRV-Tools-opt/cmake" TYPE FILE FILES "C:/development/Engine/build/SPIRV-Tools-optConfig.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/SPIRV-Tools-opt/cmake" TYPE FILE FILES "C:/Users/varuu/development/Engine/build/SPIRV-Tools-optConfig.cmake")
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "C:/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/source/opt/install_local_manifest.txt"
+  file(WRITE "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools/source/opt/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

@@ -6,8 +6,6 @@
 class SDL_Texture;
 class Renderer;
 
-using namespace std;
-
 class ImageComponent : public Component {
 public:
     void Initialize(Entity* compOwner, const string& filepath);

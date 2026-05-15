@@ -5,8 +5,6 @@
 
 class GameObject;
 
-using namespace std;
-
 class TickManager {
 public:
 
@@ -15,8 +13,8 @@ public:
 
     void Tick(uint64_t deltaTime);
 
-    const vector<GameObject*>& GetTickingGameObjects() { return tickingGameObjects; }
+    const std::vector<GameObject*>& GetTickingGameObjects() { return tickingGameObjects; }
 
 private:;
-    vector<GameObject*> tickingGameObjects;
+    std::vector<GameObject*> tickingGameObjects;
 };

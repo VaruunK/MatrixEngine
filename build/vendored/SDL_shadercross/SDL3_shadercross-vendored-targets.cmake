@@ -50,7 +50,7 @@ unset(_cmake_expected_targets)
 add_library(SDL3_shadercross::spirv-cross-c-shared SHARED IMPORTED)
 
 set_target_properties(SDL3_shadercross::spirv-cross-c-shared PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "C:/development/Engine/vendored/SDL_shadercross/external/SPIRV-Cross"
+  INTERFACE_INCLUDE_DIRECTORIES "C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/SPIRV-Cross"
 )
 
 # Create imported target SDL3_shadercross::dxcompiler
@@ -62,85 +62,85 @@ add_library(SDL3_shadercross::dxildll SHARED IMPORTED)
 # Import target "SDL3_shadercross::spirv-cross-c-shared" for configuration "Debug"
 set_property(TARGET SDL3_shadercross::spirv-cross-c-shared APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(SDL3_shadercross::spirv-cross-c-shared PROPERTIES
-  IMPORTED_IMPLIB_DEBUG "C:/development/Engine/build/Debug/lib/spirv-cross-c-sharedd.lib"
-  IMPORTED_LOCATION_DEBUG "C:/development/Engine/build/Debug/spirv-cross-c-sharedd.dll"
+  IMPORTED_IMPLIB_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/spirv-cross-c-sharedd.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/spirv-cross-c-sharedd.dll"
   )
 
 # Import target "SDL3_shadercross::dxcompiler" for configuration "Debug"
 set_property(TARGET SDL3_shadercross::dxcompiler APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(SDL3_shadercross::dxcompiler PROPERTIES
-  IMPORTED_IMPLIB_DEBUG "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/dxcompiler.lib"
-  IMPORTED_LOCATION_DEBUG "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/bin/dxcompiler.dll"
+  IMPORTED_IMPLIB_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/dxcompiler.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/bin/dxcompiler.dll"
   )
 
 # Import target "SDL3_shadercross::dxildll" for configuration "Debug"
 set_property(TARGET SDL3_shadercross::dxildll APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(SDL3_shadercross::dxildll PROPERTIES
-  IMPORTED_IMPLIB_DEBUG "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/dxil.lib"
-  IMPORTED_LOCATION_DEBUG "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/bin/dxil.dll"
+  IMPORTED_IMPLIB_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/dxil.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/bin/dxil.dll"
   )
 
 # Import target "SDL3_shadercross::spirv-cross-c-shared" for configuration "Release"
 set_property(TARGET SDL3_shadercross::spirv-cross-c-shared APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(SDL3_shadercross::spirv-cross-c-shared PROPERTIES
-  IMPORTED_IMPLIB_RELEASE "C:/development/Engine/build/Release/lib/spirv-cross-c-shared.lib"
-  IMPORTED_LOCATION_RELEASE "C:/development/Engine/build/Release/spirv-cross-c-shared.dll"
+  IMPORTED_IMPLIB_RELEASE "C:/Users/varuu/development/Engine/build/Release/lib/spirv-cross-c-shared.lib"
+  IMPORTED_LOCATION_RELEASE "C:/Users/varuu/development/Engine/build/Release/spirv-cross-c-shared.dll"
   )
 
 # Import target "SDL3_shadercross::dxcompiler" for configuration "Release"
 set_property(TARGET SDL3_shadercross::dxcompiler APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(SDL3_shadercross::dxcompiler PROPERTIES
-  IMPORTED_IMPLIB_RELEASE "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Release/lib/dxcompiler.lib"
-  IMPORTED_LOCATION_RELEASE "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Release/bin/dxcompiler.dll"
+  IMPORTED_IMPLIB_RELEASE "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Release/lib/dxcompiler.lib"
+  IMPORTED_LOCATION_RELEASE "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Release/bin/dxcompiler.dll"
   )
 
 # Import target "SDL3_shadercross::dxildll" for configuration "Release"
 set_property(TARGET SDL3_shadercross::dxildll APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(SDL3_shadercross::dxildll PROPERTIES
-  IMPORTED_IMPLIB_RELEASE "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Release/lib/dxil.lib"
-  IMPORTED_LOCATION_RELEASE "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Release/bin/dxil.dll"
+  IMPORTED_IMPLIB_RELEASE "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Release/lib/dxil.lib"
+  IMPORTED_LOCATION_RELEASE "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Release/bin/dxil.dll"
   )
 
 # Import target "SDL3_shadercross::spirv-cross-c-shared" for configuration "MinSizeRel"
 set_property(TARGET SDL3_shadercross::spirv-cross-c-shared APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
 set_target_properties(SDL3_shadercross::spirv-cross-c-shared PROPERTIES
-  IMPORTED_IMPLIB_MINSIZEREL "C:/development/Engine/build/MinSizeRel/lib/spirv-cross-c-shared.lib"
-  IMPORTED_LOCATION_MINSIZEREL "C:/development/Engine/build/MinSizeRel/spirv-cross-c-shared.dll"
+  IMPORTED_IMPLIB_MINSIZEREL "C:/Users/varuu/development/Engine/build/MinSizeRel/lib/spirv-cross-c-shared.lib"
+  IMPORTED_LOCATION_MINSIZEREL "C:/Users/varuu/development/Engine/build/MinSizeRel/spirv-cross-c-shared.dll"
   )
 
 # Import target "SDL3_shadercross::dxcompiler" for configuration "MinSizeRel"
 set_property(TARGET SDL3_shadercross::dxcompiler APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
 set_target_properties(SDL3_shadercross::dxcompiler PROPERTIES
-  IMPORTED_IMPLIB_MINSIZEREL "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/MinSizeRel/lib/dxcompiler.lib"
-  IMPORTED_LOCATION_MINSIZEREL "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/MinSizeRel/bin/dxcompiler.dll"
+  IMPORTED_IMPLIB_MINSIZEREL "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/MinSizeRel/lib/dxcompiler.lib"
+  IMPORTED_LOCATION_MINSIZEREL "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/MinSizeRel/bin/dxcompiler.dll"
   )
 
 # Import target "SDL3_shadercross::dxildll" for configuration "MinSizeRel"
 set_property(TARGET SDL3_shadercross::dxildll APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
 set_target_properties(SDL3_shadercross::dxildll PROPERTIES
-  IMPORTED_IMPLIB_MINSIZEREL "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/MinSizeRel/lib/dxil.lib"
-  IMPORTED_LOCATION_MINSIZEREL "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/MinSizeRel/bin/dxil.dll"
+  IMPORTED_IMPLIB_MINSIZEREL "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/MinSizeRel/lib/dxil.lib"
+  IMPORTED_LOCATION_MINSIZEREL "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/MinSizeRel/bin/dxil.dll"
   )
 
 # Import target "SDL3_shadercross::spirv-cross-c-shared" for configuration "RelWithDebInfo"
 set_property(TARGET SDL3_shadercross::spirv-cross-c-shared APPEND PROPERTY IMPORTED_CONFIGURATIONS RELWITHDEBINFO)
 set_target_properties(SDL3_shadercross::spirv-cross-c-shared PROPERTIES
-  IMPORTED_IMPLIB_RELWITHDEBINFO "C:/development/Engine/build/RelWithDebInfo/lib/spirv-cross-c-shared.lib"
-  IMPORTED_LOCATION_RELWITHDEBINFO "C:/development/Engine/build/RelWithDebInfo/spirv-cross-c-shared.dll"
+  IMPORTED_IMPLIB_RELWITHDEBINFO "C:/Users/varuu/development/Engine/build/RelWithDebInfo/lib/spirv-cross-c-shared.lib"
+  IMPORTED_LOCATION_RELWITHDEBINFO "C:/Users/varuu/development/Engine/build/RelWithDebInfo/spirv-cross-c-shared.dll"
   )
 
 # Import target "SDL3_shadercross::dxcompiler" for configuration "RelWithDebInfo"
 set_property(TARGET SDL3_shadercross::dxcompiler APPEND PROPERTY IMPORTED_CONFIGURATIONS RELWITHDEBINFO)
 set_target_properties(SDL3_shadercross::dxcompiler PROPERTIES
-  IMPORTED_IMPLIB_RELWITHDEBINFO "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/RelWithDebInfo/lib/dxcompiler.lib"
-  IMPORTED_LOCATION_RELWITHDEBINFO "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/RelWithDebInfo/bin/dxcompiler.dll"
+  IMPORTED_IMPLIB_RELWITHDEBINFO "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/RelWithDebInfo/lib/dxcompiler.lib"
+  IMPORTED_LOCATION_RELWITHDEBINFO "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/RelWithDebInfo/bin/dxcompiler.dll"
   )
 
 # Import target "SDL3_shadercross::dxildll" for configuration "RelWithDebInfo"
 set_property(TARGET SDL3_shadercross::dxildll APPEND PROPERTY IMPORTED_CONFIGURATIONS RELWITHDEBINFO)
 set_target_properties(SDL3_shadercross::dxildll PROPERTIES
-  IMPORTED_IMPLIB_RELWITHDEBINFO "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/RelWithDebInfo/lib/dxil.lib"
-  IMPORTED_LOCATION_RELWITHDEBINFO "C:/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/RelWithDebInfo/bin/dxil.dll"
+  IMPORTED_IMPLIB_RELWITHDEBINFO "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/RelWithDebInfo/lib/dxil.lib"
+  IMPORTED_LOCATION_RELWITHDEBINFO "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/RelWithDebInfo/bin/dxil.dll"
   )
 
 # This file does not depend on other imported targets which have

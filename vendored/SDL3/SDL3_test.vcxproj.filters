@@ -1,51 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_assert.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\test\SDL_test_assert.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_common.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\test\SDL_test_common.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_compare.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\test\SDL_test_compare.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_crc32.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\test\SDL_test_crc32.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_font.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\test\SDL_test_font.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_fuzzer.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\test\SDL_test_fuzzer.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_harness.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\test\SDL_test_harness.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_log.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\test\SDL_test_log.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_md5.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\test\SDL_test_md5.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_memory.c">
+    <ClCompile Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\test\SDL_test_memory.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\development\Engine\vendored\SDL3\src\test\SDL_test_internal.h">
+    <ClInclude Include="C:\Users\varuu\development\Engine\vendored\SDL3\src\test\SDL_test_internal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\development\Engine\vendored\SDL3\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\varuu\development\Engine\vendored\SDL3\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{ACAB9CB3-59AB-35FF-AC8B-09A5E70299ED}</UniqueIdentifier>
+      <UniqueIdentifier>{979C8A6A-4355-3104-B507-1B9A5DA5B8C5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{2F7D69D2-3352-3CB7-A86D-86A26146C9F8}</UniqueIdentifier>
+      <UniqueIdentifier>{C9A6968E-4E68-3AAD-80F9-AB94BFE5B655}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
