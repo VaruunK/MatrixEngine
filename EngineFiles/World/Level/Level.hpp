@@ -19,8 +19,8 @@ public:
 
 	template<typename ClassType>
 	ClassType* AddEntityToLevel(float x = 0.0f, float y = 0.0f, float scaleX = 1.0f, float scaleY = 1.0f) {
-		static_assert(is_base_of_v<Entity, ClassType>, "ClassType does not inherit from Entity");
-		auto newEntity = make_unique<ClassType>();
+		static_assert(std::is_base_of_v<Entity, ClassType>, "ClassType does not inherit from Entity");
+		auto newEntity = std::make_unique<ClassType>();
 		ClassType* raw = newEntity.get();
 		entities.push_back(move(newEntity));
 		return raw;
@@ -28,10 +28,10 @@ public:
 
 	template<typename ClassType>
 	ClassType* SpawnFromClass(float x = 0.0f, float y = 0.0f, float scaleX = 1.0f, float scaleY = 1.0f) {
-		static_assert(is_base_of_v<Entity, ClassType>, "ClassType does not inherit from Entity");
-		auto newEntity = make_unique<ClassType>();
+		static_assert(std::is_base_of_v<Entity, ClassType>, "ClassType does not inherit from Entity");
+		auto newEntity = std::make_unique<ClassType>();
 		ClassType *raw = newEntity.get();
-		entities.push_back(move(newEntity));
+		entities.push_back(std::move(newEntity));
 		raw->Start();
 		return raw;
 	}

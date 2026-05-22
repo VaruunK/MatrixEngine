@@ -5,6 +5,7 @@
 #include "Core/ShaderManager/ShaderManager.hpp"
 #include "Core/TickManager/TickManager.hpp"
 #include "Core/PhysicsManager/PhysicsManager.hpp"
+#include "Core/WindowManager/WindowManager.hpp"
 #include <memory>
 #include <atomic>
 
@@ -25,20 +26,36 @@ public:
 
 	World& GetWorld() { return *world; }
 	TickManager& GetTickManager() { return *tickManager; }
-	PhysicsManager& GetPhysicsManager() { return *physicsManager; }
+	// PhysicsManager& GetPhysicsManager() { return *physicsManager; }
+	WindowManager& GetWindowManager() { return *windowManager; }
 	Renderer& GetRenderer() { return *renderer; };
+	SDL_GPUDevice& GetGPUDevice() { return *device; }
 
-protected:
 private:
+	// need deleters for other unique pointers, probably mandatory
+
+
+	struct SDLGPUDeviceDeleter {
+		void operator()(SDL_GPUDevice* d) const {
+			if (d) SDL_DestroyGPUDevice(d);
+		}
+	};
+
 	Engine();
 	
-	atomic<bool> running;
+	void CreateDevice();
+
+	std::atomic<bool> running;
 	int MAX_FRAMES = 144;
 	const int MAX_PHYSICS_FRAMES = 60;
-	unique_ptr<World> world;
-	unique_ptr<TickManager> tickManager;
-	unique_ptr<PhysicsManager> physicsManager;
-	unique_ptr<Renderer> renderer;
 
-	vector<thread> threads;
+	std::unique_ptr<World> world;
+	std::unique_ptr<TickManager> tickManager;
+	// std::unique_ptr<PhysicsManager> physicsManager;
+	std::unique_ptr<WindowManager> windowManager;
+	std::unique_ptr<Renderer> renderer;
+
+	std::unique_ptr<SDL_GPUDevice, SDLGPUDeviceDeleter> device;
+
+	std::vector<std::thread> threads;
 };

@@ -5,20 +5,42 @@
 #include "World/Level/Level.hpp"
 #include "Core/Render/Renderer.hpp"
 //#include "Entity/Static/Static.hpp"
-//#include "Entity/Agent/Agent.hpp"
-#include "Entity/Component/ImageComponent/ImageComponent.hpp"
-#include "Entity/Component/PhysicsComponent/PhysicsComponent.hpp"
+#include "Entity/Agent/Agent.hpp"
+#include "Entity/Component/SpriteComponent/SpriteComponent.hpp"
+//#include "Entity/Component/PhysicsComponent/PhysicsComponent.hpp"
 
 Engine::Engine() {
-    world = make_unique<World>();
-    tickManager = make_unique<TickManager>();
-    renderer = make_unique<Renderer>();
-    physicsManager = make_unique<PhysicsManager>();
+    if (!SDL_WasInit(SDL_INIT_VIDEO)) {
+        if (!SDL_Init(SDL_INIT_VIDEO)) {
+            SDL_Log("Couldn't initialize SDL: %s", SDL_GetError());
+            throw std::runtime_error("Failed to initialize SDL Video");
+        }
+    }
+
+    CreateDevice();
+
+    tickManager = std::make_unique<TickManager>();
+    windowManager = std::make_unique<WindowManager>(device.get());
+    // physicsManager = std::make_unique<PhysicsManager>();
+    world = std::make_unique<World>();
+    renderer = std::make_unique<Renderer>(device.get());
+}
+
+void Engine::CreateDevice() {
+    device.reset(SDL_CreateGPUDevice(
+        SDL_GPU_SHADERFORMAT_SPIRV | SDL_GPU_SHADERFORMAT_DXIL | SDL_GPU_SHADERFORMAT_MSL,
+        true,
+        nullptr
+    ));
+
+    if (!device.get()) {
+        SDL_Log("Failed to create GPU device: %s", SDL_GetError());
+        throw std::runtime_error("Failed to create GPU device");
+    }
 }
 
 int Engine::Run() {
-
-    if (!renderer->Initialize("Matrix Engine", "Engine.png", 1080, 720)) {
+    if (!renderer->Initialize()) {
         renderer->Shutdown();
         return -1;
     }
@@ -33,12 +55,12 @@ int Engine::Run() {
     //ic->SetScale(2.0f, 2.0f);
 
     running.store(true);
-    threads.emplace_back(&PhysicsManager::Run, physicsManager.get(), MAX_PHYSICS_FRAMES);
+    // threads.emplace_back(&PhysicsManager::Run, physicsManager.get(), MAX_PHYSICS_FRAMES);
     world->Start();
 
     Uint64 frequency = SDL_GetPerformanceFrequency();
     Uint64 lastCounter = SDL_GetPerformanceCounter();
-    //Agent* agent = nullptr;
+    Agent* agent = nullptr;
 
     bool vel = true;
 
@@ -52,26 +74,41 @@ int Engine::Run() {
             deltaSeconds = MaxDeltaTime;
 
         world->SetDeltaTime(deltaSeconds);
-        
+        int numkeys;
         SDL_Event event;
+        auto state = std::vector<bool>(SDL_GetKeyboardState(&numkeys), SDL_GetKeyboardState(&numkeys) + numkeys);
         while (SDL_PollEvent(&event)) {
+            
             if (event.type == SDL_EVENT_QUIT) {
                 running.store(false);
             }
 
-            if (event.type == SDL_EVENT_KEY_DOWN) {
-                /*agent = level->SpawnFromClass<Agent>();
-                agent->GetComponent<ImageComponent>()->SetTexture("C:/development/Engine/media/square_red.png");*/
+            if (state[SDL_SCANCODE_SPACE]) {
+                agent = level->SpawnFromClass<Agent>();
+                agent->GetComponent<SpriteComponent>()->SetTexture("Content/square_red.png");
             }
-            if (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
-                //PhysicsComponent* pc = agent->GetComponent<PhysicsComponent>();
-                /*if (vel) {
-                    pc->ApplyForce(vec2f(10000.0f, 0.0f));
-                    vel = false;
-                } else {
-                    pc->ApplyForce(vec2f(-10000.0f, 0.0f));
-                    vel = true;
-                }*/
+            if (state[SDL_SCANCODE_W]) {
+                if (agent && agent->GetComponent<SpriteComponent>()) {
+                    auto spriteComp = agent->GetComponent<SpriteComponent>();
+                    spriteComp->SetComponentLocation(glm::vec3(spriteComp->GetComponentLocation().x + 0.01,
+                        spriteComp->GetComponentLocation().y, spriteComp->GetComponentLocation().z));
+                }
+        
+            }
+            if (state[SDL_SCANCODE_E]) {
+                if (agent && agent->GetComponent<SpriteComponent>()) {
+                    auto spriteComp = agent->GetComponent<SpriteComponent>();
+                    spriteComp->SetComponentRotation(glm::vec3(spriteComp->GetComponentRotation().x,
+                        spriteComp->GetComponentRotation().y, spriteComp->GetComponentRotation().z + 10));
+                }
+            }
+
+            if (state[SDL_SCANCODE_R]) {
+                if (agent && agent->GetComponent<SpriteComponent>()) {
+                    auto spriteComp = agent->GetComponent<SpriteComponent>();
+                    spriteComp->SetComponentScale(glm::vec3(spriteComp->GetComponentScale().x * 1.5,
+                        spriteComp->GetComponentScale().y * 1.5, spriteComp->GetComponentScale().z));
+                }
             }
         }
 

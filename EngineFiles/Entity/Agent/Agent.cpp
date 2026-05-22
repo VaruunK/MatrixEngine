@@ -1,19 +1,19 @@
 #include "Agent.hpp"
-#include "Entity/Component/ImageComponent/ImageComponent.hpp"
-#include "Entity/Component/PhysicsComponent/PhysicsComponent.hpp"
-#include "Entity/Component/MovementComponent/MovementComponent.hpp"
+#include "Entity/Component/SpriteComponent/SpriteComponent.hpp"
+// #include "Entity/Component/PhysicsComponent/PhysicsComponent.hpp"
+// #include "Entity/Component/MovementComponent/MovementComponent.hpp"
 
 Agent::Agent() : Entity() {
 	canTick = true;
 
-	imageComponent = AddComponent<ImageComponent>();
-	imageComponent->Initialize(this, "");
+	spriteComponent = AddComponent<SpriteComponent>();
+	spriteComponent->Initialize(this);
 
-	physicsComponent = AddComponent<PhysicsComponent>();
-	physicsComponent->Initialize(this);
+	/*physicsComponent = AddComponent<PhysicsComponent>();
+	physicsComponent->Initialize(this);*/
 
-	movementComponent = AddComponent<MovementComponent>();
-	movementComponent->Initialize(this, E_Moveable);
+	/*movementComponent = AddComponent<MovementComponent>();
+	movementComponent->Initialize(this, E_Moveable);*/
 }
 
 void Agent::Start()

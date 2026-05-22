@@ -2,9 +2,9 @@
 
 #include "Entity/Entity.hpp"
 
-class ImageComponent;
-class MovementComponent;
-class PhysicsComponent;
+class SpriteComponent;
+//class MovementComponent;
+//class PhysicsComponent;
 
 class Agent : public Entity {
 public:
@@ -15,7 +15,7 @@ public:
 	void DestroyGameObject() override;
 protected:
 private:
-	ImageComponent* imageComponent;
-	MovementComponent* movementComponent;
-	PhysicsComponent* physicsComponent;
+	SpriteComponent* spriteComponent;
+	/*MovementComponent* movementComponent;
+	PhysicsComponent* physicsComponent;*/
 };

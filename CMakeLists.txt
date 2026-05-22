@@ -30,15 +30,17 @@ add_executable(Matrix
     EngineFiles/Core/Render/Renderer.cpp
     EngineFiles/Core/ShaderManager/ShaderManager.cpp
     EngineFiles/Core/TickManager/TickManager.cpp
-    EngineFiles/Core/PhysicsManager/PhysicsManager.cpp
+    # EngineFiles/Core/PhysicsManager/PhysicsManager.cpp
+    EngineFiles/Core/WindowManager/WindowManager.cpp
+    EngineFiles/Core/WindowManager/Window/Window.cpp
     EngineFiles/Entity/Entity.cpp
     #EngineFiles/Entity/Static/Static.cpp
-    #EngineFiles/Entity/Agent/Agent.cpp
+    EngineFiles/Entity/Agent/Agent.cpp
     EngineFiles/Entity/Component/Component.cpp
-    #EngineFiles/Entity/Component/ImageComponent/ImageComponent.cpp
-    EngineFiles/Entity/Component/PhysicsComponent/PhysicsComponent.cpp
-    EngineFiles/Entity/Component/CollisionComponent/CollisionComponent.cpp
-    EngineFiles/Entity/Component/MovementComponent/MovementComponent.cpp
+    EngineFiles/Entity/Component/SpriteComponent/SpriteComponent.cpp
+    #EngineFiles/Entity/Component/PhysicsComponent/PhysicsComponent.cpp
+    #EngineFiles/Entity/Component/CollisionComponent/CollisionComponent.cpp
+    #EngineFiles/Entity/Component/MovementComponent/MovementComponent.cpp
     EngineFiles/World/Level/Level.cpp
     EngineFiles/World/World.cpp)
 

@@ -28,7 +28,7 @@ void Level::DestroyGameObject()
     GameObject::DestroyGameObject();
 }
 
-void Level::Tick(uint64_t deltaTime, const vector<GameObject*>& tickingGameObjects) {
+void Level::Tick(uint64_t deltaTime, const std::vector<GameObject*>& tickingGameObjects) {
     Tick(deltaTime);
     for (auto& go : tickingGameObjects) {
         go->Tick(deltaTime);

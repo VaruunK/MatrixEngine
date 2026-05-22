@@ -2,10 +2,10 @@
 #include "Engine.hpp"
 #include <iostream>
 
-
 World::World() {
     GameObject::GameObject();
     canTick = true;
+    deltaSeconds = 0;
     running.store(false);
 }
 
@@ -31,17 +31,19 @@ Level* World::GetLevel(const std::string& levelName) {
     if (lvl != levels.end()) {
         return lvl->second.get();
     }
-    cout << "Couldn't find Level with name " << levelName << endl;
+    SDL_Log("Couldn't find Level with name: %s", levelName.c_str());
+    // throw runtime error?
     return nullptr;
 }
 
 Level* World::CreateLevel(const std::string& levelName) {
     if (GetLevel(levelName)) {
-        cerr << "Level " << levelName << " already exists" << endl;
+        SDL_Log("Level %s already exists", levelName.c_str());
+        // throw runtime error
         return nullptr;
     }
 
-    auto level = make_unique<Level>();
+    auto level = std::make_unique<Level>();
 
     Level* raw = level.get();
     levels.emplace(levelName, move(level));
@@ -49,11 +51,11 @@ Level* World::CreateLevel(const std::string& levelName) {
 }
 
 Level* World::CreateInitialLevel(const std::string& startLevelName) {
-    auto level = make_unique<Level>();
+    auto level = std::make_unique<Level>();
 
     Level* raw = level.get();
     currentLevel = raw;
-    levels.emplace(startLevelName, move(level));
+    levels.emplace(startLevelName, std::move(level));
 
     return raw;
 }

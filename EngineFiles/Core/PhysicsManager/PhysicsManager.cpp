@@ -21,7 +21,7 @@ void PhysicsManager::Run(int targetFrames) {
         auto sleepTime = targetFrameDuration - elapsed;
 
         if (sleepTime.count() > 0) {
-            this_thread::sleep_for(sleepTime);
+            std::this_thread::sleep_for(sleepTime);
         }
     }
 }
@@ -247,33 +247,33 @@ void PhysicsManager::Step(float deltaTime) {
     collisionReadIndex.store(1 - collisionRead, std::memory_order_release);
 }
 
-optional<PhysicsState> PhysicsManager::GetReadState(PhysicsHandle &handle) {
+std::optional<PhysicsState> PhysicsManager::GetReadState(PhysicsHandle &handle) {
     int idx = physicsReadIndex.load(std::memory_order_acquire);
 
     if (handle.index >= physicsBuffers[idx].size()) {
-        return nullopt;
+        return std::nullopt;
     }
 
     const PhysicsState& state = physicsBuffers[idx][handle.index];
 
     if (!state.active || physicsGenerations[handle.index] != handle.generation) {
-        return nullopt;
+        return std::nullopt;
     }
 
     return state;
 }
 
-optional<CollisionState> PhysicsManager::GetReadState(CollisionHandle &handle) {
+std::optional<CollisionState> PhysicsManager::GetReadState(CollisionHandle &handle) {
     int idx = collisionReadIndex.load(std::memory_order_acquire);
 
     if (handle.index >= collisionBuffers[idx].size()) {
-        return nullopt;
+        return std::nullopt;
     }
 
     const CollisionState& state = collisionBuffers[idx][handle.index];
 
     if (!state.active || collisionGenerations[handle.index] != handle.generation) {
-        return nullopt;
+        return std::nullopt;
     }
 
     return state;

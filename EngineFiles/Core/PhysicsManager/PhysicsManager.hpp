@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/Math/vec2.h"
+
 #include "PhysicsStructs.hpp"
 #include "CollisionStructs.hpp"
 #include <atomic>

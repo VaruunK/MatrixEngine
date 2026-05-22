@@ -1,12 +1,18 @@
 #pragma once
 
 #include "Core/GameObject/GameObject.hpp"
-#include "Core/Math/vec2.h"
 #include <unordered_map>
 #include <typeindex>
 #include <type_traits>
 #include <optional>
 #include <memory>
+#include <glm/glm.hpp>
+
+struct Transform {
+	glm::vec3 location = glm::vec3(0.0f, 0.0f, 0.0f);
+	glm::vec3 rotation = glm::vec3(0.0f, 0.0f, 0.0f);
+	glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f);
+};
 
 class Entity : public GameObject {
 public:
@@ -15,17 +21,19 @@ public:
 	virtual void Tick(uint64_t deltaTime) override;
 	virtual void DestroyGameObject() override;
 
-	vec2f GetPosition() { return position; }
-	float GetXPos() { return position.x; }
-	float GetYPos() { return position.y; }
+	glm::vec3 GetLocation() { return transform.location; }
+	glm::vec3 GetRotation() { return transform.rotation; }
+	glm::vec3 GetScale() { return transform.scale; }
 
-	void SetPosition(vec2f newPosition) { position = newPosition; }
+	glm::vec3 SetLocation(glm::vec3 location) { transform.location = location; return GetLocation(); }
+	glm::vec3 SetRotation(glm::vec3 rotation) { transform.rotation = rotation; return GetRotation(); }
+	glm::vec3 SetScale(glm::vec3 scale) { transform.scale = scale; return GetScale(); }
 
 	template<typename ComponentType>
 	ComponentType* GetComponent() {
-		static_assert(is_base_of_v<Component, ComponentType>, "Type does not inherit from Component");
+		static_assert(std::is_base_of_v<Component, ComponentType>, "Type does not inherit from Component");
 
-		auto it = components.find(type_index(typeid(ComponentType)));
+		auto it = components.find(std::type_index(typeid(ComponentType)));
 		if (it == components.end()) {
 			return nullptr;
 		}
@@ -35,10 +43,10 @@ public:
 
 	template<typename ComponentType>
 	ComponentType* AddComponent() {
-		static_assert(is_base_of_v<Component, ComponentType>, "Type does not inherit from Component");
+		static_assert(std::is_base_of_v<Component, ComponentType>, "Type does not inherit from Component");
 
-		auto comp = make_unique<ComponentType>();
-		auto key = type_index(typeid(ComponentType));
+		auto comp = std::make_unique<ComponentType>();
+		auto key = std::type_index(typeid(ComponentType));
 
 		auto ptr = comp.get();
 
@@ -47,8 +55,7 @@ public:
 		return ptr;
 	}
 protected:
+	Transform transform;
 private:
-	unordered_map<type_index, unique_ptr<Component>> components;
-
-	vec2f position = vec2f(0.0f, 0.0f);
+	std::unordered_map<std::type_index, std::unique_ptr<Component>> components;
 };

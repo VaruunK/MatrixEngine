@@ -16,22 +16,22 @@
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\TickManager\TickManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\PhysicsManager\PhysicsManager.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\WindowManager\WindowManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\WindowManager\Window\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Agent\Agent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Component\Component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Component\PhysicsComponent\PhysicsComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Component\CollisionComponent\CollisionComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Component\MovementComponent\MovementComponent.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Component\SpriteComponent\SpriteComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\World\Level\Level.cpp">

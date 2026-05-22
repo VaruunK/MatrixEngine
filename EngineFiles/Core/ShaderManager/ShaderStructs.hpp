@@ -3,14 +3,12 @@
 #include <string>
 #include <cstdint>
 
-using namespace std;
-
 class SDL_GPUShaderStage;
 
 struct ShaderInfo {
-    string sourcePath;
-    string compiledPath;
-    string entryPoint;
+    std::string sourcePath;
+    std::string compiledPath;
+    std::string entryPoint;
     SDL_GPUShaderStage stage;
     uint64_t sourceTimestamp;
     uint64_t compiledTimestamp;
