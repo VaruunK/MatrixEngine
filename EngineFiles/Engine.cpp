@@ -4,9 +4,11 @@
 #include "World/World.hpp"
 #include "World/Level/Level.hpp"
 #include "Core/Render/Renderer.hpp"
+#include "Core/Render//RenderStructs.hpp"
 //#include "Entity/Static/Static.hpp"
 #include "Entity/Agent/Agent.hpp"
 #include "Entity/Component/SpriteComponent/SpriteComponent.hpp"
+#include "Entity/Component/MeshComponent/MeshComponent.hpp"
 //#include "Entity/Component/PhysicsComponent/PhysicsComponent.hpp"
 
 Engine::Engine() {
@@ -60,8 +62,11 @@ int Engine::Run() {
 
     Uint64 frequency = SDL_GetPerformanceFrequency();
     Uint64 lastCounter = SDL_GetPerformanceCounter();
-    Agent* agent = nullptr;
-
+    Agent* agent1 = nullptr;
+    Agent* agent2 = nullptr;
+    Agent* activeAgent = nullptr;
+    MeshComponent* meshComponent = nullptr;
+    SpriteComponent* spriteComponent = nullptr;
     bool vel = true;
 
     while (running.load()) {
@@ -84,30 +89,103 @@ int Engine::Run() {
             }
 
             if (state[SDL_SCANCODE_SPACE]) {
-                agent = level->SpawnFromClass<Agent>();
-                agent->GetComponent<SpriteComponent>()->SetTexture("Content/square_red.png");
+                agent1 = level->SpawnFromClass<Agent>();
+                meshComponent = agent1->AddComponent<MeshComponent>();
+
+                std::vector<Vertex> vertices = {
+                    // Front face
+                    {{-0.5f, -0.5f, 0.5f}, {0.0f, 1.0f}},
+                    {{0.5f, -0.5f, 0.5f}, {1.0f, 1.0f}},
+                    {{0.5f, 0.5f, 0.5f}, {1.0f, 0.0f}},
+                    {{-0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}},
+
+                    // Back face
+                    {{-0.5f, -0.5f, -0.5f}, {1.0f, 1.0f}},
+                    {{0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
+                    {{0.5f, 0.5f, -0.5f}, {0.0f, 0.0f}},
+                    {{-0.5f, 0.5f, -0.5f}, {1.0f, 0.0f}},
+
+                    // Left face
+                    {{-0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
+                    {{-0.5f, -0.5f, 0.5f}, {1.0f, 1.0f}},
+                    {{-0.5f, 0.5f, 0.5f}, {1.0f, 0.0f}},
+                    {{-0.5f, 0.5f, -0.5f}, {0.0f, 0.0f}},
+
+                    // Right face
+                    {{0.5f, -0.5f, -0.5f}, {1.0f, 1.0f}},
+                    {{0.5f, -0.5f, 0.5f}, {0.0f, 1.0f}},
+                    {{0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}},
+                    {{0.5f, 0.5f, -0.5f}, {1.0f, 0.0f}},
+
+                    // Top face
+                    {{-0.5f, 0.5f, -0.5f}, {0.0f, 1.0f}},
+                    {{0.5f, 0.5f, -0.5f}, {1.0f, 1.0f}},
+                    {{0.5f, 0.5f, 0.5f}, {1.0f, 0.0f}},
+                    {{-0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}},
+
+                    // Bottom face
+                    {{-0.5f, -0.5f, -0.5f}, {1.0f, 1.0f}},
+                    {{0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
+                    {{0.5f, -0.5f, 0.5f}, {0.0f, 0.0f}},
+                    {{-0.5f, -0.5f, 0.5f}, {1.0f, 0.0f}}
+                };
+
+                std::vector<uint32_t> indices = {
+                    0, 1, 2, 2, 3, 0,
+                    4, 5, 6, 6, 7, 4,
+                    8, 9, 10, 10, 11, 8,
+                    12, 13, 14, 14, 15, 12,
+                    16, 17, 18, 18, 19, 16,
+                    20, 21, 22, 22, 23, 20
+                };
+
+                Mesh* mesh = new Mesh;
+                mesh->vertices = vertices;
+                mesh->indices = indices;
+                mesh->texture = renderer.get()->CreateTexture("Content/square_red.png");
+
+                
+                /*agent->GetComponent<SpriteComponent>()->SetTexture("Content/square_red.png");*/
+                meshComponent->SetMesh(mesh);
+                spriteComponent = nullptr;
+                activeAgent = agent1;
             }
+
+            if (state[SDL_SCANCODE_TAB]) {
+                agent2 = level->SpawnFromClass<Agent>();
+                spriteComponent = agent2->AddComponent<SpriteComponent>();
+
+                spriteComponent->SetTexture(renderer.get()->CreateTexture("Content/nanodsa.png"));
+                meshComponent = nullptr;
+                activeAgent = agent2;
+            }
+
             if (state[SDL_SCANCODE_W]) {
-                if (agent && agent->GetComponent<SpriteComponent>()) {
-                    auto spriteComp = agent->GetComponent<SpriteComponent>();
-                    spriteComp->SetComponentLocation(glm::vec3(spriteComp->GetComponentLocation().x + 0.01,
-                        spriteComp->GetComponentLocation().y, spriteComp->GetComponentLocation().z));
+                if (activeAgent && meshComponent) {
+                    meshComponent->SetComponentLocation(glm::vec3(meshComponent->GetComponentLocation().x + 0.01,
+                        meshComponent->GetComponentLocation().y, meshComponent->GetComponentLocation().z));
+                } else if (activeAgent && spriteComponent) {
+                    spriteComponent->SetComponentLocation(glm::vec3(spriteComponent->GetComponentLocation().x + 0.01,
+                        spriteComponent->GetComponentLocation().y, spriteComponent->GetComponentLocation().z));
                 }
-        
             }
             if (state[SDL_SCANCODE_E]) {
-                if (agent && agent->GetComponent<SpriteComponent>()) {
-                    auto spriteComp = agent->GetComponent<SpriteComponent>();
-                    spriteComp->SetComponentRotation(glm::vec3(spriteComp->GetComponentRotation().x,
-                        spriteComp->GetComponentRotation().y, spriteComp->GetComponentRotation().z + 10));
+                if (activeAgent && meshComponent) {
+                    meshComponent->SetComponentRotation(glm::vec3(meshComponent->GetComponentRotation().x,
+                        meshComponent->GetComponentRotation().y + 10, meshComponent->GetComponentRotation().z));
+                } else if (activeAgent && spriteComponent) {
+                    spriteComponent->SetComponentRotation(glm::vec3(spriteComponent->GetComponentRotation().x,
+                        spriteComponent->GetComponentRotation().y + 10, spriteComponent->GetComponentRotation().z));
                 }
             }
 
             if (state[SDL_SCANCODE_R]) {
-                if (agent && agent->GetComponent<SpriteComponent>()) {
-                    auto spriteComp = agent->GetComponent<SpriteComponent>();
-                    spriteComp->SetComponentScale(glm::vec3(spriteComp->GetComponentScale().x * 1.5,
-                        spriteComp->GetComponentScale().y * 1.5, spriteComp->GetComponentScale().z));
+                if (activeAgent && meshComponent) {
+                    meshComponent->SetComponentScale(glm::vec3(meshComponent->GetComponentScale().x * 1.5,
+                        meshComponent->GetComponentScale().y * 1.5, meshComponent->GetComponentScale().z));
+                } else if (activeAgent && spriteComponent) {
+                    spriteComponent->SetComponentScale(glm::vec3(spriteComponent->GetComponentScale().x * 1.5,
+                        spriteComponent->GetComponentScale().y * 1.5, spriteComponent->GetComponentScale().z));
                 }
             }
         }

@@ -3,6 +3,7 @@
 #include "Entity/Entity.hpp"
 
 class SpriteComponent;
+class MeshComponent;
 //class MovementComponent;
 //class PhysicsComponent;
 
@@ -15,7 +16,8 @@ public:
 	void DestroyGameObject() override;
 protected:
 private:
-	SpriteComponent* spriteComponent;
+	//SpriteComponent* spriteComponent;
+	//MeshComponent* meshComponent;
 	/*MovementComponent* movementComponent;
 	PhysicsComponent* physicsComponent;*/
 };

@@ -37,6 +37,7 @@ add_executable(Matrix
     #EngineFiles/Entity/Static/Static.cpp
     EngineFiles/Entity/Agent/Agent.cpp
     EngineFiles/Entity/Component/Component.cpp
+    EngineFiles/Entity/Component/MeshComponent/MeshComponent.cpp
     EngineFiles/Entity/Component/SpriteComponent/SpriteComponent.cpp
     #EngineFiles/Entity/Component/PhysicsComponent/PhysicsComponent.cpp
     #EngineFiles/Entity/Component/CollisionComponent/CollisionComponent.cpp

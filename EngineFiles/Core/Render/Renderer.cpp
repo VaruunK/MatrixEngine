@@ -1,10 +1,11 @@
 #include "Renderer.hpp"
+#include "RenderStructs.hpp"
 #include "Engine.hpp"
 #include "World/Level/Level.hpp"
 #include "Entity/Entity.hpp"
 #include "Entity/Component/SpriteComponent/SpriteComponent.hpp"
+#include "Entity/Component/MeshComponent/MeshComponent.hpp"
 #include "Core/WindowManager/Window/Window.hpp"
-#include <SDL3/SDL.h>
 #include <SDL3/SDL_render.h>
 #include <SDL3_image/SDL_image.h>
 #include <SDL3_shadercross/SDL_shadercross.h>
@@ -40,7 +41,13 @@ void Renderer::Render() {
 
             std::vector<SDL_GPUColorTargetInfo> colorTargets{ colorTarget };
 
-            SDL_GPURenderPass* pass = SDL_BeginGPURenderPass(commandBuffer, colorTargets.data(), colorTargets.size(), nullptr);
+            SDL_GPUDepthStencilTargetInfo depthStencilTargetInfo{};
+            depthStencilTargetInfo.clear_depth = 1.0f;
+            // depthStencilTargetInfo.clear_stencil = 0;
+            depthStencilTargetInfo.load_op = SDL_GPU_LOADOP_CLEAR;
+            depthStencilTargetInfo.texture = defaultDepthStencil;
+
+            SDL_GPURenderPass* pass = SDL_BeginGPURenderPass(commandBuffer, colorTargets.data(), colorTargets.size(), &depthStencilTargetInfo);
             SDL_BindGPUGraphicsPipeline(pass, pipelines[PIPELINE_TYPE::FILL_PIPELINE]);
 
             std::vector<SDL_GPUBufferBinding> vertexBinding{ { vertexBuffer, 0 } };
@@ -55,6 +62,18 @@ void Renderer::Render() {
 
             auto projection = glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 100.0f);
             auto view = glm::lookAt(glm::vec3(0, 0, 2), glm::vec3(0), glm::vec3(0, 1, 0));
+
+            for (auto& [mesh, components] : meshes) {
+                SDL_GPUTextureSamplerBinding binding{ mesh->texture->texture, defaultSampler };
+                SDL_BindGPUFragmentSamplers(pass, 0, &binding, 1);
+
+                for (auto* component : components) {
+                    auto model = component->GetModelMatrix(aspectRatio);
+                    auto mvp = projection * view * model;
+                    SDL_PushGPUVertexUniformData(commandBuffer, 0, &mvp, sizeof(mvp));
+                    SDL_DrawGPUIndexedPrimitives(pass, mesh->vertices.size(), 1, 0, 0, 0);
+                }
+            }
 
             for (auto& [texture, sprites] : spriteTextures) {
                 SDL_GPUTextureSamplerBinding binding{ texture->texture, defaultSampler };
@@ -112,24 +131,66 @@ bool Renderer::Initialize() {
         }
     }
 
-    vertices = {
-        { { -0.5f, -0.5f, 0.0f }, { 1.0f, 1.0f } },
-        { {  0.5f, -0.5f, 0.0f }, { 0.0f, 1.0f } },
-        { {  0.5f,  0.5f, 0.0f }, { 0.0f, 0.0f } },
-        { { -0.5f,  0.5f, 0.0f }, { 1.0f, 0.0f } },
-    };
+    //spriteVertices = {
+    //    // Front face
+    //    {{-0.5f, -0.5f, 0.5f}, {0.0f, 1.0f}},
+    //    {{0.5f, -0.5f, 0.5f}, {1.0f, 1.0f}},
+    //    {{0.5f, 0.5f, 0.5f}, {1.0f, 0.0f}},
+    //    {{-0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}},
 
-    indices = {
-        0, 1, 2,
-        0, 2, 3,
-    };
+    //    // Back face
+    //    {{-0.5f, -0.5f, -0.5f}, {1.0f, 1.0f}},
+    //    {{0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
+    //    {{0.5f, 0.5f, -0.5f}, {0.0f, 0.0f}},
+    //    {{-0.5f, 0.5f, -0.5f}, {1.0f, 0.0f}},
+
+    //    // Left face
+    //    {{-0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
+    //    {{-0.5f, -0.5f, 0.5f}, {1.0f, 1.0f}},
+    //    {{-0.5f, 0.5f, 0.5f}, {1.0f, 0.0f}},
+    //    {{-0.5f, 0.5f, -0.5f}, {0.0f, 0.0f}},
+
+    //    // Right face
+    //    {{0.5f, -0.5f, -0.5f}, {1.0f, 1.0f}},
+    //    {{0.5f, -0.5f, 0.5f}, {0.0f, 1.0f}},
+    //    {{0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}},
+    //    {{0.5f, 0.5f, -0.5f}, {1.0f, 0.0f}},
+
+    //    // Top face
+    //    {{-0.5f, 0.5f, -0.5f}, {0.0f, 1.0f}},
+    //    {{0.5f, 0.5f, -0.5f}, {1.0f, 1.0f}},
+    //    {{0.5f, 0.5f, 0.5f}, {1.0f, 0.0f}},
+    //    {{-0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}},
+
+    //    // Bottom face
+    //    {{-0.5f, -0.5f, -0.5f}, {1.0f, 1.0f}},
+    //    {{0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
+    //    {{0.5f, -0.5f, 0.5f}, {0.0f, 0.0f}},
+    //    {{-0.5f, -0.5f, 0.5f}, {1.0f, 0.0f}}
+    //};
+
+    /*spriteIndices = {
+        0, 1, 2, 2, 3, 0,
+        4, 5, 6, 6, 7, 4,
+        8, 9, 10, 10, 11, 8,
+        12, 13, 14, 14, 15, 12,
+        16, 17, 18, 18, 19, 16,
+        20, 21, 22, 22, 23, 20
+    };*/
+    
+    
 
     if (!InitializeSamplers()) {
         SDL_Log("Failed to create Samplers");
         return false;
     }
 
-    if (!InitializeBuffers(vertices, indices)) {
+    if (!InitializeDepthStencils()) {
+        SDL_Log("Failed to create Depth Stencils");
+        return false;
+    }
+
+    if (!InitializeBuffers()) {
         SDL_Log("Failed to create Buffers");
         return false;
     }
@@ -137,9 +198,9 @@ bool Renderer::Initialize() {
     return true;
 }
 
-bool Renderer::InitializeBuffers(const std::vector<Vertex>& vertices, const std::vector<uint32_t>& indices) {
+bool Renderer::InitializeBuffers() {
     SDL_GPUBufferCreateInfo vertexInfo{};
-    vertexInfo.size = vertices.size() * sizeof(Vertex);
+    vertexInfo.size = 200 * sizeof(Vertex);
     vertexInfo.usage = SDL_GPU_BUFFERUSAGE_VERTEX;
 
     vertexBuffer = SDL_CreateGPUBuffer(device, &vertexInfo);
@@ -149,10 +210,9 @@ bool Renderer::InitializeBuffers(const std::vector<Vertex>& vertices, const std:
     }
     
     SDL_SetGPUBufferName(device, vertexBuffer, "Vertex Buffer");
-    vertexBufferSize = vertexInfo.size;
 
     SDL_GPUBufferCreateInfo indexInfo{};
-    indexInfo.size = indices.size() * sizeof(uint32_t);
+    indexInfo.size = 600 * sizeof(uint32_t);
     indexInfo.usage = SDL_GPU_BUFFERUSAGE_INDEX;
 
     indexBuffer = SDL_CreateGPUBuffer(device, &indexInfo);
@@ -162,44 +222,6 @@ bool Renderer::InitializeBuffers(const std::vector<Vertex>& vertices, const std:
     }
     
     SDL_SetGPUBufferName(device, indexBuffer, "Index Buffer");
-    indexBufferSize = indexInfo.size;
-
-    SDL_GPUTransferBufferCreateInfo transferInfo{};
-    transferInfo.size = vertexInfo.size + indexInfo.size;
-    transferInfo.usage = SDL_GPU_TRANSFERBUFFERUSAGE_UPLOAD;
-    
-    auto* transferBuffer = SDL_CreateGPUTransferBuffer(device, &transferInfo);
-    if (!transferBuffer) { 
-        SDL_Log("Failed to create transfer buffer!"); 
-        return false;
-    }
-
-    auto* ptr = static_cast<uint8_t*>(SDL_MapGPUTransferBuffer(device, transferBuffer, false));
-    if (!ptr) { 
-        SDL_Log("Failed to map transfer buffer!"); 
-        return false; 
-    }
-
-    std::memcpy(ptr, vertices.data(), vertexInfo.size);
-    std::memcpy(ptr + vertexInfo.size, indices.data(), indexInfo.size);
-
-    SDL_UnmapGPUTransferBuffer(device, transferBuffer);
-
-    // upload immediately
-    SDL_GPUCommandBuffer* cmd = SDL_AcquireGPUCommandBuffer(device);
-    SDL_GPUCopyPass* copyPass = SDL_BeginGPUCopyPass(cmd);
-
-    SDL_GPUTransferBufferLocation src{ transferBuffer, 0 };
-    SDL_GPUBufferRegion dst{ vertexBuffer, 0, vertexInfo.size };
-    SDL_UploadToGPUBuffer(copyPass, &src, &dst, false);
-
-    src.offset = vertexInfo.size;
-    dst = { indexBuffer, 0, indexInfo.size };
-    SDL_UploadToGPUBuffer(copyPass, &src, &dst, false);
-
-    SDL_EndGPUCopyPass(copyPass);
-    SDL_SubmitGPUCommandBuffer(cmd);
-    SDL_ReleaseGPUTransferBuffer(device, transferBuffer);
 
     return true;
 }
@@ -279,6 +301,13 @@ bool Renderer::InitializePipelines(Window* window, SDL_GPUShader* vertexShader, 
     SDL_GPUGraphicsPipelineTargetInfo targetInfo{};
     targetInfo.color_target_descriptions = colorTargetDescriptions.data();
     targetInfo.num_color_targets = colorTargetDescriptions.size();
+    targetInfo.has_depth_stencil_target = true;
+    targetInfo.depth_stencil_format = GetDepthStencilFormat();
+
+    SDL_GPUDepthStencilState depthStencilState{};
+    depthStencilState.enable_depth_test = true;
+    depthStencilState.enable_depth_write = true;
+    depthStencilState.compare_op = SDL_GPU_COMPAREOP_LESS;
 
     std::vector<SDL_GPUVertexAttribute> vertexAttributes{};
     std::vector<SDL_GPUVertexBufferDescription> vertexBufferDescriptions{};
@@ -301,6 +330,7 @@ bool Renderer::InitializePipelines(Window* window, SDL_GPUShader* vertexShader, 
     pipelineCreateInfo.rasterizer_state.fill_mode = SDL_GPU_FILLMODE_FILL;
     pipelineCreateInfo.target_info = targetInfo;
     pipelineCreateInfo.vertex_input_state = vertexInputState;
+    pipelineCreateInfo.depth_stencil_state = depthStencilState;
 
     SDL_GPUGraphicsPipeline* pipeline = SDL_CreateGPUGraphicsPipeline(device, &pipelineCreateInfo);
 
@@ -313,6 +343,27 @@ bool Renderer::InitializePipelines(Window* window, SDL_GPUShader* vertexShader, 
     pipelines[PIPELINE_TYPE::FILL_PIPELINE] = pipeline;
 
     return true;
+}
+
+SDL_GPUTextureFormat Renderer::GetDepthStencilFormat() {
+    if (!device) {
+        return SDL_GPU_TEXTUREFORMAT_INVALID;
+    }
+
+    if (SDL_GPUTextureSupportsFormat(device, 
+        SDL_GPU_TEXTUREFORMAT_D24_UNORM_S8_UINT,
+        SDL_GPU_TEXTURETYPE_2D,
+        SDL_GPU_TEXTUREUSAGE_DEPTH_STENCIL_TARGET)) {
+        return SDL_GPU_TEXTUREFORMAT_D24_UNORM_S8_UINT;
+    } else if (SDL_GPUTextureSupportsFormat(device,
+        SDL_GPU_TEXTUREFORMAT_D32_FLOAT_S8_UINT,
+        SDL_GPU_TEXTURETYPE_2D,
+        SDL_GPU_TEXTUREUSAGE_DEPTH_STENCIL_TARGET)) {
+        return SDL_GPU_TEXTUREFORMAT_D32_FLOAT_S8_UINT;
+    } else {
+        SDL_Log("Stencil formats not supported!");
+        return SDL_GPU_TEXTUREFORMAT_INVALID;
+    }
 }
 
 bool Renderer::InitializeSamplers() {
@@ -334,6 +385,78 @@ bool Renderer::InitializeSamplers() {
     return true;
 }
 
+bool Renderer::InitializeDepthStencils() {
+    int windowWidth, windowHeight;
+    Engine::GetEngine().GetWindowManager().GetMainWindow()->GetWindowSize(&windowWidth, &windowHeight);
+
+    SDL_PropertiesID props = SDL_CreateProperties();
+    SDL_SetFloatProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_DEPTH_FLOAT, 1.0f);
+    SDL_SetNumberProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_STENCIL_NUMBER, 0);
+
+    SDL_GPUTextureCreateInfo depthStencilTextureCreateInfo = {
+        .format = GetDepthStencilFormat(),
+        .usage = SDL_GPU_TEXTUREUSAGE_DEPTH_STENCIL_TARGET,
+        .width = static_cast<uint32_t>(windowWidth),
+        .height = static_cast<uint32_t>(windowHeight),
+        .layer_count_or_depth = 1,
+        .num_levels = 1,
+        .props = props
+    };
+
+    defaultDepthStencil = SDL_CreateGPUTexture(device, &depthStencilTextureCreateInfo);
+    SDL_DestroyProperties(props);
+
+    if (!defaultDepthStencil) {
+        SDL_Log("Failed to create default depth stencil texture, %s", SDL_GetError());
+        return false;
+    }
+
+    return true;
+}
+
+bool Renderer::UploadVertices(const std::vector<Vertex> &vertices, const std::vector<uint32_t> &indices) {
+    uint32_t verticesSize = vertices.size() * sizeof(Vertex);
+    uint32_t indicesSize = indices.size() * sizeof(uint32_t);
+    
+    SDL_GPUTransferBufferCreateInfo transferInfo{};
+    transferInfo.size = verticesSize + indicesSize;
+    transferInfo.usage = SDL_GPU_TRANSFERBUFFERUSAGE_UPLOAD;
+
+    auto* transferBuffer = SDL_CreateGPUTransferBuffer(device, &transferInfo);
+    if (!transferBuffer) {
+        SDL_Log("Failed to create transfer buffer!");
+        return false;
+    }
+
+    auto* ptr = static_cast<uint8_t*>(SDL_MapGPUTransferBuffer(device, transferBuffer, false));
+    if (!ptr) {
+        SDL_Log("Failed to map transfer buffer!");
+        return false;
+    }
+
+    std::memcpy(ptr, vertices.data(), verticesSize);
+    std::memcpy(ptr + verticesSize, indices.data(), indicesSize);
+
+    SDL_UnmapGPUTransferBuffer(device, transferBuffer);
+
+    // upload immediately
+    SDL_GPUCommandBuffer* cmd = SDL_AcquireGPUCommandBuffer(device);
+    SDL_GPUCopyPass* copyPass = SDL_BeginGPUCopyPass(cmd);
+
+    SDL_GPUTransferBufferLocation src{ transferBuffer, 0 };
+    SDL_GPUBufferRegion dst{ vertexBuffer, 0, verticesSize };
+    SDL_UploadToGPUBuffer(copyPass, &src, &dst, false);
+
+    src.offset = verticesSize;
+    dst = { indexBuffer, 0, indicesSize };
+    SDL_UploadToGPUBuffer(copyPass, &src, &dst, false);
+
+    SDL_EndGPUCopyPass(copyPass);
+    SDL_SubmitGPUCommandBuffer(cmd);
+    SDL_ReleaseGPUTransferBuffer(device, transferBuffer);
+    return false;
+}
+
 void Renderer::RegisterSprite(SpriteComponent* sprite) {
     const Texture* texture = sprite->GetTexture();
     if (!texture) return;
@@ -343,6 +466,20 @@ void Renderer::RegisterSprite(SpriteComponent* sprite) {
     }
 
     spriteTextures[texture].push_back(sprite);
+
+    std::vector<Vertex> vertices = {
+        {{-0.5f, -0.5f, 0.0f}, {0.0f, 1.0f}},
+        {{0.5f, -0.5f, 0.0f}, {1.0f, 1.0f}},
+        {{0.5f, 0.5f, 0.0f}, {1.0f, 0.0f}},
+        {{-0.5f, 0.5f, 0.0f}, {0.0f, 0.0f}},
+    };
+
+    std::vector<uint32_t> indices = {
+        0, 1, 2,
+        0, 2, 3,
+    };
+
+    UploadVertices(vertices, indices);
 }
 
 void Renderer::DeregisterSprite(SpriteComponent* sprite) {
@@ -358,6 +495,70 @@ void Renderer::DeregisterSprite(SpriteComponent* sprite) {
     if (vec.empty()) {
         spriteTextures.erase(it);
     }
+}
+
+void Renderer::RegisterMesh(MeshComponent* mesh) {
+    const Mesh* m = mesh->GetMesh();
+    if (!m) return;
+
+    if (!meshes.contains(m)) {
+        RenderTexture(m->texture);
+    }
+
+    meshes[m].push_back(mesh);
+    UploadVertices(m->vertices, m->indices);
+}
+
+void Renderer::DeregisterMesh(MeshComponent* mesh) {
+    const Mesh* m = mesh->GetMesh();
+    if (!m) return;
+
+    auto it = meshes.find(m);
+    if (it == meshes.end()) return;
+
+    auto& vec = it->second;
+    vec.erase(std::ranges::find(vec, mesh));
+
+    if (vec.empty()) {
+        meshes.erase(it);
+    }
+}
+
+Texture* Renderer::CreateTexture(const std::string &texturFilePath) {
+    SDL_Surface* imageData = SDL_LoadSurface(texturFilePath.c_str());
+
+    if (!imageData) {
+        SDL_Log("Failed to load image data: %s", SDL_GetError());
+        return nullptr;
+    }
+
+    SDL_Surface* converted = SDL_ConvertSurface(imageData, SDL_PIXELFORMAT_RGBA32);
+    SDL_DestroySurface(imageData);
+    imageData = converted;
+
+    SDL_GPUTextureCreateInfo textureCreateInfo{
+        .type = SDL_GPU_TEXTURETYPE_2D,
+        .format = SDL_GPU_TEXTUREFORMAT_R8G8B8A8_UNORM,
+        .usage = SDL_GPU_TEXTUREUSAGE_SAMPLER,
+        .width = static_cast<Uint32>(imageData->w),
+        .height = static_cast<Uint32>(imageData->h),
+        .layer_count_or_depth = 1,
+        .num_levels = 1,
+    };
+
+    SDL_GPUTexture* texture = SDL_CreateGPUTexture(&Engine::GetEngine().GetGPUDevice(), &textureCreateInfo);
+    if (!texture) {
+        SDL_Log("Failed to create Texture");
+        return nullptr;
+    }
+    SDL_SetGPUTextureName(&Engine::GetEngine().GetGPUDevice(), texture, texturFilePath.c_str());
+
+    Texture* newTexture = new Texture;
+    newTexture->texture = texture;
+    newTexture->data = imageData;
+    newTexture->texturePath = texturFilePath;
+
+    return newTexture;
 }
 
 void Renderer::Shutdown() {

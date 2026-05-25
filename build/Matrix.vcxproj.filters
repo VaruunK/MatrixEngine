@@ -31,6 +31,9 @@
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Component\Component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Component\MeshComponent\MeshComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Component\SpriteComponent\SpriteComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

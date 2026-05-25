@@ -12,8 +12,8 @@ public:
 	~WindowManager();
 
 	Window* CreateWindow();
-	const Window* GetMainWindow() { return mainWindow.get(); }
-	const std::vector<Window*> GetWindows() { return windows; }
+	Window* GetMainWindow() { return mainWindow.get(); }
+	std::vector<Window*> GetWindows() { return windows; }
 private:
 	std::unique_ptr<Window> mainWindow;
 

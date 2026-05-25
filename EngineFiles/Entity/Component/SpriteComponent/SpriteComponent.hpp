@@ -6,11 +6,7 @@
 
 struct SDL_GPUTexture;
 struct SDL_Surface;
-
-struct Texture {
-    SDL_GPUTexture* texture;
-    SDL_Surface* data;
-};
+struct Texture;
 
 class SpriteComponent : public Component {
 public:
@@ -19,21 +15,16 @@ public:
     void DestroyComponent() override;
 
     const Texture* GetTexture() { return texture; }
-    const std::string GetTextureFilePath() { return textureFilePath; }
     const glm::mat4 GetModelMatrix(float windowAspectRatio);
 
-    void SetTexture(const std::string& filepath);
+    void SetTexture(Texture* texture);
 
     bool IsVisible() const { return isVisible; }
     void SetVisibility(bool visibility) { isVisible = visibility; }
 
 private:
-    
-    Texture* CreateTexture(const std::string& texturePath);
-
     bool isVisible = true;
     bool needsChange = false;
     
-    std::string textureFilePath;
     Texture* texture;
 };

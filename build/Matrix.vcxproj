@@ -430,6 +430,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Entity.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Agent\Agent.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Component\Component.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Component\MeshComponent\MeshComponent.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Component\SpriteComponent\SpriteComponent.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\World\Level\Level.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\World\World.cpp" />
