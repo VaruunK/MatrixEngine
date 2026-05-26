@@ -58,7 +58,7 @@ set_target_properties(SPIRV-Tools-opt PROPERTIES
 set_property(TARGET SPIRV-Tools-opt APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(SPIRV-Tools-opt PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/SPIRV-Tools-opt.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/SPIRV-Tools-optd.lib"
   )
 
 # Import target "SPIRV-Tools-opt" for configuration "Release"

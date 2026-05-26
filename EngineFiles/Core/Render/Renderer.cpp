@@ -1,17 +1,12 @@
 #include "Renderer.hpp"
 #include "RenderStructs.hpp"
 #include "Engine.hpp"
-#include "World/Level/Level.hpp"
 #include "Entity/Entity.hpp"
 #include "Entity/Component/SpriteComponent/SpriteComponent.hpp"
 #include "Entity/Component/MeshComponent/MeshComponent.hpp"
 #include "Core/WindowManager/Window/Window.hpp"
-#include <SDL3/SDL_render.h>
-#include <SDL3_image/SDL_image.h>
-#include <SDL3_shadercross/SDL_shadercross.h>
 #include <glm/ext/matrix_clip_space.hpp>
 #include <glm/ext/matrix_transform.hpp>
-#include <span>
 // #include <iostream>
 
 std::unique_ptr<ShaderManager>  Renderer::shaderManager = nullptr;
@@ -41,9 +36,15 @@ void Renderer::Render() {
 
             std::vector<SDL_GPUColorTargetInfo> colorTargets{ colorTarget };
 
+            if (resized) {
+                SDL_ReleaseGPUTexture(device, defaultDepthStencil);
+                CreateDepthStencils(window);
+                resized = false;
+            }
+
             SDL_GPUDepthStencilTargetInfo depthStencilTargetInfo{};
             depthStencilTargetInfo.clear_depth = 1.0f;
-            // depthStencilTargetInfo.clear_stencil = 0;
+            depthStencilTargetInfo.clear_stencil = 0;
             depthStencilTargetInfo.load_op = SDL_GPU_LOADOP_CLEAR;
             depthStencilTargetInfo.texture = defaultDepthStencil;
 
@@ -64,29 +65,35 @@ void Renderer::Render() {
             auto view = glm::lookAt(glm::vec3(0, 0, 2), glm::vec3(0), glm::vec3(0, 1, 0));
 
             for (auto& [mesh, components] : meshes) {
+                if (!mesh->texture) continue;
+                
                 SDL_GPUTextureSamplerBinding binding{ mesh->texture->texture, defaultSampler };
                 SDL_BindGPUFragmentSamplers(pass, 0, &binding, 1);
 
+                const DrawInfo& di = meshDrawInfo[mesh];
+                
                 for (auto* component : components) {
                     auto model = component->GetModelMatrix(aspectRatio);
+
                     auto mvp = projection * view * model;
                     SDL_PushGPUVertexUniformData(commandBuffer, 0, &mvp, sizeof(mvp));
-                    SDL_DrawGPUIndexedPrimitives(pass, mesh->vertices.size(), 1, 0, 0, 0);
+
+                    SDL_DrawGPUIndexedPrimitives(pass, di.indexCount, 1, di.firstIndex, di.vertexOffset, 0);
                 }
             }
 
             for (auto& [texture, sprites] : spriteTextures) {
+                if (!texture->texture) continue;
                 SDL_GPUTextureSamplerBinding binding{ texture->texture, defaultSampler };
                 SDL_BindGPUFragmentSamplers(pass, 0, &binding, 1);
 
+                const DrawInfo& di = spriteDrawInfo[texture];
                 for (auto* sprite : sprites) {
-                    auto model = sprite->GetModelMatrix(aspectRatio);
-                    auto mvp = projection * view * model;
+                    auto mvp = projection * view * sprite->GetModelMatrix(aspectRatio);
                     SDL_PushGPUVertexUniformData(commandBuffer, 0, &mvp, sizeof(mvp));
-                    SDL_DrawGPUIndexedPrimitives(pass, 6, 1, 0, 0, 0);
+                    SDL_DrawGPUIndexedPrimitives(pass, di.indexCount, 1, di.firstIndex, di.vertexOffset, 0);
                 }
             }
-
             SDL_EndGPURenderPass(pass);
         }
     }
@@ -129,64 +136,15 @@ bool Renderer::Initialize() {
             SDL_Log("Failed to create Pipelines");
             return false;
         }
+
+        if (!CreateDepthStencils(window)) {
+            SDL_Log("Failed to create Depth Stencils");
+            return false;
+        }
     }
-
-    //spriteVertices = {
-    //    // Front face
-    //    {{-0.5f, -0.5f, 0.5f}, {0.0f, 1.0f}},
-    //    {{0.5f, -0.5f, 0.5f}, {1.0f, 1.0f}},
-    //    {{0.5f, 0.5f, 0.5f}, {1.0f, 0.0f}},
-    //    {{-0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}},
-
-    //    // Back face
-    //    {{-0.5f, -0.5f, -0.5f}, {1.0f, 1.0f}},
-    //    {{0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
-    //    {{0.5f, 0.5f, -0.5f}, {0.0f, 0.0f}},
-    //    {{-0.5f, 0.5f, -0.5f}, {1.0f, 0.0f}},
-
-    //    // Left face
-    //    {{-0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
-    //    {{-0.5f, -0.5f, 0.5f}, {1.0f, 1.0f}},
-    //    {{-0.5f, 0.5f, 0.5f}, {1.0f, 0.0f}},
-    //    {{-0.5f, 0.5f, -0.5f}, {0.0f, 0.0f}},
-
-    //    // Right face
-    //    {{0.5f, -0.5f, -0.5f}, {1.0f, 1.0f}},
-    //    {{0.5f, -0.5f, 0.5f}, {0.0f, 1.0f}},
-    //    {{0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}},
-    //    {{0.5f, 0.5f, -0.5f}, {1.0f, 0.0f}},
-
-    //    // Top face
-    //    {{-0.5f, 0.5f, -0.5f}, {0.0f, 1.0f}},
-    //    {{0.5f, 0.5f, -0.5f}, {1.0f, 1.0f}},
-    //    {{0.5f, 0.5f, 0.5f}, {1.0f, 0.0f}},
-    //    {{-0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}},
-
-    //    // Bottom face
-    //    {{-0.5f, -0.5f, -0.5f}, {1.0f, 1.0f}},
-    //    {{0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
-    //    {{0.5f, -0.5f, 0.5f}, {0.0f, 0.0f}},
-    //    {{-0.5f, -0.5f, 0.5f}, {1.0f, 0.0f}}
-    //};
-
-    /*spriteIndices = {
-        0, 1, 2, 2, 3, 0,
-        4, 5, 6, 6, 7, 4,
-        8, 9, 10, 10, 11, 8,
-        12, 13, 14, 14, 15, 12,
-        16, 17, 18, 18, 19, 16,
-        20, 21, 22, 22, 23, 20
-    };*/
-    
-    
 
     if (!InitializeSamplers()) {
         SDL_Log("Failed to create Samplers");
-        return false;
-    }
-
-    if (!InitializeDepthStencils()) {
-        SDL_Log("Failed to create Depth Stencils");
         return false;
     }
 
@@ -200,7 +158,7 @@ bool Renderer::Initialize() {
 
 bool Renderer::InitializeBuffers() {
     SDL_GPUBufferCreateInfo vertexInfo{};
-    vertexInfo.size = 200 * sizeof(Vertex);
+    vertexInfo.size = 10000 * sizeof(Vertex);
     vertexInfo.usage = SDL_GPU_BUFFERUSAGE_VERTEX;
 
     vertexBuffer = SDL_CreateGPUBuffer(device, &vertexInfo);
@@ -212,7 +170,7 @@ bool Renderer::InitializeBuffers() {
     SDL_SetGPUBufferName(device, vertexBuffer, "Vertex Buffer");
 
     SDL_GPUBufferCreateInfo indexInfo{};
-    indexInfo.size = 600 * sizeof(uint32_t);
+    indexInfo.size = 30000 * sizeof(uint32_t);
     indexInfo.usage = SDL_GPU_BUFFERUSAGE_INDEX;
 
     indexBuffer = SDL_CreateGPUBuffer(device, &indexInfo);
@@ -385,9 +343,9 @@ bool Renderer::InitializeSamplers() {
     return true;
 }
 
-bool Renderer::InitializeDepthStencils() {
+bool Renderer::CreateDepthStencils(Window* window) {
     int windowWidth, windowHeight;
-    Engine::GetEngine().GetWindowManager().GetMainWindow()->GetWindowSize(&windowWidth, &windowHeight);
+    window->GetWindowSize(&windowWidth, &windowHeight);
 
     SDL_PropertiesID props = SDL_CreateProperties();
     SDL_SetFloatProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_DEPTH_FLOAT, 1.0f);
@@ -414,47 +372,49 @@ bool Renderer::InitializeDepthStencils() {
     return true;
 }
 
-bool Renderer::UploadVertices(const std::vector<Vertex> &vertices, const std::vector<uint32_t> &indices) {
+DrawInfo Renderer::UploadVertices(const std::vector<Vertex>& vertices, const std::vector<uint32_t>& indices) {
     uint32_t verticesSize = vertices.size() * sizeof(Vertex);
     uint32_t indicesSize = indices.size() * sizeof(uint32_t);
-    
+
     SDL_GPUTransferBufferCreateInfo transferInfo{};
     transferInfo.size = verticesSize + indicesSize;
     transferInfo.usage = SDL_GPU_TRANSFERBUFFERUSAGE_UPLOAD;
 
     auto* transferBuffer = SDL_CreateGPUTransferBuffer(device, &transferInfo);
-    if (!transferBuffer) {
-        SDL_Log("Failed to create transfer buffer!");
-        return false;
-    }
-
     auto* ptr = static_cast<uint8_t*>(SDL_MapGPUTransferBuffer(device, transferBuffer, false));
-    if (!ptr) {
-        SDL_Log("Failed to map transfer buffer!");
-        return false;
-    }
 
     std::memcpy(ptr, vertices.data(), verticesSize);
     std::memcpy(ptr + verticesSize, indices.data(), indicesSize);
-
     SDL_UnmapGPUTransferBuffer(device, transferBuffer);
 
-    // upload immediately
     SDL_GPUCommandBuffer* cmd = SDL_AcquireGPUCommandBuffer(device);
     SDL_GPUCopyPass* copyPass = SDL_BeginGPUCopyPass(cmd);
 
     SDL_GPUTransferBufferLocation src{ transferBuffer, 0 };
-    SDL_GPUBufferRegion dst{ vertexBuffer, 0, verticesSize };
+    SDL_GPUBufferRegion dst{ vertexBuffer, vertexBufferOffset, verticesSize };
     SDL_UploadToGPUBuffer(copyPass, &src, &dst, false);
 
     src.offset = verticesSize;
-    dst = { indexBuffer, 0, indicesSize };
+    dst = { indexBuffer, indexBufferOffset, indicesSize };
     SDL_UploadToGPUBuffer(copyPass, &src, &dst, false);
 
     SDL_EndGPUCopyPass(copyPass);
     SDL_SubmitGPUCommandBuffer(cmd);
     SDL_ReleaseGPUTransferBuffer(device, transferBuffer);
-    return false;
+
+    DrawInfo info{
+        .indexCount = (uint32_t)indices.size(),
+        .firstIndex = indexBufferOffset / sizeof(uint32_t),
+        .vertexOffset = (int32_t)(vertexBufferOffset / sizeof(Vertex))
+    };
+
+    vertexBufferOffset += verticesSize;
+    indexBufferOffset += indicesSize;
+
+    uint32_t maxVertices = 1000;
+    uint32_t maxIndices = 3000;
+
+    return info;
 }
 
 void Renderer::RegisterSprite(SpriteComponent* sprite) {
@@ -462,24 +422,20 @@ void Renderer::RegisterSprite(SpriteComponent* sprite) {
     if (!texture) return;
 
     if (!spriteTextures.contains(texture)) {
-        RenderTexture(texture);
+        if (texture->texture) RenderTexture(texture);
+
+        std::vector<Vertex> vertices = {
+            {{-0.5f, -0.5f, 0.0f}, {0.0f, 1.0f}},
+            {{ 0.5f, -0.5f, 0.0f}, {1.0f, 1.0f}},
+            {{ 0.5f,  0.5f, 0.0f}, {1.0f, 0.0f}},
+            {{-0.5f,  0.5f, 0.0f}, {0.0f, 0.0f}},
+        };
+        std::vector<uint32_t> indices = { 0, 1, 2, 0, 2, 3 };
+
+        spriteDrawInfo[texture] = UploadVertices(vertices, indices);
     }
 
     spriteTextures[texture].push_back(sprite);
-
-    std::vector<Vertex> vertices = {
-        {{-0.5f, -0.5f, 0.0f}, {0.0f, 1.0f}},
-        {{0.5f, -0.5f, 0.0f}, {1.0f, 1.0f}},
-        {{0.5f, 0.5f, 0.0f}, {1.0f, 0.0f}},
-        {{-0.5f, 0.5f, 0.0f}, {0.0f, 0.0f}},
-    };
-
-    std::vector<uint32_t> indices = {
-        0, 1, 2,
-        0, 2, 3,
-    };
-
-    UploadVertices(vertices, indices);
 }
 
 void Renderer::DeregisterSprite(SpriteComponent* sprite) {
@@ -493,6 +449,7 @@ void Renderer::DeregisterSprite(SpriteComponent* sprite) {
     vec.erase(std::ranges::find(vec, sprite));
 
     if (vec.empty()) {
+        // SDL_ReleaseGPUTexture(device, texture->texture);
         spriteTextures.erase(it);
     }
 }
@@ -502,11 +459,10 @@ void Renderer::RegisterMesh(MeshComponent* mesh) {
     if (!m) return;
 
     if (!meshes.contains(m)) {
-        RenderTexture(m->texture);
+        if (m->texture) RenderTexture(m->texture);
+        meshDrawInfo[m] = UploadVertices(m->vertices, m->indices);
     }
-
     meshes[m].push_back(mesh);
-    UploadVertices(m->vertices, m->indices);
 }
 
 void Renderer::DeregisterMesh(MeshComponent* mesh) {
@@ -520,45 +476,9 @@ void Renderer::DeregisterMesh(MeshComponent* mesh) {
     vec.erase(std::ranges::find(vec, mesh));
 
     if (vec.empty()) {
+        // SDL_ReleaseGPUTexture(device, m->texture->texture);
         meshes.erase(it);
     }
-}
-
-Texture* Renderer::CreateTexture(const std::string &texturFilePath) {
-    SDL_Surface* imageData = SDL_LoadSurface(texturFilePath.c_str());
-
-    if (!imageData) {
-        SDL_Log("Failed to load image data: %s", SDL_GetError());
-        return nullptr;
-    }
-
-    SDL_Surface* converted = SDL_ConvertSurface(imageData, SDL_PIXELFORMAT_RGBA32);
-    SDL_DestroySurface(imageData);
-    imageData = converted;
-
-    SDL_GPUTextureCreateInfo textureCreateInfo{
-        .type = SDL_GPU_TEXTURETYPE_2D,
-        .format = SDL_GPU_TEXTUREFORMAT_R8G8B8A8_UNORM,
-        .usage = SDL_GPU_TEXTUREUSAGE_SAMPLER,
-        .width = static_cast<Uint32>(imageData->w),
-        .height = static_cast<Uint32>(imageData->h),
-        .layer_count_or_depth = 1,
-        .num_levels = 1,
-    };
-
-    SDL_GPUTexture* texture = SDL_CreateGPUTexture(&Engine::GetEngine().GetGPUDevice(), &textureCreateInfo);
-    if (!texture) {
-        SDL_Log("Failed to create Texture");
-        return nullptr;
-    }
-    SDL_SetGPUTextureName(&Engine::GetEngine().GetGPUDevice(), texture, texturFilePath.c_str());
-
-    Texture* newTexture = new Texture;
-    newTexture->texture = texture;
-    newTexture->data = imageData;
-    newTexture->texturePath = texturFilePath;
-
-    return newTexture;
 }
 
 void Renderer::Shutdown() {
@@ -578,83 +498,3 @@ void Renderer::Shutdown() {
         shaderManager.reset();
     }
 }
-
-//void Renderer::Render() {
-//    if (!renderer) return;
-//
-//    for (ImageComponent *ic : imageComponents) {
-//        if (!ic || !ic->IsVisible() || ic->GetTextureFilePath().empty()) continue;
-//
-//        SDL_Texture* texture = ic->GetTexture();
-//
-//        if (!texture) continue;
-//
-//        float w, h;
-//
-//        if (!SDL_GetTextureSize(texture, &w, &h)) {
-//            cerr << "Failed to get texture size: " << SDL_GetError() << endl;
-//            continue;
-//        }
-//
-//        SDL_FRect dstRect = {
-//            ic->GetOwner()->GetXPos(),
-//            ic->GetOwner()->GetYPos(),
-//            w * ic->GetScaleX(),
-//            h * ic->GetScaleY()
-//        };
-//
-//        if (!SDL_RenderTexture(renderer.get(), texture, nullptr, &dstRect)) {
-//            cout << "Failed to render : " << SDL_GetError() << endl;
-//        }
-//    }
-//}
-
-//void Renderer::Clear() {
-//    if (!renderer.get()) return;
-//    SDL_SetRenderDrawColor(renderer.get(), 0, 0, 0, 255);
-//    SDL_RenderClear(renderer.get());
-//}
-//
-//void Renderer::Present() {
-//    if (!renderer.get()) return;
-//    SDL_RenderPresent(renderer.get());
-//}
-
-//void Renderer::RegisterImageComponent(ImageComponent* imageComponent) {
-//    imageComponents.push_back(imageComponent);
-//    const string& filepath = imageComponent->GetTextureFilePath();
-//    if (!filepath.empty()) {
-//        GetOrLoadTexture(filepath);
-//    }
-//}
-//
-//void Renderer::DeregisterImageComponent(ImageComponent* imageComponent)
-//{
-//}
-
-//SDL_Texture* Renderer::GetOrLoadTexture(const string& filepath) {
-//    auto it = textureCache.find(filepath);
-//    if (it != textureCache.end()) {
-//        return it->second.get();
-//    }
-//
-//    SDL_Texture* raw = IMG_LoadTexture(renderer.get(), filepath.c_str());
-//    if (!raw) {
-//        cerr << "Failed to load texture: " << filepath
-//            << " - " << SDL_GetError() << endl;
-//        return nullptr;
-//    }
-//
-//    auto texture = unique_ptr<SDL_Texture, SDLTextureDeleter>(raw);
-//    SDL_Texture* result = texture.get();
-//    textureCache.emplace(filepath, move(texture));
-//    return result;
-//}
-//
-//bool Renderer::PreloadTexture(const string& filepath) {
-//    return GetOrLoadTexture(filepath) != nullptr;
-//}
-//
-//void Renderer::ClearTextureCache() {
-//    textureCache.clear();
-//}

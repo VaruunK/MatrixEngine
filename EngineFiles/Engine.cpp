@@ -21,6 +21,7 @@ Engine::Engine() {
 
     CreateDevice();
 
+    assetLoader = std::make_unique<AssetLoader>();
     tickManager = std::make_unique<TickManager>();
     windowManager = std::make_unique<WindowManager>(device.get());
     // physicsManager = std::make_unique<PhysicsManager>();
@@ -69,6 +70,62 @@ int Engine::Run() {
     SpriteComponent* spriteComponent = nullptr;
     bool vel = true;
 
+    std::vector<Vertex> vertices = {
+        // Front face
+        {{-0.5f, -0.5f, 0.5f}, {0.0f, 1.0f}},
+        {{0.5f, -0.5f, 0.5f}, {1.0f, 1.0f}},
+        {{0.5f, 0.5f, 0.5f}, {1.0f, 0.0f}},
+        {{-0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}},
+
+        // Back face
+        {{-0.5f, -0.5f, -0.5f}, {1.0f, 1.0f}},
+        {{0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
+        {{0.5f, 0.5f, -0.5f}, {0.0f, 0.0f}},
+        {{-0.5f, 0.5f, -0.5f}, {1.0f, 0.0f}},
+
+        // Left face
+        {{-0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
+        {{-0.5f, -0.5f, 0.5f}, {1.0f, 1.0f}},
+        {{-0.5f, 0.5f, 0.5f}, {1.0f, 0.0f}},
+        {{-0.5f, 0.5f, -0.5f}, {0.0f, 0.0f}},
+
+        // Right face
+        {{0.5f, -0.5f, -0.5f}, {1.0f, 1.0f}},
+        {{0.5f, -0.5f, 0.5f}, {0.0f, 1.0f}},
+        {{0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}},
+        {{0.5f, 0.5f, -0.5f}, {1.0f, 0.0f}},
+
+        // Top face
+        {{-0.5f, 0.5f, -0.5f}, {0.0f, 1.0f}},
+        {{0.5f, 0.5f, -0.5f}, {1.0f, 1.0f}},
+        {{0.5f, 0.5f, 0.5f}, {1.0f, 0.0f}},
+        {{-0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}},
+
+        // Bottom face
+        {{-0.5f, -0.5f, -0.5f}, {1.0f, 1.0f}},
+        {{0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
+        {{0.5f, -0.5f, 0.5f}, {0.0f, 0.0f}},
+        {{-0.5f, -0.5f, 0.5f}, {1.0f, 0.0f}}
+    };
+
+    std::vector<uint32_t> indices = {
+        0, 1, 2, 2, 3, 0,
+        4, 5, 6, 6, 7, 4,
+        8, 9, 10, 10, 11, 8,
+        12, 13, 14, 14, 15, 12,
+        16, 17, 18, 18, 19, 16,
+        20, 21, 22, 22, 23, 20
+    };
+
+
+
+    Mesh* mesh = assetLoader.get()->CreateMesh("Content/freddy.gltf", "Content/freddy.png");
+
+    Mesh* mesh2 = new Mesh;
+    mesh2->vertices = vertices;
+    mesh2->indices = indices;
+    mesh2->texture = assetLoader.get()->CreateTexture("Content/square_red.png");
+
     while (running.load()) {
         Uint64 currentCounter = SDL_GetPerformanceCounter();
         float deltaSeconds = static_cast<float>(currentCounter - lastCounter) / static_cast<float>(frequency);
@@ -86,64 +143,16 @@ int Engine::Run() {
             
             if (event.type == SDL_EVENT_QUIT) {
                 running.store(false);
+                break;
+            }
+
+            if (event.type = SDL_EVENT_WINDOW_RESIZED) {
+                renderer.get()->resized = true;
             }
 
             if (state[SDL_SCANCODE_SPACE]) {
                 agent1 = level->SpawnFromClass<Agent>();
                 meshComponent = agent1->AddComponent<MeshComponent>();
-
-                std::vector<Vertex> vertices = {
-                    // Front face
-                    {{-0.5f, -0.5f, 0.5f}, {0.0f, 1.0f}},
-                    {{0.5f, -0.5f, 0.5f}, {1.0f, 1.0f}},
-                    {{0.5f, 0.5f, 0.5f}, {1.0f, 0.0f}},
-                    {{-0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}},
-
-                    // Back face
-                    {{-0.5f, -0.5f, -0.5f}, {1.0f, 1.0f}},
-                    {{0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
-                    {{0.5f, 0.5f, -0.5f}, {0.0f, 0.0f}},
-                    {{-0.5f, 0.5f, -0.5f}, {1.0f, 0.0f}},
-
-                    // Left face
-                    {{-0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
-                    {{-0.5f, -0.5f, 0.5f}, {1.0f, 1.0f}},
-                    {{-0.5f, 0.5f, 0.5f}, {1.0f, 0.0f}},
-                    {{-0.5f, 0.5f, -0.5f}, {0.0f, 0.0f}},
-
-                    // Right face
-                    {{0.5f, -0.5f, -0.5f}, {1.0f, 1.0f}},
-                    {{0.5f, -0.5f, 0.5f}, {0.0f, 1.0f}},
-                    {{0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}},
-                    {{0.5f, 0.5f, -0.5f}, {1.0f, 0.0f}},
-
-                    // Top face
-                    {{-0.5f, 0.5f, -0.5f}, {0.0f, 1.0f}},
-                    {{0.5f, 0.5f, -0.5f}, {1.0f, 1.0f}},
-                    {{0.5f, 0.5f, 0.5f}, {1.0f, 0.0f}},
-                    {{-0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}},
-
-                    // Bottom face
-                    {{-0.5f, -0.5f, -0.5f}, {1.0f, 1.0f}},
-                    {{0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
-                    {{0.5f, -0.5f, 0.5f}, {0.0f, 0.0f}},
-                    {{-0.5f, -0.5f, 0.5f}, {1.0f, 0.0f}}
-                };
-
-                std::vector<uint32_t> indices = {
-                    0, 1, 2, 2, 3, 0,
-                    4, 5, 6, 6, 7, 4,
-                    8, 9, 10, 10, 11, 8,
-                    12, 13, 14, 14, 15, 12,
-                    16, 17, 18, 18, 19, 16,
-                    20, 21, 22, 22, 23, 20
-                };
-
-                Mesh* mesh = new Mesh;
-                mesh->vertices = vertices;
-                mesh->indices = indices;
-                mesh->texture = renderer.get()->CreateTexture("Content/square_red.png");
-
                 
                 /*agent->GetComponent<SpriteComponent>()->SetTexture("Content/square_red.png");*/
                 meshComponent->SetMesh(mesh);
@@ -155,20 +164,38 @@ int Engine::Run() {
                 agent2 = level->SpawnFromClass<Agent>();
                 spriteComponent = agent2->AddComponent<SpriteComponent>();
 
-                spriteComponent->SetTexture(renderer.get()->CreateTexture("Content/nanodsa.png"));
+                spriteComponent->SetTexture(assetLoader.get()->CreateTexture("Content/nanodsa.png"));
                 meshComponent = nullptr;
                 activeAgent = agent2;
             }
 
             if (state[SDL_SCANCODE_W]) {
                 if (activeAgent && meshComponent) {
-                    meshComponent->SetComponentLocation(glm::vec3(meshComponent->GetComponentLocation().x + 0.01,
-                        meshComponent->GetComponentLocation().y, meshComponent->GetComponentLocation().z));
+                    meshComponent->SetComponentLocation(glm::vec3(meshComponent->GetComponentLocation().x,
+                        meshComponent->GetComponentLocation().y + 0.01, meshComponent->GetComponentLocation().z));
                 } else if (activeAgent && spriteComponent) {
-                    spriteComponent->SetComponentLocation(glm::vec3(spriteComponent->GetComponentLocation().x + 0.01,
-                        spriteComponent->GetComponentLocation().y, spriteComponent->GetComponentLocation().z));
+                    spriteComponent->SetComponentLocation(glm::vec3(spriteComponent->GetComponentLocation().x,
+                        spriteComponent->GetComponentLocation().y + 0.01, spriteComponent->GetComponentLocation().z));
                 }
             }
+
+            if (state[SDL_SCANCODE_S]) {
+                if (activeAgent && meshComponent) {
+                    meshComponent->SetComponentLocation(glm::vec3(meshComponent->GetComponentLocation().x,
+                        meshComponent->GetComponentLocation().y - 0.01, meshComponent->GetComponentLocation().z));
+                }
+                else if (activeAgent && spriteComponent) {
+                    spriteComponent->SetComponentLocation(glm::vec3(spriteComponent->GetComponentLocation().x,
+                        spriteComponent->GetComponentLocation().y - 0.01, spriteComponent->GetComponentLocation().z));
+                }
+            }
+
+            if (state[SDL_SCANCODE_P]) {
+                if (activeAgent && meshComponent) {
+                    meshComponent->SetMesh(mesh2);
+                }
+            }
+
             if (state[SDL_SCANCODE_E]) {
                 if (activeAgent && meshComponent) {
                     meshComponent->SetComponentRotation(glm::vec3(meshComponent->GetComponentRotation().x,

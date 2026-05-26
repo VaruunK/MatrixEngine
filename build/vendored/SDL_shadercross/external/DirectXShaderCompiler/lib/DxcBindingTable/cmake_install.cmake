@@ -34,7 +34,7 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "LLVMDxcBindingTable" OR NOT CMAKE_INSTALL_COMPONENT)
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxcBindingTable.lib")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxcBindingTabled.lib")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
     file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Release/lib/LLVMDxcBindingTable.lib")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Mm][Ii][Nn][Ss][Ii][Zz][Ee][Rr][Ee][Ll])$")

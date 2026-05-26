@@ -116,7 +116,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\Debug\bin\dxcompiler.dll;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\Debug\bin\dxcompilerd.dll;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\tools\clang\tools\dxcompiler\CMakeFiles\install-dxcompiler</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>

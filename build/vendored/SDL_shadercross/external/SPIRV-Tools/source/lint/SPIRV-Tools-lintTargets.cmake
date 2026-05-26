@@ -58,7 +58,7 @@ set_target_properties(SPIRV-Tools-lint PROPERTIES
 set_property(TARGET SPIRV-Tools-lint APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(SPIRV-Tools-lint PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/SPIRV-Tools-lint.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/SPIRV-Tools-lintd.lib"
   )
 
 # Import target "SPIRV-Tools-lint" for configuration "Release"

@@ -451,7 +451,9 @@ if(SDLIMAGE_ZLIB)
         # disable build of zlib example programs:
         set(ZLIB_BUILD_EXAMPLES OFF CACHE BOOL "zlib examples" FORCE)
         sdl_check_project_in_subfolder(external/zlib zlib SDLIMAGE_VENDORED)
+        if(NOT TARGET zlibstatic)
         add_subdirectory(external/zlib external/zlib-build EXCLUDE_FROM_ALL)
+    endif()
         register_license(zlib external/zlib/LICENSE)
         set(ZLIB_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/external/zlib;${CMAKE_CURRENT_BINARY_DIR}/external/zlib-build")
         # ZLIB_INCLUDE_DIR variable is used by vendored libpng

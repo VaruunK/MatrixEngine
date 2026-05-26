@@ -1,0 +1,17 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-4.2/Modules/BasicConfigVersion-SameMajorVersion.cmake.in
+C:/Program Files/CMake/share/cmake-4.2/Modules/CMakePackageConfigHelpers.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/FindPkgConfig.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/WriteBasicConfigVersionFile.cmake
+C:/Users/varuu/development/Engine/build/CMakeFiles/cmake.verify_globs
+C:/Users/varuu/development/Engine/vendored/assimp/CMakeLists.txt
+C:/Users/varuu/development/Engine/vendored/assimp/assimp.pc.in
+C:/Users/varuu/development/Engine/vendored/assimp/cmake-modules/FindPkgMacros.cmake
+C:/Users/varuu/development/Engine/vendored/assimp/cmake-modules/FindZLIB.cmake
+C:/Users/varuu/development/Engine/vendored/assimp/cmake-modules/PrecompiledHeader.cmake
+C:/Users/varuu/development/Engine/vendored/assimp/cmake-modules/assimp-plain-config.cmake.in
+C:/Users/varuu/development/Engine/vendored/assimp/cmake-modules/cmake_uninstall.cmake.in
+C:/Users/varuu/development/Engine/vendored/assimp/include/assimp/config.h.in
+C:/Users/varuu/development/Engine/vendored/assimp/include/assimp/revision.h.in

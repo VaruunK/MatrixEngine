@@ -69,15 +69,15 @@ set_target_properties(SDL3_shadercross::spirv-cross-c-shared PROPERTIES
 # Import target "SDL3_shadercross::dxcompiler" for configuration "Debug"
 set_property(TARGET SDL3_shadercross::dxcompiler APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(SDL3_shadercross::dxcompiler PROPERTIES
-  IMPORTED_IMPLIB_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/dxcompiler.lib"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/bin/dxcompiler.dll"
+  IMPORTED_IMPLIB_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/dxcompilerd.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/bin/dxcompilerd.dll"
   )
 
 # Import target "SDL3_shadercross::dxildll" for configuration "Debug"
 set_property(TARGET SDL3_shadercross::dxildll APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(SDL3_shadercross::dxildll PROPERTIES
-  IMPORTED_IMPLIB_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/dxil.lib"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/bin/dxil.dll"
+  IMPORTED_IMPLIB_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/dxild.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/bin/dxild.dll"
   )
 
 # Import target "SDL3_shadercross::spirv-cross-c-shared" for configuration "Release"

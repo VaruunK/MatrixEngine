@@ -336,21 +336,21 @@ add_executable(clang-tblgen IMPORTED)
 set_property(TARGET LLVMSupport APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMSupport PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "C;CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMSupport.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMSupportd.lib"
   )
 
 # Import target "LLVMMSSupport" for configuration "Debug"
 set_property(TARGET LLVMMSSupport APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMMSSupport PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMMSSupport.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMMSSupportd.lib"
   )
 
 # Import target "LLVMTableGen" for configuration "Debug"
 set_property(TARGET LLVMTableGen APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMTableGen PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMTableGen.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMTableGend.lib"
   )
 
 # Import target "llvm-tblgen" for configuration "Debug"
@@ -363,245 +363,245 @@ set_target_properties(llvm-tblgen PROPERTIES
 set_property(TARGET LLVMCore APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMCore PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMCore.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMCored.lib"
   )
 
 # Import target "LLVMIRReader" for configuration "Debug"
 set_property(TARGET LLVMIRReader APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMIRReader PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMIRReader.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMIRReaderd.lib"
   )
 
 # Import target "LLVMBitReader" for configuration "Debug"
 set_property(TARGET LLVMBitReader APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMBitReader PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMBitReader.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMBitReaderd.lib"
   )
 
 # Import target "LLVMBitWriter" for configuration "Debug"
 set_property(TARGET LLVMBitWriter APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMBitWriter PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMBitWriter.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMBitWriterd.lib"
   )
 
 # Import target "LLVMTransformUtils" for configuration "Debug"
 set_property(TARGET LLVMTransformUtils APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMTransformUtils PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMTransformUtils.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMTransformUtilsd.lib"
   )
 
 # Import target "LLVMInstCombine" for configuration "Debug"
 set_property(TARGET LLVMInstCombine APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMInstCombine PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMInstCombine.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMInstCombined.lib"
   )
 
 # Import target "LLVMScalarOpts" for configuration "Debug"
 set_property(TARGET LLVMScalarOpts APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMScalarOpts PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMScalarOpts.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMScalarOptsd.lib"
   )
 
 # Import target "LLVMipo" for configuration "Debug"
 set_property(TARGET LLVMipo APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMipo PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMipo.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMipod.lib"
   )
 
 # Import target "LLVMVectorize" for configuration "Debug"
 set_property(TARGET LLVMVectorize APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMVectorize PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMVectorize.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMVectorized.lib"
   )
 
 # Import target "LLVMLinker" for configuration "Debug"
 set_property(TARGET LLVMLinker APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMLinker PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMLinker.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMLinkerd.lib"
   )
 
 # Import target "LLVMAnalysis" for configuration "Debug"
 set_property(TARGET LLVMAnalysis APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMAnalysis PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMAnalysis.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMAnalysisd.lib"
   )
 
 # Import target "LLVMipa" for configuration "Debug"
 set_property(TARGET LLVMipa APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMipa PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMipa.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMipad.lib"
   )
 
 # Import target "LLVMOption" for configuration "Debug"
 set_property(TARGET LLVMOption APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMOption PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMOption.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMOptiond.lib"
   )
 
 # Import target "LLVMTarget" for configuration "Debug"
 set_property(TARGET LLVMTarget APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMTarget PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMTarget.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMTargetd.lib"
   )
 
 # Import target "LLVMAsmParser" for configuration "Debug"
 set_property(TARGET LLVMAsmParser APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMAsmParser PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMAsmParser.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMAsmParserd.lib"
   )
 
 # Import target "LLVMProfileData" for configuration "Debug"
 set_property(TARGET LLVMProfileData APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMProfileData PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMProfileData.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMProfileDatad.lib"
   )
 
 # Import target "LLVMPasses" for configuration "Debug"
 set_property(TARGET LLVMPasses APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMPasses PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMPasses.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMPassesd.lib"
   )
 
 # Import target "LLVMPassPrinters" for configuration "Debug"
 set_property(TARGET LLVMPassPrinters APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMPassPrinters PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMPassPrinters.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMPassPrintersd.lib"
   )
 
 # Import target "LLVMDxcSupport" for configuration "Debug"
 set_property(TARGET LLVMDxcSupport APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMDxcSupport PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxcSupport.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxcSupportd.lib"
   )
 
 # Import target "LLVMHLSL" for configuration "Debug"
 set_property(TARGET LLVMHLSL APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMHLSL PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMHLSL.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMHLSLd.lib"
   )
 
 # Import target "LLVMDXIL" for configuration "Debug"
 set_property(TARGET LLVMDXIL APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMDXIL PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDXIL.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDXILd.lib"
   )
 
 # Import target "LLVMDxilContainer" for configuration "Debug"
 set_property(TARGET LLVMDxilContainer APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMDxilContainer PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxilContainer.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxilContainerd.lib"
   )
 
 # Import target "LLVMDxilHash" for configuration "Debug"
 set_property(TARGET LLVMDxilHash APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMDxilHash PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxilHash.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxilHashd.lib"
   )
 
 # Import target "LLVMDxilPdbInfo" for configuration "Debug"
 set_property(TARGET LLVMDxilPdbInfo APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMDxilPdbInfo PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxilPdbInfo.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxilPdbInfod.lib"
   )
 
 # Import target "LLVMDxilPIXPasses" for configuration "Debug"
 set_property(TARGET LLVMDxilPIXPasses APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMDxilPIXPasses PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxilPIXPasses.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxilPIXPassesd.lib"
   )
 
 # Import target "LLVMDxilDia" for configuration "Debug"
 set_property(TARGET LLVMDxilDia APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMDxilDia PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxilDia.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxilDiad.lib"
   )
 
 # Import target "LLVMDxilRootSignature" for configuration "Debug"
 set_property(TARGET LLVMDxilRootSignature APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMDxilRootSignature PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxilRootSignature.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxilRootSignatured.lib"
   )
 
 # Import target "LLVMDxilValidation" for configuration "Debug"
 set_property(TARGET LLVMDxilValidation APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMDxilValidation PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxilValidation.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxilValidationd.lib"
   )
 
 # Import target "LLVMDxcBindingTable" for configuration "Debug"
 set_property(TARGET LLVMDxcBindingTable APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMDxcBindingTable PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxcBindingTable.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxcBindingTabled.lib"
   )
 
 # Import target "LLVMDxrFallback" for configuration "Debug"
 set_property(TARGET LLVMDxrFallback APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMDxrFallback PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxrFallback.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxrFallbackd.lib"
   )
 
 # Import target "LLVMDxilCompression" for configuration "Debug"
 set_property(TARGET LLVMDxilCompression APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(LLVMDxilCompression PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "C;CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxilCompression.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/LLVMDxilCompressiond.lib"
   )
 
 # Import target "DxilConvPasses" for configuration "Debug"
 set_property(TARGET DxilConvPasses APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(DxilConvPasses PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/DxilConvPasses.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/DxilConvPassesd.lib"
   )
 
 # Import target "DxbcConverter" for configuration "Debug"
 set_property(TARGET DxbcConverter APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(DxbcConverter PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/DxbcConverter.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/DxbcConverterd.lib"
   )
 
 # Import target "ShaderBinary" for configuration "Debug"
 set_property(TARGET ShaderBinary APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(ShaderBinary PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/ShaderBinary.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/ShaderBinaryd.lib"
   )
 
 # Import target "dxilconv" for configuration "Debug"
 set_property(TARGET dxilconv APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(dxilconv PROPERTIES
-  IMPORTED_IMPLIB_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/dxilconv.lib"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/bin/dxilconv.dll"
+  IMPORTED_IMPLIB_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/dxilconvd.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/bin/dxilconvd.dll"
   )
 
 # Import target "llvm-config" for configuration "Debug"

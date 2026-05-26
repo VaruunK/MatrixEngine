@@ -56,9 +56,9 @@ set_target_properties(SDL3_shadercross::SDL3_shadercross-shared PROPERTIES
 # Import target "SDL3_shadercross::SDL3_shadercross-shared" for configuration "Debug"
 set_property(TARGET SDL3_shadercross::SDL3_shadercross-shared APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(SDL3_shadercross::SDL3_shadercross-shared PROPERTIES
-  IMPORTED_IMPLIB_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/SDL3_shadercross.lib"
+  IMPORTED_IMPLIB_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/SDL3_shadercrossd.lib"
   IMPORTED_LINK_DEPENDENT_LIBRARIES_DEBUG "SDL3::SDL3-shared;SDL3_shadercross::spirv-cross-c-shared;SDL3_shadercross::dxcompiler"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/SDL3_shadercross.dll"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/SDL3_shadercrossd.dll"
   )
 
 # Import target "SDL3_shadercross::SDL3_shadercross-shared" for configuration "Release"

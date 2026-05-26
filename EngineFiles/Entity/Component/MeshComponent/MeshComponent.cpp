@@ -15,25 +15,41 @@ void MeshComponent::DestroyComponent() {
     Engine::GetEngine().GetRenderer().DeregisterMesh(this);
 }
 
+//const glm::mat4 MeshComponent::GetModelMatrix(float windowAspectRatio) {
+//    if (!mesh->texture) {
+//        return glm::mat4(1.0f);
+//    }
+//
+//    float imageAspectRatio = static_cast<float>(mesh->texture->data->w) /
+//        static_cast<float>(mesh->texture->data->h);
+//    glm::vec3 scale = glm::vec3(GetComponentScale() * (imageAspectRatio / windowAspectRatio));
+//
+//    glm::mat4 model = glm::mat4(1.0f);
+//
+//    model = glm::translate(model, GetComponentLocation());
+//
+//    glm::vec3 rotation = GetComponentRotation();
+//    model = glm::rotate(model, glm::radians(rotation.x), glm::vec3(1, 0, 0));  // pitch
+//    model = glm::rotate(model, glm::radians(rotation.y), glm::vec3(0, 1, 0));  // yaw
+//    model = glm::rotate(model, glm::radians(rotation.z), glm::vec3(0, 0, 1));  // roll
+//
+//    std::cout << "X: " << GetComponentRotation().x << " Y: " << GetComponentRotation().y << " Z: " << GetComponentRotation().z << std::endl;
+//
+//    model = glm::scale(model, scale);
+//
+//    return model;
+//}
+
 const glm::mat4 MeshComponent::GetModelMatrix(float windowAspectRatio) {
-
-    float imageAspectRatio = static_cast<float>(mesh->texture->data->w) /
-        static_cast<float>(mesh->texture->data->h);
-    glm::vec3 scale = glm::vec3(GetComponentScale() * (imageAspectRatio / windowAspectRatio));
-
     glm::mat4 model = glm::mat4(1.0f);
-
     model = glm::translate(model, GetComponentLocation());
 
     glm::vec3 rotation = GetComponentRotation();
-    model = glm::rotate(model, glm::radians(rotation.x), glm::vec3(1, 0, 0));  // pitch
-    model = glm::rotate(model, glm::radians(rotation.y), glm::vec3(0, 1, 0));  // yaw
-    model = glm::rotate(model, glm::radians(rotation.z), glm::vec3(0, 0, 1));  // roll
+    model = glm::rotate(model, glm::radians(rotation.x), glm::vec3(1, 0, 0));
+    model = glm::rotate(model, glm::radians(rotation.y), glm::vec3(0, 1, 0));
+    model = glm::rotate(model, glm::radians(rotation.z), glm::vec3(0, 0, 1));
 
-    // std::cout << "X: " << GetComponentRotation().x << " Y: " << GetComponentRotation().y << " Z: " << GetComponentRotation().z << std::endl;
-
-    model = glm::scale(model, scale);
-
+    model = glm::scale(model, GetComponentScale());
     return model;
 }
 
@@ -43,7 +59,7 @@ void MeshComponent::SetMesh(Mesh* mesh) {
     }
 
     if (this->mesh) {
-        free(this->mesh);
+        Engine::GetEngine().GetRenderer().DeregisterMesh(this);
     }
     
     this->mesh = mesh;

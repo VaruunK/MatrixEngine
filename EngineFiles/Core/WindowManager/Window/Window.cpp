@@ -34,10 +34,6 @@ Window::Window(SDL_GPUDevice* device, const std::string& name, const std::string
     }
 }
 
-Window::~Window() {
-    SDL_ReleaseWindowFromGPUDevice(device, window);
-}
-
 bool Window::WaitAndAquireGPUGwapchainTexture(SDL_GPUCommandBuffer* commandBuffer, SDL_GPUTexture** swapChainTexture, 
     uint32_t* swapchain_texture_width, uint32_t* swapchain_texture_height) {
 

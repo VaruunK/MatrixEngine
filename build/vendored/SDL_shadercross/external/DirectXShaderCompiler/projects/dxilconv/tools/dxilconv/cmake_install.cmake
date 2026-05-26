@@ -34,7 +34,7 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "dxilconv" OR NOT CMAKE_INSTALL_COMPONENT)
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/bin/dxilconv.dll")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/bin/dxilconvd.dll")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
     file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Release/bin/dxilconv.dll")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Mm][Ii][Nn][Ss][Ii][Zz][Ee][Rr][Ee][Ll])$")

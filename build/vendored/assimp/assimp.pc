@@ -1,0 +1,9 @@
+libdir=C:/Program Files (x86)/Matrix_Engine/lib
+includedir=C:/Program Files (x86)/Matrix_Engine/include
+
+Name: Matrix_Engine
+Description: Import various well-known 3D model formats in an uniform manner.
+Version: 6.0.5
+Libs: -L${libdir} -lassimp
+Libs.private:  -l
+Cflags: -I${includedir}

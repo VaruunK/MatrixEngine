@@ -61,7 +61,7 @@
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\Debug\bin\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">dxilconv.dir\Debug\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">dxilconv</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">dxilconvd</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
@@ -130,7 +130,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\..\..\..\Debug\lib\DxbcConverter.lib;..\..\..\..\Debug\lib\LLVMBitWriter.lib;..\..\..\..\Debug\lib\LLVMDXIL.lib;..\..\..\..\Debug\lib\LLVMDxilContainer.lib;..\..\..\..\Debug\lib\LLVMDxilRootSignature.lib;..\..\..\..\Debug\lib\LLVMDxilValidation.lib;..\..\..\..\Debug\lib\LLVMMSSupport.lib;..\..\..\..\Debug\lib\LLVMScalarOpts.lib;..\..\..\..\Debug\lib\DxilConvPasses.lib;..\..\..\..\Debug\lib\ShaderBinary.lib;..\..\..\..\Debug\lib\LLVMInstCombine.lib;..\..\..\..\Debug\lib\LLVMProfileData.lib;..\..\..\..\Debug\lib\LLVMHLSL.lib;..\..\..\..\Debug\lib\LLVMDxilContainer.lib;..\..\..\..\Debug\lib\LLVMBitWriter.lib;..\..\..\..\Debug\lib\LLVMTransformUtils.lib;..\..\..\..\Debug\lib\LLVMipa.lib;..\..\..\..\Debug\lib\LLVMAnalysis.lib;..\..\..\..\Debug\lib\LLVMDxcBindingTable.lib;..\..\..\..\Debug\lib\LLVMDXIL.lib;..\..\..\..\Debug\lib\LLVMBitReader.lib;..\..\..\..\Debug\lib\LLVMCore.lib;..\..\..\..\Debug\lib\LLVMDxcSupport.lib;..\..\..\..\Debug\lib\LLVMSupport.lib;..\..\..\..\Debug\lib\LLVMMSSupport.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\..\..\..\Debug\lib\DxbcConverterd.lib;..\..\..\..\Debug\lib\LLVMBitWriterd.lib;..\..\..\..\Debug\lib\LLVMDXILd.lib;..\..\..\..\Debug\lib\LLVMDxilContainerd.lib;..\..\..\..\Debug\lib\LLVMDxilRootSignatured.lib;..\..\..\..\Debug\lib\LLVMDxilValidationd.lib;..\..\..\..\Debug\lib\LLVMMSSupportd.lib;..\..\..\..\Debug\lib\LLVMScalarOptsd.lib;..\..\..\..\Debug\lib\DxilConvPassesd.lib;..\..\..\..\Debug\lib\ShaderBinaryd.lib;..\..\..\..\Debug\lib\LLVMInstCombined.lib;..\..\..\..\Debug\lib\LLVMProfileDatad.lib;..\..\..\..\Debug\lib\LLVMHLSLd.lib;..\..\..\..\Debug\lib\LLVMDxilContainerd.lib;..\..\..\..\Debug\lib\LLVMBitWriterd.lib;..\..\..\..\Debug\lib\LLVMTransformUtilsd.lib;..\..\..\..\Debug\lib\LLVMipad.lib;..\..\..\..\Debug\lib\LLVMAnalysisd.lib;..\..\..\..\Debug\lib\LLVMDxcBindingTabled.lib;..\..\..\..\Debug\lib\LLVMDXILd.lib;..\..\..\..\Debug\lib\LLVMBitReaderd.lib;..\..\..\..\Debug\lib\LLVMCored.lib;..\..\..\..\Debug\lib\LLVMDxcSupportd.lib;..\..\..\..\Debug\lib\LLVMSupportd.lib;..\..\..\..\Debug\lib\LLVMMSSupportd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64 /DEBUGTYPE:CV,FIXUP,PDATA /guard:cf</AdditionalOptions>
       <CETCompat>true</CETCompat>
@@ -138,10 +138,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
-      <ImportLibrary>C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/dxilconv.lib</ImportLibrary>
+      <ImportLibrary>C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/dxilconvd.lib</ImportLibrary>
       <LinkErrorReporting></LinkErrorReporting>
       <ModuleDefinitionFile>C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/projects/dxilconv/tools/dxilconv/dxilconv.def</ModuleDefinitionFile>
-      <ProgramDataBaseFile>C:/Users/varuu/development/Engine/build/Debug/lib/dxilconv.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>C:/Users/varuu/development/Engine/build/Debug/lib/dxilconvd.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
       <SubSystem></SubSystem>
       <Version>3.7</Version>

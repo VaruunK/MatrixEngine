@@ -15,7 +15,6 @@ public:
     void DestroyComponent() override;
 
     const Mesh* GetMesh() { return mesh; }
-    const std::string GetTextureFilePath() { return textureFilePath; }
     const glm::mat4 GetModelMatrix(float windowAspectRatio);
 
     void SetMesh(Mesh* mesh);    
@@ -23,5 +22,4 @@ public:
 
 private:
 	Mesh* mesh;
-	std::string textureFilePath;
 };

@@ -129,7 +129,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\..\Debug\lib\LLVMBitWriter.lib;..\..\Debug\lib\LLVMCore.lib;..\..\Debug\lib\LLVMIRReader.lib;..\..\Debug\lib\LLVMLinker.lib;..\..\Debug\lib\LLVMSupport.lib;..\..\Debug\lib\LLVMAsmParser.lib;..\..\Debug\lib\LLVMTransformUtils.lib;..\..\Debug\lib\LLVMipa.lib;..\..\Debug\lib\LLVMAnalysis.lib;..\..\Debug\lib\LLVMDXIL.lib;..\..\Debug\lib\LLVMBitReader.lib;..\..\Debug\lib\LLVMCore.lib;..\..\Debug\lib\LLVMDxcSupport.lib;..\..\Debug\lib\LLVMSupport.lib;..\..\Debug\lib\LLVMMSSupport.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\..\Debug\lib\LLVMBitWriterd.lib;..\..\Debug\lib\LLVMCored.lib;..\..\Debug\lib\LLVMIRReaderd.lib;..\..\Debug\lib\LLVMLinkerd.lib;..\..\Debug\lib\LLVMSupportd.lib;..\..\Debug\lib\LLVMAsmParserd.lib;..\..\Debug\lib\LLVMTransformUtilsd.lib;..\..\Debug\lib\LLVMipad.lib;..\..\Debug\lib\LLVMAnalysisd.lib;..\..\Debug\lib\LLVMDXILd.lib;..\..\Debug\lib\LLVMBitReaderd.lib;..\..\Debug\lib\LLVMCored.lib;..\..\Debug\lib\LLVMDxcSupportd.lib;..\..\Debug\lib\LLVMSupportd.lib;..\..\Debug\lib\LLVMMSSupportd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64 /DEBUGTYPE:CV,FIXUP,PDATA /guard:cf</AdditionalOptions>
       <CETCompat>true</CETCompat>

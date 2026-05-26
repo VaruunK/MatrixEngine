@@ -1,19 +1,12 @@
 #pragma once
 #include "Core/ShaderManager/ShaderManager.hpp"
 #include "PipelineEnums.hpp"
+#include "RenderStructs.hpp"
 #include <string>
 #include <unordered_map>
 #include <vector>
 #include <memory>
 
-struct Texture;
-struct Vertex;
-struct Mesh;
-struct SDL_GPUDevice;
-struct SDL_GPUShader;
-struct SDL_GPUSampler;
-struct SDL_GPUTexture;
-struct SDL_GPUBuffer;
 class SpriteComponent;
 class MeshComponent;
 class Window;
@@ -30,18 +23,16 @@ public:
 
     void RegisterMesh(MeshComponent* mesh);
     void DeregisterMesh(MeshComponent* mesh);
-
-    Texture* CreateTexture(const std::string &texturFilePath);
     
     void Shutdown();
-
+    bool resized = false;
 private:
     bool InitializeBuffers();
     bool InitializePipelines(Window* window, SDL_GPUShader* vertexShader, SDL_GPUShader* fragmentShader);
     bool InitializeSamplers();
-    bool InitializeDepthStencils();
+    bool CreateDepthStencils(Window* window);
 
-    bool UploadVertices(const std::vector<Vertex> &vertices, const std::vector<uint32_t> &indices);
+    DrawInfo UploadVertices(const std::vector<Vertex> &vertices, const std::vector<uint32_t> &indices);
 
     SDL_GPUTextureFormat GetDepthStencilFormat();
     bool RenderTexture(const Texture* texture);
@@ -52,9 +43,14 @@ private:
 
     SDL_GPUBuffer* vertexBuffer = nullptr;
     SDL_GPUBuffer* indexBuffer = nullptr;
+    uint32_t vertexBufferOffset = 0;
+    uint32_t indexBufferOffset = 0;
 
     std::unordered_map<const Texture*, std::vector<SpriteComponent*>> spriteTextures;
     std::unordered_map<const Mesh*, std::vector<MeshComponent*>> meshes;
+
+    std::unordered_map<const Mesh*, DrawInfo> meshDrawInfo;
+    std::unordered_map<const Texture*, DrawInfo> spriteDrawInfo;
 
     std::unordered_map<PIPELINE_TYPE, SDL_GPUGraphicsPipeline*> pipelines;
 

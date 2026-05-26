@@ -14,14 +14,169 @@
 # EXTERNAL cache entries
 ########################
 
+//Android JNI IOSystem support is active
+ASSIMP_ANDROID_JNIIOSYSTEM:BOOL=OFF
+
+//Path for runtime output files
+ASSIMP_ARCHIVE_OUTPUT_DIRECTORY:STRING=C:/Users/varuu/development/Engine/build/$<CONFIG>/lib
+
+//Enable AddressSanitizer.
+ASSIMP_ASAN:BOOL=OFF
+
+//Path the tool executables are installed to.
+ASSIMP_BIN_INSTALL_DIR:STRING=bin
+
+//default value of all ASSIMP_BUILD_XXX_EXPORTER values
+ASSIMP_BUILD_ALL_EXPORTERS_BY_DEFAULT:BOOL=OFF
+
+//default value of all ASSIMP_BUILD_XXX_IMPORTER values
+ASSIMP_BUILD_ALL_IMPORTERS_BY_DEFAULT:BOOL=OFF
+
+//describe the current architecture.
+ASSIMP_BUILD_ARCHITECTURE:STRING=
+
+//If the supplementary tools for Assimp are built in addition to
+// the library.
+ASSIMP_BUILD_ASSIMP_TOOLS:BOOL=OFF
+
+ASSIMP_BUILD_COLLADA_EXPORTER:BOOL=ON
+
+ASSIMP_BUILD_COLLADA_IMPORTER:BOOL=ON
+
+//describe the current compiler.
+ASSIMP_BUILD_COMPILER:STRING=
+
+//Build documentation using Doxygen.
+ASSIMP_BUILD_DOCS:BOOL=OFF
+
+//If the Draco libraries are to be built. Primarily for glTF
+ASSIMP_BUILD_DRACO:BOOL=OFF
+
+ASSIMP_BUILD_FBX_EXPORTER:BOOL=ON
+
+ASSIMP_BUILD_FBX_IMPORTER:BOOL=ON
+
+//Build package as Mac OS X Framework bundle.
+ASSIMP_BUILD_FRAMEWORK:BOOL=OFF
+
+ASSIMP_BUILD_GLTF_EXPORTER:BOOL=ON
+
+ASSIMP_BUILD_GLTF_IMPORTER:BOOL=ON
+
+//Enable M3D file export
+ASSIMP_BUILD_M3D_EXPORTER:BOOL=OFF
+
+//Enable M3D file import
+ASSIMP_BUILD_M3D_IMPORTER:BOOL=OFF
+
+//Build the C4D importer, which relies on the non-free Cineware
+// SDK.
+ASSIMP_BUILD_NONFREE_C4D_IMPORTER:BOOL=OFF
+
+ASSIMP_BUILD_OBJ_EXPORTER:BOOL=ON
+
+ASSIMP_BUILD_OBJ_IMPORTER:BOOL=ON
+
+//If the official samples are built as well (needs Glut).
+ASSIMP_BUILD_SAMPLES:BOOL=OFF
+
+//If the test suite for Assimp is built in addition to the library.
+ASSIMP_BUILD_TESTS:BOOL=ON
+
+//Enable USD file import
+ASSIMP_BUILD_USD_IMPORTER:BOOL=OFF
+
+//Enable verbose USD import debug logging
+ASSIMP_BUILD_USD_VERBOSE_LOGS:BOOL=OFF
+
+//Use ccache to speed up compilation.
+ASSIMP_BUILD_USE_CCACHE:BOOL=ON
+
+//Enable VRML (.wrl/.x3dv) file import
+ASSIMP_BUILD_VRML_IMPORTER:BOOL=OFF
+
+//Build your zlib
+ASSIMP_BUILD_ZLIB:BOOL=OFF
+
+//Enable this to measure test coverage.
+ASSIMP_COVERALLS:BOOL=OFF
+
+//Set to ON to enable double precision processing
+ASSIMP_DOUBLE_PRECISION:BOOL=OFF
+
+//adds the target headercheck which compiles every header file,
+// default disabled because it adds many targets
+ASSIMP_HEADERCHECK:BOOL=OFF
+
+//Enable Hunter package manager support
+ASSIMP_HUNTER_ENABLED:BOOL=OFF
+
+//Don't call git to get the hash.
+ASSIMP_IGNORE_GIT_HASH:BOOL=OFF
+
+//Path the header files are installed to.
+ASSIMP_INCLUDE_INSTALL_DIR:STRING=include
+
+//Inject debug postfix in .a/.so/.dll lib names
+ASSIMP_INJECT_DEBUG_POSTFIX:BOOL=ON
+
+//Disable this if you want to use assimp as a submodule.
+ASSIMP_INSTALL:BOOL=ON
+
+//Create MSVC debug symbol files and add to Install target.
+ASSIMP_INSTALL_PDB:BOOL=ON
+
+//Path for runtime output files
+ASSIMP_LIBRARY_OUTPUT_DIRECTORY:STRING=C:/Users/varuu/development/Engine/build/$<CONFIG>
+
+//Suffix to append to library names
+ASSIMP_LIBRARY_SUFFIX:STRING=
+
+//Path the built library files are installed to.
+ASSIMP_LIB_INSTALL_DIR:STRING=lib
+
+//Disable Assimp's export functionality.
+ASSIMP_NO_EXPORT:BOOL=OFF
+
+//Set to ON to generate CPack configuration files and packaging
+// targets
+ASSIMP_OPT_BUILD_PACKAGES:BOOL=OFF
+
+//the package-specific version used for uploading the sources
+ASSIMP_PACKAGE_VERSION:STRING=0
+
+//Suppress rapidjson warning on MSVC (NOTE: breaks android build)
+ASSIMP_RAPIDJSON_NO_MEMBER_ITERATOR:BOOL=ON
+
+//Path for runtime output files
+ASSIMP_RUNTIME_OUTPUT_DIRECTORY:STRING=C:/Users/varuu/development/Engine/build/$<CONFIG>
+
+//Enable Undefined Behavior sanitizer.
+ASSIMP_UBSAN:BOOL=OFF
+
+//Treat all warnings as errors.
+ASSIMP_WARNINGS_AS_ERRORS:BOOL=ON
+
 //Path to a program.
 AWK:FILEPATH=AWK-NOTFOUND
+
+//Value Computed by CMake
+Assimp_BINARY_DIR:STATIC=C:/Users/varuu/development/Engine/build/vendored/assimp
+
+//Value Computed by CMake
+Assimp_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+Assimp_SOURCE_DIR:STATIC=C:/Users/varuu/development/Engine/vendored/assimp
 
 //Default URL where bug reports are to be submitted.
 BUG_REPORT_URL:STRING=http://llvm.org/bugs/
 
-//Build the library as a shared library
-BUILD_SHARED_LIBS:BOOL=ON
+//Build package with shared libraries.
+BUILD_SHARED_LIBS:BOOL=OFF
+
+//Path to a program.
+CCACHE_PATH:FILEPATH=CCACHE_PATH-NOTFOUND
 
 //Build CLANG example programs by default.
 CLANG_BUILD_EXAMPLES:BOOL=OFF
@@ -116,6 +271,9 @@ CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=/Zi /O2 /Ob1 /DNDEBUG
 
 //Libraries linked by default with all C applications.
 CMAKE_C_STANDARD_LIBRARIES:STRING=kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
+
+//Debug Postfix for lib, samples and tools
+CMAKE_DEBUG_POSTFIX:STRING=d
 
 //Flags used by the linker during all build types.
 CMAKE_EXE_LINKER_FLAGS:STRING=/machine:x64
@@ -486,6 +644,9 @@ LIBCLANG_BUILD_STATIC:BOOL=ON
 //Version number that will be placed into the libclang library
 // , in the form XX.YY
 LIBCLANG_LIBRARY_VERSION:STRING=3.7
+
+//the suffix for the assimp windows library
+LIBRARY_SUFFIX:STRING=-vc143-mt
 
 //Path to a file.
 LIBXML2_INCLUDE_DIR:PATH=LIBXML2_INCLUDE_DIR-NOTFOUND
@@ -929,6 +1090,8 @@ SDLIMAGE_XPM:BOOL=ON
 //Support loading XV images
 SDLIMAGE_XV:BOOL=ON
 
+SDLIMAGE_ZLIB:BOOL=OFF
+
 //Build command line executable
 SDLSHADERCROSS_CLI:BOOL=ON
 
@@ -1368,6 +1531,9 @@ SPIRV_WERROR:BOOL=ON
 //Plist name
 TOOL_INFO_PLIST:STRING=Info.plist
 
+//Link against the static runtime libraries.
+USE_STATIC_CRT:BOOL=OFF
+
 VS_DIA_INC_PATH:STRING=C:/Program Files/Microsoft Visual Studio/2022/Community/DIA SDK/include
 
 WIN10_SDK_PATH:STRING=C:/Program Files (x86)/Windows Kits/10
@@ -1375,11 +1541,21 @@ WIN10_SDK_PATH:STRING=C:/Program Files (x86)/Windows Kits/10
 //Build LLVM with Polly
 WITH_POLLY:BOOL=ON
 
-//Enable Zlib Examples
+//zlib examples
 ZLIB_BUILD_EXAMPLES:BOOL=OFF
+
+ZLIB_FOUND:BOOL=TRUE
 
 //path of zlib, passed to libpng
 ZLIB_INCLUDE_DIR:STRING=C:/Users/varuu/development/Engine/vendored/SDL_image/external/zlib;C:/Users/varuu/development/Engine/build/vendored/SDL_image/external/zlib-build
+
+ZLIB_LIBRARY:STRING=zlibstatic
+
+//Path to a library.
+ZLIB_LIBRARY_DBG:FILEPATH=ZLIB_LIBRARY_DBG-NOTFOUND
+
+//Path to a library.
+ZLIB_LIBRARY_REL:FILEPATH=ZLIB_LIBRARY_REL-NOTFOUND
 
 //Path to a program.
 git_executable:FILEPATH=C:/Program Files/Git/cmd/git.exe
@@ -1428,6 +1604,10 @@ zlib_SOURCE_DIR:STATIC=C:/Users/varuu/development/Engine/vendored/SDL_image/exte
 # INTERNAL cache entries
 ########################
 
+//ADVANCED property for variable: ASSIMP_BUILD_ARCHITECTURE
+ASSIMP_BUILD_ARCHITECTURE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ASSIMP_BUILD_COMPILER
+ASSIMP_BUILD_COMPILER-ADVANCED:INTERNAL=1
 //Test CAN_PRESEED
 CAN_PRESEED:INTERNAL=1
 //ADVANCED property for variable: CLANG_EXECUTABLE_VERSION
@@ -1546,7 +1726,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MT
 CMAKE_MT-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=158
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=162
 //Platform information initialized
 CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
 //noop for ranlib
@@ -2174,6 +2354,8 @@ SUPPORTS_FVISIBILITY_INLINES_HIDDEN_FLAG:INTERNAL=
 SUPPORTS_NO_VARIADIC_MACROS_FLAG:INTERNAL=
 //Test SUPPORTS_SIZED_DEALLOC
 SUPPORTS_SIZED_DEALLOC:INTERNAL=1
+//x
+ZLIB_PREFIX_PATH_INT_CHECK:INTERNAL=
 //Have include unistd.h
 Z_HAVE_UNISTD_H:INTERNAL=
 //Have symbol _alloca

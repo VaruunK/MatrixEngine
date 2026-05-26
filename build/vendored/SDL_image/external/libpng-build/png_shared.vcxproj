@@ -91,7 +91,7 @@
   <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\vendored\SDL_image\C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
@@ -116,10 +116,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE;PNG_INTEL_SSE_OPT=1;_MBCS;CMAKE_INTDIR=\"Debug\";PNG_BUILD_DLL</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\vendored\SDL_image\C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\vendored\SDL_image\C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -147,7 +147,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\vendored\SDL_image\C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
@@ -173,10 +173,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE;PNG_INTEL_SSE_OPT=1;_MBCS;CMAKE_INTDIR=\"Release\";PNG_BUILD_DLL</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\vendored\SDL_image\C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\vendored\SDL_image\C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -204,7 +204,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\vendored\SDL_image\C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
@@ -230,10 +230,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE;PNG_INTEL_SSE_OPT=1;_MBCS;CMAKE_INTDIR=\"MinSizeRel\";PNG_BUILD_DLL</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\vendored\SDL_image\C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\vendored\SDL_image\C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -261,7 +261,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\vendored\SDL_image\C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
@@ -286,10 +286,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_DEPRECATE;PNG_INTEL_SSE_OPT=1;_MBCS;CMAKE_INTDIR=\"RelWithDebInfo\";PNG_BUILD_DLL</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\vendored\SDL_image\C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\vendored\SDL_image\C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\vendored\SDL_image\external\libpng;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\libpng-build;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>

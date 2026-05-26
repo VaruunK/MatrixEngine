@@ -1,8 +1,12 @@
 C:/Users/varuu/development/Engine/build/CMakeFiles/generate.stamp
 C:/Users/varuu/development/Engine/build/vendored/SDL3/CMakeFiles/generate.stamp
-C:/Users/varuu/development/Engine/build/vendored/SDL_image/CMakeFiles/generate.stamp
 C:/Users/varuu/development/Engine/build/vendored/SDL_image/external/zlib-build/CMakeFiles/generate.stamp
+C:/Users/varuu/development/Engine/build/vendored/SDL_image/CMakeFiles/generate.stamp
 C:/Users/varuu/development/Engine/build/vendored/SDL_image/external/libpng-build/CMakeFiles/generate.stamp
+C:/Users/varuu/development/Engine/build/vendored/assimp/CMakeFiles/generate.stamp
+C:/Users/varuu/development/Engine/build/vendored/assimp/code/CMakeFiles/generate.stamp
+C:/Users/varuu/development/Engine/build/vendored/assimp/test/CMakeFiles/generate.stamp
+C:/Users/varuu/development/Engine/build/vendored/assimp/test/headercheck/CMakeFiles/generate.stamp
 C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/CMakeFiles/generate.stamp
 C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Cross/CMakeFiles/generate.stamp
 C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Headers/CMakeFiles/generate.stamp

@@ -6,6 +6,7 @@
 #include "Core/TickManager/TickManager.hpp"
 #include "Core/PhysicsManager/PhysicsManager.hpp"
 #include "Core/WindowManager/WindowManager.hpp"
+#include "Core/AssetLoader/AssetLoader.hpp"
 #include <memory>
 #include <atomic>
 
@@ -54,6 +55,7 @@ private:
 	// std::unique_ptr<PhysicsManager> physicsManager;
 	std::unique_ptr<WindowManager> windowManager;
 	std::unique_ptr<Renderer> renderer;
+	std::unique_ptr<AssetLoader> assetLoader;
 
 	std::unique_ptr<SDL_GPUDevice, SDLGPUDeviceDeleter> device;
 

@@ -1,0 +1,478 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C3A97EE2-4D6A-34A9-A5C3-1079A89DC7BE}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>UpdateAssimpLibsDebugSymbolsAndDLLs</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\build\vendored\assimp\include;C:\Users\varuu\development\Engine\build\vendored\assimp;C:\Users\varuu\development\Engine\vendored\assimp\include;C:\Users\varuu\development\Engine\vendored\assimp\code;C:\Users\varuu\development\Engine\vendored\assimp\.;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>							</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Release/assimp-vc143-mt.dll C:/Users/varuu/development/Engine/vendored/assimp/bin64/assimp-vc143-mt.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Release/assimp-vc143-mt.exp C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mt.exp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Release/assimp-vc143-mt.lib C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mt.lib
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Debug/assimp-vc143-mtd.dll C:/Users/varuu/development/Engine/vendored/assimp/bin64/assimp-vc143-mtd.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Debug/assimp-vc143-mtd.exp C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mtd.exp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Debug/assimp-vc143-mtd.ilk C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mtd.ilk
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Debug/assimp-vc143-mtd.lib C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mtd.lib
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Debug/assimp-vc143-mtd.pdb C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mtd.pdb
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\build\vendored\assimp\include;C:\Users\varuu\development\Engine\build\vendored\assimp;C:\Users\varuu\development\Engine\vendored\assimp\include;C:\Users\varuu\development\Engine\vendored\assimp\code;C:\Users\varuu\development\Engine\vendored\assimp\.;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>							</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Release/assimp-vc143-mt.dll C:/Users/varuu/development/Engine/vendored/assimp/bin64/assimp-vc143-mt.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Release/assimp-vc143-mt.exp C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mt.exp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Release/assimp-vc143-mt.lib C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mt.lib
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Debug/assimp-vc143-mtd.dll C:/Users/varuu/development/Engine/vendored/assimp/bin64/assimp-vc143-mtd.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Debug/assimp-vc143-mtd.exp C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mtd.exp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Debug/assimp-vc143-mtd.ilk C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mtd.ilk
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Debug/assimp-vc143-mtd.lib C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mtd.lib
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Debug/assimp-vc143-mtd.pdb C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mtd.pdb
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\build\vendored\assimp\include;C:\Users\varuu\development\Engine\build\vendored\assimp;C:\Users\varuu\development\Engine\vendored\assimp\include;C:\Users\varuu\development\Engine\vendored\assimp\code;C:\Users\varuu\development\Engine\vendored\assimp\.;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>							</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Release/assimp-vc143-mt.dll C:/Users/varuu/development/Engine/vendored/assimp/bin64/assimp-vc143-mt.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Release/assimp-vc143-mt.exp C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mt.exp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Release/assimp-vc143-mt.lib C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mt.lib
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Debug/assimp-vc143-mtd.dll C:/Users/varuu/development/Engine/vendored/assimp/bin64/assimp-vc143-mtd.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Debug/assimp-vc143-mtd.exp C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mtd.exp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Debug/assimp-vc143-mtd.ilk C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mtd.ilk
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Debug/assimp-vc143-mtd.lib C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mtd.lib
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Debug/assimp-vc143-mtd.pdb C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mtd.pdb
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\build\vendored\assimp\include;C:\Users\varuu\development\Engine\build\vendored\assimp;C:\Users\varuu\development\Engine\vendored\assimp\include;C:\Users\varuu\development\Engine\vendored\assimp\code;C:\Users\varuu\development\Engine\vendored\assimp\.;C:\Users\varuu\development\Engine\vendored\SDL_image\external\zlib;C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>							</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Release/assimp-vc143-mt.dll C:/Users/varuu/development/Engine/vendored/assimp/bin64/assimp-vc143-mt.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Release/assimp-vc143-mt.exp C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mt.exp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Release/assimp-vc143-mt.lib C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mt.lib
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Debug/assimp-vc143-mtd.dll C:/Users/varuu/development/Engine/vendored/assimp/bin64/assimp-vc143-mtd.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Debug/assimp-vc143-mtd.exp C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mtd.exp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Debug/assimp-vc143-mtd.ilk C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mtd.ilk
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Debug/assimp-vc143-mtd.lib C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mtd.lib
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/varuu/development/Engine/build/code/Debug/assimp-vc143-mtd.pdb C:/Users/varuu/development/Engine/vendored/assimp/lib64/assimp-vc143-mtd.pdb
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\varuu\development\Engine\vendored\assimp\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/varuu/development/Engine/vendored/assimp/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/varuu/development/Engine -BC:/Users/varuu/development/Engine/build --check-stamp-file C:/Users/varuu/development/Engine/build/vendored/assimp/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\WriteBasicConfigVersionFile.cmake;C:\Users\varuu\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\Users\varuu\development\Engine\vendored\assimp\assimp.pc.in;C:\Users\varuu\development\Engine\vendored\assimp\cmake-modules\FindPkgMacros.cmake;C:\Users\varuu\development\Engine\vendored\assimp\cmake-modules\FindZLIB.cmake;C:\Users\varuu\development\Engine\vendored\assimp\cmake-modules\PrecompiledHeader.cmake;C:\Users\varuu\development\Engine\vendored\assimp\cmake-modules\assimp-plain-config.cmake.in;C:\Users\varuu\development\Engine\vendored\assimp\cmake-modules\cmake_uninstall.cmake.in;C:\Users\varuu\development\Engine\vendored\assimp\include\assimp\config.h.in;C:\Users\varuu\development\Engine\vendored\assimp\include\assimp\revision.h.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\varuu\development\Engine\build\vendored\assimp\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/varuu/development/Engine/vendored/assimp/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/varuu/development/Engine -BC:/Users/varuu/development/Engine/build --check-stamp-file C:/Users/varuu/development/Engine/build/vendored/assimp/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\WriteBasicConfigVersionFile.cmake;C:\Users\varuu\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\Users\varuu\development\Engine\vendored\assimp\assimp.pc.in;C:\Users\varuu\development\Engine\vendored\assimp\cmake-modules\FindPkgMacros.cmake;C:\Users\varuu\development\Engine\vendored\assimp\cmake-modules\FindZLIB.cmake;C:\Users\varuu\development\Engine\vendored\assimp\cmake-modules\PrecompiledHeader.cmake;C:\Users\varuu\development\Engine\vendored\assimp\cmake-modules\assimp-plain-config.cmake.in;C:\Users\varuu\development\Engine\vendored\assimp\cmake-modules\cmake_uninstall.cmake.in;C:\Users\varuu\development\Engine\vendored\assimp\include\assimp\config.h.in;C:\Users\varuu\development\Engine\vendored\assimp\include\assimp\revision.h.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\varuu\development\Engine\build\vendored\assimp\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/varuu/development/Engine/vendored/assimp/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/varuu/development/Engine -BC:/Users/varuu/development/Engine/build --check-stamp-file C:/Users/varuu/development/Engine/build/vendored/assimp/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\WriteBasicConfigVersionFile.cmake;C:\Users\varuu\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\Users\varuu\development\Engine\vendored\assimp\assimp.pc.in;C:\Users\varuu\development\Engine\vendored\assimp\cmake-modules\FindPkgMacros.cmake;C:\Users\varuu\development\Engine\vendored\assimp\cmake-modules\FindZLIB.cmake;C:\Users\varuu\development\Engine\vendored\assimp\cmake-modules\PrecompiledHeader.cmake;C:\Users\varuu\development\Engine\vendored\assimp\cmake-modules\assimp-plain-config.cmake.in;C:\Users\varuu\development\Engine\vendored\assimp\cmake-modules\cmake_uninstall.cmake.in;C:\Users\varuu\development\Engine\vendored\assimp\include\assimp\config.h.in;C:\Users\varuu\development\Engine\vendored\assimp\include\assimp\revision.h.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\varuu\development\Engine\build\vendored\assimp\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/varuu/development/Engine/vendored/assimp/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/varuu/development/Engine -BC:/Users/varuu/development/Engine/build --check-stamp-file C:/Users/varuu/development/Engine/build/vendored/assimp/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-4.2\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files\CMake\share\cmake-4.2\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\WriteBasicConfigVersionFile.cmake;C:\Users\varuu\development\Engine\build\CMakeFiles\cmake.verify_globs;C:\Users\varuu\development\Engine\vendored\assimp\assimp.pc.in;C:\Users\varuu\development\Engine\vendored\assimp\cmake-modules\FindPkgMacros.cmake;C:\Users\varuu\development\Engine\vendored\assimp\cmake-modules\FindZLIB.cmake;C:\Users\varuu\development\Engine\vendored\assimp\cmake-modules\PrecompiledHeader.cmake;C:\Users\varuu\development\Engine\vendored\assimp\cmake-modules\assimp-plain-config.cmake.in;C:\Users\varuu\development\Engine\vendored\assimp\cmake-modules\cmake_uninstall.cmake.in;C:\Users\varuu\development\Engine\vendored\assimp\include\assimp\config.h.in;C:\Users\varuu\development\Engine\vendored\assimp\include\assimp\revision.h.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\varuu\development\Engine\build\vendored\assimp\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\varuu\development\Engine\build\ZERO_CHECK.vcxproj">
+      <Project>{1DF78AB3-0FB1-336B-B36E-E0F9EB4F129B}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

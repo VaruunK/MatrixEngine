@@ -178,9 +178,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\varuu\development\Engine\build\vendored\SDL_image\SDL3_image-shared.vcxproj">
-      <Project>{DC321CAB-4946-3846-A1DE-C2FC376C4DF3}</Project>
-      <Name>SDL3_image-shared</Name>
+    <ProjectReference Include="C:\Users\varuu\development\Engine\build\vendored\SDL_image\SDL3_image-static.vcxproj">
+      <Project>{AC69D2EB-12CC-3583-ABBF-612A5CC50BF6}</Project>
+      <Name>SDL3_image-static</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

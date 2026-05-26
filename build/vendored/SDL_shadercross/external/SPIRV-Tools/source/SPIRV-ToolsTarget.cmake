@@ -65,14 +65,14 @@ set_target_properties(SPIRV-Tools-shared PROPERTIES
 set_property(TARGET SPIRV-Tools-static APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(SPIRV-Tools-static PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/SPIRV-Tools.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/SPIRV-Toolsd.lib"
   )
 
 # Import target "SPIRV-Tools-shared" for configuration "Debug"
 set_property(TARGET SPIRV-Tools-shared APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(SPIRV-Tools-shared PROPERTIES
-  IMPORTED_IMPLIB_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/SPIRV-Tools-shared.lib"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/SPIRV-Tools-shared.dll"
+  IMPORTED_IMPLIB_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/SPIRV-Tools-sharedd.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/SPIRV-Tools-sharedd.dll"
   )
 
 # Import target "SPIRV-Tools-static" for configuration "Release"

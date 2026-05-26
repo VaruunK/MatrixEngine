@@ -61,7 +61,7 @@
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\Debug\bin\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">d3dcompiler_dxc_bridge.dir\Debug\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">d3dcompiler_dxc_bridge</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">d3dcompiler_dxc_bridged</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
@@ -130,7 +130,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\..\..\..\Debug\lib\dxcompiler.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\..\..\..\Debug\lib\dxcompilerd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64 /DEBUGTYPE:CV,FIXUP,PDATA /guard:cf</AdditionalOptions>
       <CETCompat>true</CETCompat>
@@ -138,10 +138,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
-      <ImportLibrary>C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/d3dcompiler_dxc_bridge.lib</ImportLibrary>
+      <ImportLibrary>C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/d3dcompiler_dxc_bridged.lib</ImportLibrary>
       <LinkErrorReporting></LinkErrorReporting>
       <ModuleDefinitionFile>C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/tools/d3dcomp/d3dcomp.def</ModuleDefinitionFile>
-      <ProgramDataBaseFile>C:/Users/varuu/development/Engine/build/Debug/lib/d3dcompiler_dxc_bridge.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>C:/Users/varuu/development/Engine/build/Debug/lib/d3dcompiler_dxc_bridged.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
       <SubSystem></SubSystem>
       <Version>3.7</Version>

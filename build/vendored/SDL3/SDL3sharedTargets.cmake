@@ -61,8 +61,8 @@ set_target_properties(SDL3::SDL3-shared PROPERTIES
 # Import target "SDL3::SDL3-shared" for configuration "Debug"
 set_property(TARGET SDL3::SDL3-shared APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(SDL3::SDL3-shared PROPERTIES
-  IMPORTED_IMPLIB_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/SDL3.lib"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/SDL3.dll"
+  IMPORTED_IMPLIB_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/SDL3d.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/SDL3d.dll"
   )
 
 # Import target "SDL3::SDL3-shared" for configuration "Release"

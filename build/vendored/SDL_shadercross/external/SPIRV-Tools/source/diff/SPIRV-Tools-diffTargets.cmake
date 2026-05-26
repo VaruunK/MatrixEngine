@@ -58,7 +58,7 @@ set_target_properties(SPIRV-Tools-diff PROPERTIES
 set_property(TARGET SPIRV-Tools-diff APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(SPIRV-Tools-diff PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/SPIRV-Tools-diff.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/SPIRV-Tools-diffd.lib"
   )
 
 # Import target "SPIRV-Tools-diff" for configuration "Release"

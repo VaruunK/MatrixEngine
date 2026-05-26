@@ -61,7 +61,7 @@
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\varuu\development\Engine\build\vendored\SDL_shadercross\external\DirectXShaderCompiler\Debug\bin\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">dxlib_sample.dir\Debug\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">dxlib_sample</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">dxlib_sampled</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
@@ -130,7 +130,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\..\..\..\Debug\lib\LLVMAnalysis.lib;..\..\..\..\Debug\lib\LLVMipa.lib;..\..\..\..\Debug\lib\LLVMDxcSupport.lib;..\..\..\..\Debug\lib\LLVMDXIL.lib;..\..\..\..\Debug\lib\LLVMHLSL.lib;..\..\..\..\Debug\lib\LLVMOption.lib;..\..\..\..\Debug\lib\LLVMSupport.lib;..\..\..\..\Debug\lib\dxcompiler.lib;..\..\..\..\Debug\lib\LLVMDxcBindingTable.lib;..\..\..\..\Debug\lib\LLVMDxilContainer.lib;..\..\..\..\Debug\lib\LLVMBitWriter.lib;..\..\..\..\Debug\lib\LLVMTransformUtils.lib;..\..\..\..\Debug\lib\LLVMipa.lib;..\..\..\..\Debug\lib\LLVMAnalysis.lib;..\..\..\..\Debug\lib\LLVMDXIL.lib;..\..\..\..\Debug\lib\LLVMDxcSupport.lib;..\..\..\..\Debug\lib\LLVMBitReader.lib;..\..\..\..\Debug\lib\LLVMCore.lib;..\..\..\..\Debug\lib\LLVMSupport.lib;..\..\..\..\Debug\lib\LLVMMSSupport.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\..\..\..\Debug\lib\LLVMAnalysisd.lib;..\..\..\..\Debug\lib\LLVMipad.lib;..\..\..\..\Debug\lib\LLVMDxcSupportd.lib;..\..\..\..\Debug\lib\LLVMDXILd.lib;..\..\..\..\Debug\lib\LLVMHLSLd.lib;..\..\..\..\Debug\lib\LLVMOptiond.lib;..\..\..\..\Debug\lib\LLVMSupportd.lib;..\..\..\..\Debug\lib\dxcompilerd.lib;..\..\..\..\Debug\lib\LLVMDxcBindingTabled.lib;..\..\..\..\Debug\lib\LLVMDxilContainerd.lib;..\..\..\..\Debug\lib\LLVMBitWriterd.lib;..\..\..\..\Debug\lib\LLVMTransformUtilsd.lib;..\..\..\..\Debug\lib\LLVMipad.lib;..\..\..\..\Debug\lib\LLVMAnalysisd.lib;..\..\..\..\Debug\lib\LLVMDXILd.lib;..\..\..\..\Debug\lib\LLVMDxcSupportd.lib;..\..\..\..\Debug\lib\LLVMBitReaderd.lib;..\..\..\..\Debug\lib\LLVMCored.lib;..\..\..\..\Debug\lib\LLVMSupportd.lib;..\..\..\..\Debug\lib\LLVMMSSupportd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64 /DEBUGTYPE:CV,FIXUP,PDATA /guard:cf</AdditionalOptions>
       <CETCompat>true</CETCompat>
@@ -138,10 +138,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
-      <ImportLibrary>C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/dxlib_sample.lib</ImportLibrary>
+      <ImportLibrary>C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/Debug/lib/dxlib_sampled.lib</ImportLibrary>
       <LinkErrorReporting></LinkErrorReporting>
       <ModuleDefinitionFile>C:/Users/varuu/development/Engine/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/tools/dxlib-sample/dxlib_sample.def</ModuleDefinitionFile>
-      <ProgramDataBaseFile>C:/Users/varuu/development/Engine/build/Debug/lib/dxlib_sample.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>C:/Users/varuu/development/Engine/build/Debug/lib/dxlib_sampled.pdb</ProgramDataBaseFile>
       <RandomizedBaseAddress></RandomizedBaseAddress>
       <SubSystem></SubSystem>
       <Version>3.7</Version>

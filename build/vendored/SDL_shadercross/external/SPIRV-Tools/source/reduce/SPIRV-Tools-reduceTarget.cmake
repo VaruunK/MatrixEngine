@@ -58,7 +58,7 @@ set_target_properties(SPIRV-Tools-reduce PROPERTIES
 set_property(TARGET SPIRV-Tools-reduce APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(SPIRV-Tools-reduce PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/SPIRV-Tools-reduce.lib"
+  IMPORTED_LOCATION_DEBUG "C:/Users/varuu/development/Engine/build/Debug/lib/SPIRV-Tools-reduced.lib"
   )
 
 # Import target "SPIRV-Tools-reduce" for configuration "Release"
