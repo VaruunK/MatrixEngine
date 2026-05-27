@@ -1,12 +1,12 @@
 #include "Component.hpp"
 
-void Component::Initialize(Entity* compOwner)
-{
+void Component::Initialize(Entity* compOwner) {
 	owner = compOwner;
 }
 
 glm::vec3 Component::SetComponentLocation(glm::vec3 location) {
-	transform.location = location; return GetComponentLocation();
+	transform.location = location;
+	return GetComponentLocation();
 }
 
 glm::vec3 Component::SetComponentRotation(glm::vec3 rotation) {

@@ -1,0 +1,62 @@
+#include "ViewportCamera.hpp"
+#include <glm/ext/matrix_clip_space.hpp>
+#include <glm/ext/matrix_transform.hpp>
+
+ViewportCamera::ViewportCamera() {
+	eye = glm::vec3(0.0f, 0.0f, 3.0f);
+	center = glm::vec3(0.0f, 0.0f, 0.0f);
+	up = glm::vec3(0.0f, 1.0f, 0.0f);
+	lookAt = glm::normalize(center - eye);
+	viewRight = glm::normalize(glm::cross(lookAt, up));
+	projectionMatrix = glm::perspective(glm::radians(0.5f), 1.0f, 0.1f, 1000.0f);
+	viewMatrix = glm::lookAt(eye, center, up);
+}
+
+void ViewportCamera::MoveUp() {
+}
+
+void ViewportCamera::MoveDown() {
+}
+
+void ViewportCamera::MoveLeft() {
+	eye += lookAt * viewDelta;
+	center += viewRight * viewDelta;
+}
+
+void ViewportCamera::MoveRight() {
+	eye += lookAt * -viewDelta;
+	center += viewRight * -viewDelta;
+}
+
+void ViewportCamera::MoveForward() {
+	eye += lookAt * viewDelta;
+	center += lookAt * viewDelta;
+}
+
+void ViewportCamera::MoveBackward() {
+	eye += lookAt * -viewDelta;
+	center += lookAt * -viewDelta;
+}
+
+void ViewportCamera::RotateUp() {
+}
+
+void ViewportCamera::RotateDown() {
+}
+
+void ViewportCamera::RotateLeft() {
+}
+
+void ViewportCamera::RotateRight() {
+}
+
+glm::mat4 ViewportCamera::GetProjectionMatrix() {
+	projectionMatrix = glm::perspective(glm::radians(0.5f), 1.0f, 0.1f, 1000.0f);
+	return projectionMatrix;
+}
+
+
+glm::mat4 ViewportCamera::GetViewMatrix() {
+	viewMatrix = glm::lookAt(eye, center, up);
+	return viewMatrix;
+}

@@ -25,11 +25,11 @@ public:
     void SetMass(PhysicsHandle &handle, float mass);
     void SetGravity(PhysicsHandle &handle, float gravity);
     void EnableGravity(PhysicsHandle &handle, bool enabled);
-    void SetVelocity(PhysicsHandle &handle, vec2f velocity);
-    void SetPosition(PhysicsHandle &handle, vec2f position);
+    void SetVelocity(PhysicsHandle& handle, glm::vec2 velocity);
+    void SetPosition(PhysicsHandle &handle, glm::vec2 position);
 
-    void ApplyForce(PhysicsHandle &handle, vec2f force);
-    void ApplyImpulse(PhysicsHandle &handle, vec2f impulse);
+    void ApplyForce(PhysicsHandle &handle, glm::vec2 force);
+    void ApplyImpulse(PhysicsHandle &handle, glm::vec2 impulse);
 
     void SetCollisionResponse(CollisionHandle &handle, CollisionResponse response);
 protected:
@@ -51,11 +51,11 @@ private:
         Type type;
 
         std::variant<PhysicsHandle, CollisionHandle> handle;
-        std::variant<vec2f, float, bool, CollisionResponse> value;
+        std::variant<glm::vec2, float, bool, CollisionResponse> value;
 
-        Command(Type t, PhysicsHandle h, vec2f v)
+        Command(Type t, PhysicsHandle h, glm::vec2 v)
             : type(t), handle(std::in_place_type<PhysicsHandle>, h),
-            value(std::in_place_type<vec2f>, v) {
+            value(std::in_place_type<glm::vec2>, v) {
         }
 
         Command(Type t, PhysicsHandle h, float v)
@@ -73,9 +73,9 @@ private:
             value(std::in_place_type<CollisionResponse>, v) {
         }
 
-        Command(Type t, CollisionHandle h, vec2f v)
+        Command(Type t, CollisionHandle h, glm::vec2 v)
             : type(t), handle(std::in_place_type<CollisionHandle>, h),
-            value(std::in_place_type<vec2f>, v) {
+            value(std::in_place_type<glm::vec2>, v) {
         }
     };
 

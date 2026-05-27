@@ -1,10 +1,9 @@
 #pragma once
-
-#include "Core/Math/vec2.h"
 #include <unordered_map>
 #include <cstdint>
 #include <typeindex>
 #include <type_traits>
+#include <glm/glm.hpp>
 #include <SDL3/SDL.h>
 
 enum class CollisionType {
@@ -15,7 +14,7 @@ enum class CollisionType {
 
 struct CollisionState {
 	SDL_FRect collisionBox;
-	vec2f bounds;
+	glm::vec2 bounds;
 	std::unordered_map<std::type_index, CollisionType> collisionResponses;
 	bool active;
 };

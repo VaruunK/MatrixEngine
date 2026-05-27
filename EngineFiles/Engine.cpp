@@ -4,11 +4,15 @@
 #include "World/World.hpp"
 #include "World/Level/Level.hpp"
 #include "Core/Render/Renderer.hpp"
-#include "Core/Render//RenderStructs.hpp"
+#include "Core/Assets/AssetStructs.hpp"
+#include "Core/Assets/DefaultAssets/DefaultAssets.hpp"
 //#include "Entity/Static/Static.hpp"
 #include "Entity/Agent/Agent.hpp"
 #include "Entity/Component/SpriteComponent/SpriteComponent.hpp"
 #include "Entity/Component/MeshComponent/MeshComponent.hpp"
+#include <glm/ext/matrix_clip_space.hpp>
+#include <glm/ext/matrix_transform.hpp>
+
 //#include "Entity/Component/PhysicsComponent/PhysicsComponent.hpp"
 
 Engine::Engine() {
@@ -27,6 +31,7 @@ Engine::Engine() {
     // physicsManager = std::make_unique<PhysicsManager>();
     world = std::make_unique<World>();
     renderer = std::make_unique<Renderer>(device.get());
+    viewportCamera = std::make_unique<ViewportCamera>();
 }
 
 void Engine::CreateDevice() {
@@ -65,66 +70,13 @@ int Engine::Run() {
     Uint64 lastCounter = SDL_GetPerformanceCounter();
     Agent* agent1 = nullptr;
     Agent* agent2 = nullptr;
-    Agent* activeAgent = nullptr;
     MeshComponent* meshComponent = nullptr;
     SpriteComponent* spriteComponent = nullptr;
-    bool vel = true;
-
-    std::vector<Vertex> vertices = {
-        // Front face
-        {{-0.5f, -0.5f, 0.5f}, {0.0f, 1.0f}},
-        {{0.5f, -0.5f, 0.5f}, {1.0f, 1.0f}},
-        {{0.5f, 0.5f, 0.5f}, {1.0f, 0.0f}},
-        {{-0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}},
-
-        // Back face
-        {{-0.5f, -0.5f, -0.5f}, {1.0f, 1.0f}},
-        {{0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
-        {{0.5f, 0.5f, -0.5f}, {0.0f, 0.0f}},
-        {{-0.5f, 0.5f, -0.5f}, {1.0f, 0.0f}},
-
-        // Left face
-        {{-0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
-        {{-0.5f, -0.5f, 0.5f}, {1.0f, 1.0f}},
-        {{-0.5f, 0.5f, 0.5f}, {1.0f, 0.0f}},
-        {{-0.5f, 0.5f, -0.5f}, {0.0f, 0.0f}},
-
-        // Right face
-        {{0.5f, -0.5f, -0.5f}, {1.0f, 1.0f}},
-        {{0.5f, -0.5f, 0.5f}, {0.0f, 1.0f}},
-        {{0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}},
-        {{0.5f, 0.5f, -0.5f}, {1.0f, 0.0f}},
-
-        // Top face
-        {{-0.5f, 0.5f, -0.5f}, {0.0f, 1.0f}},
-        {{0.5f, 0.5f, -0.5f}, {1.0f, 1.0f}},
-        {{0.5f, 0.5f, 0.5f}, {1.0f, 0.0f}},
-        {{-0.5f, 0.5f, 0.5f}, {0.0f, 0.0f}},
-
-        // Bottom face
-        {{-0.5f, -0.5f, -0.5f}, {1.0f, 1.0f}},
-        {{0.5f, -0.5f, -0.5f}, {0.0f, 1.0f}},
-        {{0.5f, -0.5f, 0.5f}, {0.0f, 0.0f}},
-        {{-0.5f, -0.5f, 0.5f}, {1.0f, 0.0f}}
-    };
-
-    std::vector<uint32_t> indices = {
-        0, 1, 2, 2, 3, 0,
-        4, 5, 6, 6, 7, 4,
-        8, 9, 10, 10, 11, 8,
-        12, 13, 14, 14, 15, 12,
-        16, 17, 18, 18, 19, 16,
-        20, 21, 22, 22, 23, 20
-    };
-
-
+    int cameraMode = 0;
 
     Mesh* mesh = assetLoader.get()->CreateMesh("Content/freddy.gltf", "Content/freddy.png");
 
-    Mesh* mesh2 = new Mesh;
-    mesh2->vertices = vertices;
-    mesh2->indices = indices;
-    mesh2->texture = assetLoader.get()->CreateTexture("Content/square_red.png");
+    Mesh* mesh2 = DefaultCube();
 
     while (running.load()) {
         Uint64 currentCounter = SDL_GetPerformanceCounter();
@@ -140,7 +92,7 @@ int Engine::Run() {
         SDL_Event event;
         auto state = std::vector<bool>(SDL_GetKeyboardState(&numkeys), SDL_GetKeyboardState(&numkeys) + numkeys);
         while (SDL_PollEvent(&event)) {
-            
+
             if (event.type == SDL_EVENT_QUIT) {
                 running.store(false);
                 break;
@@ -150,67 +102,80 @@ int Engine::Run() {
                 renderer.get()->resized = true;
             }
 
-            if (state[SDL_SCANCODE_SPACE]) {
+            if (state[SDL_SCANCODE_TAB]) {
+                cameraMode = (cameraMode + 1) % 3;
+                std::cout << cameraMode << std::endl;
+            }
+
+            if (state[SDL_SCANCODE_1]) {
                 agent1 = level->SpawnFromClass<Agent>();
                 meshComponent = agent1->AddComponent<MeshComponent>();
                 
                 /*agent->GetComponent<SpriteComponent>()->SetTexture("Content/square_red.png");*/
                 meshComponent->SetMesh(mesh);
-                spriteComponent = nullptr;
-                activeAgent = agent1;
             }
 
-            if (state[SDL_SCANCODE_TAB]) {
+            if (state[SDL_SCANCODE_2]) {
                 agent2 = level->SpawnFromClass<Agent>();
                 spriteComponent = agent2->AddComponent<SpriteComponent>();
 
                 spriteComponent->SetTexture(assetLoader.get()->CreateTexture("Content/nanodsa.png"));
-                meshComponent = nullptr;
-                activeAgent = agent2;
             }
 
             if (state[SDL_SCANCODE_W]) {
-                if (activeAgent && meshComponent) {
+                if (agent1 && meshComponent && cameraMode == 0) {
                     meshComponent->SetComponentLocation(glm::vec3(meshComponent->GetComponentLocation().x,
                         meshComponent->GetComponentLocation().y + 0.01, meshComponent->GetComponentLocation().z));
-                } else if (activeAgent && spriteComponent) {
+                } else if (agent2 && spriteComponent && cameraMode == 1) {
                     spriteComponent->SetComponentLocation(glm::vec3(spriteComponent->GetComponentLocation().x,
                         spriteComponent->GetComponentLocation().y + 0.01, spriteComponent->GetComponentLocation().z));
+                } else if (cameraMode == 2) {
+                    viewportCamera.get()->MoveForward();
                 }
             }
 
             if (state[SDL_SCANCODE_S]) {
-                if (activeAgent && meshComponent) {
+                if (agent1 && meshComponent && cameraMode == 0) {
                     meshComponent->SetComponentLocation(glm::vec3(meshComponent->GetComponentLocation().x,
                         meshComponent->GetComponentLocation().y - 0.01, meshComponent->GetComponentLocation().z));
-                }
-                else if (activeAgent && spriteComponent) {
+
+                } else if (agent2 && spriteComponent && cameraMode == 1) {
                     spriteComponent->SetComponentLocation(glm::vec3(spriteComponent->GetComponentLocation().x,
                         spriteComponent->GetComponentLocation().y - 0.01, spriteComponent->GetComponentLocation().z));
+                } else if (cameraMode == 2) {
+                    viewportCamera.get()->MoveBackward();
                 }
             }
 
+            if (state[SDL_SCANCODE_D]) {
+                viewportCamera.get()->MoveRight();
+            }
+
+            if (state[SDL_SCANCODE_A]) {
+                viewportCamera.get()->MoveLeft();
+            }
+
             if (state[SDL_SCANCODE_P]) {
-                if (activeAgent && meshComponent) {
+                if (agent1 && meshComponent && cameraMode == 0) {
                     meshComponent->SetMesh(mesh2);
                 }
             }
 
             if (state[SDL_SCANCODE_E]) {
-                if (activeAgent && meshComponent) {
+                if (agent1 && meshComponent && cameraMode == 0) {
                     meshComponent->SetComponentRotation(glm::vec3(meshComponent->GetComponentRotation().x,
                         meshComponent->GetComponentRotation().y + 10, meshComponent->GetComponentRotation().z));
-                } else if (activeAgent && spriteComponent) {
+                } else if (agent2 && spriteComponent && cameraMode == 1) {
                     spriteComponent->SetComponentRotation(glm::vec3(spriteComponent->GetComponentRotation().x,
                         spriteComponent->GetComponentRotation().y + 10, spriteComponent->GetComponentRotation().z));
                 }
             }
 
             if (state[SDL_SCANCODE_R]) {
-                if (activeAgent && meshComponent) {
+                if (agent1 && meshComponent && cameraMode == 0) {
                     meshComponent->SetComponentScale(glm::vec3(meshComponent->GetComponentScale().x * 1.5,
                         meshComponent->GetComponentScale().y * 1.5, meshComponent->GetComponentScale().z));
-                } else if (activeAgent && spriteComponent) {
+                } else if (agent2 && spriteComponent && cameraMode == 1) {
                     spriteComponent->SetComponentScale(glm::vec3(spriteComponent->GetComponentScale().x * 1.5,
                         spriteComponent->GetComponentScale().y * 1.5, spriteComponent->GetComponentScale().z));
                 }
@@ -219,7 +184,10 @@ int Engine::Run() {
 
         world->Tick(deltaSeconds);
 
-        renderer->Render();
+        auto pMatrix = viewportCamera.get()->GetProjectionMatrix();
+        auto vMatrix = viewportCamera.get()->GetViewMatrix();
+
+        renderer->Render(pMatrix, vMatrix);
     }
     for (auto& thread : threads) {
         if (thread.joinable()) {

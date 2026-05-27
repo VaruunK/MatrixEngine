@@ -1,11 +1,12 @@
 #pragma once
 
-#include "Core/Math/vec2.h"
+
 #include <cstdint>
+#include <glm/glm.hpp>
 
 struct PhysicsState {
-	vec2f position;
-	vec2f velocity;
+	glm::vec2 position;
+	glm::vec2 velocity;
 	float gravity;
 	float mass;
 	bool gravityEnabled;

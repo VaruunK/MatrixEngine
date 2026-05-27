@@ -84,7 +84,7 @@ Mesh* AssetLoader::CreateMesh(const std::string& meshFilePath) {
     Mesh* newMesh = new Mesh;
     aiMatrix4x4 identity;
     ProcessNode(scene->mRootNode, scene, newMesh, identity);
-    newMesh->texture = nullptr;
+    newMesh->texture = CreateTexture("Content/DefaultTexture.png");
     return newMesh;
 }
 

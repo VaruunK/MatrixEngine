@@ -26,10 +26,12 @@ add_executable(Matrix
     EngineFiles/Engine.cpp
 
     EngineFiles/Core/GameObject/GameObject.cpp
-    EngineFiles/Core/AssetLoader/AssetLoader.cpp
+    EngineFiles/Core/Assets/AssetLoader/AssetLoader.cpp
+    EngineFiles/Core/Assets/DefaultAssets/DefaultAssets.cpp
     EngineFiles/Core/Render/Renderer.cpp
     EngineFiles/Core/ShaderManager/ShaderManager.cpp
     EngineFiles/Core/TickManager/TickManager.cpp
+    EngineFiles/Core/ViewportCamera/ViewportCamera.cpp
     # EngineFiles/Core/PhysicsManager/PhysicsManager.cpp
     EngineFiles/Core/WindowManager/WindowManager.cpp
     EngineFiles/Core/WindowManager/Window/Window.cpp

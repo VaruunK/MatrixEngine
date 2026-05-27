@@ -107,22 +107,22 @@ void PhysicsManager::EnableGravity(PhysicsHandle &handle, bool enabled) {
     commandBuffers[writeIdx].push_back(Command(Command::ENABLE_GRAVITY, handle, enabled));
 }
 
-void PhysicsManager::ApplyForce(PhysicsHandle &handle, vec2f force) {
+void PhysicsManager::ApplyForce(PhysicsHandle &handle, glm::vec2 force) {
     int writeIdx = commandWriteIndex.load(std::memory_order_acquire);
     commandBuffers[writeIdx].push_back(Command(Command::APPLY_FORCE, handle, force));
 }
 
-void PhysicsManager::ApplyImpulse(PhysicsHandle &handle, vec2f impulse) {
+void PhysicsManager::ApplyImpulse(PhysicsHandle &handle, glm::vec2 impulse) {
     int writeIdx = commandWriteIndex.load(std::memory_order_acquire);
     commandBuffers[writeIdx].push_back(Command(Command::APPLY_IMPULSE, handle, impulse));
 }
 
-void PhysicsManager::SetVelocity(PhysicsHandle &handle, vec2f velocity) {
+void PhysicsManager::SetVelocity(PhysicsHandle &handle, glm::vec2 velocity) {
     int writeIdx = commandWriteIndex.load(std::memory_order_acquire);
     commandBuffers[writeIdx].push_back(Command(Command::SET_VELOCITY, handle, velocity));
 }
 
-void PhysicsManager::SetPosition(PhysicsHandle &handle, vec2f position) {
+void PhysicsManager::SetPosition(PhysicsHandle &handle, glm::vec2 position) {
     int writeIdx = commandWriteIndex.load(std::memory_order_acquire);
     commandBuffers[writeIdx].push_back(Command(Command::SET_POSITION, handle, position));
 }
@@ -162,23 +162,23 @@ void PhysicsManager::Step(float deltaTime) {
             switch (cmd.type) {
 
                 case Command::APPLY_FORCE: {
-                    vec2f acceleration = get<vec2f>(cmd.value) / state.mass;
+                    glm::vec2 acceleration = get<glm::vec2>(cmd.value) / state.mass;
                     state.velocity = state.velocity + acceleration * deltaTime;
                     break;
                 }
 
                 case Command::APPLY_IMPULSE: {
-                    vec2f velocityChange = get<vec2f>(cmd.value) / state.mass;
+                    glm::vec2 velocityChange = get<glm::vec2>(cmd.value) / state.mass;
                     state.velocity = state.velocity + velocityChange;
                     break;
                 }
 
                 case Command::SET_VELOCITY:
-                    state.velocity = get<vec2f>(cmd.value);
+                    state.velocity = get<glm::vec2>(cmd.value);
                     break;
 
                 case Command::SET_POSITION:
-                    state.position = get<vec2f>(cmd.value);
+                    state.position = get<glm::vec2>(cmd.value);
                     break;
 
                 case Command::SET_MASS:
@@ -212,7 +212,7 @@ void PhysicsManager::Step(float deltaTime) {
                     break;
                 }
                 case Command::SET_COLLISION_BOUNDS:
-                    state.bounds = get<vec2f>(cmd.value);
+                    state.bounds = get<glm::vec2>(cmd.value);
                     break;
             }
         }

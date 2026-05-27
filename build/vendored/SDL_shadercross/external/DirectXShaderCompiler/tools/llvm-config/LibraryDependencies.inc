@@ -19,7 +19,7 @@ struct AvailableComponent {
   /// The list of libraries required when linking this component.
   const char *RequiredLibraries[27];
 } AvailableComponents[53] = {
-  { "all", 0, 1, { "option", "all-targets", "tablegen", "instrumentation", "mirparser", "native", "passprinters", "nativecodegen", "dxilpdbinfo", "engine", "asmprinter", "orcjit", "debuginfopdb", "mcdisassembler", "selectiondag", "dxildia", "dxilrootsignature", "linker", "mcjit", "debuginfodwarf", "hlsl", "irreader", "dxilcompression", "mcparser", "objcarcopts", "dxrfallback" } },
+  { "all", 0, 1, { "nativecodegen", "debuginfodwarf", "hlsl", "all-targets", "orcjit", "tablegen", "engine", "selectiondag", "dxilrootsignature", "mcdisassembler", "dxilpdbinfo", "native", "dxildia", "dxrfallback", "instrumentation", "linker", "asmprinter", "mirparser", "passprinters", "objcarcopts", "dxilcompression", "option", "mcjit", "mcparser", "debuginfopdb", "irreader" } },
   { "all-targets", 0, 1, {  } },
   { "analysis", "libLLVMAnalysis.a", 1, { "core", "dxil", "support" } },
   { "asmparser", "libLLVMAsmParser.a", 1, { "core", "support" } },

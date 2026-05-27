@@ -422,10 +422,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Engine.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\GameObject.cpp" />
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\AssetLoader\AssetLoader.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Assets\AssetLoader\AssetLoader.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Assets\DefaultAssets\DefaultAssets.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Render\Renderer.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\ShaderManager\ShaderManager.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\TickManager\TickManager.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\ViewportCamera\ViewportCamera.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\WindowManager\WindowManager.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\WindowManager\Window\Window.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Entity.cpp" />

@@ -1,7 +1,9 @@
 #pragma once
 #include "Core/ShaderManager/ShaderManager.hpp"
+#include "Core/Assets/AssetStructs.hpp"
 #include "PipelineEnums.hpp"
 #include "RenderStructs.hpp"
+
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -16,7 +18,7 @@ public:
     Renderer(SDL_GPUDevice* device);
     bool Initialize();
     SDL_GPUDevice* GetGPUDevice();
-    void Render();
+    void Render(glm::mat4 &projectionMatrix, glm::mat4 &viewMatrix);
 
     void RegisterSprite(SpriteComponent* sprite);
     void DeregisterSprite(SpriteComponent* sprite);

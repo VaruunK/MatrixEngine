@@ -6,7 +6,8 @@
 #include "Core/TickManager/TickManager.hpp"
 #include "Core/PhysicsManager/PhysicsManager.hpp"
 #include "Core/WindowManager/WindowManager.hpp"
-#include "Core/AssetLoader/AssetLoader.hpp"
+#include "Core/Assets/AssetLoader/AssetLoader.hpp"
+#include "Core/ViewportCamera/ViewportCamera.hpp"
 #include <memory>
 #include <atomic>
 
@@ -30,6 +31,7 @@ public:
 	// PhysicsManager& GetPhysicsManager() { return *physicsManager; }
 	WindowManager& GetWindowManager() { return *windowManager; }
 	Renderer& GetRenderer() { return *renderer; };
+	AssetLoader& GetAssetLoader() { return *assetLoader; }
 	SDL_GPUDevice& GetGPUDevice() { return *device; }
 
 private:
@@ -56,6 +58,7 @@ private:
 	std::unique_ptr<WindowManager> windowManager;
 	std::unique_ptr<Renderer> renderer;
 	std::unique_ptr<AssetLoader> assetLoader;
+	std::unique_ptr<ViewportCamera> viewportCamera;
 
 	std::unique_ptr<SDL_GPUDevice, SDLGPUDeviceDeleter> device;
 

@@ -15,7 +15,7 @@ Renderer::Renderer(SDL_GPUDevice* device) {
     this->device = device;
 }
 
-void Renderer::Render() {
+void Renderer::Render(glm::mat4 &projectionMatrix, glm::mat4 &viewMatrix) {
     SDL_GPUCommandBuffer* commandBuffer = SDL_AcquireGPUCommandBuffer(device);
 
     if (!commandBuffer) {
@@ -61,8 +61,8 @@ void Renderer::Render() {
             window->GetWindowSize(&windowWidth, &windowHeight);
             float aspectRatio = static_cast<float>(windowWidth) / static_cast<float>(windowHeight);
 
-            auto projection = glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 100.0f);
-            auto view = glm::lookAt(glm::vec3(0, 0, 2), glm::vec3(0), glm::vec3(0, 1, 0));
+            /*auto projection = glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 100.0f);
+            auto view = glm::lookAt(glm::vec3(0, 0, 2), glm::vec3(0), glm::vec3(0, 1, 0));*/
 
             for (auto& [mesh, components] : meshes) {
                 if (!mesh->texture) continue;
@@ -75,7 +75,7 @@ void Renderer::Render() {
                 for (auto* component : components) {
                     auto model = component->GetModelMatrix(aspectRatio);
 
-                    auto mvp = projection * view * model;
+                    auto mvp = projectionMatrix * viewMatrix * model;
                     SDL_PushGPUVertexUniformData(commandBuffer, 0, &mvp, sizeof(mvp));
 
                     SDL_DrawGPUIndexedPrimitives(pass, di.indexCount, 1, di.firstIndex, di.vertexOffset, 0);
@@ -89,7 +89,7 @@ void Renderer::Render() {
 
                 const DrawInfo& di = spriteDrawInfo[texture];
                 for (auto* sprite : sprites) {
-                    auto mvp = projection * view * sprite->GetModelMatrix(aspectRatio);
+                    auto mvp = projectionMatrix * viewMatrix * sprite->GetModelMatrix(aspectRatio);
                     SDL_PushGPUVertexUniformData(commandBuffer, 0, &mvp, sizeof(mvp));
                     SDL_DrawGPUIndexedPrimitives(pass, di.indexCount, 1, di.firstIndex, di.vertexOffset, 0);
                 }
