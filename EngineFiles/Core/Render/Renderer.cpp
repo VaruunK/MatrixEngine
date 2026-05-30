@@ -24,29 +24,39 @@ void Renderer::Render(glm::mat4 &projectionMatrix, glm::mat4 &viewMatrix) {
     }
 
     for (Window* window : Engine::GetEngine().GetWindowManager().GetWindows()) {
+
+        if (resized) {
+            SDL_ReleaseGPUTexture(device, depthStencilTexture);
+            SDL_ReleaseGPUTexture(device, msaaTexture);
+            CreateDepthStencil(window);
+            CreateMSAATexture(window);
+            resized = false;
+        }
+
         SDL_GPUTexture* swapChainTexture;
         window->WaitAndAquireGPUGwapchainTexture(commandBuffer, &swapChainTexture, nullptr, nullptr);
 
         if (swapChainTexture) {
             SDL_GPUColorTargetInfo colorTarget{};
-            colorTarget.texture = swapChainTexture;
-            colorTarget.load_op = SDL_GPU_LOADOP_CLEAR;
-            colorTarget.store_op = SDL_GPU_STOREOP_STORE;
             colorTarget.clear_color = { 0.1f, 0.1f, 0.1f, 1.0f };
+            colorTarget.load_op = SDL_GPU_LOADOP_CLEAR;
+
+            if (msaaEnabled) {
+                colorTarget.texture = msaaTexture;
+                colorTarget.store_op = SDL_GPU_STOREOP_RESOLVE;
+                colorTarget.resolve_texture = swapChainTexture;
+            } else {
+                colorTarget.texture = swapChainTexture;
+                colorTarget.store_op = SDL_GPU_STOREOP_STORE;
+            }
 
             std::vector<SDL_GPUColorTargetInfo> colorTargets{ colorTarget };
-
-            if (resized) {
-                SDL_ReleaseGPUTexture(device, defaultDepthStencil);
-                CreateDepthStencils(window);
-                resized = false;
-            }
 
             SDL_GPUDepthStencilTargetInfo depthStencilTargetInfo{};
             depthStencilTargetInfo.clear_depth = 1.0f;
             depthStencilTargetInfo.clear_stencil = 0;
             depthStencilTargetInfo.load_op = SDL_GPU_LOADOP_CLEAR;
-            depthStencilTargetInfo.texture = defaultDepthStencil;
+            depthStencilTargetInfo.texture = depthStencilTexture;
 
             SDL_GPURenderPass* pass = SDL_BeginGPURenderPass(commandBuffer, colorTargets.data(), colorTargets.size(), &depthStencilTargetInfo);
             SDL_BindGPUGraphicsPipeline(pass, pipelines[PIPELINE_TYPE::FILL_PIPELINE]);
@@ -77,7 +87,6 @@ void Renderer::Render(glm::mat4 &projectionMatrix, glm::mat4 &viewMatrix) {
 
                     auto mvp = projectionMatrix * viewMatrix * model;
                     SDL_PushGPUVertexUniformData(commandBuffer, 0, &mvp, sizeof(mvp));
-
                     SDL_DrawGPUIndexedPrimitives(pass, di.indexCount, 1, di.firstIndex, di.vertexOffset, 0);
                 }
             }
@@ -137,7 +146,14 @@ bool Renderer::Initialize() {
             return false;
         }
 
-        if (!CreateDepthStencils(window)) {
+        if (msaaEnabled) {
+            if (!CreateMSAATexture(window)) {
+                SDL_Log("Failed to create MSAA Texture");
+                return false;
+            }
+        }
+
+        if (!CreateDepthStencil(window)) {
             SDL_Log("Failed to create Depth Stencils");
             return false;
         }
@@ -290,6 +306,12 @@ bool Renderer::InitializePipelines(Window* window, SDL_GPUShader* vertexShader, 
     pipelineCreateInfo.vertex_input_state = vertexInputState;
     pipelineCreateInfo.depth_stencil_state = depthStencilState;
 
+    if (msaaEnabled) {
+        SDL_GPUMultisampleState multisampleState{};
+        multisampleState.sample_count = sampleCount;
+        pipelineCreateInfo.multisample_state = multisampleState;
+    }
+
     SDL_GPUGraphicsPipeline* pipeline = SDL_CreateGPUGraphicsPipeline(device, &pipelineCreateInfo);
 
     if (!pipeline) {
@@ -343,7 +365,7 @@ bool Renderer::InitializeSamplers() {
     return true;
 }
 
-bool Renderer::CreateDepthStencils(Window* window) {
+bool Renderer::CreateDepthStencil(Window* window) {
     int windowWidth, windowHeight;
     window->GetWindowSize(&windowWidth, &windowHeight);
 
@@ -351,24 +373,68 @@ bool Renderer::CreateDepthStencils(Window* window) {
     SDL_SetFloatProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_DEPTH_FLOAT, 1.0f);
     SDL_SetNumberProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_STENCIL_NUMBER, 0);
 
-    SDL_GPUTextureCreateInfo depthStencilTextureCreateInfo = {
-        .format = GetDepthStencilFormat(),
-        .usage = SDL_GPU_TEXTUREUSAGE_DEPTH_STENCIL_TARGET,
-        .width = static_cast<uint32_t>(windowWidth),
-        .height = static_cast<uint32_t>(windowHeight),
-        .layer_count_or_depth = 1,
-        .num_levels = 1,
-        .props = props
-    };
+    SDL_GPUTextureCreateInfo depthStencilTextureCreateInfo = {};
 
-    defaultDepthStencil = SDL_CreateGPUTexture(device, &depthStencilTextureCreateInfo);
+    depthStencilTextureCreateInfo.format = GetDepthStencilFormat();
+    depthStencilTextureCreateInfo.usage = SDL_GPU_TEXTUREUSAGE_DEPTH_STENCIL_TARGET;
+    depthStencilTextureCreateInfo.width = static_cast<uint32_t>(windowWidth);
+    depthStencilTextureCreateInfo.height = static_cast<uint32_t>(windowHeight);
+    depthStencilTextureCreateInfo.layer_count_or_depth = 1;
+    depthStencilTextureCreateInfo.num_levels = 1;
+    depthStencilTextureCreateInfo.props = props;
+    if (msaaEnabled) {
+        depthStencilTextureCreateInfo.sample_count = sampleCount;
+    }
+
+    depthStencilTexture = SDL_CreateGPUTexture(device, &depthStencilTextureCreateInfo);
     SDL_DestroyProperties(props);
 
-    if (!defaultDepthStencil) {
+    if (!depthStencilTexture) {
         SDL_Log("Failed to create default depth stencil texture, %s", SDL_GetError());
         return false;
     }
 
+    if (msaaEnabled) {
+        SDL_SetGPUTextureName(device, depthStencilTexture, "MSAA Depth Stencil Texture");
+    } else {
+        SDL_SetGPUTextureName(device, depthStencilTexture, "Depth Stencil Texture");
+    }
+    
+
+    return true;
+}
+
+bool Renderer::CreateMSAATexture(Window* window) {
+    int windowWidth, windowHeight;
+    window->GetWindowSize(&windowWidth, &windowHeight);
+
+    SDL_PropertiesID props = SDL_CreateProperties();
+
+    SDL_SetFloatProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_R_FLOAT, 0.1f);
+    SDL_SetFloatProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_G_FLOAT, 0.1f);
+    SDL_SetFloatProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_B_FLOAT, 0.1f);
+    SDL_SetFloatProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_A_FLOAT, 1.0f);
+
+    SDL_GPUTextureCreateInfo msaaTextureCreateInfo{
+        .format = window->GetGPUSwapchainTextureFormat(),
+        .usage = SDL_GPU_TEXTUREUSAGE_COLOR_TARGET,
+        .width = static_cast<uint32_t>(windowWidth),
+        .height = static_cast<uint32_t>(windowHeight),
+        .layer_count_or_depth = 1,
+        .num_levels = 1,
+        .sample_count = sampleCount,
+        .props = props,
+    };
+
+    msaaTexture = SDL_CreateGPUTexture(device, &msaaTextureCreateInfo);
+    SDL_DestroyProperties(props);
+
+    if (!msaaTexture) {
+        SDL_Log("Failed to create default MSAA texture, %s", SDL_GetError());
+        return false;
+    }
+
+    SDL_SetGPUTextureName(device, msaaTexture, "MSAA Texture");
     return true;
 }
 
