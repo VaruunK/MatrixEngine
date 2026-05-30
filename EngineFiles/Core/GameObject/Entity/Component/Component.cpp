@@ -1,7 +1,20 @@
 #include "Component.hpp"
+#include "Core/GameObject/Entity/Entity.hpp"
 
 void Component::Initialize(Entity* compOwner) {
 	owner = compOwner;
+}
+
+glm::vec3 Component::GetComponentLocation() {
+	return transform.location;
+}
+
+glm::vec3 Component::GetComponentRotation() {
+	return transform.rotation;
+}
+
+glm::vec3 Component::GetComponentScale() {
+	return transform.scale;
 }
 
 glm::vec3 Component::SetComponentLocation(glm::vec3 location) {

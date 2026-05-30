@@ -1,10 +1,9 @@
 #pragma once
-
 #include <cstdint>
+#include <memory>
 
-class Component;
-class Engine;
 class World;
+class Level;
 
 class GameObject {
 public:
@@ -19,4 +18,5 @@ public:
 protected:
 private:
 	bool hasStarted;
+	Level* currentLevel;
 };

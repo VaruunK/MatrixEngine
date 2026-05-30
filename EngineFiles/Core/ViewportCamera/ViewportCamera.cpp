@@ -13,9 +13,13 @@ ViewportCamera::ViewportCamera() {
 }
 
 void ViewportCamera::MoveUp() {
+	eye += up * viewDelta;
+	center += up * viewDelta;
 }
 
 void ViewportCamera::MoveDown() {
+	eye += up * -viewDelta;
+	center += up * -viewDelta;
 }
 
 void ViewportCamera::MoveLeft() {
@@ -39,15 +43,18 @@ void ViewportCamera::MoveBackward() {
 }
 
 void ViewportCamera::RotateUp() {
+	
 }
 
 void ViewportCamera::RotateDown() {
 }
 
 void ViewportCamera::RotateLeft() {
+	up = glm::normalize(up + (viewRight * -viewDelta));
 }
 
 void ViewportCamera::RotateRight() {
+	up = glm::normalize(up + (viewRight * viewDelta));
 }
 
 glm::mat4 ViewportCamera::GetProjectionMatrix() {

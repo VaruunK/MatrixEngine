@@ -25,7 +25,7 @@ endforeach()
 add_executable(Matrix
     EngineFiles/Engine.cpp
 
-    EngineFiles/Core/GameObject/GameObject.cpp
+    
     EngineFiles/Core/Assets/AssetLoader/AssetLoader.cpp
     EngineFiles/Core/Assets/DefaultAssets/DefaultAssets.cpp
     EngineFiles/Core/Render/Renderer.cpp
@@ -35,17 +35,21 @@ add_executable(Matrix
     # EngineFiles/Core/PhysicsManager/PhysicsManager.cpp
     EngineFiles/Core/WindowManager/WindowManager.cpp
     EngineFiles/Core/WindowManager/Window/Window.cpp
-    EngineFiles/Entity/Entity.cpp
+
+    EngineFiles/Core/GameObject/GameObject.cpp
+    EngineFiles/Core/GameObject/Entity/Entity.cpp
     #EngineFiles/Entity/Static/Static.cpp
-    EngineFiles/Entity/Agent/Agent.cpp
-    EngineFiles/Entity/Component/Component.cpp
-    EngineFiles/Entity/Component/MeshComponent/MeshComponent.cpp
-    EngineFiles/Entity/Component/SpriteComponent/SpriteComponent.cpp
+    EngineFiles/Core/GameObject/Entity/Agent/Agent.cpp
+    EngineFiles/Core/GameObject/Entity/Component/Component.cpp
+    EngineFiles/Core/GameObject/Entity/Component/MeshComponent/MeshComponent.cpp
+    EngineFiles/Core/GameObject/Entity/Component/SpriteComponent/SpriteComponent.cpp
     #EngineFiles/Entity/Component/PhysicsComponent/PhysicsComponent.cpp
     #EngineFiles/Entity/Component/CollisionComponent/CollisionComponent.cpp
     #EngineFiles/Entity/Component/MovementComponent/MovementComponent.cpp
-    EngineFiles/World/Level/Level.cpp
-    EngineFiles/World/World.cpp)
+    EngineFiles/Core/GameObject/Controller/Controller.cpp
+    EngineFiles/Core/GameObject/Controller/ViewportController/ViewportController.cpp
+    EngineFiles/Core/GameObject/World/World.cpp
+    EngineFiles/Core/GameObject/World/Level/Level.cpp)
 
 # -----------------------------
 # C++ standard

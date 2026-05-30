@@ -1,18 +1,14 @@
 #pragma once
 
 #include "Core/GameObject/GameObject.hpp"
+#include "Core/GameObject/Entity/Component/Component.hpp"
+#include "Transform.hpp"
 #include <unordered_map>
 #include <typeindex>
 #include <type_traits>
 #include <optional>
 #include <memory>
-#include <glm/glm.hpp>
 
-struct Transform {
-	glm::vec3 location = glm::vec3(0.0f, 0.0f, 0.0f);
-	glm::vec3 rotation = glm::vec3(0.0f, 0.0f, 0.0f);
-	glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f);
-};
 
 class Entity : public GameObject {
 public:

@@ -1,4 +1,4 @@
-#include "Entity/Entity.hpp"
+#include "GameObject/Entity/Entity.hpp"
 #include <memory>
 
 class ImageComponent;

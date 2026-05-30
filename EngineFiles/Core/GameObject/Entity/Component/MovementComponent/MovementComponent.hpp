@@ -2,8 +2,6 @@
 
 #include "Entity/Component/Component.hpp"
 #include "MovementTypes.hpp"
-#include "Core/Math/vec2.h"
-
 
 class MovementComponent : public Component {
 public:
@@ -11,13 +9,13 @@ public:
 	void Update(uint64_t deltaTime) override;
 	void DestroyComponent() override;
 
-	vec2f GetVelocity() { return velocity; }
+	glm::vec3 GetVelocity() { return velocity; }
 	float GetXVelocity() { return velocity.x; }
 	float GetYVelocity() { return velocity.y; }
 protected:
 private:
-	vec2f CalculateVelocity(uint64_t deltaTime);
+	glm::vec3 CalculateVelocity(uint64_t deltaTime);
 
-	vec2f velocity = vec2f(0.0f, 0.0f);
+	glm::vec3 velocity = vec2f(0.0f, 0.0f, 0.0f);
 	MovementType movementType;
 };

@@ -421,7 +421,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Engine.cpp" />
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\GameObject.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Assets\AssetLoader\AssetLoader.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Assets\DefaultAssets\DefaultAssets.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Render\Renderer.cpp" />
@@ -430,13 +429,16 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\ViewportCamera\ViewportCamera.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\WindowManager\WindowManager.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\WindowManager\Window\Window.cpp" />
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Entity.cpp" />
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Agent\Agent.cpp" />
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Component\Component.cpp" />
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Component\MeshComponent\MeshComponent.cpp" />
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Entity\Component\SpriteComponent\SpriteComponent.cpp" />
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\World\Level\Level.cpp" />
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\World\World.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\GameObject.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Entity\Entity.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Entity\Agent\Agent.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Entity\Component\Component.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Entity\Component\MeshComponent\MeshComponent.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Entity\Component\SpriteComponent\SpriteComponent.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Controller\Controller.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Controller\ViewportController\ViewportController.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\World\World.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\World\Level\Level.cpp" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

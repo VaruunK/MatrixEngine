@@ -21,10 +21,9 @@ public:
 	
 	bool IsRunning() { return running.load(); }
 	
-	std::unordered_map<std::string, std::unique_ptr<Level>>& GetAllLevels() { return levels; }
+	std::unordered_map<std::string, Level*>& GetAllLevels() { return levels; }
 	
 	Level* GetLevel(const std::string& levelName);
-	Level* GetCurrentLevel() { return currentLevel; }
 	Level* CreateLevel(const std::string& levelName);
 
 	bool LoadLevel(const std::string& levelName);
@@ -42,9 +41,11 @@ private:
 	std::atomic<bool> running = false;
 	std::atomic<bool> paused = false;
 
-	std::unordered_map<std::string, std::unique_ptr<Level>> levels;
-	Level* currentLevel = nullptr;
+	std::unordered_map<std::string, Level*> levels;
+	std::vector<Level*> loadedLevels;
+	Level* mainLevel;
 
+	TickManager* tickManager;
 	int maxTicks = 60;
 
 	uint64_t deltaSeconds;

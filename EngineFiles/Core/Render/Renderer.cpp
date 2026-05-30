@@ -1,9 +1,9 @@
 #include "Renderer.hpp"
 #include "RenderStructs.hpp"
 #include "Engine.hpp"
-#include "Entity/Entity.hpp"
-#include "Entity/Component/SpriteComponent/SpriteComponent.hpp"
-#include "Entity/Component/MeshComponent/MeshComponent.hpp"
+#include "Core/GameObject/Entity/Entity.hpp"
+#include "Core/GameObject/Entity/Component/SpriteComponent/SpriteComponent.hpp"
+#include "Core/GameObject/Entity/Component/MeshComponent/MeshComponent.hpp"
 #include "Core/WindowManager/Window/Window.hpp"
 #include <glm/ext/matrix_clip_space.hpp>
 #include <glm/ext/matrix_transform.hpp>

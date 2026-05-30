@@ -1,8 +1,7 @@
 #pragma once
 
-#include "Entity/Component/Component.hpp"
+#include "Core/GameObject/Entity/Component/Component.hpp"
 #include <string>
-#include <glm/glm.hpp>
 
 struct SDL_GPUTexture;
 struct SDL_Surface;

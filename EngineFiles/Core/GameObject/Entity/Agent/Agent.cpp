@@ -1,6 +1,6 @@
 #include "Agent.hpp"
-#include "Entity/Component/SpriteComponent/SpriteComponent.hpp"
-#include "Entity/Component/MeshComponent/MeshComponent.hpp"
+#include "Core/GameObject/Entity/Component/SpriteComponent/SpriteComponent.hpp"
+#include "Core/GameObject/Entity/Component/MeshComponent/MeshComponent.hpp"
 // #include "Entity/Component/PhysicsComponent/PhysicsComponent.hpp"
 // #include "Entity/Component/MovementComponent/MovementComponent.hpp"
 

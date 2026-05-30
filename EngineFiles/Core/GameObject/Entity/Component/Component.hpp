@@ -1,5 +1,9 @@
 #pragma once
-#include "../Entity.hpp"
+
+#include "Core/GameObject/Entity/Transform.hpp"
+#include <glm/glm.hpp>
+
+class Entity;
 
 class Component {
 public:
@@ -10,9 +14,9 @@ public:
 
 	Entity* GetOwner() { return owner; }
 
-	glm::vec3 GetComponentLocation() { return transform.location; }
-	glm::vec3 GetComponentRotation() { return transform.rotation; }
-	glm::vec3 GetComponentScale() { return transform.scale; }
+	glm::vec3 GetComponentLocation();
+	glm::vec3 GetComponentRotation();
+	glm::vec3 GetComponentScale();
 
 	glm::vec3 SetComponentLocation(glm::vec3 location);
 	glm::vec3 SetComponentRotation(glm::vec3 rotation);

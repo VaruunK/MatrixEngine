@@ -1,13 +1,13 @@
 #pragma once
 
-#include "World/World.hpp"
+#include "Core/GameObject/World/World.hpp"
 #include "Core/Render/Renderer.hpp"
 #include "Core/ShaderManager/ShaderManager.hpp"
-#include "Core/TickManager/TickManager.hpp"
 #include "Core/PhysicsManager/PhysicsManager.hpp"
 #include "Core/WindowManager/WindowManager.hpp"
 #include "Core/Assets/AssetLoader/AssetLoader.hpp"
 #include "Core/ViewportCamera/ViewportCamera.hpp"
+#include "Core/GameObject/Controller/ViewportController/ViewportController.hpp"
 #include <memory>
 #include <atomic>
 
@@ -27,7 +27,6 @@ public:
 	void SetMaxFrames(int frames) { MAX_FRAMES = frames; }
 
 	World& GetWorld() { return *world; }
-	TickManager& GetTickManager() { return *tickManager; }
 	// PhysicsManager& GetPhysicsManager() { return *physicsManager; }
 	WindowManager& GetWindowManager() { return *windowManager; }
 	Renderer& GetRenderer() { return *renderer; };
@@ -52,15 +51,15 @@ private:
 	int MAX_FRAMES = 144;
 	const int MAX_PHYSICS_FRAMES = 60;
 
-	std::unique_ptr<World> world;
-	std::unique_ptr<TickManager> tickManager;
+	World* world;
+	
 	// std::unique_ptr<PhysicsManager> physicsManager;
-	std::unique_ptr<WindowManager> windowManager;
-	std::unique_ptr<Renderer> renderer;
-	std::unique_ptr<AssetLoader> assetLoader;
-	std::unique_ptr<ViewportCamera> viewportCamera;
+	WindowManager* windowManager;
+	Renderer* renderer;
+	AssetLoader* assetLoader;
+	ViewportCamera* viewportCamera;
+	ViewportController* viewportController;
 
 	std::unique_ptr<SDL_GPUDevice, SDLGPUDeviceDeleter> device;
-
 	std::vector<std::thread> threads;
 };

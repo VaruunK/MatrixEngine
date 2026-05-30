@@ -1,9 +1,9 @@
 #include "GameObject.hpp"
-#include "../../../EngineFiles/Engine.hpp"
 
 GameObject::GameObject() {
 	canTick = true;
 	hasStarted = false;
+	// Engine::GetEngine().GetWorld();
 }
 
 void GameObject::Start() {
@@ -12,7 +12,7 @@ void GameObject::Start() {
 	}
 	hasStarted = true;
 	if (canTick) {
-		Engine::GetEngine().GetTickManager().RegisterToTick(this);
+		// Engine::GetEngine().GetTickManager().RegisterToTick(this);
 	}
 }
 
@@ -24,6 +24,4 @@ void GameObject::DestroyGameObject() {
 
 }
 
-World& GameObject::GetWorld() {
-	return Engine::GetEngine().GetWorld();
-}
+// need a get world function

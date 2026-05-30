@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Entity/Entity.hpp"
+#include "Core/GameObject/Entity/Entity.hpp"
 
 class SpriteComponent;
 class MeshComponent;

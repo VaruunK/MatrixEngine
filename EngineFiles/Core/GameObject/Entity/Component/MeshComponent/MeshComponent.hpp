@@ -1,9 +1,10 @@
 #pragma once
 
-#include "Entity/Component/Component.hpp"
+#include "Core/GameObject/Entity/Component/Component.hpp"
 #include <vector>
 #include <string>
 
+class Entity;
 struct Mesh;
 struct Texture;
 struct Vertex;
@@ -17,7 +18,7 @@ public:
     const Mesh* GetMesh() { return mesh; }
     const glm::mat4 GetModelMatrix(float windowAspectRatio);
 
-    void SetMesh(Mesh* mesh);    
+    void SetMesh(Mesh* mesh);
     void SetTexture(Texture* texture);
 
 private:
