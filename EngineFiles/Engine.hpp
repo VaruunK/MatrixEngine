@@ -1,12 +1,12 @@
 #pragma once
 
 #include "Core/GameObject/World/World.hpp"
-#include "Core/Render/Renderer.hpp"
 #include "Core/ShaderManager/ShaderManager.hpp"
 #include "Core/PhysicsManager/PhysicsManager.hpp"
 #include "Core/WindowManager/WindowManager.hpp"
 #include "Core/Assets/AssetLoader/AssetLoader.hpp"
 #include "Core/ViewportCamera/ViewportCamera.hpp"
+#include "Core/Render/EngineRenderer/EngineRenderer.hpp"
 #include "Core/GameObject/Controller/ViewportController/ViewportController.hpp"
 #include <memory>
 #include <atomic>
@@ -29,7 +29,6 @@ public:
 	World& GetWorld() { return *world; }
 	// PhysicsManager& GetPhysicsManager() { return *physicsManager; }
 	WindowManager& GetWindowManager() { return *windowManager; }
-	Renderer& GetRenderer() { return *renderer; };
 	AssetLoader& GetAssetLoader() { return *assetLoader; }
 	SDL_GPUDevice& GetGPUDevice() { return *device; }
 
@@ -52,10 +51,9 @@ private:
 	const int MAX_PHYSICS_FRAMES = 60;
 
 	World* world;
-	
+	EngineRenderer* engineRenderer;
 	// std::unique_ptr<PhysicsManager> physicsManager;
 	WindowManager* windowManager;
-	Renderer* renderer;
 	AssetLoader* assetLoader;
 	ViewportCamera* viewportCamera;
 	ViewportController* viewportController;

@@ -1,5 +1,5 @@
 #include "Entity.hpp"
-#include "Component/Component.hpp"
+#include "Core/GameObject/Component/Component.hpp"
 
 void Entity::Start()
 {

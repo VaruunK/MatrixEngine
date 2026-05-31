@@ -1,6 +1,11 @@
 #include "World.hpp"
+#include "Engine.hpp"
+#include "Core/Render/WorldRenderer/WorldRenderer.hpp"
 #include "Core/TickManager/TickManager.hpp"
 #include "Core/GameObject/World/Level/Level.hpp"
+#include "Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
+#include "Core/GameObject/Component/SpriteComponent/SpriteComponent.hpp"
+#include "Core/Structs/View.hpp"
 #include <SDL3/SDL.h>
 #include <iostream>
 
@@ -10,12 +15,22 @@ World::World() : GameObject() {
     running.store(false);
 }
 
-Level* World::Initialize(const std::string& startLevelName) {
+Level* World::Initialize(const std::string& startLevelName, SDL_GPUDevice* device) {
+    renderer = new WorldRenderer(device);
+
     Level* level = CreateInitialLevel(startLevelName);
+
+    if (!renderer->Initialize()) {
+        SDL_Log("Failed to start World Renderer");
+        renderer->Shutdown();
+        return nullptr;
+    }
+
     return level;
 }
 
 void World::Start() {
+    GameObject::Start();
     for (Level* level : loadedLevels) {
         level->Load();
     }
@@ -28,17 +43,20 @@ void World::Start() {
     }
 }
 
-void World::Tick(uint64_t deltaTime) {
+void World::Tick(uint64_t deltaTime, View &view) {
+    GameObject::Tick(deltaTime);
     for (Level* level : loadedLevels) {
         const std::vector<Entity*> entities = level->GetAllEntities();
         for (Entity* entity : entities) {
-            
+                    
         }
-    } 
+    }
+    renderer->Render(view);
 }
 
 void World::DestroyGameObject() {
     GameObject::DestroyGameObject();
+    renderer->Shutdown();
 }
 
 Level* World::GetLevel(const std::string& levelName) {
@@ -70,4 +88,20 @@ Level* World::CreateInitialLevel(const std::string& startLevelName) {
     mainLevel = level;
     levels.emplace(startLevelName, level);
     return mainLevel;
+}
+
+void World::RegisterMesh(MeshComponent* mesh) {
+    renderer->RegisterMesh(mesh);
+}
+
+void World::DeregisterMesh(MeshComponent* mesh) {
+    renderer->DeregisterMesh(mesh);
+}
+
+void World::RegisterSprite(SpriteComponent* sprite) {
+    renderer->RegisterSprite(sprite);
+}
+
+void World::DeregisterSprite(SpriteComponent* sprite) {
+    renderer->DeregisterSprite(sprite);
 }

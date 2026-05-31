@@ -362,3 +362,6 @@ C:/Users/varuu/development/Engine/build/vendored/glm/CMakeFiles/INSTALL.dir
 C:/Users/varuu/development/Engine/build/vendored/glm/CMakeFiles/ALL_BUILD.dir
 C:/Users/varuu/development/Engine/build/vendored/glm/glm/CMakeFiles/glm.dir
 C:/Users/varuu/development/Engine/build/vendored/glm/glm/CMakeFiles/INSTALL.dir
+C:/Users/varuu/development/Engine/build/vendored/imgui/CMakeFiles/imgui.dir
+C:/Users/varuu/development/Engine/build/vendored/imgui/CMakeFiles/INSTALL.dir
+C:/Users/varuu/development/Engine/build/vendored/imgui/CMakeFiles/ALL_BUILD.dir

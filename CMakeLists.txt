@@ -25,10 +25,12 @@ endforeach()
 add_executable(Matrix
     EngineFiles/Engine.cpp
 
-    
     EngineFiles/Core/Assets/AssetLoader/AssetLoader.cpp
     EngineFiles/Core/Assets/DefaultAssets/DefaultAssets.cpp
-    EngineFiles/Core/Render/Renderer.cpp
+
+    EngineFiles/Core/Render/WorldRenderer/WorldRenderer.cpp
+    EngineFiles/Core/Render/EngineRenderer/EngineRenderer.cpp
+    
     EngineFiles/Core/ShaderManager/ShaderManager.cpp
     EngineFiles/Core/TickManager/TickManager.cpp
     EngineFiles/Core/ViewportCamera/ViewportCamera.cpp
@@ -37,12 +39,13 @@ add_executable(Matrix
     EngineFiles/Core/WindowManager/Window/Window.cpp
 
     EngineFiles/Core/GameObject/GameObject.cpp
+    EngineFiles/Core/GameObject/Component/Component.cpp
+    EngineFiles/Core/GameObject/Component/MeshComponent/MeshComponent.cpp
+    EngineFiles/Core/GameObject/Component/SpriteComponent/SpriteComponent.cpp
+    
     EngineFiles/Core/GameObject/Entity/Entity.cpp
     #EngineFiles/Entity/Static/Static.cpp
     EngineFiles/Core/GameObject/Entity/Agent/Agent.cpp
-    EngineFiles/Core/GameObject/Entity/Component/Component.cpp
-    EngineFiles/Core/GameObject/Entity/Component/MeshComponent/MeshComponent.cpp
-    EngineFiles/Core/GameObject/Entity/Component/SpriteComponent/SpriteComponent.cpp
     #EngineFiles/Entity/Component/PhysicsComponent/PhysicsComponent.cpp
     #EngineFiles/Entity/Component/CollisionComponent/CollisionComponent.cpp
     #EngineFiles/Entity/Component/MovementComponent/MovementComponent.cpp
@@ -151,6 +154,9 @@ add_subdirectory(vendored/SDL_shadercross EXCLUDE_FROM_ALL)
 # --- GLM ---
 add_subdirectory(vendored/glm EXCLUDE_FROM_ALL)
 
+# --- IMGUI ---
+add_subdirectory(vendored/imgui EXCLUDE_FROM_ALL)
+
 # -----------------------------
 # Link libraries
 # -----------------------------
@@ -164,6 +170,7 @@ target_link_libraries(Matrix
         #LinearMath
         glm::glm
         assimp::assimp
+        imgui::imgui
 )
 
 # -----------------------------

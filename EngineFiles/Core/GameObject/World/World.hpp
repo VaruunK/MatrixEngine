@@ -9,14 +9,21 @@
 #include "Core/GameObject/GameObject.hpp"
 
 class TickManager;
+class WorldRenderer;
+class MeshComponent;
+class SpriteComponent;
+
+struct SDL_GPUDevice;
+
+struct View;
 
 class World : public GameObject {
 public:
 	World();
 
-	Level* Initialize(const std::string& startLevelName);
+	Level* Initialize(const std::string& startLevelName, SDL_GPUDevice* device);
 	void Start() override;
-	void Tick(uint64_t deltaTime) override;
+	void Tick(uint64_t deltaTime, View &view);
 	void DestroyGameObject() override;
 	
 	bool IsRunning() { return running.load(); }
@@ -32,9 +39,17 @@ public:
 	void SwitchToLevel(std::string& levelName);
 	void SwitchToLevel(Level* level);
 
+	void RegisterMesh(MeshComponent* mesh);
+	void DeregisterMesh(MeshComponent* mesh);
+
+	void RegisterSprite(SpriteComponent* sprite);
+	void DeregisterSprite(SpriteComponent* sprite);
+
 	void SetDeltaTime(uint64_t deltaTime) { deltaSeconds = deltaTime; }
 protected:
 private:
+
+	WorldRenderer* renderer;
 
 	Level* CreateInitialLevel(const std::string& startLevelName);
 

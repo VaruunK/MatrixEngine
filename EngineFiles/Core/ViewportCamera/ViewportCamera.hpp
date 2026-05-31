@@ -1,5 +1,8 @@
 #pragma once
+
 #include <glm/glm.hpp>
+
+struct View;
 
 class ViewportCamera {
 public:
@@ -18,8 +21,8 @@ public:
 	void RotateLeft();
 	void RotateRight();
 
-	glm::mat4 GetProjectionMatrix();
-	glm::mat4 GetViewMatrix();
+	View GetCameraView();
+	
 	float GetViewDelta() const { return viewDelta; }
 	
 	void SetViewDelta(float viewDelta) { this->viewDelta = viewDelta; }

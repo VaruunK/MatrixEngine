@@ -19,6 +19,8 @@ public:
 
 	SDL_GPUTextureFormat GetGPUSwapchainTextureFormat();
 
+	bool InitImGUI();
+
 	bool GetWindowSize(int *windowWidth, int *windowHeight);
 	int GetWindowWidth();
 	int GetWindowHeight();

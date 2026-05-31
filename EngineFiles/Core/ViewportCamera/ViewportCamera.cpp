@@ -1,4 +1,5 @@
 #include "ViewportCamera.hpp"
+#include "Core/Structs/View.hpp"
 #include <glm/ext/matrix_clip_space.hpp>
 #include <glm/ext/matrix_transform.hpp>
 
@@ -57,13 +58,9 @@ void ViewportCamera::RotateRight() {
 	up = glm::normalize(up + (viewRight * viewDelta));
 }
 
-glm::mat4 ViewportCamera::GetProjectionMatrix() {
-	projectionMatrix = glm::perspective(glm::radians(0.5f), 1.0f, 0.1f, 1000.0f);
-	return projectionMatrix;
-}
-
-
-glm::mat4 ViewportCamera::GetViewMatrix() {
-	viewMatrix = glm::lookAt(eye, center, up);
-	return viewMatrix;
+View ViewportCamera::GetCameraView() {
+	View view = {};
+	view.projectionMatrix = glm::perspective(glm::radians(0.5f), 1.0f, 0.1f, 1000.0f);
+	view.viewMatrix = glm::lookAt(eye, center, up);
+	return view;
 }

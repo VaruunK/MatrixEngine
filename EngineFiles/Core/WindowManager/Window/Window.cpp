@@ -4,11 +4,15 @@
 #include <SDL3/SDL_render.h>
 #include <SDL3_image/SDL_image.h>
 #include <string>
+#include <imgui.h>
+#include <imgui_impl_sdl3.h>
+#include <imgui_impl_sdlgpu3.h>
 
 Window::Window(SDL_GPUDevice* device, const std::string& name, const std::string& iconFilePath, int initWinSizeX, int initWinSizeY) {
     
     this->device = device;
-
+    // SDL_WINDOW_FULLSCREEN
+    // SDL_WINDOW_BORDERLESS
     window = SDL_CreateWindow(name.c_str(), initWinSizeX, initWinSizeY, SDL_WINDOW_RESIZABLE);
     if (!window) {
         SDL_Log("Failed to create window: %s", SDL_GetError());
@@ -42,6 +46,10 @@ bool Window::WaitAndAquireGPUGwapchainTexture(SDL_GPUCommandBuffer* commandBuffe
 
 SDL_GPUTextureFormat Window::GetGPUSwapchainTextureFormat() {
     return SDL_GetGPUSwapchainTextureFormat(device, window);
+}
+
+bool Window::InitImGUI() {
+    return ImGui_ImplSDL3_InitForSDLGPU(window);
 }
 
 bool Window::GetWindowSize(int *windowWidth, int *windowHeight) {

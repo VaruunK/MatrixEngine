@@ -1,16 +1,20 @@
-#include <iostream>
-#include <cstdio>
 #include "Engine.hpp"
-
 #include "Core/GameObject/World/Level/Level.hpp"
-#include "Core/Assets/AssetStructs.hpp"
+#include "Core/Structs/AssetStructs.hpp"
+#include "Core/Structs/View.hpp"
 #include "Core/Assets/DefaultAssets/DefaultAssets.hpp"
 //#include "Entity/Static/Static.hpp"
 #include "Core/GameObject/Entity/Agent/Agent.hpp"
-#include "Core/GameObject/Entity/Component/SpriteComponent/SpriteComponent.hpp"
-#include "Core/GameObject/Entity/Component/MeshComponent/MeshComponent.hpp"
+#include "Core/GameObject/Component/SpriteComponent/SpriteComponent.hpp"
+#include "Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
+#include <imgui.h>
+#include <imgui_impl_sdl3.h>
+#include <imgui_impl_sdlgpu3.h>
+
 #include <glm/ext/matrix_clip_space.hpp>
 #include <glm/ext/matrix_transform.hpp>
+#include <iostream>
+#include <cstdio>
 
 //#include "Entity/Component/PhysicsComponent/PhysicsComponent.hpp"
 
@@ -25,8 +29,8 @@
 */
 
 Engine::Engine() {
-    if (!SDL_WasInit(SDL_INIT_VIDEO)) {
-        if (!SDL_Init(SDL_INIT_VIDEO)) {
+    if (!SDL_WasInit(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD)) {
+        if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD)) {
             SDL_Log("Couldn't initialize SDL: %s", SDL_GetError());
             throw std::runtime_error("Failed to initialize SDL Video");
         }
@@ -38,9 +42,9 @@ Engine::Engine() {
     windowManager = new WindowManager(device.get());
     // physicsManager = std::make_unique<PhysicsManager>();
     world = new World();
-    renderer = new Renderer(device.get());
     viewportCamera = new ViewportCamera();
     viewportController = new ViewportController();
+    engineRenderer = new EngineRenderer(device.get());
 }
 
 void Engine::CreateDevice() {
@@ -57,12 +61,8 @@ void Engine::CreateDevice() {
 }
 
 int Engine::Run() {
-    if (!renderer->Initialize()) {
-        renderer->Shutdown();
-        return -1;
-    }
-
-    Level* level = world->Initialize("StartingLevel");
+    engineRenderer->Initialize();
+    Level* level = world->Initialize("StartingLevel", device.get());
 
     // Adding an entity before world start
     //Static* staticGo = level->AddEntityToLevel<Static>();
@@ -102,30 +102,22 @@ int Engine::Run() {
         SDL_Event event;
 
         while (SDL_PollEvent(&event)) {
-
+            ImGui_ImplSDL3_ProcessEvent(&event);
             if (event.type == SDL_EVENT_QUIT) {
                 running.store(false);
                 break;
             }
-
-            if (event.type = SDL_EVENT_WINDOW_RESIZED) {
-                renderer->resized = true;
-            }
         }
-        world->Tick(deltaSeconds);
+        View view = viewportCamera->GetCameraView();
+        world->Tick(deltaSeconds, view);
         viewportController->Tick(deltaSeconds);
-
-        auto pMatrix = viewportCamera->GetProjectionMatrix();
-        auto vMatrix = viewportCamera->GetViewMatrix();
-
-        renderer->Render(pMatrix, vMatrix);
+        engineRenderer->Render();
     }
     for (auto& thread : threads) {
         if (thread.joinable()) {
             thread.join();
         }
     }
-    renderer->Shutdown();
     SDL_ShaderCross_Quit();
     SDL_Quit();
     return 0;

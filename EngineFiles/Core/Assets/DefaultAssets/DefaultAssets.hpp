@@ -1,4 +1,4 @@
 #pragma once
-#include "Core/Assets/AssetStructs.hpp"
+#include "Core/Structs/AssetStructs.hpp"
 
 Mesh* DefaultCube();

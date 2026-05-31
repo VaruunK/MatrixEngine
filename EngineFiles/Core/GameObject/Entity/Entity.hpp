@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Core/GameObject/GameObject.hpp"
-#include "Core/GameObject/Entity/Component/Component.hpp"
-#include "Transform.hpp"
+#include "Core/GameObject/Component/Component.hpp"
+#include "Core/Structs/Transform.hpp"
 #include <unordered_map>
 #include <typeindex>
 #include <type_traits>

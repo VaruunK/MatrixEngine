@@ -162,7 +162,8 @@
 		"C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/tools/clang/runtime/cmake_install.cmake",
 		"C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/DirectXShaderCompiler/cmake/modules/cmake_install.cmake",
 		"C:/Users/varuu/development/Engine/build/vendored/glm/cmake_install.cmake",
-		"C:/Users/varuu/development/Engine/build/vendored/glm/glm/cmake_install.cmake"
+		"C:/Users/varuu/development/Engine/build/vendored/glm/glm/cmake_install.cmake",
+		"C:/Users/varuu/development/Engine/build/vendored/imgui/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

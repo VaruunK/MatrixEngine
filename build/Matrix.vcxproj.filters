@@ -10,7 +10,10 @@
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Assets\DefaultAssets\DefaultAssets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Render\Renderer.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Render\WorldRenderer\WorldRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Render\EngineRenderer\EngineRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\ShaderManager\ShaderManager.cpp">
@@ -31,19 +34,19 @@
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Component\Component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Component\MeshComponent\MeshComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Component\SpriteComponent\SpriteComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Entity\Entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Entity\Agent\Agent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Entity\Component\Component.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Entity\Component\MeshComponent\MeshComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Entity\Component\SpriteComponent\SpriteComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Controller\Controller.cpp">

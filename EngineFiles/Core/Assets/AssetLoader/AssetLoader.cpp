@@ -1,5 +1,6 @@
 #include "AssetLoader.hpp"
-#include "Core/Render/RenderStructs.hpp"
+#include "Core/Structs/RenderStructs.hpp"
+#include "Core/Structs/AssetStructs.hpp"
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
 #include <Engine.hpp>
