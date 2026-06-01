@@ -9,22 +9,20 @@
 
 class Window;
 struct ImGuiIO;
+struct FrameData;
 
 class EngineRenderer {
 public:
 	EngineRenderer(SDL_GPUDevice* device);
 	bool Initialize();
-	void Render();
+	void Render(FrameData& frame);
 
 	void Shutdown();
 
 	bool resized = false;
 private:
 	bool InitializeBuffers();
-	bool InitializePipelines(Window* window, SDL_GPUShader* vertexShader, SDL_GPUShader* fragmentShader);
 	bool InitializeSamplers();
-	bool CreateDepthStencil(Window* window);
-	bool CreateMSAATexture(Window* window);
 
 	SDL_GPUTextureFormat GetDepthStencilFormat();
 
@@ -32,12 +30,8 @@ private:
 
 	SDL_GPUDevice* device = nullptr;
 	SDL_GPUSampler* defaultSampler = nullptr;
-	SDL_GPUTexture* depthStencilTexture = nullptr;
-	SDL_GPUTexture* msaaTexture = nullptr;
 
 	SDL_GPUSampleCount sampleCount = SDL_GPU_SAMPLECOUNT_8;
-
-	std::unordered_map<PIPELINE_TYPE, SDL_GPUGraphicsPipeline*> pipelines;
 
 	static std::unique_ptr<ShaderManager> shaderManager;
 

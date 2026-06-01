@@ -58,6 +58,12 @@ private:
 	ViewportCamera* viewportCamera;
 	ViewportController* viewportController;
 
+	SDL_GPUCommandBuffer* currentCommandBuffer = nullptr;
+	SDL_GPUTexture* currentSwapchainTexture = nullptr;
+
+	void BeginFrame();
+	void EndFrame();
+
 	std::unique_ptr<SDL_GPUDevice, SDLGPUDeviceDeleter> device;
 	std::vector<std::thread> threads;
 };

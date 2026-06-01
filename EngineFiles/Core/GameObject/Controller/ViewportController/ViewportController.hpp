@@ -14,4 +14,5 @@ public:
 	void DestroyGameObject() override;
 private:
 	ViewportCamera* viewportCamera;
+	bool moveMode = false;
 };

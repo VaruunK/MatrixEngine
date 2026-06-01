@@ -1,8 +1,6 @@
 #pragma once
-
+#include "Core/Structs/View.hpp"
 #include <glm/glm.hpp>
-
-struct View;
 
 class ViewportCamera {
 public:
@@ -21,7 +19,7 @@ public:
 	void RotateLeft();
 	void RotateRight();
 
-	View GetCameraView();
+	const View& GetCameraView() const;
 	
 	float GetViewDelta() const { return viewDelta; }
 	
@@ -29,6 +27,8 @@ public:
 protected:
 	float viewDelta = 0.01f;
 private:
+	void UpdateView();
+
 	glm::vec3 eye;
 	glm::vec3 center;
 	glm::vec3 up;
@@ -37,4 +37,6 @@ private:
 
 	glm::mat4 projectionMatrix;
 	glm::mat4 viewMatrix;
+
+	View view;
 };

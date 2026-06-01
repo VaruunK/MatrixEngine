@@ -14,7 +14,7 @@ public:
 	Window(SDL_GPUDevice* device, const std::string& name, const std::string& iconFilePath, int initWinSizeX, int initWinSizeY);
 	~Window() = default;
 
-	bool WaitAndAquireGPUGwapchainTexture(SDL_GPUCommandBuffer* commandBuffer, SDL_GPUTexture** swapChainTexture, 
+	bool WaitAndAquireGPUSwapchainTexture(SDL_GPUCommandBuffer* commandBuffer, SDL_GPUTexture** swapChainTexture, 
 		uint32_t* swapchain_texture_width, uint32_t* swapchain_texture_height);
 
 	SDL_GPUTextureFormat GetGPUSwapchainTextureFormat();

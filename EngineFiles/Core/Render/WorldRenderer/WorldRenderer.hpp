@@ -13,13 +13,13 @@ class SpriteComponent;
 class MeshComponent;
 class Window;
 
-struct View;
+struct FrameData;
 
 class WorldRenderer {
 public:
     WorldRenderer(SDL_GPUDevice* device);
     bool Initialize();
-    void Render(View &view);
+    void Render(FrameData& frame);
 
     void RegisterSprite(SpriteComponent* sprite);
     void DeregisterSprite(SpriteComponent* sprite);
@@ -29,12 +29,14 @@ public:
     
     void Shutdown();
     bool resized = false;
+
 private:
     bool InitializeBuffers();
     bool InitializePipelines(Window* window, SDL_GPUShader* vertexShader, SDL_GPUShader* fragmentShader);
     bool InitializeSamplers();
     bool CreateDepthStencil(Window* window);
     bool CreateMSAATexture(Window* window);
+    bool CreateOffscreenTexture(Window* window);
 
     DrawInfo UploadVertices(const std::vector<Vertex> &vertices, const std::vector<uint32_t> &indices);
 
@@ -62,6 +64,10 @@ private:
     std::unordered_map<PIPELINE_TYPE, SDL_GPUGraphicsPipeline*> pipelines;
 
     static std::unique_ptr<ShaderManager> shaderManager;
+
+    SDL_GPUTexture* offscreenTexture = nullptr;
+    SDL_GPUSampler* offscreenSampler = nullptr;
+    bool offscreenTextureDirty = true;
 
     bool msaaEnabled = true;
 };

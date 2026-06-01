@@ -7,26 +7,17 @@
 #include "Core/GameObject/Entity/Agent/Agent.hpp"
 #include "Core/GameObject/Component/SpriteComponent/SpriteComponent.hpp"
 #include "Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
+#include "Core/WindowManager/Window/Window.hpp"
+#include "Core/Structs/FrameData.hpp"
 #include <imgui.h>
 #include <imgui_impl_sdl3.h>
 #include <imgui_impl_sdlgpu3.h>
-
 #include <glm/ext/matrix_clip_space.hpp>
 #include <glm/ext/matrix_transform.hpp>
 #include <iostream>
 #include <cstdio>
 
 //#include "Entity/Component/PhysicsComponent/PhysicsComponent.hpp"
-
-
-/*
-    redoing tick, level, and world system. Gameobjects should have reference to their level and through level have access to world.
-    World should not be a game object but should tick, can be some non game object class?
-    levels, worlds, and gameobjects / entities should probably be shared pointers?
-    debate creating a custom memory system? using tree traversal? need pool allocator as well probably.
-    components should be / remain unique pointers.
-    World should own a tick manager, engine should have a different(private?) tick manager that ticks world as well as other objects.
-*/
 
 Engine::Engine() {
     if (!SDL_WasInit(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD)) {
@@ -60,6 +51,25 @@ void Engine::CreateDevice() {
     }
 }
 
+void Engine::BeginFrame() {
+    currentCommandBuffer = SDL_AcquireGPUCommandBuffer(device.get());
+    if (!currentCommandBuffer) {
+        SDL_Log("Failed to acquire command buffer");
+        return;
+    }
+    Window* window = windowManager->GetMainWindow();
+    window->WaitAndAquireGPUSwapchainTexture(
+        currentCommandBuffer, &currentSwapchainTexture, nullptr, nullptr);
+}
+
+void Engine::EndFrame() {
+    if (currentCommandBuffer) {
+        SDL_SubmitGPUCommandBuffer(currentCommandBuffer);
+        currentCommandBuffer = nullptr;
+        currentSwapchainTexture = nullptr;
+    }
+}
+
 int Engine::Run() {
     engineRenderer->Initialize();
     Level* level = world->Initialize("StartingLevel", device.get());
@@ -87,7 +97,7 @@ int Engine::Run() {
     meshComponent = agent1->AddComponent<MeshComponent>();
     meshComponent->SetMesh(mesh);
 
-    // Mesh* mesh2 = DefaultCube();
+    Mesh* mesh2 = DefaultCube();
 
     while (running.load()) {
         Uint64 currentCounter = SDL_GetPerformanceCounter();
@@ -108,10 +118,23 @@ int Engine::Run() {
                 break;
             }
         }
-        View view = viewportCamera->GetCameraView();
-        world->Tick(deltaSeconds, view);
-        viewportController->Tick(deltaSeconds);
-        engineRenderer->Render();
+
+        BeginFrame();
+
+        if (currentCommandBuffer && currentSwapchainTexture) {
+            FrameData frame{};
+            frame.commandBuffer = currentCommandBuffer;
+            frame.swapchainTexture = currentSwapchainTexture;
+            frame.deltaTime = deltaSeconds;
+            frame.view = &viewportCamera->GetCameraView();
+            
+            world->Tick(frame);
+            viewportController->Tick(deltaSeconds);
+
+            engineRenderer->Render(frame);
+        }
+
+        EndFrame();
     }
     for (auto& thread : threads) {
         if (thread.joinable()) {

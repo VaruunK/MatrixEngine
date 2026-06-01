@@ -14,8 +14,9 @@ class MeshComponent;
 class SpriteComponent;
 
 struct SDL_GPUDevice;
-
-struct View;
+struct SDL_GPUCommandBuffer;
+struct SDL_GPUTexture;
+struct FrameData;
 
 class World : public GameObject {
 public:
@@ -23,7 +24,7 @@ public:
 
 	Level* Initialize(const std::string& startLevelName, SDL_GPUDevice* device);
 	void Start() override;
-	void Tick(uint64_t deltaTime, View &view);
+	void Tick(FrameData& frame);
 	void DestroyGameObject() override;
 	
 	bool IsRunning() { return running.load(); }
@@ -46,6 +47,8 @@ public:
 	void DeregisterSprite(SpriteComponent* sprite);
 
 	void SetDeltaTime(uint64_t deltaTime) { deltaSeconds = deltaTime; }
+
+	WorldRenderer* GetWorldRenderer() { return renderer; }
 protected:
 private:
 

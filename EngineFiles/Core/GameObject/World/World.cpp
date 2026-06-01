@@ -6,6 +6,7 @@
 #include "Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
 #include "Core/GameObject/Component/SpriteComponent/SpriteComponent.hpp"
 #include "Core/Structs/View.hpp"
+#include "Core/Structs/FrameData.hpp"
 #include <SDL3/SDL.h>
 #include <iostream>
 
@@ -43,15 +44,15 @@ void World::Start() {
     }
 }
 
-void World::Tick(uint64_t deltaTime, View &view) {
-    GameObject::Tick(deltaTime);
+void World::Tick(FrameData& frame) {
+    GameObject::Tick(frame.deltaTime);
     for (Level* level : loadedLevels) {
         const std::vector<Entity*> entities = level->GetAllEntities();
         for (Entity* entity : entities) {
-                    
+
         }
     }
-    renderer->Render(view);
+    renderer->Render(frame);
 }
 
 void World::DestroyGameObject() {
