@@ -28,12 +28,14 @@ add_executable(Matrix
     EngineFiles/Core/Assets/AssetLoader/AssetLoader.cpp
     EngineFiles/Core/Assets/DefaultAssets/DefaultAssets.cpp
 
-    EngineFiles/Core/Render/WorldRenderer/WorldRenderer.cpp
-    EngineFiles/Core/Render/EngineRenderer/EngineRenderer.cpp
+    EngineFiles/Core/Viewport/Viewport.cpp
+    EngineFiles/Core/Viewport/ViewportRenderer/ViewportRenderer.cpp
+    EngineFiles/Core/Viewport/ViewportController/ViewportController.cpp
+    EngineFiles/Core/Viewport/ViewportCamera/ViewportCamera.cpp
     
     EngineFiles/Core/ShaderManager/ShaderManager.cpp
     EngineFiles/Core/TickManager/TickManager.cpp
-    EngineFiles/Core/ViewportCamera/ViewportCamera.cpp
+    
     # EngineFiles/Core/PhysicsManager/PhysicsManager.cpp
     EngineFiles/Core/WindowManager/WindowManager.cpp
     EngineFiles/Core/WindowManager/Window/Window.cpp
@@ -42,7 +44,7 @@ add_executable(Matrix
     EngineFiles/Core/GameObject/Component/Component.cpp
     EngineFiles/Core/GameObject/Component/MeshComponent/MeshComponent.cpp
     EngineFiles/Core/GameObject/Component/SpriteComponent/SpriteComponent.cpp
-    
+
     EngineFiles/Core/GameObject/Entity/Entity.cpp
     #EngineFiles/Entity/Static/Static.cpp
     EngineFiles/Core/GameObject/Entity/Agent/Agent.cpp
@@ -50,9 +52,11 @@ add_executable(Matrix
     #EngineFiles/Entity/Component/CollisionComponent/CollisionComponent.cpp
     #EngineFiles/Entity/Component/MovementComponent/MovementComponent.cpp
     EngineFiles/Core/GameObject/Controller/Controller.cpp
-    EngineFiles/Core/GameObject/Controller/ViewportController/ViewportController.cpp
+    
     EngineFiles/Core/GameObject/World/World.cpp
-    EngineFiles/Core/GameObject/World/Level/Level.cpp)
+    EngineFiles/Core/GameObject/World/Level/Level.cpp
+    EngineFiles/Core/GameObject/World/WorldRenderer/WorldRenderer.cpp)
+
 
 # -----------------------------
 # C++ standard

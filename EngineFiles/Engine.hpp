@@ -5,9 +5,7 @@
 #include "Core/PhysicsManager/PhysicsManager.hpp"
 #include "Core/WindowManager/WindowManager.hpp"
 #include "Core/Assets/AssetLoader/AssetLoader.hpp"
-#include "Core/ViewportCamera/ViewportCamera.hpp"
-#include "Core/Render/EngineRenderer/EngineRenderer.hpp"
-#include "Core/GameObject/Controller/ViewportController/ViewportController.hpp"
+#include "Core/Viewport/Viewport.hpp"
 #include <memory>
 #include <atomic>
 
@@ -27,7 +25,6 @@ public:
 	void SetMaxFrames(int frames) { MAX_FRAMES = frames; }
 
 	World& GetWorld() { return *world; }
-	// PhysicsManager& GetPhysicsManager() { return *physicsManager; }
 	WindowManager& GetWindowManager() { return *windowManager; }
 	AssetLoader& GetAssetLoader() { return *assetLoader; }
 	SDL_GPUDevice& GetGPUDevice() { return *device; }
@@ -51,12 +48,10 @@ private:
 	const int MAX_PHYSICS_FRAMES = 60;
 
 	World* world;
-	EngineRenderer* engineRenderer;
+	Viewport* viewport;
 	// std::unique_ptr<PhysicsManager> physicsManager;
 	WindowManager* windowManager;
 	AssetLoader* assetLoader;
-	ViewportCamera* viewportCamera;
-	ViewportController* viewportController;
 
 	SDL_GPUCommandBuffer* currentCommandBuffer = nullptr;
 	SDL_GPUTexture* currentSwapchainTexture = nullptr;

@@ -12,10 +12,10 @@ public:
 	~WindowManager();
 
 	Window* CreateWindow();
-	Window* GetMainWindow() { return mainWindow.get(); }
+	Window* GetMainWindow() { return mainWindow; }
 	std::vector<Window*> GetWindows() { return windows; }
 private:
-	std::unique_ptr<Window> mainWindow;
+	Window* mainWindow;
 
 	std::vector<Window*> windows;
 };

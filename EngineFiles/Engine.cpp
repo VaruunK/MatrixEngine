@@ -3,7 +3,6 @@
 #include "Core/Structs/AssetStructs.hpp"
 #include "Core/Structs/View.hpp"
 #include "Core/Assets/DefaultAssets/DefaultAssets.hpp"
-//#include "Entity/Static/Static.hpp"
 #include "Core/GameObject/Entity/Agent/Agent.hpp"
 #include "Core/GameObject/Component/SpriteComponent/SpriteComponent.hpp"
 #include "Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
@@ -16,8 +15,6 @@
 #include <glm/ext/matrix_transform.hpp>
 #include <iostream>
 #include <cstdio>
-
-//#include "Entity/Component/PhysicsComponent/PhysicsComponent.hpp"
 
 Engine::Engine() {
     if (!SDL_WasInit(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD)) {
@@ -33,9 +30,7 @@ Engine::Engine() {
     windowManager = new WindowManager(device.get());
     // physicsManager = std::make_unique<PhysicsManager>();
     world = new World();
-    viewportCamera = new ViewportCamera();
-    viewportController = new ViewportController();
-    engineRenderer = new EngineRenderer(device.get());
+    viewport = new Viewport(device.get());
 }
 
 void Engine::CreateDevice() {
@@ -71,12 +66,8 @@ void Engine::EndFrame() {
 }
 
 int Engine::Run() {
-    engineRenderer->Initialize();
+    viewport->Initialize();
     Level* level = world->Initialize("StartingLevel", device.get());
-
-    // Adding an entity before world start
-    //Static* staticGo = level->AddEntityToLevel<Static>();
-
     running.store(true);
     // threads.emplace_back(&PhysicsManager::Run, physicsManager.get(), MAX_PHYSICS_FRAMES);
     world->Start();
@@ -90,8 +81,6 @@ int Engine::Run() {
     int cameraMode = 0;
 
     Mesh* mesh = assetLoader->CreateMesh("Content/freddy.gltf", "Content/freddy.png");
-
-    viewportController->Start(viewportCamera);
 
     agent1 = level->SpawnFromClass<Agent>();
     meshComponent = agent1->AddComponent<MeshComponent>();
@@ -122,16 +111,15 @@ int Engine::Run() {
         BeginFrame();
 
         if (currentCommandBuffer && currentSwapchainTexture) {
+
             FrameData frame{};
             frame.commandBuffer = currentCommandBuffer;
             frame.swapchainTexture = currentSwapchainTexture;
             frame.deltaTime = deltaSeconds;
-            frame.view = &viewportCamera->GetCameraView();
+            frame.view = &viewport->GetCameraView();
             
             world->Tick(frame);
-            viewportController->Tick(deltaSeconds);
-
-            engineRenderer->Render(frame);
+            viewport->Render(frame);
         }
 
         EndFrame();

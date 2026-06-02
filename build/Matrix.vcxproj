@@ -423,11 +423,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Engine.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Assets\AssetLoader\AssetLoader.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Assets\DefaultAssets\DefaultAssets.cpp" />
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Render\WorldRenderer\WorldRenderer.cpp" />
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Render\EngineRenderer\EngineRenderer.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Viewport\Viewport.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Viewport\ViewportRenderer\ViewportRenderer.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Viewport\ViewportController\ViewportController.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Viewport\ViewportCamera\ViewportCamera.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\ShaderManager\ShaderManager.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\TickManager\TickManager.cpp" />
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\ViewportCamera\ViewportCamera.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\WindowManager\WindowManager.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\WindowManager\Window\Window.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\GameObject.cpp" />
@@ -437,9 +438,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Entity\Entity.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Entity\Agent\Agent.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Controller\Controller.cpp" />
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Controller\ViewportController\ViewportController.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\World\World.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\World\Level\Level.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\World\WorldRenderer\WorldRenderer.cpp" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
