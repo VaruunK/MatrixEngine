@@ -48,7 +48,3 @@ void ViewportController::Tick(uint64_t deltaTime) {
 void ViewportController::DestroyGameObject() {
 	Controller::DestroyGameObject();
 }
-
-const View& ViewportController::GetCameraView() const {
-	return camera.GetCameraView();
-}

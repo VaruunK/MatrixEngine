@@ -13,7 +13,8 @@ public:
 	
 	void DestroyGameObject() override;
 
-	const View& GetCameraView() const;
+	ViewportCamera& GetCamera() { return camera; }
+	const ViewportCamera& GetCamera() const { return camera; }
 private:
 	ViewportCamera camera;
 	bool moveMode = false;

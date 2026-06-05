@@ -201,7 +201,7 @@ bool WorldRenderer::Initialize() {
 
 bool WorldRenderer::InitializeBuffers() {
     SDL_GPUBufferCreateInfo vertexInfo{};
-    vertexInfo.size = 10000 * sizeof(Vertex);
+    vertexInfo.size = 50000 * sizeof(Vertex);
     vertexInfo.usage = SDL_GPU_BUFFERUSAGE_VERTEX;
 
     vertexBuffer = SDL_CreateGPUBuffer(device, &vertexInfo);
@@ -213,7 +213,7 @@ bool WorldRenderer::InitializeBuffers() {
     SDL_SetGPUBufferName(device, vertexBuffer, "Vertex Buffer");
 
     SDL_GPUBufferCreateInfo indexInfo{};
-    indexInfo.size = 30000 * sizeof(uint32_t);
+    indexInfo.size = 150000 * sizeof(uint32_t);
     indexInfo.usage = SDL_GPU_BUFFERUSAGE_INDEX;
 
     indexBuffer = SDL_CreateGPUBuffer(device, &indexInfo);

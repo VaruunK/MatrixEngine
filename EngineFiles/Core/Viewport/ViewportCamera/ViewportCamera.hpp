@@ -20,9 +20,7 @@ public:
 	
 	float GetViewDelta() const { return viewDelta; }
 	
-	void SetViewDelta(float viewDelta) { this->viewDelta = viewDelta; }
-protected:
-	float viewDelta = 0.01f;
+	void SetCameraSpeed(int& speed);
 private:
 	void UpdateView();
 
@@ -34,6 +32,9 @@ private:
 
 	glm::mat4 projectionMatrix;
 	glm::mat4 viewMatrix;
+
+	int cameraSpeed = 1;
+	float viewDelta = 0.01f;
 
 	float yaw = -90.0f;
 	float pitch = 0.0f;

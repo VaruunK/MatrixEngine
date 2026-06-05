@@ -13,37 +13,37 @@ ViewportCamera::ViewportCamera() {
 }
 
 void ViewportCamera::MoveForward() {
-	eye += lookAt * viewDelta;
+	eye += lookAt * (viewDelta * cameraSpeed);
 	center = eye + lookAt;
 	UpdateView();
 }
 
 void ViewportCamera::MoveBackward() {
-	eye -= lookAt * viewDelta;
+	eye -= lookAt * (viewDelta * cameraSpeed);
 	center = eye + lookAt;
 	UpdateView();
 }
 
 void ViewportCamera::MoveLeft() {
-	eye -= viewRight * viewDelta;
+	eye -= viewRight * (viewDelta * cameraSpeed);
 	center = eye + lookAt;
 	UpdateView();
 }
 
 void ViewportCamera::MoveRight() {
-	eye += viewRight * viewDelta;
+	eye += viewRight * (viewDelta * cameraSpeed);
 	center = eye + lookAt;
 	UpdateView();
 }
 
 void ViewportCamera::MoveUp() {
-	eye += up * viewDelta;
+	eye += up * (viewDelta * cameraSpeed);
 	center = eye + lookAt;
 	UpdateView();
 }
 
 void ViewportCamera::MoveDown() {
-	eye -= up * viewDelta;
+	eye -= up * (viewDelta * cameraSpeed);
 	center = eye + lookAt;
 	UpdateView();
 }
@@ -74,4 +74,10 @@ void ViewportCamera::UpdateView() {
 
 const View& ViewportCamera::GetCameraView() const {
 	return view;
+}
+
+void ViewportCamera::SetCameraSpeed(int& speed) {
+	if (speed <= 0) return;
+
+	cameraSpeed = speed;
 }

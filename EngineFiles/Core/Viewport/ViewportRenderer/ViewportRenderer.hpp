@@ -8,12 +8,14 @@
 #include <memory>
 
 class Window;
+class Viewport;
 struct ImGuiIO;
 struct FrameData;
+struct SDL_GPUDevice;
 
 class ViewportRenderer {
 public:
-	ViewportRenderer(SDL_GPUDevice* device);
+	ViewportRenderer(SDL_GPUDevice* device, Viewport* viewport);
 	bool Initialize();
 	void Render(FrameData& frame);
 
@@ -26,6 +28,8 @@ private:
 	bool InitializeSamplers();
 
 	SDL_GPUTextureFormat GetDepthStencilFormat();
+
+	Viewport* viewport;
 
 	ImGuiIO* io = nullptr;
 

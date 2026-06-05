@@ -14,6 +14,9 @@ public:
 
 	void Initialize();
 	void Render(FrameData& frame);
+
+	void SetCameraSpeed(int& speed);
+
 	const View& GetCameraView() const;
 private:
 

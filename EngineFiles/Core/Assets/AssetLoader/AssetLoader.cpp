@@ -4,9 +4,15 @@
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
 #include <Engine.hpp>
+#include <SDL3/SDL_gpu.h>
+#include <SDL3_image/SDL_image.h>
+
+AssetLoader::AssetLoader(SDL_GPUDevice* device) {
+    this->device = device;
+}
 
 Texture* AssetLoader::CreateTexture(const std::string& textureFilePath) {
-    SDL_Surface* imageData = SDL_LoadSurface(textureFilePath.c_str());
+    SDL_Surface* imageData = IMG_Load(textureFilePath.c_str());
 
     if (!imageData) {
         SDL_Log("Failed to load image data: %s", SDL_GetError());
@@ -27,12 +33,12 @@ Texture* AssetLoader::CreateTexture(const std::string& textureFilePath) {
         .num_levels = 1,
     };
 
-    SDL_GPUTexture* texture = SDL_CreateGPUTexture(&Engine::GetEngine().GetGPUDevice(), &textureCreateInfo);
+    SDL_GPUTexture* texture = SDL_CreateGPUTexture(device, &textureCreateInfo);
     if (!texture) {
         SDL_Log("Failed to create Texture");
         return nullptr;
     }
-    SDL_SetGPUTextureName(&Engine::GetEngine().GetGPUDevice(), texture, textureFilePath.c_str());
+    SDL_SetGPUTextureName(device, texture, textureFilePath.c_str());
 
     Texture* newTexture = new Texture;
     newTexture->texture = texture;
@@ -76,7 +82,11 @@ void AssetLoader::ProcessNode(aiNode* node, const aiScene* scene, Mesh* newMesh,
 }
 
 Mesh* AssetLoader::CreateMesh(const std::string& meshFilePath) {
-    const aiScene* scene = importer.ReadFile(meshFilePath.c_str(), aiProcess_Triangulate);
+    int flags = aiProcess_Triangulate;
+    if (meshFilePath.ends_with(".fbx") || meshFilePath.ends_with(".FBX")) {
+        flags |= aiProcess_FlipUVs;
+    }
+    const aiScene* scene = importer.ReadFile(meshFilePath.c_str(), flags);
     if (!scene) {
         SDL_Log("Failed to load model: %s", importer.GetErrorString());
         return nullptr;

@@ -10,8 +10,9 @@
 
 std::unique_ptr<ShaderManager> ViewportRenderer::shaderManager = nullptr;
 
-ViewportRenderer::ViewportRenderer(SDL_GPUDevice* device) {
+ViewportRenderer::ViewportRenderer(SDL_GPUDevice* device, Viewport* viewport) {
 	this->device = device;
+    this->viewport = viewport;
 }
 
 bool ViewportRenderer::Initialize() {
@@ -97,19 +98,79 @@ void ViewportRenderer::Render(FrameData& frame) {
 
     ImTextureRef texRef = (ImTextureID)(intptr_t)frame.viewportTexture;
 
+    ImGui::SetNextWindowSize(ImVec2(io->DisplaySize.x, io->DisplaySize.y));
+    ImGui::SetNextWindowPos(ImVec2(0, 0));
+    ImGuiWindowFlags engineFlags = ImGuiWindowFlags_MenuBar | 
+        ImGuiWindowFlags_NoTitleBar | 
+        ImGuiWindowFlags_NoCollapse | 
+        ImGuiWindowFlags_NoBringToFrontOnFocus;
+    ImGui::Begin("Engine", nullptr, engineFlags);
+
+    if (ImGui::BeginMainMenuBar()) {
+        if (ImGui::BeginMenu("File")) {
+            ImGui::EndMenu();
+        }
+        if (ImGui::BeginMenu("Edit")) {
+            if (ImGui::MenuItem("Undo", "Ctrl+Z")) {}
+            if (ImGui::MenuItem("Redo", "Ctrl+Y", false, false)) {} // Disabled item
+            ImGui::Separator();
+            if (ImGui::MenuItem("Cut", "Ctrl+X")) {}
+            if (ImGui::MenuItem("Copy", "Ctrl+C")) {}
+            if (ImGui::MenuItem("Paste", "Ctrl+V")) {}
+            ImGui::EndMenu();
+        }
+        ImGui::EndMainMenuBar();
+    }
+
+    ImGuiWindowFlags viewportFlags = ImGuiWindowFlags_NoCollapse |
+        ImGuiWindowFlags_NoTitleBar |
+        ImGuiWindowFlags_NoBackground |
+        ImGuiWindowFlags_NoResize; // | ImGuiWindowFlags_NoMove;
+
     ImGui::SetNextWindowSize(ImVec2(800, 600), ImGuiCond_FirstUseEver);
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
-    
-    ImGui::Begin("Viewport");
+    ImGui::Begin("Viewport", nullptr, viewportFlags);
     ImGui::PopStyleVar();
-    active = ImGui::IsWindowFocused();
-    ImVec2 size = ImGui::GetContentRegionAvail();
-    if (size.x > 0 && size.y > 0 && frame.viewportTexture) {
-        ImTextureRef texRef = (ImTextureID)(intptr_t)frame.viewportTexture;
-        ImGui::Image(texRef, size);
-    }
-    ImGui::End();
 
+    ImGui::BeginTabBar("TabBar", ImGuiTabBarFlags_Reorderable | ImGuiTabBarFlags_AutoSelectNewTabs | ImGuiTabBarFlags_NoCloseWithMiddleMouseButton);
+
+    active = false;
+
+    if (bool tabActive = ImGui::BeginTabItem("Viewport", nullptr,
+        ImGuiTabItemFlags_NoCloseWithMiddleMouseButton | ImGuiTabItemFlags_NoReorder)) {
+
+        active = ImGui::IsWindowHovered(ImGuiHoveredFlags_ChildWindows);
+        
+        static ImGuiSliderFlags sliderFlags = ImGuiSliderFlags_ClampOnInput;
+        static int speed = 1;
+        if (ImGui::SliderInt("Camera Speed", &speed, 1, 10, "%d", sliderFlags)) {
+            // speed = std::max(speed, 1);
+            viewport->SetCameraSpeed(speed);
+        }
+
+        ImVec2 size = ImGui::GetContentRegionAvail();
+        if (size.x > 0 && size.y > 0 && frame.viewportTexture) {
+            ImTextureRef texRef = (ImTextureID)(intptr_t)frame.viewportTexture;
+            ImGui::Image(texRef, size);
+        }
+        ImGui::EndTabItem();
+    }
+
+    if (ImGui::BeginTabItem("idk")) {
+        ImGui::Text("This is the Broccoli tab!\nblah blah blah blah blah");
+        ImGui::EndTabItem();
+    }
+
+    if (ImGui::BeginTabItem("Cucumber"))
+    {
+        ImGui::Text("This is the Cucumber tab!\nblah blah blah blah blah");
+        ImGui::EndTabItem();
+    }
+
+    ImGui::EndTabBar();
+    
+    ImGui::End();
+    
     // 2. Show a simple window that we create ourselves. We use a Begin/End pair to create a named window.
     {
         static float f = 0.0f;
@@ -142,7 +203,7 @@ void ViewportRenderer::Render(FrameData& frame) {
             show_another_window = false;
         ImGui::End();
     }
-
+    ImGui::End();
     // Rendering
     ImGui::Render();
 

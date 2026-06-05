@@ -26,7 +26,7 @@ Engine::Engine() {
 
     CreateDevice();
 
-    assetLoader = new AssetLoader();
+    assetLoader = new AssetLoader(device.get());
     windowManager = new WindowManager(device.get());
     // physicsManager = std::make_unique<PhysicsManager>();
     world = new World();
@@ -80,8 +80,8 @@ int Engine::Run() {
     SpriteComponent* spriteComponent = nullptr;
     int cameraMode = 0;
 
-    Mesh* mesh = assetLoader->CreateMesh("Content/freddy.gltf", "Content/freddy.png");
-
+    // Mesh* mesh = assetLoader->CreateMesh("Content/freddy.gltf", "Content/freddy.png");
+    Mesh* mesh = assetLoader->CreateMesh("Content/mogus/mogus.fbx", "Content/mogus/mogus.jpg");
     agent1 = level->SpawnFromClass<Agent>();
     meshComponent = agent1->AddComponent<MeshComponent>();
     meshComponent->SetMesh(mesh);
