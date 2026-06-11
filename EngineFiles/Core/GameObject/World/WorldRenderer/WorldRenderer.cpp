@@ -38,16 +38,7 @@ bool WorldRenderer::CreateOffscreenTexture() {
     return true;
 }
 
-FrameData& WorldRenderer::Render() {
-
-    commandBuffer = SDL_AcquireGPUCommandBuffer(device);
-
-    if (!commandBuffer) {
-        SDL_Log("Failed to aquire Command Buffer: %s", SDL_GetError());
-        return frame;
-    }
-
-    frame.commandBuffer = commandBuffer;
+void WorldRenderer::Render(FrameData& frame) {
     /*if (resized) {
         SDL_WaitForGPUIdle(device);
 
@@ -60,93 +51,94 @@ FrameData& WorldRenderer::Render() {
         resized = false;
     }*/
 
-    SDL_WaitAndAcquireGPUSwapchainTexture(commandBuffer, window, &swapchainTexture, nullptr, nullptr);
-    if (swapchainTexture) {
+    SDL_GPUColorTargetInfo colorTarget{};
+    colorTarget.clear_color = { 0.1f, 0.1f, 0.1f, 1.0f };
+    colorTarget.load_op = SDL_GPU_LOADOP_CLEAR;
 
-        SDL_GPUColorTargetInfo colorTarget{};
-        colorTarget.clear_color = { 0.1f, 0.1f, 0.1f, 1.0f };
-        colorTarget.load_op = SDL_GPU_LOADOP_CLEAR;
-
-        if (msaaEnabled) {
-            colorTarget.texture = msaaTexture;
-            colorTarget.store_op = SDL_GPU_STOREOP_RESOLVE;
-            colorTarget.resolve_texture = offscreenTexture;
-        }
-        else {
-            colorTarget.texture = offscreenTexture;
-            colorTarget.store_op = SDL_GPU_STOREOP_STORE;
-        }
-
-        frame.viewportTexture = offscreenTexture;
-
-        std::vector<SDL_GPUColorTargetInfo> colorTargets{ colorTarget };
-
-        SDL_GPUDepthStencilTargetInfo depthStencilTargetInfo{};
-        depthStencilTargetInfo.clear_depth = 1.0f;
-        depthStencilTargetInfo.clear_stencil = 0;
-        depthStencilTargetInfo.store_op = SDL_GPU_STOREOP_STORE;
-        depthStencilTargetInfo.load_op = SDL_GPU_LOADOP_CLEAR;
-        depthStencilTargetInfo.stencil_store_op = SDL_GPU_STOREOP_STORE;
-        depthStencilTargetInfo.texture = depthStencilTexture;
-
-        SDL_GPURenderPass* pass = SDL_BeginGPURenderPass(frame.commandBuffer, colorTargets.data(), colorTargets.size(), &depthStencilTargetInfo);
-        SDL_BindGPUGraphicsPipeline(pass, pipelines[PIPELINE_TYPE::FILL_PIPELINE]);
-
-        std::vector<SDL_GPUBufferBinding> vertexBinding{ { vertexBuffer, 0 } };
-        SDL_BindGPUVertexBuffers(pass, 0, vertexBinding.data(), vertexBinding.size());
-
-        SDL_GPUBufferBinding indexBufferBinding{ indexBuffer, 0 };
-        SDL_BindGPUIndexBuffer(pass, &indexBufferBinding, SDL_GPU_INDEXELEMENTSIZE_32BIT);
-
-        int windowWidth, windowHeight;
-        SDL_GetWindowSize(window, &windowWidth, &windowHeight);
-
-        float aspectRatio = static_cast<float>(windowWidth) / static_cast<float>(windowHeight);
-
-        for (auto& [mesh, components] : meshes) {
-            if (!mesh->texture) continue;
-
-            SDL_GPUTextureSamplerBinding binding{ mesh->texture->texture, defaultSampler };
-            SDL_BindGPUFragmentSamplers(pass, 0, &binding, 1);
-
-            const DrawInfo& di = meshDrawInfo[mesh];
-
-            for (auto* component : components) {
-                auto model = component->GetModelMatrix(aspectRatio);
-
-                auto mvp = frame.view->projectionMatrix * frame.view->viewMatrix * model;
-                SDL_PushGPUVertexUniformData(frame.commandBuffer, 0, &mvp, sizeof(mvp));
-                SDL_DrawGPUIndexedPrimitives(pass, di.indexCount, 1, di.firstIndex, di.vertexOffset, 0);
-            }
-        }
-
-        for (auto& [texture, sprites] : spriteTextures) {
-            if (!texture->texture) continue;
-            SDL_GPUTextureSamplerBinding binding{ texture->texture, defaultSampler };
-            SDL_BindGPUFragmentSamplers(pass, 0, &binding, 1);
-
-            const DrawInfo& di = spriteDrawInfo[texture];
-            for (auto* sprite : sprites) {
-                auto mvp = frame.view->projectionMatrix * frame.view->viewMatrix * sprite->GetModelMatrix(aspectRatio);
-                SDL_PushGPUVertexUniformData(frame.commandBuffer, 0, &mvp, sizeof(mvp));
-                SDL_DrawGPUIndexedPrimitives(pass, di.indexCount, 1, di.firstIndex, di.vertexOffset, 0);
-            }
-        }
-
-        frame.swapchainTexture = swapchainTexture;
-        SDL_EndGPURenderPass(pass);
+    if (msaaEnabled) {
+        colorTarget.texture = msaaTexture;
+        colorTarget.store_op = SDL_GPU_STOREOP_RESOLVE;
+        colorTarget.resolve_texture = offscreenTexture;
     }
-    return frame;
+    else {
+        colorTarget.texture = offscreenTexture;
+        colorTarget.store_op = SDL_GPU_STOREOP_STORE;
+    }
+
+    frame.viewportTexture = offscreenTexture;
+
+    std::vector<SDL_GPUColorTargetInfo> colorTargets{ colorTarget };
+
+    SDL_GPUDepthStencilTargetInfo depthStencilTargetInfo{};
+    depthStencilTargetInfo.clear_depth = 1.0f;
+    depthStencilTargetInfo.clear_stencil = 0;
+    depthStencilTargetInfo.store_op = SDL_GPU_STOREOP_STORE;
+    depthStencilTargetInfo.load_op = SDL_GPU_LOADOP_CLEAR;
+    depthStencilTargetInfo.stencil_store_op = SDL_GPU_STOREOP_STORE;
+    depthStencilTargetInfo.texture = depthStencilTexture;
+
+    SDL_GPURenderPass* pass = SDL_BeginGPURenderPass(frame.commandBuffer, colorTargets.data(), colorTargets.size(), &depthStencilTargetInfo);
+    SDL_BindGPUGraphicsPipeline(pass, pipelines[PIPELINE_TYPE::FILL_PIPELINE]);
+
+    std::vector<SDL_GPUBufferBinding> vertexBinding{ { vertexBuffer, 0 } };
+    SDL_BindGPUVertexBuffers(pass, 0, vertexBinding.data(), vertexBinding.size());
+
+    SDL_GPUBufferBinding indexBufferBinding{ indexBuffer, 0 };
+    SDL_BindGPUIndexBuffer(pass, &indexBufferBinding, SDL_GPU_INDEXELEMENTSIZE_32BIT);
+
+    int windowWidth, windowHeight;
+    SDL_GetWindowSize(window, &windowWidth, &windowHeight);
+
+    float aspectRatio = static_cast<float>(windowWidth) / static_cast<float>(windowHeight);
+
+    for (auto& [mesh, components] : meshes) {
+        if (!mesh->texture) continue;
+
+        SDL_GPUTextureSamplerBinding binding{ mesh->texture->texture, defaultSampler };
+        SDL_BindGPUFragmentSamplers(pass, 0, &binding, 1);
+
+        const DrawInfo& di = meshDrawInfo[mesh];
+
+        for (auto* component : components) {
+            auto model = component->GetModelMatrix(aspectRatio);
+
+            auto mvp = frame.view->projectionMatrix * frame.view->viewMatrix * model;
+            SDL_PushGPUVertexUniformData(frame.commandBuffer, 0, &mvp, sizeof(mvp));
+            SDL_DrawGPUIndexedPrimitives(pass, di.indexCount, 1, di.firstIndex, di.vertexOffset, 0);
+        }
+    }
+
+    for (auto& [texture, sprites] : spriteTextures) {
+        if (!texture->texture) continue;
+        SDL_GPUTextureSamplerBinding binding{ texture->texture, defaultSampler };
+        SDL_BindGPUFragmentSamplers(pass, 0, &binding, 1);
+
+        const DrawInfo& di = spriteDrawInfo[texture];
+        for (auto* sprite : sprites) {
+            auto mvp = frame.view->projectionMatrix * frame.view->viewMatrix * sprite->GetModelMatrix(aspectRatio);
+            SDL_PushGPUVertexUniformData(frame.commandBuffer, 0, &mvp, sizeof(mvp));
+            SDL_DrawGPUIndexedPrimitives(pass, di.indexCount, 1, di.firstIndex, di.vertexOffset, 0);
+        }
+    }
+    SDL_EndGPURenderPass(pass);
 }
 
-FrameData& WorldRenderer::RenderAndSubmit() {
-    frame = Render();
-    if (!SDL_SubmitGPUCommandBuffer(commandBuffer)) {
+void WorldRenderer::RenderAndSubmit(FrameData& frame) {
+
+    SDL_GPUCommandBuffer* commandBuffer = SDL_AcquireGPUCommandBuffer(device);
+    if (!commandBuffer) return;
+
+    SDL_GPUTexture* swapchain = nullptr;
+    SDL_WaitAndAcquireGPUSwapchainTexture(commandBuffer, window, &swapchain, nullptr, nullptr);
+
+    frame.commandBuffer = commandBuffer;
+    frame.swapchainTexture = swapchain;
+
+    Render(frame);
+
+    if (!SDL_SubmitGPUCommandBuffer(frame.commandBuffer)) {
         SDL_Log("Failed to submit Command Buffer: %s", SDL_GetError());
     }
-    frame.commandBuffer = nullptr;
-    frame.swapchainTexture = nullptr;
-    return frame;
 }
 
 bool WorldRenderer::Initialize() {

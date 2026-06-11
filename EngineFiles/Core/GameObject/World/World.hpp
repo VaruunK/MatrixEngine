@@ -30,6 +30,8 @@ public:
 	
 	bool IsRunning() { return running.load(); }
 	
+	void Render();
+
 	std::unordered_map<std::string, Level*>& GetAllLevels() { return levels; }
 	
 	Level* GetLevel(const std::string& levelName);

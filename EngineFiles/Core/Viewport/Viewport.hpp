@@ -26,8 +26,11 @@ public:
 	float deltaSeconds = 0.0f;
 private:
 
+	SDL_GPUDevice* device = nullptr;
+	SDL_Window* window = nullptr;
+
 	ViewportController controller;
 	ViewportRenderer renderer;
 
-	WorldRenderer* worldRenderer;
+	WorldRenderer* worldRenderer = nullptr;
 };

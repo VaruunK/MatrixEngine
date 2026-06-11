@@ -18,8 +18,8 @@ class WorldRenderer {
 public:
     WorldRenderer(SDL_GPUDevice* device, SDL_Window* window);
     bool Initialize();
-    FrameData& Render();
-    FrameData& RenderAndSubmit();
+    void Render(FrameData& frame);
+    void RenderAndSubmit(FrameData& frame);
 
     void RegisterSprite(SpriteComponent* sprite);
     void DeregisterSprite(SpriteComponent* sprite);
@@ -28,8 +28,6 @@ public:
     void DeregisterMesh(MeshComponent* mesh);
     
     void Shutdown();
-
-    FrameData frame;
 
 private:
     bool InitializeBuffers();
@@ -48,12 +46,7 @@ private:
     SDL_Window* window = nullptr;
     SDL_GPUSampler* defaultSampler = nullptr;
     SDL_GPUTexture* depthStencilTexture = nullptr;
-    SDL_GPUTexture* msaaTexture = nullptr;
-
-    SDL_GPUCommandBuffer* commandBuffer = nullptr;
-    SDL_GPUTexture* swapchainTexture = nullptr;
-
-    
+    SDL_GPUTexture* msaaTexture = nullptr;    
 
     SDL_GPUBuffer* vertexBuffer = nullptr;
     SDL_GPUBuffer* indexBuffer = nullptr;

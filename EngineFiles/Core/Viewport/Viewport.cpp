@@ -4,14 +4,30 @@
 #include <iostream>
 
 Viewport::Viewport(SDL_GPUDevice* device, SDL_Window* window) : renderer(device, window, this){
-	
+    this->device = device;
+    this->window = window;
 }
 
 void Viewport::Render() {
-	worldRenderer->frame.view = &GetCameraView();
-	FrameData frame = worldRenderer->Render();
+    SDL_GPUCommandBuffer* cmd = SDL_AcquireGPUCommandBuffer(device);
+    if (!cmd) return;
 
-	renderer.Render(frame);
+    SDL_GPUTexture* swapchain = nullptr;
+    SDL_WaitAndAcquireGPUSwapchainTexture(cmd, window, &swapchain, nullptr, nullptr);
+
+    FrameData frame{};
+    frame.commandBuffer = cmd;
+    frame.swapchainTexture = swapchain;
+    frame.view = &GetCameraView();
+
+    if (swapchain) {
+        worldRenderer->Render(frame);
+        renderer.Render(frame);
+    }
+
+    if (!SDL_SubmitGPUCommandBuffer(cmd)) {
+        SDL_Log("Failed to submit: %s", SDL_GetError());
+    }
 }
 
 void Viewport::Tick(float deltaTime) {

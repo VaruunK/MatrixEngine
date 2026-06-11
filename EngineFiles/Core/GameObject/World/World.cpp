@@ -52,12 +52,21 @@ void World::Tick(uint64_t deltaTime) {
 
         }
     }
-    renderer->Render();
+    
 }
 
 void World::DestroyGameObject() {
     GameObject::DestroyGameObject();
     renderer->Shutdown();
+}
+
+void World::Render() {
+
+    FrameData frame{};
+    // TODO: Need a camera view
+    // frame.view = &GetCameraView();
+
+    renderer->RenderAndSubmit(frame);
 }
 
 Level* World::GetLevel(const std::string& levelName) {

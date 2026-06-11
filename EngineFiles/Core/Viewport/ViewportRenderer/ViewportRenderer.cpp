@@ -160,7 +160,7 @@ void ViewportRenderer::Render(FrameData& frame) {
             ImGui::Image(texRef, size);
 
             if (showFPS) {
-                char fpsText[32];
+                char fpsText[16];
                 snprintf(fpsText, sizeof(fpsText), "FPS: %.2f", 1.0f / viewport->deltaSeconds);
 
                 ImDrawList* drawList = ImGui::GetWindowDrawList();
@@ -195,12 +195,6 @@ void ViewportRenderer::Render(FrameData& frame) {
     SDL_GPURenderPass* pass = SDL_BeginGPURenderPass(frame.commandBuffer, &imguiTarget, 1, nullptr);
     ImGui_ImplSDLGPU3_RenderDrawData(draw_data, frame.commandBuffer, pass);
     SDL_EndGPURenderPass(pass);
-
-    if (!SDL_SubmitGPUCommandBuffer(frame.commandBuffer)) {
-        SDL_Log("Failed to submit Command Buffer: %s", SDL_GetError());
-    }
-    frame.commandBuffer = nullptr;
-    frame.swapchainTexture = nullptr;
 }
 
 
