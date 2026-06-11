@@ -7,7 +7,7 @@ class MovementComponent;
 class Static : public Entity {
 public:
 
-	Static();
+	Static(Level* level);
 
 	void Start() override;
 	void Tick(uint64_t) override;

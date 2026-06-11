@@ -28,12 +28,6 @@
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\TickManager\TickManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\WindowManager\WindowManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\WindowManager\Window\Window.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -62,6 +56,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\World\WorldRenderer\WorldRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Viewport\SelectProxy\SelectProxy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Game\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

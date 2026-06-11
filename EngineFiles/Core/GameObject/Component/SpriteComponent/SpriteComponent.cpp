@@ -1,15 +1,18 @@
 #include "SpriteComponent.hpp"
-#include "Core/Structs/RenderStructs.hpp"
 #include "Core/Structs/AssetStructs.hpp"
-#include "Engine.hpp"
-#include <SDL3/SDL.h>
-#include <SDL3/SDL_render.h>
-#include <SDL3_image/SDL_image.h>
+#include "Core/GameObject/World/World.hpp"
 #include <glm/ext/matrix_transform.hpp>
 // #include <iostream>
 
-void SpriteComponent::Initialize(Entity* compOwner) {
-    Component::Initialize(compOwner);
+SpriteComponent::SpriteComponent(Entity* owner) : Component(owner) {
+}
+
+void SpriteComponent::Start() {
+    Component::Start();
+}
+
+void SpriteComponent::DestroyGameObject() {
+    owner->GetLevel()->GetWorld()->DeregisterSprite(this);
 }
 
 const glm::mat4 SpriteComponent::GetModelMatrix(float windowAspectRatio) {
@@ -35,7 +38,7 @@ const glm::mat4 SpriteComponent::GetModelMatrix(float windowAspectRatio) {
 }
 
 void SpriteComponent::SetTexture(Texture* texture) {
-    Engine::GetEngine().GetWorld().DeregisterSprite(this);
+    owner->GetLevel()->GetWorld()->DeregisterSprite(this);
 
     if (this->texture) {
         free(this->texture);
@@ -43,9 +46,5 @@ void SpriteComponent::SetTexture(Texture* texture) {
 
     this->texture = texture;
 
-    Engine::GetEngine().GetWorld().RegisterSprite(this);
-}
-
-void SpriteComponent::DestroyComponent() {
-    Engine::GetEngine().GetWorld().DeregisterSprite(this);
+    owner->GetLevel()->GetWorld()->RegisterSprite(this);
 }

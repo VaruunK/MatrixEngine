@@ -1,8 +1,7 @@
 #include "ViewportRenderer.hpp"
-#include "Engine.hpp"
-#include "Core/WindowManager/WindowManager.hpp"
-#include "Core/WindowManager/Window/Window.hpp"
+#include "Core/Viewport/Viewport.hpp"
 #include "Core/Structs/FrameData.hpp"
+#include <SDL3/SDL_video.h>
 #include <imgui.h>
 #include <imgui_impl_sdl3.h>
 #include <imgui_impl_sdlgpu3.h>
@@ -10,8 +9,9 @@
 
 std::unique_ptr<ShaderManager> ViewportRenderer::shaderManager = nullptr;
 
-ViewportRenderer::ViewportRenderer(SDL_GPUDevice* device, Viewport* viewport) {
+ViewportRenderer::ViewportRenderer(SDL_GPUDevice* device, SDL_Window* window, Viewport* viewport) {
 	this->device = device;
+    this->window = window;
     this->viewport = viewport;
 }
 
@@ -24,7 +24,6 @@ bool ViewportRenderer::Initialize() {
 
     shaderManager.reset(rawSM);
 
-    Window* window = Engine::GetEngine().GetWindowManager().GetMainWindow();
     float main_scale = SDL_GetDisplayContentScale(SDL_GetPrimaryDisplay());
 
     IMGUI_CHECKVERSION();
@@ -41,7 +40,7 @@ bool ViewportRenderer::Initialize() {
 
     ImGui_ImplSDLGPU3_InitInfo init_info = {};
     init_info.Device = device;
-    init_info.ColorTargetFormat = window->GetGPUSwapchainTextureFormat();
+    init_info.ColorTargetFormat = SDL_GetGPUSwapchainTextureFormat(device, window);
     init_info.SwapchainComposition = SDL_GPU_SWAPCHAINCOMPOSITION_SDR;
     init_info.PresentMode = SDL_GPU_PRESENTMODE_VSYNC;
     init_info.MSAASamples = SDL_GPU_SAMPLECOUNT_1;
@@ -51,7 +50,7 @@ bool ViewportRenderer::Initialize() {
         return false;
     }
 
-    if (!window->InitImGUI()) {
+    if (!ImGui_ImplSDL3_InitForSDLGPU(window)) {
         SDL_Log("Failed to initialize ImGui SDL3 backend");
         return false;
     }
@@ -85,6 +84,7 @@ bool ViewportRenderer::Initialize() {
 }
 
 void ViewportRenderer::Render(FrameData& frame) {
+
     if (!frame.commandBuffer || !frame.swapchainTexture) return;
     
     ImGui_ImplSDLGPU3_NewFrame();
@@ -104,6 +104,7 @@ void ViewportRenderer::Render(FrameData& frame) {
         ImGuiWindowFlags_NoTitleBar | 
         ImGuiWindowFlags_NoCollapse | 
         ImGuiWindowFlags_NoBringToFrontOnFocus;
+
     ImGui::Begin("Engine", nullptr, engineFlags);
 
     if (ImGui::BeginMainMenuBar()) {
@@ -140,9 +141,12 @@ void ViewportRenderer::Render(FrameData& frame) {
         ImGuiTabItemFlags_NoCloseWithMiddleMouseButton | ImGuiTabItemFlags_NoReorder)) {
 
         active = ImGui::IsWindowHovered(ImGuiHoveredFlags_ChildWindows);
+
+        ImGui::Checkbox("Show FPS", &showFPS);
         
+        ImGui::SameLine();
+
         static ImGuiSliderFlags sliderFlags = ImGuiSliderFlags_ClampOnInput;
-        static int speed = 1;
         if (ImGui::SliderInt("Camera Speed", &speed, 1, 10, "%d", sliderFlags)) {
             // speed = std::max(speed, 1);
             viewport->SetCameraSpeed(speed);
@@ -150,20 +154,21 @@ void ViewportRenderer::Render(FrameData& frame) {
 
         ImVec2 size = ImGui::GetContentRegionAvail();
         if (size.x > 0 && size.y > 0 && frame.viewportTexture) {
+            ImVec2 imagePos = ImGui::GetCursorScreenPos();
+
             ImTextureRef texRef = (ImTextureID)(intptr_t)frame.viewportTexture;
             ImGui::Image(texRef, size);
+
+            if (showFPS) {
+                char fpsText[32];
+                snprintf(fpsText, sizeof(fpsText), "FPS: %.2f", 1.0f / viewport->deltaSeconds);
+
+                ImDrawList* drawList = ImGui::GetWindowDrawList();
+                ImVec2 textPos = ImVec2(imagePos.x + 8.0f, imagePos.y + 8.0f);
+                drawList->AddText(ImVec2(textPos.x + 1, textPos.y + 1), IM_COL32(0, 0, 0, 200), fpsText);
+                drawList->AddText(textPos, IM_COL32(255, 255, 255, 255), fpsText);
+            }
         }
-        ImGui::EndTabItem();
-    }
-
-    if (ImGui::BeginTabItem("idk")) {
-        ImGui::Text("This is the Broccoli tab!\nblah blah blah blah blah");
-        ImGui::EndTabItem();
-    }
-
-    if (ImGui::BeginTabItem("Cucumber"))
-    {
-        ImGui::Text("This is the Cucumber tab!\nblah blah blah blah blah");
         ImGui::EndTabItem();
     }
 
@@ -171,38 +176,6 @@ void ViewportRenderer::Render(FrameData& frame) {
     
     ImGui::End();
     
-    // 2. Show a simple window that we create ourselves. We use a Begin/End pair to create a named window.
-    {
-        static float f = 0.0f;
-        static int counter = 0;
-
-        ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
-
-        ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
-        ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
-        ImGui::Checkbox("Another Window", &show_another_window);
-
-        ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-        ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
-
-        if (ImGui::Button("Button"))
-            counter++;
-        ImGui::SameLine();
-        ImGui::Text("counter = %d", counter);
-
-        ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io->Framerate, io->Framerate);
-        ImGui::End();
-    }
-
-    // 3. Show another simple window.
-    if (show_another_window)
-    {
-        ImGui::Begin("Another Window", &show_another_window);
-        ImGui::Text("Hello from another window!");
-        if (ImGui::Button("Close Me"))
-            show_another_window = false;
-        ImGui::End();
-    }
     ImGui::End();
     // Rendering
     ImGui::Render();
@@ -222,6 +195,12 @@ void ViewportRenderer::Render(FrameData& frame) {
     SDL_GPURenderPass* pass = SDL_BeginGPURenderPass(frame.commandBuffer, &imguiTarget, 1, nullptr);
     ImGui_ImplSDLGPU3_RenderDrawData(draw_data, frame.commandBuffer, pass);
     SDL_EndGPURenderPass(pass);
+
+    if (!SDL_SubmitGPUCommandBuffer(frame.commandBuffer)) {
+        SDL_Log("Failed to submit Command Buffer: %s", SDL_GetError());
+    }
+    frame.commandBuffer = nullptr;
+    frame.swapchainTexture = nullptr;
 }
 
 

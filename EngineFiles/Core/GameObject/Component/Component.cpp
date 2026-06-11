@@ -1,10 +1,21 @@
 #include "Component.hpp"
 #include "Core/GameObject/Entity/Entity.hpp"
 
-void Component::Initialize(Entity* compOwner) {
-	owner = compOwner;
+Component::Component(Entity* owner) : GameObject() {
+	this->owner = owner;
 }
 
+void Component::Start() {
+	GameObject::Start();
+}
+
+void Component::Tick(uint64_t deltaTime) {
+	GameObject::Tick(deltaTime);
+}
+
+void Component::DestroyGameObject() {
+	GameObject::DestroyGameObject();
+}
 
 glm::vec3 Component::GetComponentLocation() {
 	return transform.location;

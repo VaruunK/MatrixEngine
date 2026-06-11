@@ -33,15 +33,18 @@ public:
 		std::function<void()> onRelease = nullptr);
 
 	void BindMouseMove(std::function<void(float relX, float relY)> callback);
-
+	
 	bool KeyStateChanged() { return keyStateChanged; }
 	
+	float GetMouseX() const { return mouseX; }
+	float GetMouseY() const { return mouseY; }
 private:
 	void handleInput();
+	
 	std::vector<bool> keyState;
 	std::vector<bool> previousKeyState;
 	int numKeys;
-
+	
 	SDL_MouseButtonFlags mouseButtonState;
 	SDL_MouseButtonFlags previousMouseButtonState;
 
@@ -50,6 +53,9 @@ private:
 
 	MouseButtonBindingList onPressedMouseButtonBindings;
 	MouseButtonBindingList onReleasedMouseButtonBindings;
+
+	float mouseX;
+	float mouseY;
 
 	std::function<void(float relX, float relY)> mouseMoveCallback;
 

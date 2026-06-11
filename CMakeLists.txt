@@ -37,8 +37,6 @@ add_executable(Matrix
     EngineFiles/Core/TickManager/TickManager.cpp
     
     # EngineFiles/Core/PhysicsManager/PhysicsManager.cpp
-    EngineFiles/Core/WindowManager/WindowManager.cpp
-    EngineFiles/Core/WindowManager/Window/Window.cpp
 
     EngineFiles/Core/GameObject/GameObject.cpp
     EngineFiles/Core/GameObject/Component/Component.cpp
@@ -55,7 +53,7 @@ add_executable(Matrix
     
     EngineFiles/Core/GameObject/World/World.cpp
     EngineFiles/Core/GameObject/World/Level/Level.cpp
-    EngineFiles/Core/GameObject/World/WorldRenderer/WorldRenderer.cpp)
+    EngineFiles/Core/GameObject/World/WorldRenderer/WorldRenderer.cpp "EngineFiles/Core/Viewport/SelectProxy/SelectProxy.cpp" "EngineFiles/Core/Game/Game.cpp")
 
 
 # -----------------------------

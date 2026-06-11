@@ -3,15 +3,20 @@
 #include "Core/GameObject/GameObject.hpp"
 #include "Core/GameObject/Component/Component.hpp"
 #include "Core/Structs/Transform.hpp"
+#include "Core/Viewport/SelectProxy/SelectProxy.hpp"
 #include <unordered_map>
 #include <typeindex>
 #include <type_traits>
 #include <optional>
 #include <memory>
 
+class Level;
 
 class Entity : public GameObject {
 public:
+
+	Entity(Level* level);
+	~Entity() = default;
 
 	virtual void Start() override;
 	virtual void Tick(uint64_t deltaTime) override;
@@ -21,9 +26,22 @@ public:
 	glm::vec3 GetRotation() { return transform.rotation; }
 	glm::vec3 GetScale() { return transform.scale; }
 
-	glm::vec3 SetLocation(glm::vec3 location) { transform.location = location; return GetLocation(); }
-	glm::vec3 SetRotation(glm::vec3 rotation) { transform.rotation = rotation; return GetRotation(); }
-	glm::vec3 SetScale(glm::vec3 scale) { transform.scale = scale; return GetScale(); }
+	glm::vec3 SetLocation(glm::vec3 location) { 
+		transform.location = location; 
+		return GetLocation();
+	}
+	
+	glm::vec3 SetRotation(glm::vec3 rotation) { 
+		transform.rotation = rotation; 
+		return GetRotation();
+	}
+	
+	glm::vec3 SetScale(glm::vec3 scale) { 
+		transform.scale = scale; 
+		return GetScale();
+	}
+
+	Level* GetLevel() { return currentLevel; }
 
 	template<typename ComponentType>
 	ComponentType* GetComponent() {
@@ -41,7 +59,7 @@ public:
 	ComponentType* AddComponent() {
 		static_assert(std::is_base_of_v<Component, ComponentType>, "Type does not inherit from Component");
 
-		auto comp = std::make_unique<ComponentType>();
+		auto comp = std::make_unique<ComponentType>(this);
 		auto key = std::type_index(typeid(ComponentType));
 
 		auto ptr = comp.get();
@@ -50,8 +68,12 @@ public:
 
 		return ptr;
 	}
+
+	const SelectProxy* GetSelectProxy() { return &selectProxy; }
 protected:
 	Transform transform;
 private:
 	std::unordered_map<std::type_index, std::unique_ptr<Component>> components;
+	Level* currentLevel;
+	SelectProxy selectProxy;
 };

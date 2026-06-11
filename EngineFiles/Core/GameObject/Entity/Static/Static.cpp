@@ -3,7 +3,7 @@
 #include "Entity/Component/MovementComponent/MovementComponent.hpp"
 #include <iostream>
 
-Static::Static() : Entity() {
+Static::Static(Level* level) : Entity(level) {
 	canTick = false;
 	
 	imageComponent = AddComponent<ImageComponent>();

@@ -22,7 +22,7 @@ void Controller::Tick(uint64_t deltaTime) {
 
     const bool* sdlKeyState = SDL_GetKeyboardState(&numKeys);
     keyState = std::vector<bool>(sdlKeyState, sdlKeyState + numKeys);
-    mouseButtonState = SDL_GetMouseState(nullptr, nullptr);
+    mouseButtonState = SDL_GetMouseState(&mouseX, &mouseY);
 
     keyStateChanged = (keyState != previousKeyState);
 

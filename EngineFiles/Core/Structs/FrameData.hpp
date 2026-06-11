@@ -11,5 +11,4 @@ struct FrameData {
     SDL_GPUTexture* viewportTexture = nullptr;
     SDL_GPUSampler* viewportSampler = nullptr;
     const View* view = nullptr;
-    float deltaTime = 0.0f;
 };

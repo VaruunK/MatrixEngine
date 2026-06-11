@@ -1,28 +1,27 @@
 #include "WorldRenderer.hpp"
 #include "Core/Structs/RenderStructs.hpp"
 #include "Core/Structs/View.hpp"
-#include "Core/Structs/FrameData.hpp"
 #include "Engine.hpp"
 #include "Core/GameObject/Entity/Entity.hpp"
 #include "Core/GameObject/Component/SpriteComponent/SpriteComponent.hpp"
 #include "Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
-#include "Core/WindowManager/Window/Window.hpp"
 #include <glm/ext/matrix_clip_space.hpp>
 #include <glm/ext/matrix_transform.hpp>
 // #include <iostream>
 
 std::unique_ptr<ShaderManager> WorldRenderer::shaderManager = nullptr;
 
-WorldRenderer::WorldRenderer(SDL_GPUDevice* device) {
+WorldRenderer::WorldRenderer(SDL_GPUDevice* device, SDL_Window* window) {
     this->device = device;
+    this->window = window;
 }
 
-bool WorldRenderer::CreateOffscreenTexture(Window* window) {
+bool WorldRenderer::CreateOffscreenTexture() {
     int w, h;
-    window->GetWindowSize(&w, &h);
+    SDL_GetWindowSize(window, &w, &h);
 
     SDL_GPUTextureCreateInfo info{};
-    info.format = window->GetGPUSwapchainTextureFormat();
+    info.format = SDL_GetGPUSwapchainTextureFormat(device, window);
     info.usage = SDL_GPU_TEXTUREUSAGE_COLOR_TARGET | SDL_GPU_TEXTUREUSAGE_SAMPLER;
     info.width = static_cast<uint32_t>(w);
     info.height = static_cast<uint32_t>(h);
@@ -39,20 +38,17 @@ bool WorldRenderer::CreateOffscreenTexture(Window* window) {
     return true;
 }
 
-void WorldRenderer::Render(FrameData& frame) {
+FrameData& WorldRenderer::Render() {
 
-    Window* window = Engine::GetEngine().GetWindowManager().GetMainWindow();
-    if (!offscreenTexture || !frame.commandBuffer) return;
-    
-    /* SDL_Event event;
+    commandBuffer = SDL_AcquireGPUCommandBuffer(device);
 
-    while (SDL_PollEvent(&event)) {
-        if (event.type == SDL_EVENT_WINDOW_RESIZED) {
-            resized = true;
-        }
-    }*/
-    
-    if (resized) {
+    if (!commandBuffer) {
+        SDL_Log("Failed to aquire Command Buffer: %s", SDL_GetError());
+        return frame;
+    }
+
+    frame.commandBuffer = commandBuffer;
+    /*if (resized) {
         SDL_WaitForGPUIdle(device);
 
         SDL_ReleaseGPUTexture(device, depthStencilTexture);
@@ -62,76 +58,95 @@ void WorldRenderer::Render(FrameData& frame) {
         CreateMSAATexture(window);
 
         resized = false;
-    }
+    }*/
 
-    SDL_GPUColorTargetInfo colorTarget{};
-    colorTarget.clear_color = { 0.1f, 0.1f, 0.1f, 1.0f };
-    colorTarget.load_op = SDL_GPU_LOADOP_CLEAR;
+    SDL_WaitAndAcquireGPUSwapchainTexture(commandBuffer, window, &swapchainTexture, nullptr, nullptr);
+    if (swapchainTexture) {
 
-    if (msaaEnabled) {
-        colorTarget.texture = msaaTexture;
-        colorTarget.store_op = SDL_GPU_STOREOP_RESOLVE;
-        colorTarget.resolve_texture = offscreenTexture;
-    } else {
-        colorTarget.texture = offscreenTexture;
-        colorTarget.store_op = SDL_GPU_STOREOP_STORE;
-    }
+        SDL_GPUColorTargetInfo colorTarget{};
+        colorTarget.clear_color = { 0.1f, 0.1f, 0.1f, 1.0f };
+        colorTarget.load_op = SDL_GPU_LOADOP_CLEAR;
 
-    frame.viewportTexture = offscreenTexture;
-
-    std::vector<SDL_GPUColorTargetInfo> colorTargets{ colorTarget };
-
-    SDL_GPUDepthStencilTargetInfo depthStencilTargetInfo{};
-    depthStencilTargetInfo.clear_depth = 1.0f;
-    depthStencilTargetInfo.clear_stencil = 0;
-    depthStencilTargetInfo.store_op = SDL_GPU_STOREOP_STORE;
-    depthStencilTargetInfo.load_op = SDL_GPU_LOADOP_CLEAR;
-    depthStencilTargetInfo.stencil_store_op = SDL_GPU_STOREOP_STORE;
-    depthStencilTargetInfo.texture = depthStencilTexture;
-
-    SDL_GPURenderPass* pass = SDL_BeginGPURenderPass(frame.commandBuffer, colorTargets.data(), colorTargets.size(), &depthStencilTargetInfo);
-    SDL_BindGPUGraphicsPipeline(pass, pipelines[PIPELINE_TYPE::FILL_PIPELINE]);
-
-    std::vector<SDL_GPUBufferBinding> vertexBinding{ { vertexBuffer, 0 } };
-    SDL_BindGPUVertexBuffers(pass, 0, vertexBinding.data(), vertexBinding.size());
-
-    SDL_GPUBufferBinding indexBufferBinding{ indexBuffer, 0 };
-    SDL_BindGPUIndexBuffer(pass, &indexBufferBinding, SDL_GPU_INDEXELEMENTSIZE_32BIT);
-
-    int windowWidth, windowHeight;
-    window->GetWindowSize(&windowWidth, &windowHeight);
-    float aspectRatio = static_cast<float>(windowWidth) / static_cast<float>(windowHeight);
-
-    for (auto& [mesh, components] : meshes) {
-        if (!mesh->texture) continue;
-
-        SDL_GPUTextureSamplerBinding binding{ mesh->texture->texture, defaultSampler };
-        SDL_BindGPUFragmentSamplers(pass, 0, &binding, 1);
-
-        const DrawInfo& di = meshDrawInfo[mesh];
-
-        for (auto* component : components) {
-            auto model = component->GetModelMatrix(aspectRatio);
-
-            auto mvp = frame.view->projectionMatrix * frame.view->viewMatrix * model;
-            SDL_PushGPUVertexUniformData(frame.commandBuffer, 0, &mvp, sizeof(mvp));
-            SDL_DrawGPUIndexedPrimitives(pass, di.indexCount, 1, di.firstIndex, di.vertexOffset, 0);
+        if (msaaEnabled) {
+            colorTarget.texture = msaaTexture;
+            colorTarget.store_op = SDL_GPU_STOREOP_RESOLVE;
+            colorTarget.resolve_texture = offscreenTexture;
         }
-    }
-
-    for (auto& [texture, sprites] : spriteTextures) {
-        if (!texture->texture) continue;
-        SDL_GPUTextureSamplerBinding binding{ texture->texture, defaultSampler };
-        SDL_BindGPUFragmentSamplers(pass, 0, &binding, 1);
-
-        const DrawInfo& di = spriteDrawInfo[texture];
-        for (auto* sprite : sprites) {
-            auto mvp = frame.view->projectionMatrix * frame.view->viewMatrix * sprite->GetModelMatrix(aspectRatio);
-            SDL_PushGPUVertexUniformData(frame.commandBuffer, 0, &mvp, sizeof(mvp));
-            SDL_DrawGPUIndexedPrimitives(pass, di.indexCount, 1, di.firstIndex, di.vertexOffset, 0);
+        else {
+            colorTarget.texture = offscreenTexture;
+            colorTarget.store_op = SDL_GPU_STOREOP_STORE;
         }
+
+        frame.viewportTexture = offscreenTexture;
+
+        std::vector<SDL_GPUColorTargetInfo> colorTargets{ colorTarget };
+
+        SDL_GPUDepthStencilTargetInfo depthStencilTargetInfo{};
+        depthStencilTargetInfo.clear_depth = 1.0f;
+        depthStencilTargetInfo.clear_stencil = 0;
+        depthStencilTargetInfo.store_op = SDL_GPU_STOREOP_STORE;
+        depthStencilTargetInfo.load_op = SDL_GPU_LOADOP_CLEAR;
+        depthStencilTargetInfo.stencil_store_op = SDL_GPU_STOREOP_STORE;
+        depthStencilTargetInfo.texture = depthStencilTexture;
+
+        SDL_GPURenderPass* pass = SDL_BeginGPURenderPass(frame.commandBuffer, colorTargets.data(), colorTargets.size(), &depthStencilTargetInfo);
+        SDL_BindGPUGraphicsPipeline(pass, pipelines[PIPELINE_TYPE::FILL_PIPELINE]);
+
+        std::vector<SDL_GPUBufferBinding> vertexBinding{ { vertexBuffer, 0 } };
+        SDL_BindGPUVertexBuffers(pass, 0, vertexBinding.data(), vertexBinding.size());
+
+        SDL_GPUBufferBinding indexBufferBinding{ indexBuffer, 0 };
+        SDL_BindGPUIndexBuffer(pass, &indexBufferBinding, SDL_GPU_INDEXELEMENTSIZE_32BIT);
+
+        int windowWidth, windowHeight;
+        SDL_GetWindowSize(window, &windowWidth, &windowHeight);
+
+        float aspectRatio = static_cast<float>(windowWidth) / static_cast<float>(windowHeight);
+
+        for (auto& [mesh, components] : meshes) {
+            if (!mesh->texture) continue;
+
+            SDL_GPUTextureSamplerBinding binding{ mesh->texture->texture, defaultSampler };
+            SDL_BindGPUFragmentSamplers(pass, 0, &binding, 1);
+
+            const DrawInfo& di = meshDrawInfo[mesh];
+
+            for (auto* component : components) {
+                auto model = component->GetModelMatrix(aspectRatio);
+
+                auto mvp = frame.view->projectionMatrix * frame.view->viewMatrix * model;
+                SDL_PushGPUVertexUniformData(frame.commandBuffer, 0, &mvp, sizeof(mvp));
+                SDL_DrawGPUIndexedPrimitives(pass, di.indexCount, 1, di.firstIndex, di.vertexOffset, 0);
+            }
+        }
+
+        for (auto& [texture, sprites] : spriteTextures) {
+            if (!texture->texture) continue;
+            SDL_GPUTextureSamplerBinding binding{ texture->texture, defaultSampler };
+            SDL_BindGPUFragmentSamplers(pass, 0, &binding, 1);
+
+            const DrawInfo& di = spriteDrawInfo[texture];
+            for (auto* sprite : sprites) {
+                auto mvp = frame.view->projectionMatrix * frame.view->viewMatrix * sprite->GetModelMatrix(aspectRatio);
+                SDL_PushGPUVertexUniformData(frame.commandBuffer, 0, &mvp, sizeof(mvp));
+                SDL_DrawGPUIndexedPrimitives(pass, di.indexCount, 1, di.firstIndex, di.vertexOffset, 0);
+            }
+        }
+
+        frame.swapchainTexture = swapchainTexture;
+        SDL_EndGPURenderPass(pass);
     }
-    SDL_EndGPURenderPass(pass);
+    return frame;
+}
+
+FrameData& WorldRenderer::RenderAndSubmit() {
+    frame = Render();
+    if (!SDL_SubmitGPUCommandBuffer(commandBuffer)) {
+        SDL_Log("Failed to submit Command Buffer: %s", SDL_GetError());
+    }
+    frame.commandBuffer = nullptr;
+    frame.swapchainTexture = nullptr;
+    return frame;
 }
 
 bool WorldRenderer::Initialize() {
@@ -162,26 +177,26 @@ bool WorldRenderer::Initialize() {
     SDL_GPUShader* vert = shaderManager.get()->LoadShader(vertShader, &optionsVert);
     SDL_GPUShader* frag = shaderManager.get()->LoadShader(fragShader, &optionsFrag);
 
-    Window* window = Engine::GetEngine().GetWindowManager().GetMainWindow();
+    // Window* window = Engine::GetEngine().GetWindowManager().GetMainWindow();
     
-    if (!InitializePipelines(window, vert, frag)) {
+    if (!InitializePipelines(vert, frag)) {
         SDL_Log("Failed to create Pipelines");
         return false;
     }
 
     if (msaaEnabled) {
-        if (!CreateMSAATexture(window)) {
+        if (!CreateMSAATexture()) {
             SDL_Log("Failed to create MSAA Texture");
             return false;
         }
     }
 
-    if (!CreateDepthStencil(window)) {
+    if (!CreateDepthStencil()) {
         SDL_Log("Failed to create Depth Stencils");
         return false;
     }
 
-    if (!CreateOffscreenTexture(window)) {
+    if (!CreateOffscreenTexture()) {
         SDL_Log("Failed to create offscreen texture");
         return false;
     }
@@ -285,10 +300,10 @@ bool WorldRenderer::RenderTexture(const Texture* texture) {
     return true;
 }
 
-bool WorldRenderer::InitializePipelines(Window* window, SDL_GPUShader* vertexShader, SDL_GPUShader* fragmentShader) {
+bool WorldRenderer::InitializePipelines(SDL_GPUShader* vertexShader, SDL_GPUShader* fragmentShader) {
 
     SDL_GPUColorTargetDescription colorTargetDescription{};
-    colorTargetDescription.format = window->GetGPUSwapchainTextureFormat();
+    colorTargetDescription.format = SDL_GetGPUSwapchainTextureFormat(device, window);
     colorTargetDescription.blend_state.enable_blend = true;
     colorTargetDescription.blend_state.src_color_blendfactor = SDL_GPU_BLENDFACTOR_SRC_ALPHA;
     colorTargetDescription.blend_state.dst_color_blendfactor = SDL_GPU_BLENDFACTOR_ONE_MINUS_SRC_ALPHA;
@@ -405,9 +420,9 @@ bool WorldRenderer::InitializeSamplers() {
     return true;
 }
 
-bool WorldRenderer::CreateDepthStencil(Window* window) {
+bool WorldRenderer::CreateDepthStencil() {
     int windowWidth, windowHeight;
-    window->GetWindowSize(&windowWidth, &windowHeight);
+    SDL_GetWindowSize(window, &windowWidth, &windowHeight);
 
     SDL_PropertiesID props = SDL_CreateProperties();
     SDL_SetFloatProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_DEPTH_FLOAT, 1.0f);
@@ -442,9 +457,9 @@ bool WorldRenderer::CreateDepthStencil(Window* window) {
     return true;
 }
 
-bool WorldRenderer::CreateMSAATexture(Window* window) {
+bool WorldRenderer::CreateMSAATexture() {
     int windowWidth, windowHeight;
-    window->GetWindowSize(&windowWidth, &windowHeight);
+    SDL_GetWindowSize(window, &windowWidth, &windowHeight);
 
     SDL_PropertiesID props = SDL_CreateProperties();
 
@@ -453,16 +468,16 @@ bool WorldRenderer::CreateMSAATexture(Window* window) {
     SDL_SetFloatProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_B_FLOAT, 0.1f);
     SDL_SetFloatProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_A_FLOAT, 1.0f);
 
-    SDL_GPUTextureCreateInfo msaaTextureCreateInfo{
-        .format = window->GetGPUSwapchainTextureFormat(),
-        .usage = SDL_GPU_TEXTUREUSAGE_COLOR_TARGET,
-        .width = static_cast<uint32_t>(windowWidth),
-        .height = static_cast<uint32_t>(windowHeight),
-        .layer_count_or_depth = 1,
-        .num_levels = 1,
-        .sample_count = sampleCount,
-        .props = props,
-    };
+    SDL_GPUTextureCreateInfo msaaTextureCreateInfo{};
+
+    msaaTextureCreateInfo.format = SDL_GetGPUSwapchainTextureFormat(device, window);
+    msaaTextureCreateInfo.usage = SDL_GPU_TEXTUREUSAGE_COLOR_TARGET;
+    msaaTextureCreateInfo.width = static_cast<uint32_t>(windowWidth);
+    msaaTextureCreateInfo.height = static_cast<uint32_t>(windowHeight);
+    msaaTextureCreateInfo.layer_count_or_depth = 1;
+    msaaTextureCreateInfo.num_levels = 1;
+    msaaTextureCreateInfo.sample_count = sampleCount;
+    msaaTextureCreateInfo.props = props;
 
     msaaTexture = SDL_CreateGPUTexture(device, &msaaTextureCreateInfo);
     SDL_DestroyProperties(props);

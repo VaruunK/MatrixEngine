@@ -3,6 +3,7 @@
 #include "Core/Structs/AssetStructs.hpp"
 #include "Core/Enums/PipelineEnums.hpp"
 #include "Core/Structs/RenderStructs.hpp"
+#include "Core/Structs/FrameData.hpp"
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -10,15 +11,15 @@
 
 class SpriteComponent;
 class MeshComponent;
-class Window;
 
 struct FrameData;
 
 class WorldRenderer {
 public:
-    WorldRenderer(SDL_GPUDevice* device);
+    WorldRenderer(SDL_GPUDevice* device, SDL_Window* window);
     bool Initialize();
-    void Render(FrameData& frame);
+    FrameData& Render();
+    FrameData& RenderAndSubmit();
 
     void RegisterSprite(SpriteComponent* sprite);
     void DeregisterSprite(SpriteComponent* sprite);
@@ -27,15 +28,16 @@ public:
     void DeregisterMesh(MeshComponent* mesh);
     
     void Shutdown();
-    bool resized = false;
+
+    FrameData frame;
 
 private:
     bool InitializeBuffers();
-    bool InitializePipelines(Window* window, SDL_GPUShader* vertexShader, SDL_GPUShader* fragmentShader);
+    bool InitializePipelines(SDL_GPUShader* vertexShader, SDL_GPUShader* fragmentShader);
     bool InitializeSamplers();
-    bool CreateDepthStencil(Window* window);
-    bool CreateMSAATexture(Window* window);
-    bool CreateOffscreenTexture(Window* window);
+    bool CreateDepthStencil();
+    bool CreateMSAATexture();
+    bool CreateOffscreenTexture();
 
     DrawInfo UploadVertices(const std::vector<Vertex> &vertices, const std::vector<uint32_t> &indices);
 
@@ -43,9 +45,15 @@ private:
     bool RenderTexture(const Texture* texture);
 
     SDL_GPUDevice* device = nullptr;
+    SDL_Window* window = nullptr;
     SDL_GPUSampler* defaultSampler = nullptr;
     SDL_GPUTexture* depthStencilTexture = nullptr;
     SDL_GPUTexture* msaaTexture = nullptr;
+
+    SDL_GPUCommandBuffer* commandBuffer = nullptr;
+    SDL_GPUTexture* swapchainTexture = nullptr;
+
+    
 
     SDL_GPUBuffer* vertexBuffer = nullptr;
     SDL_GPUBuffer* indexBuffer = nullptr;

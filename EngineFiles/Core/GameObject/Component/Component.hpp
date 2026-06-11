@@ -9,11 +9,13 @@ class Entity;
 class Component : public GameObject {
 public:
 
-	virtual void Initialize(Entity* compOwner);
-	virtual void Update(uint64_t deltaTime) = 0;
-	virtual void DestroyComponent() = 0;
+	Component(Entity* owner);
 
-	GameObject* GetOwner() { return owner; }
+	virtual void Start() override;
+	virtual void Tick(uint64_t deltaTime) override;
+	virtual void DestroyGameObject() override;
+
+	Entity* GetOwner() { return owner; }
 
 	glm::vec3 GetComponentLocation();
 	glm::vec3 GetComponentRotation();
@@ -23,7 +25,7 @@ public:
 	glm::vec3 SetComponentRotation(glm::vec3 rotation);
 	glm::vec3 SetComponentScale(glm::vec3 scale);
 protected:
-	GameObject* owner;
+	Entity* owner;
 
 	Transform transform;
 private:

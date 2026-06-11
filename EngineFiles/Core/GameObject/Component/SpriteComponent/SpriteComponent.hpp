@@ -7,11 +7,15 @@ struct SDL_GPUTexture;
 struct SDL_Surface;
 struct Texture;
 
+class Entity;
+
 class SpriteComponent : public Component {
 public:
-    void Initialize(Entity* compOwner) override;
-    void Update(uint64_t deltaTime) override {}
-    void DestroyComponent() override;
+    SpriteComponent(Entity* owner);
+
+    void Start() override;
+    void Tick(uint64_t deltaTime) override {}
+    void DestroyGameObject() override;
 
     const Texture* GetTexture() { return texture; }
     const glm::mat4 GetModelMatrix(float windowAspectRatio);

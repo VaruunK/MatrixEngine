@@ -3,7 +3,6 @@
 GameObject::GameObject() {
 	canTick = true;
 	hasStarted = false;
-	currentLevel = nullptr;
 	// Engine::GetEngine().GetWorld();
 }
 

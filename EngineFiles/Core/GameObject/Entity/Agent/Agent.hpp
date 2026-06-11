@@ -9,7 +9,7 @@ class MeshComponent;
 
 class Agent : public Entity {
 public:
-	Agent();
+	Agent(Level* level);
 
 	void Start() override;
 	void Tick(uint64_t deltaTime) override;

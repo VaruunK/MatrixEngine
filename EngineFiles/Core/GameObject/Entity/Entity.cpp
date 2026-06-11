@@ -1,16 +1,18 @@
 #include "Entity.hpp"
 #include "Core/GameObject/Component/Component.hpp"
 
-void Entity::Start()
-{
+Entity::Entity(Level* level) {
+	this->currentLevel = level;
+}
+
+void Entity::Start() {
 	GameObject::Start();
 }
 
-void Entity::Tick(uint64_t deltaTime)
-{
+void Entity::Tick(uint64_t deltaTime) {
 	GameObject::Tick(deltaTime);
 	for (auto& [type, component] : components) {
-		component->Update(deltaTime);
+		component->Tick(deltaTime);
 	}
 }
 

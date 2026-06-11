@@ -1,12 +1,12 @@
 #include "Engine.hpp"
 #include "Core/GameObject/World/Level/Level.hpp"
+#include "Core/GameObject/World/WorldRenderer/WorldRenderer.hpp"
 #include "Core/Structs/AssetStructs.hpp"
 #include "Core/Structs/View.hpp"
 #include "Core/Assets/DefaultAssets/DefaultAssets.hpp"
 #include "Core/GameObject/Entity/Agent/Agent.hpp"
 #include "Core/GameObject/Component/SpriteComponent/SpriteComponent.hpp"
 #include "Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
-#include "Core/WindowManager/Window/Window.hpp"
 #include "Core/Structs/FrameData.hpp"
 #include <imgui.h>
 #include <imgui_impl_sdl3.h>
@@ -15,6 +15,8 @@
 #include <glm/ext/matrix_transform.hpp>
 #include <iostream>
 #include <cstdio>
+#include <SDL3_image/SDL_image.h>
+#include <SDL3/sdl_gpu.h>
 
 Engine::Engine() {
     if (!SDL_WasInit(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD)) {
@@ -25,12 +27,10 @@ Engine::Engine() {
     }
 
     CreateDevice();
+    CreateWindow();
 
     assetLoader = new AssetLoader(device.get());
-    windowManager = new WindowManager(device.get());
-    // physicsManager = std::make_unique<PhysicsManager>();
-    world = new World();
-    viewport = new Viewport(device.get());
+    viewport = new Viewport(device.get(), window);
 }
 
 void Engine::CreateDevice() {
@@ -46,43 +46,57 @@ void Engine::CreateDevice() {
     }
 }
 
-void Engine::BeginFrame() {
-    currentCommandBuffer = SDL_AcquireGPUCommandBuffer(device.get());
-    if (!currentCommandBuffer) {
-        SDL_Log("Failed to acquire command buffer");
-        return;
+void Engine::CreateWindow() {
+    // SDL_WINDOW_FULLSCREEN
+    // SDL_WINDOW_BORDERLESS
+    window = SDL_CreateWindow("Matrix Engine", 1080, 720, SDL_WINDOW_RESIZABLE);
+    if (!window) {
+        SDL_Log("Failed to create window: %s", SDL_GetError());
+        // throw runtime error
     }
-    Window* window = windowManager->GetMainWindow();
-    window->WaitAndAquireGPUSwapchainTexture(
-        currentCommandBuffer, &currentSwapchainTexture, nullptr, nullptr);
-}
 
-void Engine::EndFrame() {
-    if (currentCommandBuffer) {
-        SDL_SubmitGPUCommandBuffer(currentCommandBuffer);
-        currentCommandBuffer = nullptr;
-        currentSwapchainTexture = nullptr;
+    SDL_Surface* icon = IMG_Load("Engine.png");
+
+    if (!icon) {
+        SDL_Log("couldn't load icon: %s", SDL_GetError());
+    }
+    else {
+        SDL_SetWindowIcon(window, icon);
+        SDL_DestroySurface(icon);
+    }
+
+    if (!SDL_ClaimWindowForGPUDevice(device.get(), window)) {
+        SDL_Log("Failed to claim window: %s", SDL_GetError());
+        // throw runtime error
     }
 }
 
 int Engine::Run() {
-    viewport->Initialize();
-    Level* level = world->Initialize("StartingLevel", device.get());
+    game = new Game();
+
+    game->device = device.get();
+    game->window = window;
+    std::string levelName = "Mainlevel";
+    std::string filePath = "";
+    game->Initialize(levelName, filePath);
+
+    viewport->Initialize(game->world->GetWorldRenderer());
+
+    Level* level = game->world->GetLevel("Mainlevel");
     running.store(true);
     // threads.emplace_back(&PhysicsManager::Run, physicsManager.get(), MAX_PHYSICS_FRAMES);
-    world->Start();
+    // world->Start();
 
     Uint64 frequency = SDL_GetPerformanceFrequency();
     Uint64 lastCounter = SDL_GetPerformanceCounter();
-    Agent* agent1 = nullptr;
-    Agent* agent2 = nullptr;
+    
     MeshComponent* meshComponent = nullptr;
     SpriteComponent* spriteComponent = nullptr;
     int cameraMode = 0;
 
     // Mesh* mesh = assetLoader->CreateMesh("Content/freddy.gltf", "Content/freddy.png");
     Mesh* mesh = assetLoader->CreateMesh("Content/mogus/mogus.fbx", "Content/mogus/mogus.jpg");
-    agent1 = level->SpawnFromClass<Agent>();
+    Agent* agent1 = level->SpawnFromClass<Agent>();
     meshComponent = agent1->AddComponent<MeshComponent>();
     meshComponent->SetMesh(mesh);
 
@@ -97,7 +111,7 @@ int Engine::Run() {
         if (deltaSeconds < MaxDeltaTime)
             deltaSeconds = MaxDeltaTime;
 
-        world->SetDeltaTime(deltaSeconds);
+        // world->SetDeltaTime(deltaSeconds);
         SDL_Event event;
 
         while (SDL_PollEvent(&event)) {
@@ -108,21 +122,9 @@ int Engine::Run() {
             }
         }
 
-        BeginFrame();
-
-        if (currentCommandBuffer && currentSwapchainTexture) {
-
-            FrameData frame{};
-            frame.commandBuffer = currentCommandBuffer;
-            frame.swapchainTexture = currentSwapchainTexture;
-            frame.deltaTime = deltaSeconds;
-            frame.view = &viewport->GetCameraView();
-            
-            world->Tick(frame);
-            viewport->Render(frame);
-        }
-
-        EndFrame();
+        // world->Tick(frame);
+        viewport->Tick(deltaSeconds);
+        viewport->Render();
     }
     for (auto& thread : threads) {
         if (thread.joinable()) {

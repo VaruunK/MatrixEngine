@@ -6,20 +6,28 @@
 
 struct View;
 struct SDL_GPUDevice;
+struct SDL_Window;
+
+class WorldRenderer;
 
 class Viewport {
 public:
-	Viewport(SDL_GPUDevice* device);
+	Viewport(SDL_GPUDevice* device, SDL_Window* window);
 	~Viewport() = default;
 
-	void Initialize();
-	void Render(FrameData& frame);
+	void Initialize(WorldRenderer* worldRenderer);
+	void Tick(float deltaTime);
+	void Render();
 
 	void SetCameraSpeed(int& speed);
 
 	const View& GetCameraView() const;
+
+	float deltaSeconds = 0.0f;
 private:
 
 	ViewportController controller;
 	ViewportRenderer renderer;
+
+	WorldRenderer* worldRenderer;
 };

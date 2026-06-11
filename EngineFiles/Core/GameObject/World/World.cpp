@@ -16,8 +16,8 @@ World::World() : GameObject() {
     running.store(false);
 }
 
-Level* World::Initialize(const std::string& startLevelName, SDL_GPUDevice* device) {
-    renderer = new WorldRenderer(device);
+Level* World::Initialize(const std::string& startLevelName, SDL_GPUDevice* device, SDL_Window* window) {
+    renderer = new WorldRenderer(device, window);
 
     Level* level = CreateInitialLevel(startLevelName);
 
@@ -44,15 +44,15 @@ void World::Start() {
     }
 }
 
-void World::Tick(FrameData& frame) {
-    GameObject::Tick(frame.deltaTime);
+void World::Tick(uint64_t deltaTime) {
+    GameObject::Tick(deltaTime);
     for (Level* level : loadedLevels) {
         const std::vector<Entity*> entities = level->GetAllEntities();
         for (Entity* entity : entities) {
 
         }
     }
-    renderer->Render(frame);
+    renderer->Render();
 }
 
 void World::DestroyGameObject() {

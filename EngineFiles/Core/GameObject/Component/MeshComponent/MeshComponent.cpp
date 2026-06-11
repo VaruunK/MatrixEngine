@@ -1,18 +1,18 @@
 #include "MeshComponent.hpp"
-#include "Core/Structs/RenderStructs.hpp"
-#include "Engine.hpp"
-#include <SDL3/SDL.h>
-#include <SDL3/SDL_render.h>
-#include <SDL3_image/SDL_image.h>
+#include "Core/GameObject/World/World.hpp"
 #include <glm/ext/matrix_transform.hpp>
-#include <iostream>
+// #include <iostream>
 
-void MeshComponent::Initialize(Entity* compOwner) {
-    Component::Initialize(compOwner);
+MeshComponent::MeshComponent(Entity* owner) : Component(owner) {
+    //owner->GetLevel()->GetWorld()->RegisterMesh(this);
 }
 
-void MeshComponent::DestroyComponent() {
-    Engine::GetEngine().GetWorld().DeregisterMesh(this);
+void MeshComponent::Start() {
+    Component::Start();
+}
+
+void MeshComponent::DestroyGameObject() {
+    owner->GetLevel()->GetWorld()->DeregisterMesh(this);
 }
 
 const glm::mat4 MeshComponent::GetModelMatrix(float windowAspectRatio) {
@@ -32,12 +32,12 @@ void MeshComponent::SetMesh(Mesh* mesh) {
     if (!mesh) return;
 
     if (this->mesh) {
-        Engine::GetEngine().GetWorld().DeregisterMesh(this);
+        owner->GetLevel()->GetWorld()->DeregisterMesh(this);
     }
     
     this->mesh = mesh;
 
-    Engine::GetEngine().GetWorld().RegisterMesh(this);
+    owner->GetLevel()->GetWorld()->RegisterMesh(this);
 }
 
 //void MeshComponent::SetTexture(const std::string& texturePath) {

@@ -17,5 +17,6 @@ public:
 	const ViewportCamera& GetCamera() const { return camera; }
 private:
 	ViewportCamera camera;
+	bool leftClicking = false;
 	bool moveMode = false;
 };

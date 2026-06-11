@@ -3,7 +3,7 @@
 #include "Core/GameObject/World/World.hpp"
 #include "Core/ShaderManager/ShaderManager.hpp"
 #include "Core/PhysicsManager/PhysicsManager.hpp"
-#include "Core/WindowManager/WindowManager.hpp"
+#include "Core/Game/Game.hpp"
 #include "Core/Assets/AssetLoader/AssetLoader.hpp"
 #include "Core/Viewport/Viewport.hpp"
 #include <memory>
@@ -24,8 +24,6 @@ public:
 	bool IsRunning() { return running.load(); };
 	void SetMaxFrames(int frames) { MAX_FRAMES = frames; }
 
-	World& GetWorld() { return *world; }
-	WindowManager& GetWindowManager() { return *windowManager; }
 	AssetLoader& GetAssetLoader() { return *assetLoader; }
 	SDL_GPUDevice& GetGPUDevice() { return *device; }
 
@@ -42,22 +40,20 @@ private:
 	Engine();
 	
 	void CreateDevice();
+	void CreateWindow();
 
 	std::atomic<bool> running;
 	int MAX_FRAMES = 144;
 	const int MAX_PHYSICS_FRAMES = 60;
 
-	World* world;
 	Viewport* viewport;
-	// std::unique_ptr<PhysicsManager> physicsManager;
-	WindowManager* windowManager;
+	SDL_Window* window;
 	AssetLoader* assetLoader;
+
+	Game* game;
 
 	SDL_GPUCommandBuffer* currentCommandBuffer = nullptr;
 	SDL_GPUTexture* currentSwapchainTexture = nullptr;
-
-	void BeginFrame();
-	void EndFrame();
 
 	std::unique_ptr<SDL_GPUDevice, SDLGPUDeviceDeleter> device;
 	std::vector<std::thread> threads;
