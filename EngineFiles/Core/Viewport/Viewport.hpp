@@ -2,6 +2,7 @@
 
 #include "Core/Viewport/ViewportController/ViewportController.hpp"
 #include "Core/Viewport/ViewportRenderer/ViewportRenderer.hpp"
+#include "Core/Viewport/ViewportCamera/ViewportCamera.hpp"
 #include "Core/Structs/FrameData.hpp"
 
 struct View;
@@ -21,16 +22,20 @@ public:
 
 	void SetCameraSpeed(int& speed);
 
-	const View& GetCameraView() const;
+	void GetEntityAtPixelLocation(float x, float y);
 
 	float deltaSeconds = 0.0f;
 private:
-
+	const View& GetCameraView() const;
 	SDL_GPUDevice* device = nullptr;
 	SDL_Window* window = nullptr;
 
+	ViewportCamera camera;
 	ViewportController controller;
 	ViewportRenderer renderer;
+
+	SDL_GPUTexture* offscreenTexture = nullptr;
+	SDL_GPUSampler* offscreenSampler = nullptr;
 
 	WorldRenderer* worldRenderer = nullptr;
 };

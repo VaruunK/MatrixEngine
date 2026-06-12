@@ -1,9 +1,11 @@
 #include "ViewportController.hpp"
-#include "Core/Viewport/ViewportCamera/ViewportCamera.hpp"
+#include "Core/Viewport/Viewport.hpp"
+#include "Core/Viewport/ViewportCamera/Viewportcamera.hpp"
 #include <iostream>
 
-ViewportController::ViewportController() : Controller() {
-	
+ViewportController::ViewportController(Viewport* viewport, ViewportCamera* camera) : Controller() {
+	this->viewport = viewport;
+	this->camera = camera;
 }
 
 void ViewportController::Start() {
@@ -16,6 +18,7 @@ void ViewportController::Start() {
 		[this]() {
 			if (!moveMode && !leftClicking) {
 				leftClicking = true;
+				viewport->GetEntityAtPixelLocation(GetMouseX(), GetMouseY());
 			};
 		},
 		[this]() {
@@ -23,31 +26,31 @@ void ViewportController::Start() {
 		});
 	BindKey(SDL_SCANCODE_W,
 		[this]() {
-			if(moveMode) camera.MoveForward();
+			if(moveMode) camera->MoveForward();
 		});
 	BindKey(SDL_SCANCODE_S,
 		[this]() {
-			if (moveMode) camera.MoveBackward();
+			if (moveMode) camera->MoveBackward();
 		});
 	BindKey(SDL_SCANCODE_A,
 		[this]() {
-			if (moveMode) camera.MoveLeft();
+			if (moveMode) camera->MoveLeft();
 		});
 	BindKey(SDL_SCANCODE_D,
 		[this]() {
-			if (moveMode) camera.MoveRight();
+			if (moveMode) camera->MoveRight();
 		});
 	BindKey(SDL_SCANCODE_Q,
 		[this]() {
-			if (moveMode) camera.MoveUp();
+			if (moveMode) camera->MoveUp();
 		});
 	BindKey(SDL_SCANCODE_E,
 		[this]() {
-			if (moveMode) camera.MoveDown();
+			if (moveMode) camera->MoveDown();
 		});
 	BindMouseMove([this](float relX, float relY) {
 		if (moveMode) {
-			camera.RotateByMouse(relX, relY);
+			camera->RotateByMouse(relX, relY);
 		}});
 }
 

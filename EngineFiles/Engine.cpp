@@ -91,7 +91,6 @@ int Engine::Run() {
     Uint64 lastCounter = SDL_GetPerformanceCounter();
     
     SpriteComponent* spriteComponent = nullptr;
-    int cameraMode = 0;
 
     Mesh* freddy = assetLoader->CreateMesh("Content/freddy.gltf", "Content/freddy.png");
     Mesh* mogus = assetLoader->CreateMesh("Content/mogus/mogus.fbx", "Content/mogus/mogus.jpg");

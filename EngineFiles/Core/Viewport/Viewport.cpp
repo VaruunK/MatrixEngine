@@ -3,7 +3,7 @@
 #include "Core/Structs/View.hpp"
 #include <iostream>
 
-Viewport::Viewport(SDL_GPUDevice* device, SDL_Window* window) : renderer(device, window, this){
+Viewport::Viewport(SDL_GPUDevice* device, SDL_Window* window) : renderer(device, window, this), controller(this, &camera) {
     this->device = device;
     this->window = window;
 }
@@ -38,7 +38,11 @@ void Viewport::Tick(float deltaTime) {
 }
 
 void Viewport::SetCameraSpeed(int& speed) {
-	controller.GetCamera().SetCameraSpeed(speed);
+	camera.SetCameraSpeed(speed);
+}
+
+void Viewport::GetEntityAtPixelLocation(float x, float y) {
+    std::cout << "X: " << x << " Y: " << y << std::endl;
 }
 
 void Viewport::Initialize(WorldRenderer* worldRenderer) {
@@ -48,5 +52,5 @@ void Viewport::Initialize(WorldRenderer* worldRenderer) {
 }
 
 const View& Viewport::GetCameraView() const {
-	return controller.GetCamera().GetCameraView();
+	return camera.GetCameraView();
 }
