@@ -7,6 +7,7 @@
 class Entity;
 
 class Component : public GameObject {
+	friend class Entity;
 public:
 
 	Component(Entity* owner);
@@ -17,16 +18,25 @@ public:
 
 	Entity* GetOwner() { return owner; }
 
+	Transform GetComponentTransform();
 	glm::vec3 GetComponentLocation();
 	glm::vec3 GetComponentRotation();
 	glm::vec3 GetComponentScale();
 
-	glm::vec3 SetComponentLocation(glm::vec3 location);
-	glm::vec3 SetComponentRotation(glm::vec3 rotation);
-	glm::vec3 SetComponentScale(glm::vec3 scale);
+	Transform GetLocalComponentTransform() const { return localTransform; };
+	glm::vec3 GetLocalComponentLocation();
+	glm::vec3 GetLocalComponentRotation();
+	glm::vec3 GetLocalComponentScale();
+
+	Transform SetLocalComponentTransform(Transform& transform);
+	glm::vec3 SetLocalComponentLocation(glm::vec3& location);
+	glm::vec3 SetLocalComponentRotation(glm::vec3& rotation);
+	glm::vec3 SetLocalComponentScale(glm::vec3& scale);
 protected:
 	Entity* owner;
 
+	Transform localTransform;
 	Transform transform;
 private:
+	void RecalculateGlobalTransform();
 };

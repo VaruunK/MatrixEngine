@@ -22,24 +22,15 @@ public:
 	virtual void Tick(uint64_t deltaTime) override;
 	virtual void DestroyGameObject() override;
 
-	glm::vec3 GetLocation() { return transform.location; }
-	glm::vec3 GetRotation() { return transform.rotation; }
-	glm::vec3 GetScale() { return transform.scale; }
+	Transform GetTransform() const { return transform; }
+	glm::vec3 GetLocation() const { return transform.location; }
+	glm::vec3 GetRotation() const { return transform.rotation; }
+	glm::vec3 GetScale() const { return transform.scale; }
 
-	glm::vec3 SetLocation(glm::vec3 location) { 
-		transform.location = location; 
-		return GetLocation();
-	}
-	
-	glm::vec3 SetRotation(glm::vec3 rotation) { 
-		transform.rotation = rotation; 
-		return GetRotation();
-	}
-	
-	glm::vec3 SetScale(glm::vec3 scale) { 
-		transform.scale = scale; 
-		return GetScale();
-	}
+	Transform SetTransform(Transform transform);
+	glm::vec3 SetLocation(glm::vec3 location);
+	glm::vec3 SetRotation(glm::vec3 rotation);
+	glm::vec3 SetScale(glm::vec3 scale);
 
 	Level* GetLevel() { return currentLevel; }
 
@@ -69,11 +60,11 @@ public:
 		return ptr;
 	}
 
-	const SelectProxy* GetSelectProxy() { return &selectProxy; }
+	SelectProxy selectProxy;
 protected:
 	Transform transform;
 private:
+	void UpdateComponentTransforms();
 	std::unordered_map<std::type_index, std::unique_ptr<Component>> components;
 	Level* currentLevel;
-	SelectProxy selectProxy;
 };

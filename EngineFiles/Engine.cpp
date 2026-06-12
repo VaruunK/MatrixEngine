@@ -90,17 +90,34 @@ int Engine::Run() {
     Uint64 frequency = SDL_GetPerformanceFrequency();
     Uint64 lastCounter = SDL_GetPerformanceCounter();
     
-    MeshComponent* meshComponent = nullptr;
     SpriteComponent* spriteComponent = nullptr;
     int cameraMode = 0;
 
-    // Mesh* mesh = assetLoader->CreateMesh("Content/freddy.gltf", "Content/freddy.png");
-    Mesh* mesh = assetLoader->CreateMesh("Content/mogus/mogus.fbx", "Content/mogus/mogus.jpg");
-    Agent* agent1 = level->SpawnFromClass<Agent>();
-    meshComponent = agent1->AddComponent<MeshComponent>();
-    meshComponent->SetMesh(mesh);
+    Mesh* freddy = assetLoader->CreateMesh("Content/freddy.gltf", "Content/freddy.png");
+    Mesh* mogus = assetLoader->CreateMesh("Content/mogus/mogus.fbx", "Content/mogus/mogus.jpg");
 
-    Mesh* mesh2 = DefaultCube();
+    Transform transform1 = {
+        .location = glm::vec3(0.0f, 0.0f, 0.0f),
+        .rotation = glm::vec3(0.0f, 180.0f, 0.0f),
+        .scale = glm::vec3(0.1f, 0.1f, 0.1f)
+    };
+
+    Transform transform2 = {
+        .location = glm::vec3(20.0f, 0.0f, 0.0f),
+        .rotation = glm::vec3(0.0f, 180.0f, 0.0f),
+        .scale = glm::vec3(10.0f, 10.0f, 10.0f)
+    };
+
+    Agent* agent1 = level->SpawnFromClass<Agent>(transform1);
+    MeshComponent* a1meshComponent = agent1->AddComponent<MeshComponent>();
+    a1meshComponent->SetMesh(mogus);
+
+    Agent* agent2 = level->SpawnFromClass<Agent>(transform2);
+    MeshComponent* a2meshComponent = agent2->AddComponent<MeshComponent>();
+    a2meshComponent->SetMesh(freddy);
+
+    float scaleMax = 100.0f;
+    float scaleMin = 1.0f;
 
     while (running.load()) {
         Uint64 currentCounter = SDL_GetPerformanceCounter();
@@ -125,6 +142,30 @@ int Engine::Run() {
         // world->Tick(frame);
         viewport->Tick(deltaSeconds);
         viewport->Render();
+
+        /*static int grow = 1;
+
+        if (grow == 1) {
+            if (agent1->GetTransform().scale.x < scaleMax) {
+                agent1->SetScale(glm::vec3(agent1->GetScale().x + 0.1, agent1->GetScale().y + 0.1, agent1->GetScale().z + 0.1));
+                agent2->SetScale(glm::vec3(agent2->GetScale().x + 0.1, agent2->GetScale().y + 0.1, agent2->GetScale().z + 0.1));
+            }
+            else {
+                grow = 0;
+            }
+        }
+        else {
+            if (agent1->GetTransform().scale.x > scaleMin) {
+                agent1->SetScale(glm::vec3(agent1->GetScale().x - 0.1, agent1->GetScale().y - 0.1, agent1->GetScale().z - 0.1));
+                agent2->SetScale(glm::vec3(agent2->GetScale().x - 0.1, agent2->GetScale().y - 0.1, agent2->GetScale().z - 0.1));
+            }
+            else {
+                grow = 1;
+            }
+        }*/
+
+        agent1->SetRotation(glm::vec3(agent1->GetRotation().x, agent1->GetRotation().y + 1, agent1->GetRotation().z));
+        agent2->SetRotation(glm::vec3(agent2->GetRotation().x, agent2->GetRotation().y + 1, agent2->GetRotation().z));
     }
     for (auto& thread : threads) {
         if (thread.joinable()) {

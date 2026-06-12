@@ -146,11 +146,25 @@ void ViewportRenderer::Render(FrameData& frame) {
         
         ImGui::SameLine();
 
+        float w = (ImGui::GetContentRegionAvail().x - ImGui::GetStyle().ItemSpacing.y) * 0.3f;
+        ImGui::SetNextItemWidth(w);
         static ImGuiSliderFlags sliderFlags = ImGuiSliderFlags_ClampOnInput;
         if (ImGui::SliderInt("Camera Speed", &speed, 1, 10, "%d", sliderFlags)) {
             // speed = std::max(speed, 1);
             viewport->SetCameraSpeed(speed);
         }
+
+        ImGui::SameLine();
+        ImGui::PushStyleColor(ImGuiCol_Button, (ImVec4)ImColor::HSV(2 / 7.0f, 0.6f, 0.6f));
+        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, (ImVec4)ImColor::HSV(2 / 7.0f, 0.7f, 0.7f));
+        ImGui::PushStyleColor(ImGuiCol_ButtonActive, (ImVec4)ImColor::HSV(2 / 7.0f, 0.8f, 0.8f));
+        static int clicked = 0;
+        if (ImGui::Button("Play"))
+            clicked++;
+        if (clicked & 1) {
+
+        }
+        ImGui::PopStyleColor(3);
 
         ImVec2 size = ImGui::GetContentRegionAvail();
         if (size.x > 0 && size.y > 0 && frame.viewportTexture) {

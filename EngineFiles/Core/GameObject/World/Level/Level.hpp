@@ -3,8 +3,9 @@
 #include <vector>
 #include <memory>
 #include "Core/GameObject/Entity/Entity.hpp"
-
 class World;
+
+struct Transform;
 
 class Level {
 public:
@@ -14,17 +15,17 @@ public:
 	void Unload();
 
 	template<typename ClassType>
-	ClassType* AddEntityToLevel() {
+	ClassType* AddEntityToLevel(Transform& transform) {
 		static_assert(std::is_base_of_v<Entity, ClassType>, "ClassType does not inherit from Entity");
 		auto newEntity = new ClassType(this);
-		
+		newEntity->SetTransform(transform);
 		entities.push_back(newEntity);
 		return newEntity;
 	}
 
 	template<typename ClassType>
-	ClassType* SpawnFromClass() {
-		auto newEntity = AddEntityToLevel<ClassType>();
+	ClassType* SpawnFromClass(Transform& transform) {
+		auto newEntity = AddEntityToLevel<ClassType>(transform);
 		newEntity->Start();
 		return newEntity;
 	}
