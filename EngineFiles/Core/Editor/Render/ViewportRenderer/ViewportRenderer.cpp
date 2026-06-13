@@ -1,5 +1,6 @@
 #include "ViewportRenderer.hpp"
-#include "Core/Viewport/Viewport.hpp"
+#include "Core/Editor/Viewport/Viewport.hpp"
+#include "Core/Structs/Appstate.hpp"
 #include "Core/Structs/FrameData.hpp"
 #include <SDL3/SDL_video.h>
 #include <imgui.h>
@@ -9,51 +10,20 @@
 
 std::unique_ptr<ShaderManager> ViewportRenderer::shaderManager = nullptr;
 
-ViewportRenderer::ViewportRenderer(SDL_GPUDevice* device, SDL_Window* window, Viewport* viewport) {
-	this->device = device;
-    this->window = window;
+ViewportRenderer::ViewportRenderer(Appstate& appstate, Viewport* viewport) : appstate(appstate) {
     this->viewport = viewport;
 }
 
 bool ViewportRenderer::Initialize() {
-    ShaderManager* rawSM = new ShaderManager(device);
+    ShaderManager* rawSM = new ShaderManager(appstate.device);
     if (!rawSM) {
         SDL_Log("Failed to create Shader Manager");
         return false;
     }
 
-    shaderManager.reset(rawSM);
-
-    float main_scale = SDL_GetDisplayContentScale(SDL_GetPrimaryDisplay());
-
-    IMGUI_CHECKVERSION();
-    ImGui::CreateContext();
     io = &ImGui::GetIO();
-    io->ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
-    io->ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
 
-    ImGui::StyleColorsDark();
-
-    ImGuiStyle& style = ImGui::GetStyle();
-    style.ScaleAllSizes(main_scale);
-    style.FontScaleDpi = main_scale;
-
-    ImGui_ImplSDLGPU3_InitInfo init_info = {};
-    init_info.Device = device;
-    init_info.ColorTargetFormat = SDL_GetGPUSwapchainTextureFormat(device, window);
-    init_info.SwapchainComposition = SDL_GPU_SWAPCHAINCOMPOSITION_SDR;
-    init_info.PresentMode = SDL_GPU_PRESENTMODE_VSYNC;
-    init_info.MSAASamples = SDL_GPU_SAMPLECOUNT_1;
-
-    if (!ImGui_ImplSDLGPU3_Init(&init_info)) {
-        SDL_Log("Failed to initialize ImGui SDLGPU3 backend");
-        return false;
-    }
-
-    if (!ImGui_ImplSDL3_InitForSDLGPU(window)) {
-        SDL_Log("Failed to initialize ImGui SDL3 backend");
-        return false;
-    }
+    shaderManager.reset(rawSM);
 
     std::string vertShader = "shaders/TexturedQuadWithMatrix.vert.hlsl";
     std::string fragShader = "shaders/TexturedQuad.frag.hlsl";
@@ -85,56 +55,8 @@ bool ViewportRenderer::Initialize() {
 
 void ViewportRenderer::Render(FrameData& frame) {
 
-    if (!frame.commandBuffer || !frame.swapchainTexture) return;
-    
-    ImGui_ImplSDLGPU3_NewFrame();
-    ImGui_ImplSDL3_NewFrame();
-    ImGui::NewFrame();
-
     if (show_demo_window)
         ImGui::ShowDemoWindow(&show_demo_window);
-
-    glm::vec4 clear_color = glm::vec4(0.45f, 0.55f, 0.60f, 1.00f);
-
-    ImTextureRef texRef = (ImTextureID)(intptr_t)frame.viewportTexture;
-
-    ImGui::SetNextWindowSize(ImVec2(io->DisplaySize.x, io->DisplaySize.y));
-    ImGui::SetNextWindowPos(ImVec2(0, 0));
-    ImGuiWindowFlags engineFlags = ImGuiWindowFlags_MenuBar | 
-        ImGuiWindowFlags_NoTitleBar | 
-        ImGuiWindowFlags_NoCollapse | 
-        ImGuiWindowFlags_NoBringToFrontOnFocus;
-
-    ImGui::Begin("Engine", nullptr, engineFlags);
-
-    if (ImGui::BeginMainMenuBar()) {
-        if (ImGui::BeginMenu("File")) {
-            ImGui::EndMenu();
-        }
-        if (ImGui::BeginMenu("Edit")) {
-            if (ImGui::MenuItem("Undo", "Ctrl+Z")) {}
-            if (ImGui::MenuItem("Redo", "Ctrl+Y", false, false)) {} // Disabled item
-            ImGui::Separator();
-            if (ImGui::MenuItem("Cut", "Ctrl+X")) {}
-            if (ImGui::MenuItem("Copy", "Ctrl+C")) {}
-            if (ImGui::MenuItem("Paste", "Ctrl+V")) {}
-            ImGui::EndMenu();
-        }
-        ImGui::EndMainMenuBar();
-    }
-
-    ImGuiWindowFlags viewportFlags = ImGuiWindowFlags_NoCollapse |
-        ImGuiWindowFlags_NoTitleBar |
-        ImGuiWindowFlags_NoBackground |
-        ImGuiWindowFlags_NoResize; // | ImGuiWindowFlags_NoMove;
-
-    ImGui::SetNextWindowSize(ImVec2(800, 600), ImGuiCond_FirstUseEver);
-    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
-    ImGui::Begin("Viewport", nullptr, viewportFlags);
-    ImGui::PopStyleVar();
-
-    ImGui::BeginTabBar("TabBar", ImGuiTabBarFlags_Reorderable | ImGuiTabBarFlags_AutoSelectNewTabs | ImGuiTabBarFlags_NoCloseWithMiddleMouseButton);
-
     active = false;
 
     if (bool tabActive = ImGui::BeginTabItem("Viewport", nullptr,
@@ -185,45 +107,21 @@ void ViewportRenderer::Render(FrameData& frame) {
         }
         ImGui::EndTabItem();
     }
-
-    ImGui::EndTabBar();
-    
-    ImGui::End();
-    
-    ImGui::End();
-    // Rendering
-    ImGui::Render();
-
-    ImDrawData* draw_data = ImGui::GetDrawData();
-    const bool is_minimized = (draw_data->DisplaySize.x <= 0.0f || draw_data->DisplaySize.y <= 0.0f);
-    if (is_minimized) return;
-
-    // ImGui pass on top of whatever WorldRenderer already drew
-    SDL_GPUColorTargetInfo imguiTarget{};
-    imguiTarget.texture = frame.swapchainTexture;
-    imguiTarget.clear_color = { 0.05f, 0.05f, 0.05f, 1.0f };
-    imguiTarget.load_op = SDL_GPU_LOADOP_CLEAR;
-    imguiTarget.store_op = SDL_GPU_STOREOP_STORE;
-
-    ImGui_ImplSDLGPU3_PrepareDrawData(draw_data, frame.commandBuffer);
-    SDL_GPURenderPass* pass = SDL_BeginGPURenderPass(frame.commandBuffer, &imguiTarget, 1, nullptr);
-    ImGui_ImplSDLGPU3_RenderDrawData(draw_data, frame.commandBuffer, pass);
-    SDL_EndGPURenderPass(pass);
 }
 
 
 SDL_GPUTextureFormat ViewportRenderer::GetDepthStencilFormat() {
-    if (!device) {
+    if (!appstate.device) {
         return SDL_GPU_TEXTUREFORMAT_INVALID;
     }
 
-    if (SDL_GPUTextureSupportsFormat(device,
+    if (SDL_GPUTextureSupportsFormat(appstate.device,
         SDL_GPU_TEXTUREFORMAT_D24_UNORM_S8_UINT,
         SDL_GPU_TEXTURETYPE_2D,
         SDL_GPU_TEXTUREUSAGE_DEPTH_STENCIL_TARGET)) {
         return SDL_GPU_TEXTUREFORMAT_D24_UNORM_S8_UINT;
     }
-    else if (SDL_GPUTextureSupportsFormat(device,
+    else if (SDL_GPUTextureSupportsFormat(appstate.device,
         SDL_GPU_TEXTUREFORMAT_D32_FLOAT_S8_UINT,
         SDL_GPU_TEXTURETYPE_2D,
         SDL_GPU_TEXTUREUSAGE_DEPTH_STENCIL_TARGET)) {
@@ -245,7 +143,7 @@ bool ViewportRenderer::InitializeSamplers() {
         .address_mode_w = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE
     };
 
-    defaultSampler = SDL_CreateGPUSampler(device, &samplerCreateInfo);
+    defaultSampler = SDL_CreateGPUSampler(appstate.device, &samplerCreateInfo);
 
     if (!defaultSampler) {
         SDL_Log("Failed to create default sampler, %s", SDL_GetError());
@@ -256,7 +154,7 @@ bool ViewportRenderer::InitializeSamplers() {
 
 
 void ViewportRenderer::Shutdown() {
-    SDL_WaitForGPUIdle(device);
+    SDL_WaitForGPUIdle(appstate.device);
     ImGui_ImplSDL3_Shutdown();
     ImGui_ImplSDLGPU3_Shutdown();
     ImGui::DestroyContext();

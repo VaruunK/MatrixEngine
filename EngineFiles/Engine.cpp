@@ -1,18 +1,12 @@
 #include "Engine.hpp"
 #include "Core/GameObject/World/Level/Level.hpp"
-#include "Core/GameObject/World/WorldRenderer/WorldRenderer.hpp"
+#include "Core/Editor/Render/WorldRenderer/WorldRenderer.hpp"
 #include "Core/Structs/AssetStructs.hpp"
-#include "Core/Structs/View.hpp"
 #include "Core/Assets/DefaultAssets/DefaultAssets.hpp"
 #include "Core/GameObject/Entity/Agent/Agent.hpp"
 #include "Core/GameObject/Component/SpriteComponent/SpriteComponent.hpp"
 #include "Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
-#include "Core/Structs/FrameData.hpp"
-#include <imgui.h>
 #include <imgui_impl_sdl3.h>
-#include <imgui_impl_sdlgpu3.h>
-#include <glm/ext/matrix_clip_space.hpp>
-#include <glm/ext/matrix_transform.hpp>
 #include <iostream>
 #include <cstdio>
 #include <SDL3_image/SDL_image.h>
@@ -26,34 +20,12 @@ Engine::Engine() {
         }
     }
 
-    CreateDevice();
-    CreateWindow();
+    appstate = {
+        .device = CreateDevice(),
+        .window = CreateWindow()
+    };
 
-    assetLoader = new AssetLoader(device.get());
-    viewport = new Viewport(device.get(), window);
-}
-
-void Engine::CreateDevice() {
-    device.reset(SDL_CreateGPUDevice(
-        SDL_GPU_SHADERFORMAT_SPIRV | SDL_GPU_SHADERFORMAT_DXIL | SDL_GPU_SHADERFORMAT_MSL,
-        true,
-        nullptr
-    ));
-
-    if (!device.get()) {
-        SDL_Log("Failed to create GPU device: %s", SDL_GetError());
-        throw std::runtime_error("Failed to create GPU device");
-    }
-}
-
-void Engine::CreateWindow() {
-    // SDL_WINDOW_FULLSCREEN
-    // SDL_WINDOW_BORDERLESS
-    window = SDL_CreateWindow("Matrix Engine", 1080, 720, SDL_WINDOW_RESIZABLE);
-    if (!window) {
-        SDL_Log("Failed to create window: %s", SDL_GetError());
-        // throw runtime error
-    }
+    assetLoader = new AssetLoader(appstate.device);
 
     SDL_Surface* icon = IMG_Load("Engine.png");
 
@@ -61,26 +33,51 @@ void Engine::CreateWindow() {
         SDL_Log("couldn't load icon: %s", SDL_GetError());
     }
     else {
-        SDL_SetWindowIcon(window, icon);
+        SDL_SetWindowIcon(appstate.window, icon);
         SDL_DestroySurface(icon);
     }
 
-    if (!SDL_ClaimWindowForGPUDevice(device.get(), window)) {
+    if (!SDL_ClaimWindowForGPUDevice(appstate.device, appstate.window)) {
         SDL_Log("Failed to claim window: %s", SDL_GetError());
         // throw runtime error
     }
 }
 
-int Engine::Run() {
-    game = new Game();
+SDL_GPUDevice* Engine::CreateDevice() {
+    SDL_GPUDevice* device = SDL_CreateGPUDevice(
+        SDL_GPU_SHADERFORMAT_SPIRV | SDL_GPU_SHADERFORMAT_DXIL | SDL_GPU_SHADERFORMAT_MSL,
+        true,
+        nullptr
+    );
 
-    game->device = device.get();
-    game->window = window;
+    if (!device) {
+        SDL_Log("Failed to create GPU device: %s", SDL_GetError());
+        throw std::runtime_error("Failed to create GPU device");
+    }
+
+    return device;
+}
+
+SDL_Window* Engine::CreateWindow() {
+    // SDL_WINDOW_FULLSCREEN
+    // SDL_WINDOW_BORDERLESS
+    SDL_Window* window = SDL_CreateWindow("Matrix Engine", 1080, 720, SDL_WINDOW_RESIZABLE);
+    if (!window) {
+        SDL_Log("Failed to create window: %s", SDL_GetError());
+        // throw runtime error
+    }
+    return window;
+}
+
+int Engine::Run() {
+
+    game = new Game(appstate);
+
     std::string levelName = "Mainlevel";
     std::string filePath = "";
     game->Initialize(levelName, filePath);
 
-    viewport->Initialize(game->world->GetWorldRenderer());
+    editor = new Editor(appstate, game);
 
     Level* level = game->world->GetLevel("Mainlevel");
     running.store(true);
@@ -139,8 +136,8 @@ int Engine::Run() {
         }
 
         // world->Tick(frame);
-        viewport->Tick(deltaSeconds);
-        viewport->Render();
+        editor->Tick(deltaSeconds);
+        editor->Render();
 
         /*static int grow = 1;
 
@@ -172,6 +169,7 @@ int Engine::Run() {
         }
     }
     SDL_ShaderCross_Quit();
+    SDL_DestroyGPUDevice(appstate.device);
     SDL_Quit();
     return 0;
 }

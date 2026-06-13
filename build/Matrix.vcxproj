@@ -423,12 +423,15 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Engine.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Assets\AssetLoader\AssetLoader.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Assets\DefaultAssets\DefaultAssets.cpp" />
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Viewport\Viewport.cpp" />
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Viewport\ViewportRenderer\ViewportRenderer.cpp" />
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Viewport\ViewportController\ViewportController.cpp" />
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Viewport\ViewportCamera\ViewportCamera.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\Viewport\Viewport.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\Viewport\ViewportController\ViewportController.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\Viewport\ViewportCamera\ViewportCamera.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\Viewport\SelectProxy\SelectProxy.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\ShaderManager\ShaderManager.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\TickManager\TickManager.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\Render\WorldRenderer\WorldRenderer.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\Render\ViewportRenderer\ViewportRenderer.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\Render\EditorRenderer\EditorRenderer.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\GameObject.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Component\Component.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Component\MeshComponent\MeshComponent.cpp" />
@@ -438,8 +441,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\Controller\Controller.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\World\World.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\World\Level\Level.cpp" />
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\World\WorldRenderer\WorldRenderer.cpp" />
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Viewport\SelectProxy\SelectProxy.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Game\Game.cpp" />
   </ItemGroup>
   <ItemGroup />

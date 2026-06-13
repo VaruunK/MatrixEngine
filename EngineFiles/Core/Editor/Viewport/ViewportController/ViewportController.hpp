@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Core/GameObject/Controller/Controller.hpp"
-#include "Core/Viewport/ViewportCamera/ViewportCamera.hpp"
+#include "Core/Editor/Viewport/ViewportCamera/ViewportCamera.hpp"
 
 class Viewport;
 class ViewportCamera;

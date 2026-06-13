@@ -2,7 +2,7 @@
 #include "Engine.hpp"
 #include "Core/TickManager/TickManager.hpp"
 #include "Core/GameObject/World/Level/Level.hpp"
-#include "Core/GameObject/World/WorldRenderer/WorldRenderer.hpp"
+#include "Core/Editor/Render/WorldRenderer/WorldRenderer.hpp"
 #include "Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
 #include "Core/GameObject/Component/SpriteComponent/SpriteComponent.hpp"
 #include "Core/Structs/View.hpp"
@@ -16,8 +16,8 @@ World::World() : GameObject() {
     running.store(false);
 }
 
-Level* World::Initialize(const std::string& startLevelName, SDL_GPUDevice* device, SDL_Window* window) {
-    renderer = new WorldRenderer(device, window);
+Level* World::Initialize(Appstate& appstate, const std::string& startLevelName) {
+    renderer = new WorldRenderer(appstate);
 
     Level* level = CreateInitialLevel(startLevelName);
 

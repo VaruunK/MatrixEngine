@@ -10,22 +10,31 @@
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Assets\DefaultAssets\DefaultAssets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Viewport\Viewport.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\Viewport\Viewport.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Viewport\ViewportRenderer\ViewportRenderer.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\Viewport\ViewportController\ViewportController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Viewport\ViewportController\ViewportController.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\Viewport\ViewportCamera\ViewportCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Viewport\ViewportCamera\ViewportCamera.cpp">
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\Viewport\SelectProxy\SelectProxy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\ShaderManager\ShaderManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\TickManager\TickManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\Render\WorldRenderer\WorldRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\Render\ViewportRenderer\ViewportRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\Render\EditorRenderer\EditorRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\GameObject.cpp">
@@ -53,12 +62,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\World\Level\Level.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\World\WorldRenderer\WorldRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Viewport\SelectProxy\SelectProxy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Game\Game.cpp">

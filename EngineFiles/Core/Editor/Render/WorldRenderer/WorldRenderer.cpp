@@ -1,7 +1,7 @@
 #include "WorldRenderer.hpp"
 #include "Core/Structs/RenderStructs.hpp"
 #include "Core/Structs/View.hpp"
-#include "Engine.hpp"
+#include "Core/Structs/Appstate.hpp"
 #include "Core/GameObject/Entity/Entity.hpp"
 #include "Core/GameObject/Component/SpriteComponent/SpriteComponent.hpp"
 #include "Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
@@ -11,17 +11,16 @@
 
 std::unique_ptr<ShaderManager> WorldRenderer::shaderManager = nullptr;
 
-WorldRenderer::WorldRenderer(SDL_GPUDevice* device, SDL_Window* window) {
-    this->device = device;
-    this->window = window;
+WorldRenderer::WorldRenderer(Appstate& appstate) : appstate(appstate) {
+
 }
 
 bool WorldRenderer::CreateOffscreenTexture() {
     int w, h;
-    SDL_GetWindowSize(window, &w, &h);
+    SDL_GetWindowSize(appstate.window, &w, &h);
 
     SDL_GPUTextureCreateInfo info{};
-    info.format = SDL_GetGPUSwapchainTextureFormat(device, window);
+    info.format = SDL_GetGPUSwapchainTextureFormat(appstate.device, appstate.window);
     info.usage = SDL_GPU_TEXTUREUSAGE_COLOR_TARGET | SDL_GPU_TEXTUREUSAGE_SAMPLER;
     info.width = static_cast<uint32_t>(w);
     info.height = static_cast<uint32_t>(h);
@@ -29,21 +28,21 @@ bool WorldRenderer::CreateOffscreenTexture() {
     info.num_levels = 1;
     info.sample_count = SDL_GPU_SAMPLECOUNT_1; // resolve MSAA into this
 
-    offscreenTexture = SDL_CreateGPUTexture(device, &info);
+    offscreenTexture = SDL_CreateGPUTexture(appstate.device, &info);
     if (!offscreenTexture) {
         SDL_Log("Failed to create offscreen texture: %s", SDL_GetError());
         return false;
     }
-    SDL_SetGPUTextureName(device, offscreenTexture, "Offscreen Render Texture");
+    SDL_SetGPUTextureName(appstate.device, offscreenTexture, "Offscreen Render Texture");
     return true;
 }
 
 void WorldRenderer::Render(FrameData& frame) {
     /*if (resized) {
-        SDL_WaitForGPUIdle(device);
+        SDL_WaitForGPUIdle(appstate.device);
 
-        SDL_ReleaseGPUTexture(device, depthStencilTexture);
-        SDL_ReleaseGPUTexture(device, msaaTexture);
+        SDL_ReleaseGPUTexture(appstate.device, depthStencilTexture);
+        SDL_ReleaseGPUTexture(appstate.device, msaaTexture);
 
         CreateDepthStencil(window);
         CreateMSAATexture(window);
@@ -87,7 +86,7 @@ void WorldRenderer::Render(FrameData& frame) {
     SDL_BindGPUIndexBuffer(pass, &indexBufferBinding, SDL_GPU_INDEXELEMENTSIZE_32BIT);
 
     int windowWidth, windowHeight;
-    SDL_GetWindowSize(window, &windowWidth, &windowHeight);
+    SDL_GetWindowSize(appstate.window, &windowWidth, &windowHeight);
 
     float aspectRatio = static_cast<float>(windowWidth) / static_cast<float>(windowHeight);
 
@@ -125,15 +124,17 @@ void WorldRenderer::Render(FrameData& frame) {
 
 void WorldRenderer::RenderAndSubmit(FrameData& frame) {
 
-    SDL_GPUCommandBuffer* commandBuffer = SDL_AcquireGPUCommandBuffer(device);
+    SDL_GPUCommandBuffer* commandBuffer = SDL_AcquireGPUCommandBuffer(appstate.device);
     if (!commandBuffer) return;
 
     SDL_GPUTexture* swapchain = nullptr;
-    SDL_WaitAndAcquireGPUSwapchainTexture(commandBuffer, window, &swapchain, nullptr, nullptr);
+    SDL_WaitAndAcquireGPUSwapchainTexture(commandBuffer, appstate.window, &swapchain, nullptr, nullptr);
 
     frame.commandBuffer = commandBuffer;
     frame.swapchainTexture = swapchain;
 
+    if (!swapchain || !commandBuffer) return;
+    
     Render(frame);
 
     if (!SDL_SubmitGPUCommandBuffer(frame.commandBuffer)) {
@@ -142,7 +143,7 @@ void WorldRenderer::RenderAndSubmit(FrameData& frame) {
 }
 
 bool WorldRenderer::Initialize() {
-    ShaderManager* rawSM = new ShaderManager(device);
+    ShaderManager* rawSM = new ShaderManager(appstate.device);
     if (!rawSM) {
         SDL_Log("Failed to create Shader Manager");
         return false;
@@ -211,25 +212,25 @@ bool WorldRenderer::InitializeBuffers() {
     vertexInfo.size = 50000 * sizeof(Vertex);
     vertexInfo.usage = SDL_GPU_BUFFERUSAGE_VERTEX;
 
-    vertexBuffer = SDL_CreateGPUBuffer(device, &vertexInfo);
+    vertexBuffer = SDL_CreateGPUBuffer(appstate.device, &vertexInfo);
     if (!vertexBuffer) { 
         SDL_Log("Failed to create vertex buffer!"); 
         return false;
     }
     
-    SDL_SetGPUBufferName(device, vertexBuffer, "Vertex Buffer");
+    SDL_SetGPUBufferName(appstate.device, vertexBuffer, "Vertex Buffer");
 
     SDL_GPUBufferCreateInfo indexInfo{};
     indexInfo.size = 150000 * sizeof(uint32_t);
     indexInfo.usage = SDL_GPU_BUFFERUSAGE_INDEX;
 
-    indexBuffer = SDL_CreateGPUBuffer(device, &indexInfo);
+    indexBuffer = SDL_CreateGPUBuffer(appstate.device, &indexInfo);
     if (!indexBuffer) { 
         SDL_Log("Failed to create index buffer!"); 
         return false;
     }
     
-    SDL_SetGPUBufferName(device, indexBuffer, "Index Buffer");
+    SDL_SetGPUBufferName(appstate.device, indexBuffer, "Index Buffer");
 
     return true;
 }
@@ -245,13 +246,13 @@ bool WorldRenderer::RenderTexture(const Texture* texture) {
     transferInfo.size = alignedSize;
     transferInfo.usage = SDL_GPU_TRANSFERBUFFERUSAGE_UPLOAD;
     
-    auto* textureTransferBuffer = SDL_CreateGPUTransferBuffer(device, &transferInfo);
+    auto* textureTransferBuffer = SDL_CreateGPUTransferBuffer(appstate.device, &transferInfo);
     if (!textureTransferBuffer) { 
         SDL_Log("Failed to create texture transfer buffer"); 
         return false; 
     }
 
-    auto* ptr = static_cast<uint8_t*>(SDL_MapGPUTransferBuffer(device, textureTransferBuffer, false));
+    auto* ptr = static_cast<uint8_t*>(SDL_MapGPUTransferBuffer(appstate.device, textureTransferBuffer, false));
     
     if (!ptr) { 
         SDL_Log("Failed to map texture transfer buffer"); 
@@ -259,9 +260,9 @@ bool WorldRenderer::RenderTexture(const Texture* texture) {
     }
 
     std::memcpy(ptr, texture->data->pixels, size);
-    SDL_UnmapGPUTransferBuffer(device, textureTransferBuffer);
+    SDL_UnmapGPUTransferBuffer(appstate.device, textureTransferBuffer);
 
-    SDL_GPUCommandBuffer* cmd = SDL_AcquireGPUCommandBuffer(device);
+    SDL_GPUCommandBuffer* cmd = SDL_AcquireGPUCommandBuffer(appstate.device);
     SDL_GPUCopyPass* copyPass = SDL_BeginGPUCopyPass(cmd);
 
     SDL_GPUTextureTransferInfo transferInfo2{
@@ -287,7 +288,7 @@ bool WorldRenderer::RenderTexture(const Texture* texture) {
 
     SDL_EndGPUCopyPass(copyPass);
     SDL_SubmitGPUCommandBuffer(cmd);
-    SDL_ReleaseGPUTransferBuffer(device, textureTransferBuffer);
+    SDL_ReleaseGPUTransferBuffer(appstate.device, textureTransferBuffer);
 
     return true;
 }
@@ -295,7 +296,7 @@ bool WorldRenderer::RenderTexture(const Texture* texture) {
 bool WorldRenderer::InitializePipelines(SDL_GPUShader* vertexShader, SDL_GPUShader* fragmentShader) {
 
     SDL_GPUColorTargetDescription colorTargetDescription{};
-    colorTargetDescription.format = SDL_GetGPUSwapchainTextureFormat(device, window);
+    colorTargetDescription.format = SDL_GetGPUSwapchainTextureFormat(appstate.device, appstate.window);
     colorTargetDescription.blend_state.enable_blend = true;
     colorTargetDescription.blend_state.src_color_blendfactor = SDL_GPU_BLENDFACTOR_SRC_ALPHA;
     colorTargetDescription.blend_state.dst_color_blendfactor = SDL_GPU_BLENDFACTOR_ONE_MINUS_SRC_ALPHA;
@@ -346,7 +347,7 @@ bool WorldRenderer::InitializePipelines(SDL_GPUShader* vertexShader, SDL_GPUShad
         pipelineCreateInfo.multisample_state = multisampleState;
     }
 
-    SDL_GPUGraphicsPipeline* pipeline = SDL_CreateGPUGraphicsPipeline(device, &pipelineCreateInfo);
+    SDL_GPUGraphicsPipeline* pipeline = SDL_CreateGPUGraphicsPipeline(appstate.device, &pipelineCreateInfo);
 
     if (!pipeline) {
         SDL_Log("Failed to create graphics pipeline: %s", SDL_GetError());
@@ -360,16 +361,16 @@ bool WorldRenderer::InitializePipelines(SDL_GPUShader* vertexShader, SDL_GPUShad
 }
 
 SDL_GPUTextureFormat WorldRenderer::GetDepthStencilFormat() {
-    if (!device) {
+    if (!appstate.device) {
         return SDL_GPU_TEXTUREFORMAT_INVALID;
     }
 
-    if (SDL_GPUTextureSupportsFormat(device, 
+    if (SDL_GPUTextureSupportsFormat(appstate.device, 
         SDL_GPU_TEXTUREFORMAT_D24_UNORM_S8_UINT,
         SDL_GPU_TEXTURETYPE_2D,
         SDL_GPU_TEXTUREUSAGE_DEPTH_STENCIL_TARGET)) {
         return SDL_GPU_TEXTUREFORMAT_D24_UNORM_S8_UINT;
-    } else if (SDL_GPUTextureSupportsFormat(device,
+    } else if (SDL_GPUTextureSupportsFormat(appstate.device,
         SDL_GPU_TEXTUREFORMAT_D32_FLOAT_S8_UINT,
         SDL_GPU_TEXTURETYPE_2D,
         SDL_GPU_TEXTUREUSAGE_DEPTH_STENCIL_TARGET)) {
@@ -390,7 +391,7 @@ bool WorldRenderer::InitializeSamplers() {
         .address_mode_w = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE
     };
 
-    defaultSampler = SDL_CreateGPUSampler(device, &samplerCreateInfo);
+    defaultSampler = SDL_CreateGPUSampler(appstate.device, &samplerCreateInfo);
 
     if (!defaultSampler) {
         SDL_Log("Failed to create default sampler, %s", SDL_GetError());
@@ -402,7 +403,7 @@ bool WorldRenderer::InitializeSamplers() {
     samplerInfo.mag_filter = SDL_GPU_FILTER_LINEAR;
     samplerInfo.address_mode_u = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE;
     samplerInfo.address_mode_v = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE;
-    offscreenSampler = SDL_CreateGPUSampler(device, &samplerInfo);
+    offscreenSampler = SDL_CreateGPUSampler(appstate.device, &samplerInfo);
 
     if (!offscreenSampler) {
         SDL_Log("Failed to create offscreen sampler, %s", SDL_GetError());
@@ -414,7 +415,7 @@ bool WorldRenderer::InitializeSamplers() {
 
 bool WorldRenderer::CreateDepthStencil() {
     int windowWidth, windowHeight;
-    SDL_GetWindowSize(window, &windowWidth, &windowHeight);
+    SDL_GetWindowSize(appstate.window, &windowWidth, &windowHeight);
 
     SDL_PropertiesID props = SDL_CreateProperties();
     SDL_SetFloatProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_DEPTH_FLOAT, 1.0f);
@@ -433,7 +434,7 @@ bool WorldRenderer::CreateDepthStencil() {
         depthStencilTextureCreateInfo.sample_count = sampleCount;
     }
 
-    depthStencilTexture = SDL_CreateGPUTexture(device, &depthStencilTextureCreateInfo);
+    depthStencilTexture = SDL_CreateGPUTexture(appstate.device, &depthStencilTextureCreateInfo);
     SDL_DestroyProperties(props);
 
     if (!depthStencilTexture) {
@@ -442,16 +443,16 @@ bool WorldRenderer::CreateDepthStencil() {
     }
 
     if (msaaEnabled) {
-        SDL_SetGPUTextureName(device, depthStencilTexture, "MSAA Depth Stencil Texture");
+        SDL_SetGPUTextureName(appstate.device, depthStencilTexture, "MSAA Depth Stencil Texture");
     } else {
-        SDL_SetGPUTextureName(device, depthStencilTexture, "Depth Stencil Texture");
+        SDL_SetGPUTextureName(appstate.device, depthStencilTexture, "Depth Stencil Texture");
     }
     return true;
 }
 
 bool WorldRenderer::CreateMSAATexture() {
     int windowWidth, windowHeight;
-    SDL_GetWindowSize(window, &windowWidth, &windowHeight);
+    SDL_GetWindowSize(appstate.window, &windowWidth, &windowHeight);
 
     SDL_PropertiesID props = SDL_CreateProperties();
 
@@ -462,7 +463,7 @@ bool WorldRenderer::CreateMSAATexture() {
 
     SDL_GPUTextureCreateInfo msaaTextureCreateInfo{};
 
-    msaaTextureCreateInfo.format = SDL_GetGPUSwapchainTextureFormat(device, window);
+    msaaTextureCreateInfo.format = SDL_GetGPUSwapchainTextureFormat(appstate.device, appstate.window);
     msaaTextureCreateInfo.usage = SDL_GPU_TEXTUREUSAGE_COLOR_TARGET;
     msaaTextureCreateInfo.width = static_cast<uint32_t>(windowWidth);
     msaaTextureCreateInfo.height = static_cast<uint32_t>(windowHeight);
@@ -471,7 +472,7 @@ bool WorldRenderer::CreateMSAATexture() {
     msaaTextureCreateInfo.sample_count = sampleCount;
     msaaTextureCreateInfo.props = props;
 
-    msaaTexture = SDL_CreateGPUTexture(device, &msaaTextureCreateInfo);
+    msaaTexture = SDL_CreateGPUTexture(appstate.device, &msaaTextureCreateInfo);
     SDL_DestroyProperties(props);
 
     if (!msaaTexture) {
@@ -479,7 +480,7 @@ bool WorldRenderer::CreateMSAATexture() {
         return false;
     }
 
-    SDL_SetGPUTextureName(device, msaaTexture, "MSAA Texture");
+    SDL_SetGPUTextureName(appstate.device, msaaTexture, "MSAA Texture");
     return true;
 }
 
@@ -491,14 +492,14 @@ DrawInfo WorldRenderer::UploadVertices(const std::vector<Vertex>& vertices, cons
     transferInfo.size = verticesSize + indicesSize;
     transferInfo.usage = SDL_GPU_TRANSFERBUFFERUSAGE_UPLOAD;
 
-    auto* transferBuffer = SDL_CreateGPUTransferBuffer(device, &transferInfo);
-    auto* ptr = static_cast<uint8_t*>(SDL_MapGPUTransferBuffer(device, transferBuffer, false));
+    auto* transferBuffer = SDL_CreateGPUTransferBuffer(appstate.device, &transferInfo);
+    auto* ptr = static_cast<uint8_t*>(SDL_MapGPUTransferBuffer(appstate.device, transferBuffer, false));
 
     std::memcpy(ptr, vertices.data(), verticesSize);
     std::memcpy(ptr + verticesSize, indices.data(), indicesSize);
-    SDL_UnmapGPUTransferBuffer(device, transferBuffer);
+    SDL_UnmapGPUTransferBuffer(appstate.device, transferBuffer);
 
-    SDL_GPUCommandBuffer* cmd = SDL_AcquireGPUCommandBuffer(device);
+    SDL_GPUCommandBuffer* cmd = SDL_AcquireGPUCommandBuffer(appstate.device);
     SDL_GPUCopyPass* copyPass = SDL_BeginGPUCopyPass(cmd);
 
     SDL_GPUTransferBufferLocation src{ transferBuffer, 0 };
@@ -511,7 +512,7 @@ DrawInfo WorldRenderer::UploadVertices(const std::vector<Vertex>& vertices, cons
 
     SDL_EndGPUCopyPass(copyPass);
     SDL_SubmitGPUCommandBuffer(cmd);
-    SDL_ReleaseGPUTransferBuffer(device, transferBuffer);
+    SDL_ReleaseGPUTransferBuffer(appstate.device, transferBuffer);
 
     DrawInfo info{
         .indexCount = (uint32_t)indices.size(),
@@ -560,7 +561,7 @@ void WorldRenderer::DeregisterSprite(SpriteComponent* sprite) {
     vec.erase(std::ranges::find(vec, sprite));
 
     if (vec.empty()) {
-        // SDL_ReleaseGPUTexture(device, texture->texture);
+        // SDL_ReleaseGPUTexture(appstate.device, texture->texture);
         spriteTextures.erase(it);
     }
 }
@@ -587,27 +588,27 @@ void WorldRenderer::DeregisterMesh(MeshComponent* mesh) {
     vec.erase(std::ranges::find(vec, mesh));
 
     if (vec.empty()) {
-        // SDL_ReleaseGPUTexture(device, m->texture->texture);
+        // SDL_ReleaseGPUTexture(appstate.device, m->texture->texture);
         meshes.erase(it);
     }
 }
 
 void WorldRenderer::Shutdown() {
-    if (device) {
-        SDL_WaitForGPUIdle(device);
+    if (appstate.device) {
+        SDL_WaitForGPUIdle(appstate.device);
     }
 
-    if (offscreenTexture) { SDL_ReleaseGPUTexture(device, offscreenTexture);   offscreenTexture = nullptr; }
-    if (msaaTexture) { SDL_ReleaseGPUTexture(device, msaaTexture);        msaaTexture = nullptr; }
-    if (depthStencilTexture) { SDL_ReleaseGPUTexture(device, depthStencilTexture); depthStencilTexture = nullptr; }
-    if (vertexBuffer) { SDL_ReleaseGPUBuffer(device, vertexBuffer);        vertexBuffer = nullptr; }
-    if (indexBuffer) { SDL_ReleaseGPUBuffer(device, indexBuffer);         indexBuffer = nullptr; }
-    if (defaultSampler) { SDL_ReleaseGPUSampler(device, defaultSampler);     defaultSampler = nullptr; }
-    if (offscreenSampler) { SDL_ReleaseGPUSampler(device, offscreenSampler);   offscreenSampler = nullptr; }
+    if (offscreenTexture) { SDL_ReleaseGPUTexture(appstate.device, offscreenTexture);   offscreenTexture = nullptr; }
+    if (msaaTexture) { SDL_ReleaseGPUTexture(appstate.device, msaaTexture);        msaaTexture = nullptr; }
+    if (depthStencilTexture) { SDL_ReleaseGPUTexture(appstate.device, depthStencilTexture); depthStencilTexture = nullptr; }
+    if (vertexBuffer) { SDL_ReleaseGPUBuffer(appstate.device, vertexBuffer);        vertexBuffer = nullptr; }
+    if (indexBuffer) { SDL_ReleaseGPUBuffer(appstate.device, indexBuffer);         indexBuffer = nullptr; }
+    if (defaultSampler) { SDL_ReleaseGPUSampler(appstate.device, defaultSampler);     defaultSampler = nullptr; }
+    if (offscreenSampler) { SDL_ReleaseGPUSampler(appstate.device, offscreenSampler);   offscreenSampler = nullptr; }
 
     for (auto& [key, pipeline] : pipelines) {
         if (pipeline) {
-            SDL_ReleaseGPUGraphicsPipeline(device, pipeline);
+            SDL_ReleaseGPUGraphicsPipeline(appstate.device, pipeline);
         }
     }
     pipelines.clear();

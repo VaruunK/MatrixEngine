@@ -13,10 +13,12 @@ class SpriteComponent;
 class MeshComponent;
 
 struct FrameData;
+struct Appstate;
 
 class WorldRenderer {
+    friend class ViewportRenderer;
 public:
-    WorldRenderer(SDL_GPUDevice* device, SDL_Window* window);
+    WorldRenderer(Appstate& appstate);
     bool Initialize();
     void Render(FrameData& frame);
     void RenderAndSubmit(FrameData& frame);
@@ -42,8 +44,8 @@ private:
     SDL_GPUTextureFormat GetDepthStencilFormat();
     bool RenderTexture(const Texture* texture);
 
-    SDL_GPUDevice* device = nullptr;
-    SDL_Window* window = nullptr;
+    Appstate& appstate;
+
     SDL_GPUSampler* defaultSampler = nullptr;
     SDL_GPUTexture* depthStencilTexture = nullptr;
     SDL_GPUTexture* msaaTexture = nullptr;    

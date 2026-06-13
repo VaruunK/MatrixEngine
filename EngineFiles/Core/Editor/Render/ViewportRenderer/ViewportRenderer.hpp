@@ -8,17 +8,17 @@
 #include <memory>
 
 class Viewport;
+
 struct ImGuiIO;
 struct FrameData;
-
-struct SDL_Window;
-struct SDL_GPUDevice;
+struct Appstate;
 
 class ViewportRenderer {
 public:
-	ViewportRenderer(SDL_GPUDevice* device, SDL_Window* window, Viewport* viewport);
+	ViewportRenderer(Appstate& appstate, Viewport* viewport);
 	bool Initialize();
 	void Render(FrameData& frame);
+
 
 	void Shutdown();
 	bool IsActive() { return active; }
@@ -34,8 +34,7 @@ private:
 
 	ImGuiIO* io = nullptr;
 
-	SDL_GPUDevice* device = nullptr;
-	SDL_Window* window = nullptr;
+	Appstate& appstate;
 
 	SDL_GPUSampler* defaultSampler = nullptr;
 

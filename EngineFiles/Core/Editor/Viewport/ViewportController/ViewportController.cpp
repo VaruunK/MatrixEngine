@@ -1,6 +1,6 @@
 #include "ViewportController.hpp"
-#include "Core/Viewport/Viewport.hpp"
-#include "Core/Viewport/ViewportCamera/Viewportcamera.hpp"
+#include "Core/Editor/Viewport/Viewport.hpp"
+#include "Core/Editor/Viewport/ViewportCamera/Viewportcamera.hpp"
 #include <iostream>
 
 ViewportController::ViewportController(Viewport* viewport, ViewportCamera* camera) : Controller() {
