@@ -442,6 +442,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\World\World.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\GameObject\World\Level\Level.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Game\Game.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\Editor.cpp" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

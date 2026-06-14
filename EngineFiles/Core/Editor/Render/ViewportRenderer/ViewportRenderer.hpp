@@ -49,7 +49,6 @@ private:
 
 	bool active = true;
 	bool showFPS = false;
-	bool leftClicked = false;
 	int speed = 1;
 
 };

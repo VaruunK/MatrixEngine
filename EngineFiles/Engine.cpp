@@ -133,6 +133,10 @@ int Engine::Run() {
                 running.store(false);
                 break;
             }
+            if (event.type = SDL_EVENT_WINDOW_RESIZED) {
+                game->world->GetWorldRenderer()->resized = true;
+                editor->editorRenderer.resized = true;
+            }
         }
 
         // world->Tick(frame);
@@ -160,8 +164,8 @@ int Engine::Run() {
             }
         }*/
 
-        agent1->SetRotation(glm::vec3(agent1->GetRotation().x, agent1->GetRotation().y + 1, agent1->GetRotation().z));
-        agent2->SetRotation(glm::vec3(agent2->GetRotation().x, agent2->GetRotation().y + 1, agent2->GetRotation().z));
+        /*agent1->SetRotation(glm::vec3(agent1->GetRotation().x, agent1->GetRotation().y + 1, agent1->GetRotation().z));
+        agent2->SetRotation(glm::vec3(agent2->GetRotation().x, agent2->GetRotation().y + 1, agent2->GetRotation().z));*/
     }
     for (auto& thread : threads) {
         if (thread.joinable()) {

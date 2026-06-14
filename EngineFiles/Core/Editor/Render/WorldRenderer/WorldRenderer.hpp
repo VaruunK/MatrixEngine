@@ -16,9 +16,11 @@ struct FrameData;
 struct Appstate;
 
 class WorldRenderer {
-    friend class ViewportRenderer;
+    friend class EditorRenderer;
 public:
     WorldRenderer(Appstate& appstate);
+    ~WorldRenderer();
+
     bool Initialize();
     void Render(FrameData& frame);
     void RenderAndSubmit(FrameData& frame);
@@ -28,8 +30,8 @@ public:
 
     void RegisterMesh(MeshComponent* mesh);
     void DeregisterMesh(MeshComponent* mesh);
-    
-    void Shutdown();
+
+    bool resized = false;
 
 private:
     bool InitializeBuffers();

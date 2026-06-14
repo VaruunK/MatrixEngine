@@ -88,12 +88,28 @@ void ViewportRenderer::Render(FrameData& frame) {
         }
         ImGui::PopStyleColor(3);
 
-        ImVec2 size = ImGui::GetContentRegionAvail();
-        if (size.x > 0 && size.y > 0 && frame.viewportTexture) {
+        ImVec2 imagePos = ImGui::GetCursorScreenPos();
+        ImVec2 imageSize = ImGui::GetContentRegionAvail();
+        if (imageSize.x > 0 && imageSize.y > 0 && frame.viewportTexture) {
             ImVec2 imagePos = ImGui::GetCursorScreenPos();
 
             ImTextureRef texRef = (ImTextureID)(intptr_t)frame.viewportTexture;
-            ImGui::Image(texRef, size);
+            ImGui::Image(texRef, imageSize);
+
+            if (ImGui::IsItemClicked()) {
+                ImVec2 mouse = ImGui::GetMousePos();
+
+                float localX = mouse.x - imagePos.x;
+                float localY = mouse.y - imagePos.y;
+
+                // Scale from display size to texture size
+                int texW, texH;
+                SDL_GetWindowSize(appstate.window, &texW, &texH);
+
+                viewport->mouseClickX = static_cast<int>(localX * (texW / imageSize.x));
+                viewport->mouseClickY = static_cast<int>(localY * (texH / imageSize.y));
+                viewport->clicked = true;
+            }
 
             if (showFPS) {
                 char fpsText[16];

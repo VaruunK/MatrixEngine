@@ -1,14 +1,12 @@
 #pragma once
 
 #include "Core/GameObject/Controller/Controller.hpp"
-#include "Core/Editor/Viewport/ViewportCamera/ViewportCamera.hpp"
 
 class Viewport;
-class ViewportCamera;
 
 class ViewportController : public Controller {
 public:
-	ViewportController(Viewport* viewport, ViewportCamera* camera);
+	ViewportController(Viewport* viewport);
 	~ViewportController() = default;
 
 	void Start();
@@ -17,7 +15,6 @@ public:
 	void DestroyGameObject() override;
 private:
 	Viewport* viewport;
-	ViewportCamera* camera;
 
 	bool leftClicking = false;
 	bool moveMode = false;

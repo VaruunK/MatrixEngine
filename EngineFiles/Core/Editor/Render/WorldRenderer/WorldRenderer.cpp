@@ -15,6 +15,51 @@ WorldRenderer::WorldRenderer(Appstate& appstate) : appstate(appstate) {
 
 }
 
+WorldRenderer::~WorldRenderer() {
+    if (appstate.device) {
+        SDL_WaitForGPUIdle(appstate.device);
+    }
+    if (offscreenTexture) { 
+        SDL_ReleaseGPUTexture(appstate.device, offscreenTexture);   
+        offscreenTexture = nullptr;
+    }
+    if (msaaTexture) { 
+        SDL_ReleaseGPUTexture(appstate.device, msaaTexture);
+        msaaTexture = nullptr;
+    }
+    if (depthStencilTexture) { 
+        SDL_ReleaseGPUTexture(appstate.device, depthStencilTexture);
+        depthStencilTexture = nullptr;
+    }
+    if (vertexBuffer) { 
+        SDL_ReleaseGPUBuffer(appstate.device, vertexBuffer);
+        vertexBuffer = nullptr;
+    }
+    if (indexBuffer) { 
+        SDL_ReleaseGPUBuffer(appstate.device, indexBuffer);
+        indexBuffer = nullptr;
+    }
+    if (defaultSampler) { 
+        SDL_ReleaseGPUSampler(appstate.device, defaultSampler);
+        defaultSampler = nullptr;
+    }
+    if (offscreenSampler) { 
+        SDL_ReleaseGPUSampler(appstate.device, offscreenSampler);
+        offscreenSampler = nullptr;
+    }
+    for (auto& [key, pipeline] : pipelines) {
+        if (pipeline) {
+            SDL_ReleaseGPUGraphicsPipeline(appstate.device, pipeline);
+        }
+    }
+    pipelines.clear();
+
+    if (shaderManager) {
+        shaderManager->Shutdown();
+        shaderManager.reset();
+    }
+}
+
 bool WorldRenderer::CreateOffscreenTexture() {
     int w, h;
     SDL_GetWindowSize(appstate.window, &w, &h);
@@ -26,7 +71,7 @@ bool WorldRenderer::CreateOffscreenTexture() {
     info.height = static_cast<uint32_t>(h);
     info.layer_count_or_depth = 1;
     info.num_levels = 1;
-    info.sample_count = SDL_GPU_SAMPLECOUNT_1; // resolve MSAA into this
+    info.sample_count = SDL_GPU_SAMPLECOUNT_1;
 
     offscreenTexture = SDL_CreateGPUTexture(appstate.device, &info);
     if (!offscreenTexture) {
@@ -38,18 +83,19 @@ bool WorldRenderer::CreateOffscreenTexture() {
 }
 
 void WorldRenderer::Render(FrameData& frame) {
-    /*if (resized) {
+    if (resized) {
         SDL_WaitForGPUIdle(appstate.device);
 
         SDL_ReleaseGPUTexture(appstate.device, depthStencilTexture);
         SDL_ReleaseGPUTexture(appstate.device, msaaTexture);
+        SDL_ReleaseGPUTexture(appstate.device, offscreenTexture);
 
-        CreateDepthStencil(window);
-        CreateMSAATexture(window);
+        CreateDepthStencil();
+        CreateMSAATexture();
+        CreateOffscreenTexture();
 
         resized = false;
-    }*/
-
+    }
     SDL_GPUColorTargetInfo colorTarget{};
     colorTarget.clear_color = { 0.1f, 0.1f, 0.1f, 1.0f };
     colorTarget.load_op = SDL_GPU_LOADOP_CLEAR;
@@ -590,31 +636,5 @@ void WorldRenderer::DeregisterMesh(MeshComponent* mesh) {
     if (vec.empty()) {
         // SDL_ReleaseGPUTexture(appstate.device, m->texture->texture);
         meshes.erase(it);
-    }
-}
-
-void WorldRenderer::Shutdown() {
-    if (appstate.device) {
-        SDL_WaitForGPUIdle(appstate.device);
-    }
-
-    if (offscreenTexture) { SDL_ReleaseGPUTexture(appstate.device, offscreenTexture);   offscreenTexture = nullptr; }
-    if (msaaTexture) { SDL_ReleaseGPUTexture(appstate.device, msaaTexture);        msaaTexture = nullptr; }
-    if (depthStencilTexture) { SDL_ReleaseGPUTexture(appstate.device, depthStencilTexture); depthStencilTexture = nullptr; }
-    if (vertexBuffer) { SDL_ReleaseGPUBuffer(appstate.device, vertexBuffer);        vertexBuffer = nullptr; }
-    if (indexBuffer) { SDL_ReleaseGPUBuffer(appstate.device, indexBuffer);         indexBuffer = nullptr; }
-    if (defaultSampler) { SDL_ReleaseGPUSampler(appstate.device, defaultSampler);     defaultSampler = nullptr; }
-    if (offscreenSampler) { SDL_ReleaseGPUSampler(appstate.device, offscreenSampler);   offscreenSampler = nullptr; }
-
-    for (auto& [key, pipeline] : pipelines) {
-        if (pipeline) {
-            SDL_ReleaseGPUGraphicsPipeline(appstate.device, pipeline);
-        }
-    }
-    pipelines.clear();
-
-    if (shaderManager) {
-        shaderManager->Shutdown();
-        shaderManager.reset();
     }
 }

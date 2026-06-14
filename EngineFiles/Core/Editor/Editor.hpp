@@ -14,11 +14,11 @@ public:
 
 	void Tick(float deltaTime);
 	void Render();
+
+	EditorRenderer editorRenderer;
 private:
 	std::vector<Entity*> selectedEntities;
 	
-	EditorRenderer editorRenderer;
-
 	Appstate& appstate;
 	Game* game;
 };

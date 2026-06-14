@@ -291,15 +291,15 @@ std::string ShaderManager::GetCachePath(const std::string& shaderPath, SDL_GPUSh
 
     std::string stageStr;
     switch (stage) {
-        case SDL_GPU_SHADERSTAGE_VERTEX: 
-            stageStr = "vert";
-            break;
-        case SDL_GPU_SHADERSTAGE_FRAGMENT: 
-            stageStr = "frag";
-            break;
-        default: 
-            stageStr = "unknown";
-            break;
+    case SDL_GPU_SHADERSTAGE_VERTEX:
+        stageStr = "vert";
+        break;
+    case SDL_GPU_SHADERSTAGE_FRAGMENT:
+        stageStr = "frag";
+        break;
+    default:
+        stageStr = "unknown";
+        break;
     }
 
     return (cacheDir / (filename + ".cache")).string();

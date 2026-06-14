@@ -23,7 +23,6 @@ Level* World::Initialize(Appstate& appstate, const std::string& startLevelName) 
 
     if (!renderer->Initialize()) {
         SDL_Log("Failed to start World Renderer");
-        renderer->Shutdown();
         return nullptr;
     }
 
@@ -57,7 +56,6 @@ void World::Tick(uint64_t deltaTime) {
 
 void World::DestroyGameObject() {
     GameObject::DestroyGameObject();
-    renderer->Shutdown();
 }
 
 void World::Render() {

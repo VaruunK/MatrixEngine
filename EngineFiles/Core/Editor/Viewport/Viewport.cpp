@@ -6,7 +6,7 @@
 #include <iostream>
 
 Viewport::Viewport(Appstate& appstate, WorldRenderer* worldRenderer) 
-    : viewportRenderer(appstate, this), controller(this, &camera), appstate(appstate) {
+    : viewportRenderer(appstate, this), controller(this), appstate(appstate) {
     this->worldRenderer = worldRenderer;
 }
 
@@ -27,10 +27,6 @@ void Viewport::Tick(float deltaTime) {
 
 void Viewport::SetCameraSpeed(int& speed) {
 	camera.SetCameraSpeed(speed);
-}
-
-void Viewport::GetEntityAtPixelLocation(float x, float y) {
-    std::cout << "X: " << x << " Y: " << y << std::endl;
 }
 
 void Viewport::Initialize() {

@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Core/Editor/Viewport/ViewportController/ViewportController.hpp"
 #include "Core/Editor/Render/ViewportRenderer/ViewportRenderer.hpp"
 #include "Core/Editor/Viewport/ViewportCamera/ViewportCamera.hpp"
@@ -23,11 +22,15 @@ public:
 
 	void SetCameraSpeed(int& speed);
 
-	void GetEntityAtPixelLocation(float x, float y);
+	const View& GetCameraView() const;
+	ViewportCamera& GetCamera() { return camera; }
 
 	float deltaSeconds = 0.0f;
+
+	bool clicked = false;
+	float mouseClickX = -1.0f;
+	float mouseClickY = -1.0f;
 private:
-	const View& GetCameraView() const;
 
 	Appstate& appstate;
 

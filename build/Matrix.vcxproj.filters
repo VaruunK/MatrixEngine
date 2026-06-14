@@ -67,6 +67,9 @@
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Game\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\Editor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\varuu\development\Engine\CMakeLists.txt" />
