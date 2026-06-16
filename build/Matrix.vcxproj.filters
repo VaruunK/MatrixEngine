@@ -19,9 +19,6 @@
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\Viewport\ViewportCamera\ViewportCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\Viewport\SelectProxy\SelectProxy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\ShaderManager\ShaderManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -68,6 +65,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\Editor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Event\EventBUS\EngineEventBUS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

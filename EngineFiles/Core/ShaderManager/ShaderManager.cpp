@@ -59,10 +59,7 @@ void ShaderManager::ClearCache() {
 //    return pipeline;
 //}
 
-SDL_GPUShader* ShaderManager::LoadShader(const std::string& shaderPath, const std::string& entryPoint) {
-    // need load shader to accept arguments to modify compiledshader
-    // or something similar
-    
+SDL_GPUShader* ShaderManager::LoadShader(const std::string& shaderPath, const std::string& entryPoint) {    
     std::string cacheKey = shaderPath;
     
     // Check if we already have the GPU shader

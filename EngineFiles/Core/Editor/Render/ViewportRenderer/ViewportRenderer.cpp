@@ -1,7 +1,11 @@
 #include "ViewportRenderer.hpp"
 #include "Core/Editor/Viewport/Viewport.hpp"
+#include "Core/Editor/Render/WorldRenderer/WorldRenderer.hpp"
 #include "Core/Structs/Appstate.hpp"
 #include "Core/Structs/FrameData.hpp"
+#include "Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
+#include "Core/GameObject/Component/SpriteComponent/SpriteComponent.hpp"
+#include "Core/Event/EventBUS/EngineEventBUS.hpp"
 #include <SDL3/SDL_video.h>
 #include <imgui.h>
 #include <imgui_impl_sdl3.h>
@@ -10,8 +14,29 @@
 
 std::unique_ptr<ShaderManager> ViewportRenderer::shaderManager = nullptr;
 
-ViewportRenderer::ViewportRenderer(Appstate& appstate, Viewport* viewport) : appstate(appstate) {
+ViewportRenderer::ViewportRenderer(Appstate& appstate, Viewport* viewport, WorldRenderer& worldRenderer) 
+    : appstate(appstate), worldRenderer(worldRenderer) {
     this->viewport = viewport;
+}
+
+ViewportRenderer::~ViewportRenderer() {
+    if (appstate.device) {
+        SDL_WaitForGPUIdle(appstate.device);
+    }
+    if (selectProxyTexture) {
+        SDL_ReleaseGPUTexture(appstate.device, selectProxyTexture);
+        selectProxyTexture = nullptr;
+    }
+    if (selectProxyDepthTexture) {
+        SDL_ReleaseGPUTexture(appstate.device, selectProxyDepthTexture);
+        selectProxyDepthTexture = nullptr;
+    }
+    SDL_ReleaseGPUGraphicsPipeline(appstate.device, selectProxyPipeline);
+
+    if (shaderManager) {
+        shaderManager->Shutdown();
+        shaderManager.reset();
+    }
 }
 
 bool ViewportRenderer::Initialize() {
@@ -25,16 +50,6 @@ bool ViewportRenderer::Initialize() {
 
     shaderManager.reset(rawSM);
 
-    std::string vertShader = "shaders/TexturedQuadWithMatrix.vert.hlsl";
-    std::string fragShader = "shaders/TexturedQuad.frag.hlsl";
-
-    ShaderOptions optionsFrag = {
-        .num_samplers = 1,
-        .num_storage_textures = 0,
-        .num_storage_buffers = 0,
-        .num_uniform_buffers = 0
-    };
-
     ShaderOptions optionsVert = {
         .num_samplers = 0,
         .num_storage_textures = 0,
@@ -42,13 +57,48 @@ bool ViewportRenderer::Initialize() {
         .num_uniform_buffers = 1
     };
 
+    ShaderOptions optionsFrag = {
+        .num_samplers = 0,
+        .num_storage_textures = 0,
+        .num_storage_buffers = 0,
+        .num_uniform_buffers = 1
+    };
+
+    std::string vertShader = "shaders/SelectProxy.vert.hlsl";
+    std::string fragShader = "shaders/SelectProxy.frag.hlsl";
+
     SDL_GPUShader* vert = shaderManager.get()->LoadShader(vertShader, &optionsVert);
     SDL_GPUShader* frag = shaderManager.get()->LoadShader(fragShader, &optionsFrag);
+
+    if (!CreateSelectProxyDepthTexture()) {
+        SDL_Log("Failed to initialize Select Proxy Depth Texture");
+        return false;
+    }
+
+    if (!CreateSelectProxyTexture()) {
+        SDL_Log("Failed to create Select Proxy Texture");
+        return false;
+    }
+
+    if (!InitializeSelectProxyPipeline(vert, frag)) {
+        SDL_Log("Failed to initialize Select Proxy Pipeline");
+        return false;
+    }
 
     if (!InitializeSamplers()) {
         SDL_Log("Failed to create Samplers");
         return false;
     }
+
+    GEventBUS.Subscribe(SDL_EVENT_WINDOW_RESIZED, [this]() {
+        SDL_WaitForGPUIdle(appstate.device);
+
+        SDL_ReleaseGPUTexture(appstate.device, selectProxyTexture);
+        SDL_ReleaseGPUTexture(appstate.device, selectProxyDepthTexture);
+
+        CreateSelectProxyTexture();
+        CreateSelectProxyDepthTexture(); }
+    );
 
     return true;
 }
@@ -105,10 +155,8 @@ void ViewportRenderer::Render(FrameData& frame) {
                 // Scale from display size to texture size
                 int texW, texH;
                 SDL_GetWindowSize(appstate.window, &texW, &texH);
-
-                viewport->mouseClickX = static_cast<int>(localX * (texW / imageSize.x));
-                viewport->mouseClickY = static_cast<int>(localY * (texH / imageSize.y));
-                viewport->clicked = true;
+                viewport->SetMouseClicked(static_cast<int>(localX * (texW / imageSize.x)), 
+                    static_cast<int>(localY * (texH / imageSize.y)));
             }
 
             if (showFPS) {
@@ -125,6 +173,270 @@ void ViewportRenderer::Render(FrameData& frame) {
     }
 }
 
+bool ViewportRenderer::InitializeSamplers() {
+    SDL_GPUSamplerCreateInfo samplerCreateInfo = {
+        .min_filter = SDL_GPU_FILTER_LINEAR,
+        .mag_filter = SDL_GPU_FILTER_LINEAR,
+        .mipmap_mode = SDL_GPU_SAMPLERMIPMAPMODE_LINEAR,
+        .address_mode_u = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE,
+        .address_mode_v = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE,
+        .address_mode_w = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE
+    };
+
+    defaultSampler = SDL_CreateGPUSampler(appstate.device, &samplerCreateInfo);
+
+    if (!defaultSampler) {
+        SDL_Log("Failed to create default sampler, %s", SDL_GetError());
+        return false;
+    }
+    return true;
+}
+
+
+void ViewportRenderer::RenderSelectProxy(SDL_GPUCommandBuffer* commandBuffer) {
+    ResetIds();
+
+    const View& view = viewport->GetCameraView();
+
+    SDL_GPUColorTargetInfo colorTarget{};
+    colorTarget.clear_color = { 0.0f, 0.0f, 0.0f, 1.0f };
+    colorTarget.load_op = SDL_GPU_LOADOP_CLEAR;
+    colorTarget.texture = selectProxyTexture;
+    colorTarget.store_op = SDL_GPU_STOREOP_STORE;
+
+    SDL_GPUDepthStencilTargetInfo depthInfo{};
+    depthInfo.clear_depth = 1.0f;
+    depthInfo.clear_stencil = 0;
+    depthInfo.load_op = SDL_GPU_LOADOP_CLEAR;
+    depthInfo.store_op = SDL_GPU_STOREOP_STORE;
+    depthInfo.stencil_store_op = SDL_GPU_STOREOP_STORE;
+    depthInfo.texture = selectProxyDepthTexture;
+
+    SDL_GPURenderPass* pass = SDL_BeginGPURenderPass(commandBuffer, &colorTarget, 1, &depthInfo);
+    SDL_BindGPUGraphicsPipeline(pass, selectProxyPipeline);
+
+    SDL_GPUBufferBinding vb{ worldRenderer.vertexBuffer, 0 };
+    SDL_BindGPUVertexBuffers(pass, 0, &vb, 1);
+
+    SDL_GPUBufferBinding ib{ worldRenderer.indexBuffer, 0 };
+    SDL_BindGPUIndexBuffer(pass, &ib, SDL_GPU_INDEXELEMENTSIZE_32BIT);
+
+    int w, h;
+    SDL_GetWindowSize(appstate.window, &w, &h);
+    float aspect = static_cast<float>(w) / static_cast<float>(h);
+
+    for (auto& [mesh, components] : worldRenderer.meshes) {
+        const DrawInfo& di = worldRenderer.meshDrawInfo.at(mesh);
+
+        for (auto* component : components) {
+            uint32_t id = nextId++;
+            idToMesh[id] = component;
+
+            glm::mat4 mvp = view.projectionMatrix * view.viewMatrix * component->GetModelMatrix(aspect);
+            glm::vec4 idColor = EncodeId(id);
+
+            SDL_PushGPUVertexUniformData(commandBuffer, 0, &mvp, sizeof(mvp));
+            SDL_PushGPUFragmentUniformData(commandBuffer, 0, &idColor, sizeof(idColor));
+            SDL_DrawGPUIndexedPrimitives(
+                pass, di.indexCount, 1, di.firstIndex, di.vertexOffset, 0
+            );
+        }
+    }
+
+    for (auto& [texture, sprites] : worldRenderer.spriteTextures) {
+        const DrawInfo& di = worldRenderer.spriteDrawInfo.at(texture);
+
+        for (auto* sprite : sprites) {
+            uint32_t id = nextId++;
+            idToSprite[id] = sprite;
+
+            glm::mat4 mvp = view.projectionMatrix
+                * view.viewMatrix
+                * sprite->GetModelMatrix(aspect);
+            glm::vec4 idColor = EncodeId(id);
+
+            SDL_PushGPUVertexUniformData(commandBuffer, 0, &mvp, sizeof(mvp));
+            SDL_PushGPUFragmentUniformData(commandBuffer, 0, &idColor, sizeof(idColor));
+            SDL_DrawGPUIndexedPrimitives(
+                pass, di.indexCount, 1, di.firstIndex, di.vertexOffset, 0
+            );
+        }
+    }
+
+    SDL_EndGPURenderPass(pass);
+}
+
+Entity* ViewportRenderer::ReadPixel(SDL_GPUCommandBuffer* commandBuffer, int x, int y) {
+    SDL_GPUTransferBufferCreateInfo transferInfo{};
+    transferInfo.usage = SDL_GPU_TRANSFERBUFFERUSAGE_DOWNLOAD;
+    transferInfo.size = 4;
+
+    SDL_GPUTransferBuffer* downloadBuffer = SDL_CreateGPUTransferBuffer(appstate.device, &transferInfo);
+
+    if (!downloadBuffer) {
+        SDL_SubmitGPUCommandBuffer(commandBuffer);
+        return nullptr;
+    }
+
+    SDL_GPUCopyPass* copyPass = SDL_BeginGPUCopyPass(commandBuffer);
+
+    SDL_GPUTextureRegion region{};
+    region.texture = selectProxyTexture;
+    region.x = static_cast<uint32_t>(x);
+    region.y = static_cast<uint32_t>(y);
+    region.w = 1;
+    region.h = 1;
+    region.d = 1;
+
+    SDL_GPUTextureTransferInfo dst{};
+    dst.transfer_buffer = downloadBuffer;
+    dst.offset = 0;
+    dst.pixels_per_row = 1;
+    dst.rows_per_layer = 1;
+
+    SDL_DownloadFromGPUTexture(copyPass, &region, &dst);
+    SDL_EndGPUCopyPass(copyPass);
+
+    // Submit and stall
+    SDL_SubmitGPUCommandBuffer(commandBuffer);
+    SDL_WaitForGPUIdle(appstate.device);
+
+    // Read the pixel bytes
+    uint8_t* ptr = static_cast<uint8_t*>(SDL_MapGPUTransferBuffer(appstate.device, downloadBuffer, false));
+
+    Entity* result = nullptr;
+
+    if (ptr) {
+        uint32_t id = DecodeId(ptr[0], ptr[1], ptr[2]);
+        SDL_UnmapGPUTransferBuffer(appstate.device, downloadBuffer);
+
+        if (id != 0) {
+            auto meshIt = idToMesh.find(id);
+            if (meshIt != idToMesh.end()) {
+                result = meshIt->second->GetOwner();
+            }
+            else {
+                auto spriteIt = idToSprite.find(id);
+                if (spriteIt != idToSprite.end()) {
+                    result = spriteIt->second->GetOwner();
+                }
+            }
+        }
+    }
+
+    SDL_ReleaseGPUTransferBuffer(appstate.device, downloadBuffer);
+    return result;
+}
+
+bool ViewportRenderer::InitializeSelectProxyPipeline(SDL_GPUShader* vertexShader, SDL_GPUShader* fragmentShader) {
+    SDL_GPUColorTargetDescription colorTargetDescription{};
+
+    colorTargetDescription.format = SDL_GPU_TEXTUREFORMAT_R8G8B8A8_UNORM;
+    colorTargetDescription.blend_state.enable_blend = false;
+
+    std::vector colorTargetDescriptions{ colorTargetDescription };
+
+    SDL_GPUGraphicsPipelineTargetInfo targetInfo{};
+    targetInfo.color_target_descriptions = colorTargetDescriptions.data();
+    targetInfo.num_color_targets = colorTargetDescriptions.size();
+    targetInfo.has_depth_stencil_target = true;
+    targetInfo.depth_stencil_format = GetDepthStencilFormat();
+
+    SDL_GPUDepthStencilState depthStencilState{};
+    depthStencilState.enable_depth_test = true;
+    depthStencilState.enable_depth_write = true;
+    depthStencilState.compare_op = SDL_GPU_COMPAREOP_LESS;
+
+    SDL_GPUVertexAttribute positionAttr{};
+    positionAttr.location = 0;
+    positionAttr.buffer_slot = 0;
+    positionAttr.format = SDL_GPU_VERTEXELEMENTFORMAT_FLOAT3;
+    positionAttr.offset = offsetof(Vertex, position);
+
+    SDL_GPUVertexBufferDescription vertexBufferDesc{};
+    vertexBufferDesc.slot = 0;
+    vertexBufferDesc.pitch = sizeof(Vertex);
+    vertexBufferDesc.input_rate = SDL_GPU_VERTEXINPUTRATE_VERTEX;
+    vertexBufferDesc.instance_step_rate = 0;
+
+    SDL_GPUVertexInputState vertexInputState{};
+    vertexInputState.vertex_attributes = &positionAttr;
+    vertexInputState.num_vertex_attributes = 1;
+    vertexInputState.vertex_buffer_descriptions = &vertexBufferDesc;
+    vertexInputState.num_vertex_buffers = 1;
+
+    SDL_GPUGraphicsPipelineCreateInfo pipelineCreateInfo{};
+    pipelineCreateInfo.vertex_shader = vertexShader;
+    pipelineCreateInfo.fragment_shader = fragmentShader;
+    pipelineCreateInfo.primitive_type = SDL_GPU_PRIMITIVETYPE_TRIANGLELIST;
+    pipelineCreateInfo.rasterizer_state.fill_mode = SDL_GPU_FILLMODE_FILL;
+    pipelineCreateInfo.target_info = targetInfo;
+    pipelineCreateInfo.vertex_input_state = vertexInputState;
+    pipelineCreateInfo.depth_stencil_state = depthStencilState;
+
+    selectProxyPipeline = SDL_CreateGPUGraphicsPipeline(appstate.device, &pipelineCreateInfo);
+    SDL_Log("Pipeline result: %p, error: %s", selectProxyPipeline, SDL_GetError());
+    return selectProxyPipeline != nullptr;
+}
+
+bool ViewportRenderer::CreateSelectProxyDepthTexture() {
+    int w, h;
+    SDL_GetWindowSize(appstate.window, &w, &h);
+
+    SDL_PropertiesID props = SDL_CreateProperties();
+    SDL_SetFloatProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_DEPTH_FLOAT, 1.0f);
+    SDL_SetNumberProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_STENCIL_NUMBER, 0);
+
+    SDL_GPUTextureCreateInfo info{};
+    info.format = GetDepthStencilFormat();
+    SDL_Log("Creating select proxy depth texture with format: %d", (int)info.format);
+    info.usage = SDL_GPU_TEXTUREUSAGE_DEPTH_STENCIL_TARGET;
+    info.width = static_cast<uint32_t>(w);
+    info.height = static_cast<uint32_t>(h);
+    info.layer_count_or_depth = 1;
+    info.num_levels = 1;
+    info.sample_count = SDL_GPU_SAMPLECOUNT_1;
+    info.props = props;
+
+    selectProxyDepthTexture = SDL_CreateGPUTexture(appstate.device, &info);
+    SDL_DestroyProperties(props);
+
+    if (selectProxyTexture) {
+        SDL_SetGPUTextureName(appstate.device, selectProxyTexture, "Select Proxy Depth Stencil Texture");
+    }
+
+    return selectProxyDepthTexture != nullptr;
+}
+
+bool ViewportRenderer::CreateSelectProxyTexture() {
+    int w, h;
+    SDL_GetWindowSize(appstate.window, &w, &h);
+
+    SDL_PropertiesID props = SDL_CreateProperties();
+    SDL_SetFloatProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_R_FLOAT, 0.0f);
+    SDL_SetFloatProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_G_FLOAT, 0.0f);
+    SDL_SetFloatProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_B_FLOAT, 0.0f);
+    SDL_SetFloatProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_A_FLOAT, 1.0f);
+
+    SDL_GPUTextureCreateInfo info{};
+    info.format = SDL_GPU_TEXTUREFORMAT_R8G8B8A8_UNORM;
+    info.usage = SDL_GPU_TEXTUREUSAGE_COLOR_TARGET;
+    info.width = static_cast<uint32_t>(w);
+    info.height = static_cast<uint32_t>(h);
+    info.layer_count_or_depth = 1;
+    info.num_levels = 1;
+    info.sample_count = SDL_GPU_SAMPLECOUNT_1;
+    info.props = props;
+
+    selectProxyTexture = SDL_CreateGPUTexture(appstate.device, &info);
+    SDL_DestroyProperties(props);
+
+    if (selectProxyTexture) {
+        SDL_SetGPUTextureName(appstate.device, selectProxyTexture, "Select Proxy Texture");
+    }
+
+    return selectProxyTexture != nullptr;
+}
 
 SDL_GPUTextureFormat ViewportRenderer::GetDepthStencilFormat() {
     if (!appstate.device) {
@@ -148,26 +460,6 @@ SDL_GPUTextureFormat ViewportRenderer::GetDepthStencilFormat() {
         return SDL_GPU_TEXTUREFORMAT_INVALID;
     }
 }
-
-bool ViewportRenderer::InitializeSamplers() {
-    SDL_GPUSamplerCreateInfo samplerCreateInfo = {
-        .min_filter = SDL_GPU_FILTER_LINEAR,
-        .mag_filter = SDL_GPU_FILTER_LINEAR,
-        .mipmap_mode = SDL_GPU_SAMPLERMIPMAPMODE_LINEAR,
-        .address_mode_u = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE,
-        .address_mode_v = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE,
-        .address_mode_w = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE
-    };
-
-    defaultSampler = SDL_CreateGPUSampler(appstate.device, &samplerCreateInfo);
-
-    if (!defaultSampler) {
-        SDL_Log("Failed to create default sampler, %s", SDL_GetError());
-        return false;
-    }
-    return true;
-}
-
 
 void ViewportRenderer::Shutdown() {
     SDL_WaitForGPUIdle(appstate.device);

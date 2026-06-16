@@ -3,7 +3,6 @@
 #include "Core/GameObject/GameObject.hpp"
 #include "Core/GameObject/Component/Component.hpp"
 #include "Core/Structs/Transform.hpp"
-#include "Core/Editor/Viewport/SelectProxy/SelectProxy.hpp"
 #include <unordered_map>
 #include <typeindex>
 #include <type_traits>
@@ -60,7 +59,6 @@ public:
 		return ptr;
 	}
 
-	SelectProxy selectProxy;
 protected:
 	Transform transform;
 private:

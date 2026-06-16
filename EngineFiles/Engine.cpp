@@ -6,6 +6,7 @@
 #include "Core/GameObject/Entity/Agent/Agent.hpp"
 #include "Core/GameObject/Component/SpriteComponent/SpriteComponent.hpp"
 #include "Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
+#include "Core/Event/EventBUS/EngineEventBUS.hpp"
 #include <imgui_impl_sdl3.h>
 #include <iostream>
 #include <cstdio>
@@ -79,7 +80,7 @@ int Engine::Run() {
 
     editor = new Editor(appstate, game);
 
-    Level* level = game->world->GetLevel("Mainlevel");
+    Level* level = game->world.GetLevel("Mainlevel");
     running.store(true);
     // threads.emplace_back(&PhysicsManager::Run, physicsManager.get(), MAX_PHYSICS_FRAMES);
     // world->Start();
@@ -123,23 +124,18 @@ int Engine::Run() {
         const float MaxDeltaTime = 1.0f / MAX_FRAMES;
         if (deltaSeconds < MaxDeltaTime)
             deltaSeconds = MaxDeltaTime;
-
-        // world->SetDeltaTime(deltaSeconds);
+        
         SDL_Event event;
-
         while (SDL_PollEvent(&event)) {
             ImGui_ImplSDL3_ProcessEvent(&event);
             if (event.type == SDL_EVENT_QUIT) {
                 running.store(false);
                 break;
-            }
-            if (event.type = SDL_EVENT_WINDOW_RESIZED) {
-                game->world->GetWorldRenderer()->resized = true;
-                editor->editorRenderer.resized = true;
-            }
+            };
+            GEventBus.ProcessEvent(&event);
         }
 
-        // world->Tick(frame);
+        
         editor->Tick(deltaSeconds);
         editor->Render();
 
@@ -174,6 +170,7 @@ int Engine::Run() {
     }
     SDL_ShaderCross_Quit();
     SDL_DestroyGPUDevice(appstate.device);
+    SDL_DestroyWindow(appstate.window);
     SDL_Quit();
     return 0;
 }

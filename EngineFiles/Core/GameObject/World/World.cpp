@@ -10,21 +10,20 @@
 #include <SDL3/SDL.h>
 #include <iostream>
 
-World::World() : GameObject() {
+World::World(Appstate& appstate) : GameObject(), renderer(appstate) {
+    
     canTick = true;
     deltaSeconds = 0;
     running.store(false);
+
+    if (!renderer.Initialize()) {
+        SDL_Log("Failed to start World Renderer");
+        return;
+    }
 }
 
-Level* World::Initialize(Appstate& appstate, const std::string& startLevelName) {
-    renderer = new WorldRenderer(appstate);
-
+Level* World::Initialize(const std::string& startLevelName) {
     Level* level = CreateInitialLevel(startLevelName);
-
-    if (!renderer->Initialize()) {
-        SDL_Log("Failed to start World Renderer");
-        return nullptr;
-    }
 
     return level;
 }
@@ -51,7 +50,7 @@ void World::Tick(uint64_t deltaTime) {
 
         }
     }
-    
+    //eventManager.ProcessEvents();
 }
 
 void World::DestroyGameObject() {
@@ -64,7 +63,7 @@ void World::Render() {
     // TODO: Need a camera view
     // frame.view = &GetCameraView();
 
-    renderer->RenderAndSubmit(frame);
+    renderer.RenderAndSubmit(frame);
 }
 
 Level* World::GetLevel(const std::string& levelName) {
@@ -99,17 +98,17 @@ Level* World::CreateInitialLevel(const std::string& startLevelName) {
 }
 
 void World::RegisterMesh(MeshComponent* mesh) {
-    renderer->RegisterMesh(mesh);
+    renderer.RegisterMesh(mesh);
 }
 
 void World::DeregisterMesh(MeshComponent* mesh) {
-    renderer->DeregisterMesh(mesh);
+    renderer.DeregisterMesh(mesh);
 }
 
 void World::RegisterSprite(SpriteComponent* sprite) {
-    renderer->RegisterSprite(sprite);
+    renderer.RegisterSprite(sprite);
 }
 
 void World::DeregisterSprite(SpriteComponent* sprite) {
-    renderer->DeregisterSprite(sprite);
+    renderer.DeregisterSprite(sprite);
 }

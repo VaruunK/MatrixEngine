@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Core/Editor/Render/EditorRenderer/EditorRenderer.hpp"
+#include "Core/Editor/Viewport/Viewport.hpp"
 
 class Entity;
 class Game;
@@ -19,6 +20,8 @@ public:
 private:
 	std::vector<Entity*> selectedEntities;
 	
+	Viewport viewport;
+
 	Appstate& appstate;
 	Game* game;
 };

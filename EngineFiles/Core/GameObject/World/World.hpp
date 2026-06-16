@@ -1,12 +1,13 @@
 #pragma once
 
+#include "Level/Level.hpp"
+#include "Core/GameObject/GameObject.hpp"
+#include "Core/Editor/Render/WorldRenderer/WorldRenderer.hpp"
 #include <atomic>
 #include <string>
 #include <memory>
 #include <mutex>
 #include <unordered_map>
-#include "Level/Level.hpp"
-#include "Core/GameObject/GameObject.hpp"
 
 class TickManager;
 class WorldRenderer;
@@ -20,9 +21,9 @@ struct FrameData;
 
 class World : public GameObject {
 public:
-	World();
+	World(Appstate& appstate);
 
-	Level* Initialize(Appstate& appstate, const std::string& startLevelName);
+	Level* Initialize(const std::string& startLevelName);
 	void Start() override;
 	void Tick(uint64_t deltaTime);
 	void DestroyGameObject() override;
@@ -50,11 +51,11 @@ public:
 
 	void SetDeltaTime(uint64_t deltaTime) { deltaSeconds = deltaTime; }
 
-	WorldRenderer* GetWorldRenderer() { return renderer; }
+	WorldRenderer& GetWorldRenderer() { return renderer; }
 protected:
 private:
 
-	WorldRenderer* renderer;
+	WorldRenderer renderer;
 
 	Level* CreateInitialLevel(const std::string& startLevelName);
 

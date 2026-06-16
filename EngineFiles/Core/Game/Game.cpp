@@ -3,17 +3,16 @@
 #include <SDL3_image/SDL_image.h>
 
 
-Game::Game() : appstate{ CreateDevice(), CreateWindow() } {
-    world = new World();
+Game::Game() : appstate{ CreateDevice(), CreateWindow() }, world(appstate) {
+
 }
 
-Game::Game(Appstate& appstate) {
-    this->appstate = appstate;
-    world = new World();
+Game::Game(Appstate& appstate) : appstate(appstate), world(appstate) {
+
 }
 
 void Game::Initialize(std::string& name, std::string& iconFilePath) {
-    world->Initialize(appstate, "Mainlevel");
+    world.Initialize("Mainlevel");
 }
 
 void Game::Start() {

@@ -54,8 +54,8 @@ private:
 	MouseButtonBindingList onPressedMouseButtonBindings;
 	MouseButtonBindingList onReleasedMouseButtonBindings;
 
-	float mouseX;
-	float mouseY;
+	float mouseX = -1;
+	float mouseY = -1;
 
 	std::function<void(float relX, float relY)> mouseMoveCallback;
 

@@ -31,7 +31,6 @@ add_executable(Matrix
     "EngineFiles/Core/Editor/Viewport/Viewport.cpp"
     "EngineFiles/Core/Editor/Viewport/ViewportController/ViewportController.cpp"
     "EngineFiles/Core/Editor/Viewport/ViewportCamera/ViewportCamera.cpp"
-    "EngineFiles/Core/Editor/Viewport/SelectProxy/SelectProxy.cpp"
     
     "EngineFiles/Core/ShaderManager/ShaderManager.cpp"
     "EngineFiles/Core/TickManager/TickManager.cpp"
@@ -59,7 +58,7 @@ add_executable(Matrix
     "EngineFiles/Core/GameObject/World/Level/Level.cpp"
      
 
-    "EngineFiles/Core/Game/Game.cpp" "EngineFiles/Core/Editor/Editor.cpp")
+    "EngineFiles/Core/Game/Game.cpp" "EngineFiles/Core/Editor/Editor.cpp"  "EngineFiles/Core/Event/EventBUS/EngineEventBUS.cpp")
 
 
 # -----------------------------

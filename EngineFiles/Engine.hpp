@@ -42,8 +42,5 @@ private:
 
 	Appstate appstate;
 
-	SDL_GPUCommandBuffer* currentCommandBuffer = nullptr;
-	SDL_GPUTexture* currentSwapchainTexture = nullptr;
-
 	std::vector<std::thread> threads;
 };

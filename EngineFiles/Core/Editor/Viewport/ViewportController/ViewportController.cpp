@@ -13,17 +13,6 @@ void ViewportController::Start() {
 		[this]() { moveMode = true; }, 
 		[this]() { moveMode = false; }
 	);
-	BindMouseButton(SDL_BUTTON_LEFT,
-		[this]() {
-			if (!moveMode && !leftClicking) {
-				leftClicking = true;
-			};
-		},
-		[this]() {
-			if (!moveMode && leftClicking) {
-				leftClicking = false;
-			}
-		});
 	BindKey(SDL_SCANCODE_W,
 		[this]() {
 			if(moveMode) viewport->GetCamera().MoveForward();

@@ -7,6 +7,7 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <array>
 #include <memory>
 
 class SpriteComponent;
@@ -16,7 +17,7 @@ struct FrameData;
 struct Appstate;
 
 class WorldRenderer {
-    friend class EditorRenderer;
+    friend class ViewportRenderer;
 public:
     WorldRenderer(Appstate& appstate);
     ~WorldRenderer();
@@ -33,6 +34,7 @@ public:
 
     bool resized = false;
 
+    
 private:
     bool InitializeBuffers();
     bool InitializePipelines(SDL_GPUShader* vertexShader, SDL_GPUShader* fragmentShader);

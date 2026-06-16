@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Core/Structs/Appstate.hpp"
+#include "Core/GameObject/World/World.hpp"
 #include <SDL3/SDL_gpu.h>
 #include <string>
 #include <vector>
@@ -18,9 +19,7 @@ public:
 	void Initialize(std::string& name, std::string& iconFilePath);
 	
 	void Start();
-	World* world;
-
-
+	World world;
 private:
 	SDL_GPUDevice* CreateDevice();
 	SDL_Window* CreateWindow();

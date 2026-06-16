@@ -7,6 +7,7 @@
 #include "Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
 #include <glm/ext/matrix_clip_space.hpp>
 #include <glm/ext/matrix_transform.hpp>
+#include <Core/Event/EventBUS/EngineEventBUS.hpp>
 // #include <iostream>
 
 std::unique_ptr<ShaderManager> WorldRenderer::shaderManager = nullptr;
@@ -58,6 +59,18 @@ WorldRenderer::~WorldRenderer() {
         shaderManager->Shutdown();
         shaderManager.reset();
     }
+
+    GEventBUS.Subscribe(SDL_EVENT_WINDOW_RESIZED, [this]() {
+        SDL_WaitForGPUIdle(appstate.device);
+
+        SDL_ReleaseGPUTexture(appstate.device, depthStencilTexture);
+        SDL_ReleaseGPUTexture(appstate.device, msaaTexture);
+        SDL_ReleaseGPUTexture(appstate.device, offscreenTexture);
+
+        CreateDepthStencil();
+        CreateMSAATexture();
+        CreateOffscreenTexture(); }
+    );
 }
 
 bool WorldRenderer::CreateOffscreenTexture() {
@@ -83,19 +96,6 @@ bool WorldRenderer::CreateOffscreenTexture() {
 }
 
 void WorldRenderer::Render(FrameData& frame) {
-    if (resized) {
-        SDL_WaitForGPUIdle(appstate.device);
-
-        SDL_ReleaseGPUTexture(appstate.device, depthStencilTexture);
-        SDL_ReleaseGPUTexture(appstate.device, msaaTexture);
-        SDL_ReleaseGPUTexture(appstate.device, offscreenTexture);
-
-        CreateDepthStencil();
-        CreateMSAATexture();
-        CreateOffscreenTexture();
-
-        resized = false;
-    }
     SDL_GPUColorTargetInfo colorTarget{};
     colorTarget.clear_color = { 0.1f, 0.1f, 0.1f, 1.0f };
     colorTarget.load_op = SDL_GPU_LOADOP_CLEAR;
@@ -112,8 +112,6 @@ void WorldRenderer::Render(FrameData& frame) {
 
     frame.viewportTexture = offscreenTexture;
 
-    std::vector<SDL_GPUColorTargetInfo> colorTargets{ colorTarget };
-
     SDL_GPUDepthStencilTargetInfo depthStencilTargetInfo{};
     depthStencilTargetInfo.clear_depth = 1.0f;
     depthStencilTargetInfo.clear_stencil = 0;
@@ -122,13 +120,19 @@ void WorldRenderer::Render(FrameData& frame) {
     depthStencilTargetInfo.stencil_store_op = SDL_GPU_STOREOP_STORE;
     depthStencilTargetInfo.texture = depthStencilTexture;
 
-    SDL_GPURenderPass* pass = SDL_BeginGPURenderPass(frame.commandBuffer, colorTargets.data(), colorTargets.size(), &depthStencilTargetInfo);
+    SDL_GPURenderPass* pass = SDL_BeginGPURenderPass(frame.commandBuffer, &colorTarget, 1, &depthStencilTargetInfo);
     SDL_BindGPUGraphicsPipeline(pass, pipelines[PIPELINE_TYPE::FILL_PIPELINE]);
 
-    std::vector<SDL_GPUBufferBinding> vertexBinding{ { vertexBuffer, 0 } };
-    SDL_BindGPUVertexBuffers(pass, 0, vertexBinding.data(), vertexBinding.size());
+    SDL_GPUBufferBinding vertexBinding{};
+    vertexBinding.buffer = vertexBuffer;
+    vertexBinding.offset = 0;
 
-    SDL_GPUBufferBinding indexBufferBinding{ indexBuffer, 0 };
+    SDL_BindGPUVertexBuffers(pass, 0, &vertexBinding, 1);
+
+    SDL_GPUBufferBinding indexBufferBinding{};
+    indexBufferBinding.buffer = indexBuffer;
+    indexBufferBinding.offset = 0;
+
     SDL_BindGPUIndexBuffer(pass, &indexBufferBinding, SDL_GPU_INDEXELEMENTSIZE_32BIT);
 
     int windowWidth, windowHeight;
