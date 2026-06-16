@@ -132,10 +132,9 @@ int Engine::Run() {
                 running.store(false);
                 break;
             };
-            GEventBus.ProcessEvent(&event);
+            GEventBUS.ProcessEvent(&event);
         }
 
-        
         editor->Tick(deltaSeconds);
         editor->Render();
 

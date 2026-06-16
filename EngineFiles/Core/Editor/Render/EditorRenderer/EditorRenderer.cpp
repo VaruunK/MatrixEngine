@@ -136,6 +136,3 @@ void EditorRenderer::Render() {
         SDL_Log("Failed to submit: %s", SDL_GetError());
     }
 }
-
-
-

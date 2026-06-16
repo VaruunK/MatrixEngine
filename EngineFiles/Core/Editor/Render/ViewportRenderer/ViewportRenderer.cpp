@@ -155,8 +155,10 @@ void ViewportRenderer::Render(FrameData& frame) {
                 // Scale from display size to texture size
                 int texW, texH;
                 SDL_GetWindowSize(appstate.window, &texW, &texH);
-                viewport->SetMouseClicked(static_cast<int>(localX * (texW / imageSize.x)), 
+                // GEventBUS.Notify(SDL_EVENT_USER);
+                viewport->SetClickedPosition(static_cast<int>(localX * (texW / imageSize.x)), 
                     static_cast<int>(localY * (texH / imageSize.y)));
+                GEventBUS.Notify(SDL_EVENT_USER);
             }
 
             if (showFPS) {

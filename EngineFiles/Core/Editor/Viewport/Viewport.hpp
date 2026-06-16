@@ -19,6 +19,7 @@ public:
 	void Initialize();
 	void Tick(float deltaTime);
 	void Render(FrameData& frame);
+	Entity* GetSelectedEntity(int x, int y);
 
 	bool InitializeSelectProxyPipeline(SDL_GPUShader* vertexShader, SDL_GPUShader* fragmentShader);
 	bool CreateSelectProxyTexture();
@@ -28,16 +29,13 @@ public:
 
 	void SetCameraSpeed(int& speed);
 
-	bool IsClicked() const { return clicked; }
-	void SetMouseClicked(int x, int y);
-	void HandleClick(int& mouseX, int& mouseY);
+	void GetClickedPosition(int& x, int& y);
+	void SetClickedPosition(int x, int y);
 
 	const View& GetCameraView() const;
 	ViewportCamera& GetCamera() { return camera; }
 
 	float deltaSeconds = 0.0f;
-
-	bool resized = false;
 private:
 
 	Appstate& appstate;

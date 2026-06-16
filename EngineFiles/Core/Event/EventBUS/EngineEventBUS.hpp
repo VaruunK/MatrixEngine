@@ -10,6 +10,7 @@
 class EngineEventBUS {
 public:
 	void Subscribe(SDL_EventType eventType, std::function<void()> callback);
+	void Notify(SDL_EventType eventType);
 
 	void ProcessEvent(SDL_Event* event);
 private:

@@ -2,6 +2,7 @@
 
 #include "Core/Editor/Render/EditorRenderer/EditorRenderer.hpp"
 #include "Core/Editor/Viewport/Viewport.hpp"
+#include <set>
 
 class Entity;
 class Game;
@@ -18,7 +19,7 @@ public:
 
 	EditorRenderer editorRenderer;
 private:
-	std::vector<Entity*> selectedEntities;
+	std::set<Entity*> selectedEntities;
 	
 	Viewport viewport;
 

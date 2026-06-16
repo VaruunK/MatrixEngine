@@ -28,22 +28,21 @@ void Viewport::Render(FrameData& frame) {
     
     frame.view = &GetCameraView();
 
-    if (IsClicked()) {
-        int x, y;
-        HandleClick(x, y);
-
-        SDL_GPUCommandBuffer* pickCmd = SDL_AcquireGPUCommandBuffer(appstate.device);
-        if (pickCmd) {
-            viewportRenderer.RenderSelectProxy(pickCmd);
-            Entity* picked = viewportRenderer.ReadPixel(pickCmd, x, y);
-            if (picked) {
-                std::cout << picked << std::endl;
-            }
-        }
-    }
-
     worldRenderer.Render(frame);
     viewportRenderer.Render(frame);
+}
+
+Entity* Viewport::GetSelectedEntity(int x, int y) {
+    SDL_GPUCommandBuffer* pickCmd = SDL_AcquireGPUCommandBuffer(appstate.device);
+    if (pickCmd) {
+        viewportRenderer.RenderSelectProxy(pickCmd);
+        Entity* picked = viewportRenderer.ReadPixel(pickCmd, x, y);
+        /*if (picked) {
+            std::cout << picked << std::endl;
+        }*/
+        return picked;
+    }
+    return nullptr;
 }
 
 void Viewport::Tick(float deltaTime) {
@@ -57,18 +56,14 @@ void Viewport::SetCameraSpeed(int& speed) {
 	camera.SetCameraSpeed(speed);
 }
 
-void Viewport::SetMouseClicked(int x, int y) {
-	mouseClickX = x;
-	mouseClickY = y;
-
-	clicked = true;
+void Viewport::GetClickedPosition(int& x, int& y) {
+    x = mouseClickX;
+    y = mouseClickY;
 }
 
-void Viewport::HandleClick(int& mouseX, int& mouseY) {
-	mouseX = mouseClickX;
-	mouseY = mouseClickY;
-
-	clicked = false;
+void Viewport::SetClickedPosition(int x, int y) {
+    mouseClickX = x;
+    mouseClickY = y;
 }
 
 const View& Viewport::GetCameraView() const {
