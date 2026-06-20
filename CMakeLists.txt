@@ -25,20 +25,27 @@ endforeach()
 add_executable(Matrix
     "EngineFiles/Engine.cpp"
 
-    "EngineFiles/Core/Assets/AssetLoader/AssetLoader.cpp"
-    "EngineFiles/Core/Assets/DefaultAssets/DefaultAssets.cpp"
+    "EngineFiles/Core/Editor/Editor.cpp"
 
     "EngineFiles/Core/Editor/Viewport/Viewport.cpp"
     "EngineFiles/Core/Editor/Viewport/ViewportController/ViewportController.cpp"
     "EngineFiles/Core/Editor/Viewport/ViewportCamera/ViewportCamera.cpp"
-    
-    "EngineFiles/Core/ShaderManager/ShaderManager.cpp"
-    "EngineFiles/Core/TickManager/TickManager.cpp"
-    
+
     "EngineFiles/Core/Editor/Render/WorldRenderer/WorldRenderer.cpp"
     "EngineFiles/Core/Editor/Render/ViewportRenderer/ViewportRenderer.cpp"
     "EngineFiles/Core/Editor/Render/EditorRenderer/EditorRenderer.cpp"
 
+    "EngineFiles/Core/Editor/ContentBrowser/ContentBrowser.cpp" 
+    "EngineFiles/Core/Editor/ContentBrowser/ContentBrowserController/ContentBrowserController.cpp"
+
+    "EngineFiles/Core/Assets/AssetLoader/AssetLoader.cpp"
+    "EngineFiles/Core/Assets/DefaultAssets/DefaultAssets.cpp"
+
+    "EngineFiles/Core/Event/EventBUS/EngineEventBUS.cpp"
+
+    "EngineFiles/Core/ShaderManager/ShaderManager.cpp"
+    "EngineFiles/Core/TickManager/TickManager.cpp"
+    
     # EngineFiles/Core/PhysicsManager/PhysicsManager.cpp
 
     "EngineFiles/Core/GameObject/GameObject.cpp"
@@ -57,8 +64,7 @@ add_executable(Matrix
     "EngineFiles/Core/GameObject/World/World.cpp"
     "EngineFiles/Core/GameObject/World/Level/Level.cpp"
      
-
-    "EngineFiles/Core/Game/Game.cpp" "EngineFiles/Core/Editor/Editor.cpp"  "EngineFiles/Core/Event/EventBUS/EngineEventBUS.cpp" "EngineFiles/Core/Editor/ContentBrowser/ContentBrowser.cpp")
+    "EngineFiles/Core/Game/Game.cpp")
 
 
 # -----------------------------

@@ -9,7 +9,7 @@ public:
 	ViewportController(Viewport* viewport);
 	~ViewportController() = default;
 
-	void Start();
+	void Start() override;
 	void Tick(uint64_t deltaTime) override;
 	
 	void DestroyGameObject() override;

@@ -58,6 +58,7 @@ void Editor::Tick(float deltaTime) {
 		viewport.Tick(deltaTime);
 		break;
 	case CONTENT_BROWSER:
+		contentBrowser.Tick(deltaTime);
 		break;
 	default:
 		break;
