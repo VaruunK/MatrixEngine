@@ -172,7 +172,7 @@ Assimp_SOURCE_DIR:STATIC=C:/Users/varuu/development/Engine/vendored/assimp
 //Default URL where bug reports are to be submitted.
 BUG_REPORT_URL:STRING=http://llvm.org/bugs/
 
-//Build package with shared libraries.
+//Build shared instead of static library
 BUILD_SHARED_LIBS:BOOL=OFF
 
 //Path to a program.
@@ -903,6 +903,21 @@ Matrix_Engine_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 Matrix_Engine_SOURCE_DIR:STATIC=C:/Users/varuu/development/Engine
 
+//Build GLFW3 tests for nfd
+NFD_BUILD_GLFW3_TESTS:BOOL=OFF
+
+//Build SDL2 tests for nfd
+NFD_BUILD_SDL2_TESTS:BOOL=OFF
+
+//Build tests for nfd
+NFD_BUILD_TESTS:BOOL=OFF
+
+//Generate install target for nfd
+NFD_INSTALL:BOOL=OFF
+
+//Use defaultPath instead of recent folder on Windows
+NFD_OVERRIDE_RECENT_WITH_DEFAULT:BOOL=OFF
+
 //Path to a program.
 OCAMLFIND:FILEPATH=OCAMLFIND-NOTFOUND
 
@@ -945,6 +960,36 @@ PNG_TESTS:BOOL=OFF
 
 //Build the libpng tools
 PNG_TOOLS:BOOL=ON
+
+//Build defines for custom options
+PUGIXML_BUILD_DEFINES:STRING=
+
+//Enable charconv number conversion
+PUGIXML_CHARCONV_FLOAT:BOOL=OFF
+
+//Enable compact mode
+PUGIXML_COMPACT:BOOL=OFF
+
+//Enable installation rules
+PUGIXML_INSTALL:BOOL=ON
+
+//Install pugixml.cpp alongside headers
+PUGIXML_INSTALL_SOURCE:BOOL=OFF
+
+//Disable Exceptions
+PUGIXML_NO_EXCEPTIONS:BOOL=OFF
+
+//Disable STL
+PUGIXML_NO_STL:BOOL=OFF
+
+//Disable XPath
+PUGIXML_NO_XPATH:BOOL=OFF
+
+//Use static MSVC RT libraries
+PUGIXML_STATIC_CRT:BOOL=OFF
+
+//Enable wchar_t mode
+PUGIXML_WCHAR_MODE:BOOL=OFF
 
 //Run RE2 Tests
 RE2_BUILD_TESTING:STRING=OFF
@@ -1593,6 +1638,24 @@ libpng_IS_TOP_LEVEL:STATIC=OFF
 libpng_SOURCE_DIR:STATIC=C:/Users/varuu/development/Engine/vendored/SDL_image/external/libpng
 
 //Value Computed by CMake
+nativefiledialog-extended_BINARY_DIR:STATIC=C:/Users/varuu/development/Engine/build/vendored/nfd_extended
+
+//Value Computed by CMake
+nativefiledialog-extended_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+nativefiledialog-extended_SOURCE_DIR:STATIC=C:/Users/varuu/development/Engine/vendored/nfd_extended
+
+//Value Computed by CMake
+pugixml_BINARY_DIR:STATIC=C:/Users/varuu/development/Engine/build/vendored/pugixml
+
+//Value Computed by CMake
+pugixml_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+pugixml_SOURCE_DIR:STATIC=C:/Users/varuu/development/Engine/vendored/pugixml
+
+//Value Computed by CMake
 spirv-tools_BINARY_DIR:STATIC=C:/Users/varuu/development/Engine/build/vendored/SDL_shadercross/external/SPIRV-Tools
 
 //Value Computed by CMake
@@ -1737,7 +1800,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MT
 CMAKE_MT-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=163
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=166
 //Platform information initialized
 CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
 //noop for ranlib
@@ -2353,6 +2416,12 @@ PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //STRINGS property for variable: PNG_INTEL_SSE
 PNG_INTEL_SSE-STRINGS:INTERNAL=on;off
+//ADVANCED property for variable: PUGIXML_NO_EXCEPTIONS
+PUGIXML_NO_EXCEPTIONS-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PUGIXML_NO_STL
+PUGIXML_NO_STL-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PUGIXML_NO_XPATH
+PUGIXML_NO_XPATH-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: SDL_CHECK_REQUIRED_INCLUDES
 SDL_CHECK_REQUIRED_INCLUDES-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: SDL_CHECK_REQUIRED_LINK_OPTIONS

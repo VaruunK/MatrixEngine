@@ -58,7 +58,7 @@ add_executable(Matrix
     "EngineFiles/Core/GameObject/World/Level/Level.cpp"
      
 
-    "EngineFiles/Core/Game/Game.cpp" "EngineFiles/Core/Editor/Editor.cpp"  "EngineFiles/Core/Event/EventBUS/EngineEventBUS.cpp")
+    "EngineFiles/Core/Game/Game.cpp" "EngineFiles/Core/Editor/Editor.cpp"  "EngineFiles/Core/Event/EventBUS/EngineEventBUS.cpp" "EngineFiles/Core/Editor/ContentBrowser/ContentBrowser.cpp")
 
 
 # -----------------------------
@@ -164,6 +164,10 @@ add_subdirectory(vendored/glm EXCLUDE_FROM_ALL)
 # --- IMGUI ---
 add_subdirectory(vendored/imgui EXCLUDE_FROM_ALL)
 
+add_subdirectory(vendored/nfd_extended EXCLUDE_FROM_ALL)
+
+add_subdirectory(vendored/pugixml EXCLUDE_FROM_ALL)
+
 # -----------------------------
 # Link libraries
 # -----------------------------
@@ -178,6 +182,8 @@ target_link_libraries(Matrix
         glm::glm
         assimp::assimp
         imgui::imgui
+        nfd::nfd
+        pugixml::pugixml
 )
 
 # -----------------------------
@@ -208,5 +214,8 @@ add_custom_command(TARGET Matrix POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
         ${CMAKE_SOURCE_DIR}/EngineFiles/Engine.png
         $<TARGET_FILE_DIR:Matrix>/Engine.png
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${CMAKE_SOURCE_DIR}/Matrix.config
+        $<TARGET_FILE_DIR:Matrix>/Matrix.config
     COMMENT "Copying assets"
 )

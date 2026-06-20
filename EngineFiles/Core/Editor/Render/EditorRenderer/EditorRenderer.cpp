@@ -1,5 +1,7 @@
 #include "EditorRenderer.hpp"
+#include "Core/Structs/EditorInfo.hpp"
 #include "Core/Editor/Viewport/Viewport.hpp"
+#include "Core/Editor/ContentBrowser/ContentBrowser.hpp"
 #include "Core/Structs/Appstate.hpp"
 #include "Core/Structs/FrameData.hpp"
 #include "Core/Event/EventBUS/EngineEventBUS.hpp"
@@ -8,39 +10,12 @@
 #include <imgui_impl_sdlgpu3.h>
 #include <iostream>
 
-EditorRenderer::EditorRenderer(Appstate& appstate, Viewport& viewport, WorldRenderer& worldRenderer) 
-    : appstate(appstate), viewport(viewport) {
+EditorRenderer::EditorRenderer(Appstate& appstate, EditorInfo& info, WorldRenderer& worldRenderer) 
+    : appstate(appstate), info(info) {
 
-    float main_scale = SDL_GetDisplayContentScale(SDL_GetPrimaryDisplay());
-
-    IMGUI_CHECKVERSION();
-    ImGui::CreateContext();
     io = &ImGui::GetIO();
     io->ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
     io->ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
-
-    ImGui::StyleColorsDark();
-
-    ImGuiStyle& style = ImGui::GetStyle();
-    style.ScaleAllSizes(main_scale);
-    style.FontScaleDpi = main_scale;
-
-    ImGui_ImplSDLGPU3_InitInfo init_info = {};
-    init_info.Device = appstate.device;
-    init_info.ColorTargetFormat = SDL_GetGPUSwapchainTextureFormat(appstate.device, appstate.window);
-    init_info.SwapchainComposition = SDL_GPU_SWAPCHAINCOMPOSITION_SDR;
-    init_info.PresentMode = SDL_GPU_PRESENTMODE_VSYNC;
-    init_info.MSAASamples = SDL_GPU_SAMPLECOUNT_1;
-
-    if (!ImGui_ImplSDLGPU3_Init(&init_info)) {
-        SDL_Log("Failed to initialize ImGui SDLGPU3 backend");
-        return;
-    }
-
-    if (!ImGui_ImplSDL3_InitForSDLGPU(appstate.window)) {
-        SDL_Log("Failed to initialize ImGui SDL3 backend");
-        return;
-    }
 }
 
 void EditorRenderer::Render() {
@@ -73,20 +48,22 @@ void EditorRenderer::Render() {
 
         if (ImGui::Begin("Engine", nullptr, engineFlags)) {
             if (ImGui::BeginMainMenuBar()) {
-                if (ImGui::BeginMenu("File")) {
-                    ImGui::EndMenu();
-                }
-                if (ImGui::BeginMenu("Edit")) {
-                    if (ImGui::MenuItem("Undo", "Ctrl+Z")) {}
-                    if (ImGui::MenuItem("Redo", "Ctrl+Y", false, false)) {}
-                    ImGui::Separator();
-                    if (ImGui::MenuItem("Cut", "Ctrl+X")) {}
-                    if (ImGui::MenuItem("Copy", "Ctrl+C")) {}
-                    if (ImGui::MenuItem("Paste", "Ctrl+V")) {}
-                    ImGui::EndMenu();
-                }
+                
+                RenderMenuBar();
+
                 ImGui::EndMainMenuBar();
 
+                ImGui::SetNextWindowSize(ImVec2(300, 720), ImGuiCond_FirstUseEver);
+
+                if (contentBrowserViewOption && !contentBrowserOpen) {
+                    contentBrowserOpen = true;
+                    contentBrowserViewOption = false;
+                }
+
+                if (contentBrowserOpen) {   
+                    info.contentBrowser.Render(&contentBrowserOpen);
+                }
+                
                 ImGuiWindowFlags viewportFlags = ImGuiWindowFlags_NoCollapse |
                     ImGuiWindowFlags_NoTitleBar |
                     ImGuiWindowFlags_NoBackground |
@@ -103,7 +80,7 @@ void EditorRenderer::Render() {
                     ImGui::BeginTabBar("TabBar", ImGuiTabBarFlags_Reorderable | ImGuiTabBarFlags_AutoSelectNewTabs | ImGuiTabBarFlags_NoCloseWithMiddleMouseButton);
 
                     // Render viewport tab
-                    viewport.Render(frame);
+                    info.viewport.Render(frame);
 
                     ImGui::EndTabBar();
                 }
@@ -136,3 +113,24 @@ void EditorRenderer::Render() {
         SDL_Log("Failed to submit: %s", SDL_GetError());
     }
 }
+
+void EditorRenderer::RenderMenuBar() {
+    if (ImGui::BeginMenu("File")) {
+        ImGui::EndMenu();
+    }
+    if (ImGui::BeginMenu("Edit")) {
+        if (ImGui::MenuItem("Undo", "Ctrl+Z")) {}
+        if (ImGui::MenuItem("Redo", "Ctrl+Y", false, false)) {}
+        ImGui::Separator();
+        if (ImGui::MenuItem("Cut", "Ctrl+X")) {}
+        if (ImGui::MenuItem("Copy", "Ctrl+C")) {}
+        if (ImGui::MenuItem("Paste", "Ctrl+V")) {}
+        ImGui::EndMenu();
+    }
+    if (ImGui::BeginMenu("View")) {
+        if (ImGui::MenuItem("Content Browser", nullptr, &contentBrowserViewOption)) {}
+        ImGui::EndMenu();
+    }
+}
+
+

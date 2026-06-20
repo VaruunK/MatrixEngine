@@ -21,7 +21,6 @@ class ViewportRenderer {
 public:
 	ViewportRenderer(Appstate& appstate, Viewport* viewport, WorldRenderer& worldRenderer);
 	~ViewportRenderer();
-	bool Initialize();
 
 	void Render(FrameData& frame);
 	void RenderSelectProxy(SDL_GPUCommandBuffer* commandBuffer);
@@ -29,7 +28,6 @@ public:
 	Entity* ReadPixel(SDL_GPUCommandBuffer* commandBuffer, int x, int y);
 
 	void Shutdown();
-	bool IsActive() { return active; }
 	bool resized = false;
 	
 private:
@@ -80,7 +78,7 @@ private:
 
 	bool show_demo_window = true;
 
-	bool active = true;
 	bool showFPS = false;
+	bool wasFocused = false;
 	int speed = 1;
 };

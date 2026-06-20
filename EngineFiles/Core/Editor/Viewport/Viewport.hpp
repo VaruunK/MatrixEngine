@@ -16,7 +16,6 @@ public:
 	Viewport(Appstate& appstate, WorldRenderer& worldRenderer);
 	~Viewport() = default;
 
-	void Initialize();
 	void Tick(float deltaTime);
 	void Render(FrameData& frame);
 	Entity* GetSelectedEntity(int x, int y);
@@ -51,6 +50,4 @@ private:
 
 	int mouseClickX = -1;
 	int mouseClickY = -1;
-
-	bool clicked = false;
 };

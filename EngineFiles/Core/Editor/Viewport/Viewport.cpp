@@ -3,6 +3,7 @@
 #include "Core/Structs/Appstate.hpp"
 #include "Core/Structs/View.hpp"
 #include "Core/Structs/FrameData.hpp"
+#include "Core/Event/EventBUS/EngineEventBUS.hpp"
 #include <iostream>
 
 Viewport::Viewport(Appstate& appstate, WorldRenderer& worldRenderer) 
@@ -11,17 +12,7 @@ Viewport::Viewport(Appstate& appstate, WorldRenderer& worldRenderer)
 	viewportRenderer(appstate, this, worldRenderer), 
 	controller(this) {
 
-}
-
-void Viewport::Initialize() {
-    viewportRenderer.Initialize();
     controller.Start();
-
-    ShaderManager* rawSM = new ShaderManager(appstate.device);
-    if (!rawSM) {
-        SDL_Log("Failed to create Shader Manager");
-        return;
-    }
 }
 
 void Viewport::Render(FrameData& frame) {
@@ -47,9 +38,7 @@ Entity* Viewport::GetSelectedEntity(int x, int y) {
 
 void Viewport::Tick(float deltaTime) {
 	this->deltaSeconds = deltaTime;
-	if (viewportRenderer.IsActive()) {
-		controller.Tick(deltaTime);
-	}
+    controller.Tick(deltaTime);
 }
 
 void Viewport::SetCameraSpeed(int& speed) {

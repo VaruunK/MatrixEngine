@@ -17,33 +17,11 @@ std::unique_ptr<ShaderManager> ViewportRenderer::shaderManager = nullptr;
 ViewportRenderer::ViewportRenderer(Appstate& appstate, Viewport* viewport, WorldRenderer& worldRenderer) 
     : appstate(appstate), worldRenderer(worldRenderer) {
     this->viewport = viewport;
-}
 
-ViewportRenderer::~ViewportRenderer() {
-    if (appstate.device) {
-        SDL_WaitForGPUIdle(appstate.device);
-    }
-    if (selectProxyTexture) {
-        SDL_ReleaseGPUTexture(appstate.device, selectProxyTexture);
-        selectProxyTexture = nullptr;
-    }
-    if (selectProxyDepthTexture) {
-        SDL_ReleaseGPUTexture(appstate.device, selectProxyDepthTexture);
-        selectProxyDepthTexture = nullptr;
-    }
-    SDL_ReleaseGPUGraphicsPipeline(appstate.device, selectProxyPipeline);
-
-    if (shaderManager) {
-        shaderManager->Shutdown();
-        shaderManager.reset();
-    }
-}
-
-bool ViewportRenderer::Initialize() {
     ShaderManager* rawSM = new ShaderManager(appstate.device);
     if (!rawSM) {
         SDL_Log("Failed to create Shader Manager");
-        return false;
+        return;
     }
 
     io = &ImGui::GetIO();
@@ -72,47 +50,67 @@ bool ViewportRenderer::Initialize() {
 
     if (!CreateSelectProxyDepthTexture()) {
         SDL_Log("Failed to initialize Select Proxy Depth Texture");
-        return false;
+        return;
     }
 
     if (!CreateSelectProxyTexture()) {
         SDL_Log("Failed to create Select Proxy Texture");
-        return false;
+        return;
     }
 
     if (!InitializeSelectProxyPipeline(vert, frag)) {
         SDL_Log("Failed to initialize Select Proxy Pipeline");
-        return false;
+        return;
     }
 
     if (!InitializeSamplers()) {
         SDL_Log("Failed to create Samplers");
-        return false;
+        return;
     }
 
     GEventBUS.Subscribe(SDL_EVENT_WINDOW_RESIZED, [this]() {
-        SDL_WaitForGPUIdle(appstate.device);
+        SDL_WaitForGPUIdle(this->appstate.device);
 
-        SDL_ReleaseGPUTexture(appstate.device, selectProxyTexture);
-        SDL_ReleaseGPUTexture(appstate.device, selectProxyDepthTexture);
+        SDL_ReleaseGPUTexture(this->appstate.device, selectProxyTexture);
+        SDL_ReleaseGPUTexture(this->appstate.device, selectProxyDepthTexture);
 
         CreateSelectProxyTexture();
         CreateSelectProxyDepthTexture(); }
     );
+}
 
-    return true;
+ViewportRenderer::~ViewportRenderer() {
+    if (appstate.device) {
+        SDL_WaitForGPUIdle(appstate.device);
+    }
+    if (selectProxyTexture) {
+        SDL_ReleaseGPUTexture(appstate.device, selectProxyTexture);
+        selectProxyTexture = nullptr;
+    }
+    if (selectProxyDepthTexture) {
+        SDL_ReleaseGPUTexture(appstate.device, selectProxyDepthTexture);
+        selectProxyDepthTexture = nullptr;
+    }
+    SDL_ReleaseGPUGraphicsPipeline(appstate.device, selectProxyPipeline);
+
+    if (shaderManager) {
+        shaderManager->Shutdown();
+        shaderManager.reset();
+    }
 }
 
 void ViewportRenderer::Render(FrameData& frame) {
-
     if (show_demo_window)
         ImGui::ShowDemoWindow(&show_demo_window);
-    active = false;
 
-    if (bool tabActive = ImGui::BeginTabItem("Viewport", nullptr,
+    if (ImGui::BeginTabItem("Viewport", nullptr,
         ImGuiTabItemFlags_NoCloseWithMiddleMouseButton | ImGuiTabItemFlags_NoReorder)) {
-
-        active = ImGui::IsWindowHovered(ImGuiHoveredFlags_ChildWindows);
+        
+        bool isFocused = ImGui::IsWindowHovered(ImGuiHoveredFlags_ChildWindows);
+        if (isFocused && !wasFocused) {
+            GEventBUS.Notify(EVENT_VIEWPORT_HOVERED);
+        }
+        wasFocused = isFocused;
 
         ImGui::Checkbox("Show FPS", &showFPS);
         
@@ -158,7 +156,8 @@ void ViewportRenderer::Render(FrameData& frame) {
                 // GEventBUS.Notify(SDL_EVENT_USER);
                 viewport->SetClickedPosition(static_cast<int>(localX * (texW / imageSize.x)), 
                     static_cast<int>(localY * (texH / imageSize.y)));
-                GEventBUS.Notify(SDL_EVENT_USER);
+
+                GEventBUS.Notify(EVENT_VIEWPORT_CLICKED);
             }
 
             if (showFPS) {

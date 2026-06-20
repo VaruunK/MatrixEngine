@@ -365,3 +365,10 @@ C:/Users/varuu/development/Engine/build/vendored/glm/glm/CMakeFiles/INSTALL.dir
 C:/Users/varuu/development/Engine/build/vendored/imgui/CMakeFiles/imgui.dir
 C:/Users/varuu/development/Engine/build/vendored/imgui/CMakeFiles/INSTALL.dir
 C:/Users/varuu/development/Engine/build/vendored/imgui/CMakeFiles/ALL_BUILD.dir
+C:/Users/varuu/development/Engine/build/vendored/nfd_extended/CMakeFiles/INSTALL.dir
+C:/Users/varuu/development/Engine/build/vendored/nfd_extended/CMakeFiles/ALL_BUILD.dir
+C:/Users/varuu/development/Engine/build/vendored/nfd_extended/src/CMakeFiles/nfd.dir
+C:/Users/varuu/development/Engine/build/vendored/nfd_extended/src/CMakeFiles/INSTALL.dir
+C:/Users/varuu/development/Engine/build/vendored/pugixml/CMakeFiles/pugixml-static.dir
+C:/Users/varuu/development/Engine/build/vendored/pugixml/CMakeFiles/INSTALL.dir
+C:/Users/varuu/development/Engine/build/vendored/pugixml/CMakeFiles/ALL_BUILD.dir

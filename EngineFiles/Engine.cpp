@@ -12,6 +12,12 @@
 #include <cstdio>
 #include <SDL3_image/SDL_image.h>
 #include <SDL3/sdl_gpu.h>
+#include <nfd.hpp>
+#include <pugixml.hpp>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
+#include <imgui_impl_sdlgpu3.h>
 
 Engine::Engine() {
     if (!SDL_WasInit(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD)) {
@@ -25,6 +31,8 @@ Engine::Engine() {
         .device = CreateDevice(),
         .window = CreateWindow()
     };
+
+    NFD_Init();
 
     assetLoader = new AssetLoader(appstate.device);
 
@@ -41,6 +49,34 @@ Engine::Engine() {
     if (!SDL_ClaimWindowForGPUDevice(appstate.device, appstate.window)) {
         SDL_Log("Failed to claim window: %s", SDL_GetError());
         // throw runtime error
+    }
+
+    float main_scale = SDL_GetDisplayContentScale(SDL_GetPrimaryDisplay());
+
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+
+    ImGui::StyleColorsDark();
+
+    ImGuiStyle& style = ImGui::GetStyle();
+    style.ScaleAllSizes(main_scale);
+    style.FontScaleDpi = main_scale;
+
+    ImGui_ImplSDLGPU3_InitInfo init_info = {};
+    init_info.Device = appstate.device;
+    init_info.ColorTargetFormat = SDL_GetGPUSwapchainTextureFormat(appstate.device, appstate.window);
+    init_info.SwapchainComposition = SDL_GPU_SWAPCHAINCOMPOSITION_SDR;
+    init_info.PresentMode = SDL_GPU_PRESENTMODE_VSYNC;
+    init_info.MSAASamples = SDL_GPU_SAMPLECOUNT_1;
+
+    if (!ImGui_ImplSDLGPU3_Init(&init_info)) {
+        SDL_Log("Failed to initialize ImGui SDLGPU3 backend");
+        return;
+    }
+
+    if (!ImGui_ImplSDL3_InitForSDLGPU(appstate.window)) {
+        SDL_Log("Failed to initialize ImGui SDL3 backend");
+        return;
     }
 }
 
@@ -71,6 +107,39 @@ SDL_Window* Engine::CreateWindow() {
 }
 
 int Engine::Run() {
+    std::string configFilePath = "Matrix.config";
+
+    pugi::xml_document doc;
+    pugi::xml_parse_result resultxml = doc.load_file(configFilePath.c_str());
+    if (!resultxml) {
+        SDL_Log(resultxml.description());
+        return -1;
+    }
+   
+    if (pugi::xml_node configuration = doc.child("Configuration")) {
+        auto gameDirectory = configuration.child("Directories").child("Games");
+        auto gameDirectoryPath = gameDirectory.text().as_string();
+        std::cout << gameDirectoryPath << std::endl;
+        if (strcmp(gameDirectoryPath, "") == 0) {
+            nfdu8char_t* outPath = nullptr;
+            nfdpickfolderu8args_t args = {
+                .title = "Select Project Directory"
+            };
+
+            nfdresult_t result = NFD_PickFolderU8_With(&outPath, &args);
+
+            if (result == NFD_OKAY) {
+                printf("Selected folder: %s\n", outPath);
+                gameDirectory.text().set(outPath);
+                doc.save_file(configFilePath.c_str());
+                NFD_FreePathU8(outPath);
+            } else if (result == NFD_CANCEL) {
+                printf("User cancelled.\n");
+            } else {
+                printf("Error: %s\n", NFD_GetError());
+            }
+        }
+    }
 
     game = new Game(appstate);
 
@@ -167,6 +236,7 @@ int Engine::Run() {
             thread.join();
         }
     }
+    NFD_Quit();
     SDL_ShaderCross_Quit();
     SDL_DestroyGPUDevice(appstate.device);
     SDL_DestroyWindow(appstate.window);

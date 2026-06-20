@@ -184,6 +184,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{7E60413F-3398-34A4-BB2F-AC029857CBCE}</Project>
       <Name>Matrix</Name>
     </ProjectReference>
+    <ProjectReference Include="C:\Users\varuu\development\Engine\build\vendored\pugixml\pugixml-static.vcxproj">
+      <Project>{A82E845D-B16E-3D22-A2C6-DC57BE20E28A}</Project>
+      <Name>pugixml-static</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

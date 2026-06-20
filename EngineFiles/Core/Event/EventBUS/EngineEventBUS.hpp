@@ -7,15 +7,23 @@
 #include <mutex>
 #include <SDL3/SDL_events.h>
 
+enum {
+	EVENT_VIEWPORT_CLICKED = 0x8001,
+	EVENT_VIEWPORT_HOVERED = 0x8002,
+	EVENT_CONTENT_BROWSER_HOVERED = 0x8003,
+	EVENT_FOCUS_CHANGED = 0x8004,
+};
+
 class EngineEventBUS {
 public:
-	void Subscribe(SDL_EventType eventType, std::function<void()> callback);
-	void Notify(SDL_EventType eventType);
+	EngineEventBUS();
+	void Subscribe(uint32_t eventType, std::function<void()> callback);
+	void Notify(uint32_t eventType);
 
 	void ProcessEvent(SDL_Event* event);
 private:
 	
-	std::map<SDL_EventType, std::list<std::function<void()>>> eventMappings;
+	std::map<uint32_t, std::list<std::function<void()>>> eventMappings;
 };
 
 inline EngineEventBUS GEventBUS;

@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;C:\Users\varuu\development\Engine\vendored\nfd_extended\src\include;C:\Users\varuu\development\Engine\vendored\pugixml\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
@@ -111,10 +111,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;C:\Users\varuu\development\Engine\vendored\nfd_extended\src\include;C:\Users\varuu\development\Engine\vendored\pugixml\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;C:\Users\varuu\development\Engine\vendored\nfd_extended\src\include;C:\Users\varuu\development\Engine\vendored\pugixml\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -128,6 +128,8 @@
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/EngineFiles/Engine.png C:/Users/varuu/development/Engine/build/Debug/Engine.png
 if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/Matrix.config C:/Users/varuu/development/Engine/build/Debug/Matrix.config
+if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 :cmErrorLevel
@@ -136,7 +138,7 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>Debug\lib\SDL3_shadercrossd.lib;Debug\lib\SDL3_image-staticd.lib;Debug\lib\glmd.lib;Debug\lib\assimp-vc143-mtd.lib;Debug\lib\imguid.lib;Debug\lib\zlibstaticd.lib;Debug\lib\SDL3d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>Debug\lib\SDL3_shadercrossd.lib;Debug\lib\SDL3_image-staticd.lib;Debug\lib\glmd.lib;Debug\lib\assimp-vc143-mtd.lib;Debug\lib\imguid.lib;Debug\lib\nfdd.lib;Debug\lib\zlibstaticd.lib;Debug\lib\SDL3d.lib;Debug\lib\pugixmld.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <DataExecutionPrevention></DataExecutionPrevention>
@@ -155,7 +157,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;C:\Users\varuu\development\Engine\vendored\nfd_extended\src\include;C:\Users\varuu\development\Engine\vendored\pugixml\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
@@ -181,10 +183,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;C:\Users\varuu\development\Engine\vendored\nfd_extended\src\include;C:\Users\varuu\development\Engine\vendored\pugixml\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;C:\Users\varuu\development\Engine\vendored\nfd_extended\src\include;C:\Users\varuu\development\Engine\vendored\pugixml\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -198,6 +200,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/EngineFiles/Engine.png C:/Users/varuu/development/Engine/build/Release/Engine.png
 if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/Matrix.config C:/Users/varuu/development/Engine/build/Release/Matrix.config
+if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 :cmErrorLevel
@@ -206,7 +210,7 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>Release\lib\SDL3_shadercross.lib;Release\lib\SDL3_image-static.lib;Release\lib\glm.lib;Release\lib\assimp-vc143-mt.lib;Release\lib\imgui.lib;Release\lib\zlibstatic.lib;Release\lib\SDL3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>Release\lib\SDL3_shadercross.lib;Release\lib\SDL3_image-static.lib;Release\lib\glm.lib;Release\lib\assimp-vc143-mt.lib;Release\lib\imgui.lib;Release\lib\nfd.lib;Release\lib\zlibstatic.lib;Release\lib\SDL3.lib;Release\lib\pugixml.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <DataExecutionPrevention></DataExecutionPrevention>
@@ -225,7 +229,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;C:\Users\varuu\development\Engine\vendored\nfd_extended\src\include;C:\Users\varuu\development\Engine\vendored\pugixml\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
@@ -251,10 +255,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;C:\Users\varuu\development\Engine\vendored\nfd_extended\src\include;C:\Users\varuu\development\Engine\vendored\pugixml\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;C:\Users\varuu\development\Engine\vendored\nfd_extended\src\include;C:\Users\varuu\development\Engine\vendored\pugixml\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -268,6 +272,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/EngineFiles/Engine.png C:/Users/varuu/development/Engine/build/MinSizeRel/Engine.png
 if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/Matrix.config C:/Users/varuu/development/Engine/build/MinSizeRel/Matrix.config
+if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 :cmErrorLevel
@@ -276,7 +282,7 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>MinSizeRel\lib\SDL3_shadercross.lib;MinSizeRel\lib\SDL3_image-static.lib;MinSizeRel\lib\glm.lib;MinSizeRel\lib\assimp-vc143-mt.lib;MinSizeRel\lib\imgui.lib;MinSizeRel\lib\zlibstatic.lib;MinSizeRel\lib\SDL3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>MinSizeRel\lib\SDL3_shadercross.lib;MinSizeRel\lib\SDL3_image-static.lib;MinSizeRel\lib\glm.lib;MinSizeRel\lib\assimp-vc143-mt.lib;MinSizeRel\lib\imgui.lib;MinSizeRel\lib\nfd.lib;MinSizeRel\lib\zlibstatic.lib;MinSizeRel\lib\SDL3.lib;MinSizeRel\lib\pugixml.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <DataExecutionPrevention></DataExecutionPrevention>
@@ -295,7 +301,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;C:\Users\varuu\development\Engine\vendored\nfd_extended\src\include;C:\Users\varuu\development\Engine\vendored\pugixml\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck></BufferSecurityCheck>
@@ -320,10 +326,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;C:\Users\varuu\development\Engine\vendored\nfd_extended\src\include;C:\Users\varuu\development\Engine\vendored\pugixml\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\varuu\development\Engine\EngineFiles;C:\Users\varuu\development\Engine\build\vendored\SDL3\include-revision;C:\Users\varuu\development\Engine\vendored\SDL3\include;C:\Users\varuu\development\Engine\vendored\SDL_shadercross\include;C:\Users\varuu\development\Engine\vendored\SDL_image\include;C:\Users\varuu\development\Engine\vendored\glm;C:\Users\varuu\development\Engine\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\build\vendored\assimp\code\..\include;C:\Users\varuu\development\Engine\vendored\imgui;C:\Users\varuu\development\Engine\vendored\imgui\backends;C:\Users\varuu\development\Engine\vendored\nfd_extended\src\include;C:\Users\varuu\development\Engine\vendored\pugixml\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -337,6 +343,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/EngineFiles/Engine.png C:/Users/varuu/development/Engine/build/RelWithDebInfo/Engine.png
 if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/varuu/development/Engine/Matrix.config C:/Users/varuu/development/Engine/build/RelWithDebInfo/Matrix.config
+if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 :cmErrorLevel
@@ -345,7 +353,7 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>RelWithDebInfo\lib\SDL3_shadercross.lib;RelWithDebInfo\lib\SDL3_image-static.lib;RelWithDebInfo\lib\glm.lib;RelWithDebInfo\lib\assimp-vc143-mt.lib;RelWithDebInfo\lib\imgui.lib;RelWithDebInfo\lib\zlibstatic.lib;RelWithDebInfo\lib\SDL3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>RelWithDebInfo\lib\SDL3_shadercross.lib;RelWithDebInfo\lib\SDL3_image-static.lib;RelWithDebInfo\lib\glm.lib;RelWithDebInfo\lib\assimp-vc143-mt.lib;RelWithDebInfo\lib\imgui.lib;RelWithDebInfo\lib\nfd.lib;RelWithDebInfo\lib\zlibstatic.lib;RelWithDebInfo\lib\SDL3.lib;RelWithDebInfo\lib\pugixml.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <DataExecutionPrevention></DataExecutionPrevention>
@@ -443,6 +451,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Game\Game.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\Editor.cpp" />
     <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Event\EventBUS\EngineEventBUS.cpp" />
+    <ClCompile Include="C:\Users\varuu\development\Engine\EngineFiles\Core\Editor\ContentBrowser\ContentBrowser.cpp" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -475,6 +484,14 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ProjectReference Include="C:\Users\varuu\development\Engine\build\vendored\imgui\imgui.vcxproj">
       <Project>{DD84BB45-5F6B-3562-9968-789C5B69AD0E}</Project>
       <Name>imgui</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\varuu\development\Engine\build\vendored\nfd_extended\src\nfd.vcxproj">
+      <Project>{005AB72E-833D-3033-B01D-383BC7424E5A}</Project>
+      <Name>nfd</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\varuu\development\Engine\build\vendored\pugixml\pugixml-static.vcxproj">
+      <Project>{A82E845D-B16E-3D22-A2C6-DC57BE20E28A}</Project>
+      <Name>pugixml-static</Name>
     </ProjectReference>
     <ProjectReference Include="C:\Users\varuu\development\Engine\build\vendored\SDL_image\external\zlib-build\zlibstatic.vcxproj">
       <Project>{5E5EA666-0AB2-3944-B005-3422F7093739}</Project>
