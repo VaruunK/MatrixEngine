@@ -1,22 +1,22 @@
 #include "Engine.hpp"
+#include "Core/ProjectSelector/ProjectSelector.hpp"
+#include "Core/Editor/Editor.hpp"
+#include "Core/Game/Game.hpp"
+#include "Core/GameObject/World/World.hpp"
 #include "Core/GameObject/World/Level/Level.hpp"
 #include "Core/Editor/Render/WorldRenderer/WorldRenderer.hpp"
 #include "Core/Structs/AssetStructs.hpp"
+#include "Core/Assets/AssetLoader/AssetLoader.hpp"
 #include "Core/Assets/DefaultAssets/DefaultAssets.hpp"
 #include "Core/GameObject/Entity/Agent/Agent.hpp"
 #include "Core/GameObject/Component/SpriteComponent/SpriteComponent.hpp"
 #include "Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
 #include "Core/Event/EventBUS/EngineEventBUS.hpp"
 #include <imgui_impl_sdl3.h>
-#include <iostream>
+#include <nfd.hpp>
 #include <cstdio>
 #include <SDL3_image/SDL_image.h>
 #include <SDL3/sdl_gpu.h>
-#include <nfd.hpp>
-#include <pugixml.hpp>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string>
 #include <imgui_impl_sdlgpu3.h>
 
 Engine::Engine() {
@@ -33,8 +33,6 @@ Engine::Engine() {
     };
 
     NFD_Init();
-
-    assetLoader = new AssetLoader(appstate.device);
 
     SDL_Surface* icon = IMG_Load("Engine.png");
 
@@ -78,6 +76,9 @@ Engine::Engine() {
         SDL_Log("Failed to initialize ImGui SDL3 backend");
         return;
     }
+
+    GAssetLoader.device = appstate.device;
+    projectSelector = new ProjectSelector(appstate);
 }
 
 SDL_GPUDevice* Engine::CreateDevice() {
@@ -107,42 +108,11 @@ SDL_Window* Engine::CreateWindow() {
 }
 
 int Engine::Run() {
-    std::string configFilePath = "Matrix.config";
 
-    pugi::xml_document doc;
-    pugi::xml_parse_result resultxml = doc.load_file(configFilePath.c_str());
-    if (!resultxml) {
-        SDL_Log(resultxml.description());
-        return -1;
-    }
-   
-    if (pugi::xml_node configuration = doc.child("Configuration")) {
-        auto gameDirectory = configuration.child("Directories").child("Games");
-        auto gameDirectoryPath = gameDirectory.text().as_string();
-        std::cout << gameDirectoryPath << std::endl;
-        if (strcmp(gameDirectoryPath, "") == 0) {
-            nfdu8char_t* outPath = nullptr;
-            nfdpickfolderu8args_t args = {
-                .title = "Select Project Directory"
-            };
-
-            nfdresult_t result = NFD_PickFolderU8_With(&outPath, &args);
-
-            if (result == NFD_OKAY) {
-                printf("Selected folder: %s\n", outPath);
-                gameDirectory.text().set(outPath);
-                doc.save_file(configFilePath.c_str());
-                NFD_FreePathU8(outPath);
-            } else if (result == NFD_CANCEL) {
-                printf("User cancelled.\n");
-            } else {
-                printf("Error: %s\n", NFD_GetError());
-            }
-        }
-    }
+    game = projectSelector->Run();
 
     game = new Game(appstate);
-
+    projectSelector->~ProjectSelector();
     std::string levelName = "Mainlevel";
     std::string filePath = "";
     game->Initialize(levelName, filePath);
@@ -159,8 +129,8 @@ int Engine::Run() {
     
     SpriteComponent* spriteComponent = nullptr;
 
-    Mesh* freddy = assetLoader->CreateMesh("Content/freddy.gltf", "Content/freddy.png");
-    Mesh* mogus = assetLoader->CreateMesh("Content/mogus/mogus.fbx", "Content/mogus/mogus.jpg");
+    Mesh* freddy = GAssetLoader.CreateMesh("Content/freddy.gltf", "Content/freddy.png");
+    Mesh* mogus = GAssetLoader.CreateMesh("Content/mogus/mogus.fbx", "Content/mogus/mogus.jpg");
 
     Transform transform1 = {
         .location = glm::vec3(0.0f, 0.0f, 0.0f),
@@ -236,6 +206,8 @@ int Engine::Run() {
             thread.join();
         }
     }
+
+    editor->~Editor();
     NFD_Quit();
     SDL_ShaderCross_Quit();
     SDL_DestroyGPUDevice(appstate.device);

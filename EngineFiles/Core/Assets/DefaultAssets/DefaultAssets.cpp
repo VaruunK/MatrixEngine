@@ -1,5 +1,5 @@
 #include "DefaultAssets.hpp"
-#include "Engine.hpp"
+#include "Core/Assets/AssetLoader/AssetLoader.hpp"
 
 Mesh* DefaultCube() {
     std::vector<uint32_t> indices = {
@@ -53,7 +53,7 @@ Mesh* DefaultCube() {
 
     mesh->vertices = vertices;
     mesh->indices = indices;
-    mesh->texture = Engine::GetEngine().GetAssetLoader().CreateTexture("Content/DefaultTexture.png");
+    mesh->texture = GAssetLoader.CreateTexture("Content/DefaultTexture.png");
 
     return mesh;
 }

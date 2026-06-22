@@ -6,13 +6,13 @@
 #include <vector>
 
 struct Texture {
-    SDL_GPUTexture* texture;
-    SDL_Surface* data;
+    SDL_GPUTexture* texture = nullptr;
+    SDL_Surface* data = nullptr;
     std::string texturePath;
 };
 
 struct Mesh {
-    Texture* texture;
+    Texture* texture = nullptr;
     std::vector<Vertex> vertices;
     std::vector<uint32_t> indices;
 };

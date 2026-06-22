@@ -7,8 +7,7 @@
 #include <SDL3/SDL_gpu.h>
 #include <SDL3_image/SDL_image.h>
 
-AssetLoader::AssetLoader(SDL_GPUDevice* device) {
-    this->device = device;
+AssetLoader::AssetLoader() {
 }
 
 Texture* AssetLoader::CreateTexture(const std::string& textureFilePath) {
@@ -39,6 +38,41 @@ Texture* AssetLoader::CreateTexture(const std::string& textureFilePath) {
         return nullptr;
     }
     SDL_SetGPUTextureName(device, texture, textureFilePath.c_str());
+
+    SDL_GPUTransferBufferCreateInfo transferInfo{};
+    transferInfo.usage = SDL_GPU_TRANSFERBUFFERUSAGE_UPLOAD;
+    transferInfo.size = imageData->w * imageData->h * 4;
+
+    SDL_GPUTransferBuffer* transferBuffer = SDL_CreateGPUTransferBuffer(device, &transferInfo);
+    if (!transferBuffer) {
+        SDL_Log("Failed to create transfer buffer");
+        return nullptr;
+    }
+
+    void* mapped = SDL_MapGPUTransferBuffer(device, transferBuffer, false);
+    memcpy(mapped, imageData->pixels, transferInfo.size);
+    SDL_UnmapGPUTransferBuffer(device, transferBuffer);
+
+    SDL_GPUCommandBuffer* uploadCmd = SDL_AcquireGPUCommandBuffer(device);
+    SDL_GPUCopyPass* copyPass = SDL_BeginGPUCopyPass(uploadCmd);
+
+    SDL_GPUTextureTransferInfo src{};
+    src.transfer_buffer = transferBuffer;
+    src.offset = 0;
+    src.pixels_per_row = imageData->w;
+    src.rows_per_layer = imageData->h;
+
+    SDL_GPUTextureRegion dst{};
+    dst.texture = texture;
+    dst.w = imageData->w;
+    dst.h = imageData->h;
+    dst.d = 1;
+
+    SDL_UploadToGPUTexture(copyPass, &src, &dst, false);
+    SDL_EndGPUCopyPass(copyPass);
+    SDL_SubmitGPUCommandBuffer(uploadCmd);
+
+    SDL_ReleaseGPUTransferBuffer(device, transferBuffer);
 
     Texture* newTexture = new Texture;
     newTexture->texture = texture;

@@ -64,7 +64,7 @@ add_executable(Matrix
     "EngineFiles/Core/GameObject/World/World.cpp"
     "EngineFiles/Core/GameObject/World/Level/Level.cpp"
      
-    "EngineFiles/Core/Game/Game.cpp")
+    "EngineFiles/Core/Game/Game.cpp" "EngineFiles/Core/ProjectSelector/ProjectSelector.cpp")
 
 
 # -----------------------------

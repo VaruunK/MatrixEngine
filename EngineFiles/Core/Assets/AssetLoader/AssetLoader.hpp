@@ -9,8 +9,9 @@ struct Texture;
 struct SDL_GPUDevice;
 
 class AssetLoader {
+	friend class Engine;
 public:
-	AssetLoader(SDL_GPUDevice* device);
+	AssetLoader();
 	~AssetLoader() = default;
 	Texture* CreateTexture(const std::string& textureFilePath);
 	Mesh* CreateMesh(const std::string& meshFilePath);
@@ -21,3 +22,5 @@ private:
 
 	SDL_GPUDevice* device;
 };
+
+inline AssetLoader GAssetLoader;

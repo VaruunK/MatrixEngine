@@ -1,12 +1,14 @@
 #pragma once
 
-#include "Core/GameObject/World/World.hpp"
-#include "Core/Game/Game.hpp"
-#include "Core/Assets/AssetLoader/AssetLoader.hpp"
-#include "Core/Editor/Editor.hpp"
 #include "Core/Structs/Appstate.hpp"
 #include <memory>
 #include <atomic>
+#include <vector>
+#include <thread>
+
+class Editor;
+class ProjectSelector;
+class Game;
 
 class Engine {
 public:
@@ -22,8 +24,6 @@ public:
 
 	bool IsRunning() { return running.load(); };
 	void SetMaxFrames(int frames) { MAX_FRAMES = frames; }
-
-	AssetLoader& GetAssetLoader() { return *assetLoader; }
 private:
 
 	Engine();
@@ -34,9 +34,9 @@ private:
 	std::atomic<bool> running;
 	int MAX_FRAMES = 144;
 	const int MAX_PHYSICS_FRAMES = 60;
-
+	
+	ProjectSelector* projectSelector;
 	Editor* editor;
-	AssetLoader* assetLoader;
 
 	Game* game;
 
