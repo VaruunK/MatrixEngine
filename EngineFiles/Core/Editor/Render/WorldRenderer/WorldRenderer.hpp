@@ -1,5 +1,4 @@
 #pragma once
-#include "Core/ShaderManager/ShaderManager.hpp"
 #include "Core/Structs/AssetStructs.hpp"
 #include "Core/Enums/PipelineEnums.hpp"
 #include "Core/Structs/RenderStructs.hpp"
@@ -69,11 +68,8 @@ private:
 
     std::unordered_map<PIPELINE_TYPE, SDL_GPUGraphicsPipeline*> pipelines;
 
-    static std::unique_ptr<ShaderManager> shaderManager;
-
     SDL_GPUTexture* offscreenTexture = nullptr;
     SDL_GPUSampler* offscreenSampler = nullptr;
-    bool offscreenTextureDirty = true;
-
+    
     bool msaaEnabled = true;
 };

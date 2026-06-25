@@ -10,6 +10,8 @@ class Editor;
 class ProjectSelector;
 class Game;
 
+struct SDL_Surface;
+
 class Engine {
 public:
 	static Engine& GetEngine() {
@@ -28,8 +30,12 @@ private:
 
 	Engine();
 	
+	void Shutdown();
+
 	SDL_GPUDevice* CreateDevice();
-	SDL_Window* CreateWindow();
+	SDL_Window* CreateSDLWindow();
+
+	SDL_Surface* icon = nullptr;
 
 	std::atomic<bool> running;
 	int MAX_FRAMES = 144;

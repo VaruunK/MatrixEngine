@@ -22,6 +22,7 @@ struct FrameData;
 class World : public GameObject {
 public:
 	World(Appstate& appstate);
+	~World();
 
 	Level* Initialize(const std::string& startLevelName);
 	void Start() override;
@@ -64,7 +65,7 @@ private:
 
 	std::unordered_map<std::string, Level*> levels;
 	std::vector<Level*> loadedLevels;
-	Level* mainLevel;
+	Level* mainLevel = nullptr;
 
 	TickManager* tickManager;
 	int maxTicks = 60;

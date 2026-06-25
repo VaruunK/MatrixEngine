@@ -1,13 +1,42 @@
 #include "AssetLoader.hpp"
 #include "Core/Structs/RenderStructs.hpp"
 #include "Core/Structs/AssetStructs.hpp"
+#include "Core/Structs/Appstate.hpp"
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
 #include <Engine.hpp>
 #include <SDL3/SDL_gpu.h>
 #include <SDL3_image/SDL_image.h>
 
-AssetLoader::AssetLoader() {
+AssetLoader::AssetLoader(Appstate& appstate) : appstate(appstate) {
+
+}
+
+void AssetLoader::ShutdownInternal() {
+    for (auto* texture : textures) {
+        if (texture) {
+            if (texture->texture) {
+                SDL_ReleaseGPUTexture(appstate.device, texture->texture);
+                texture->texture = nullptr;
+            }
+            if (texture->data) {
+                SDL_DestroySurface(texture->data);
+                texture->data = nullptr;
+            }
+            delete texture;
+            texture = nullptr;
+        }
+    }
+    for (auto* mesh : meshes) {
+        if (mesh) {
+            mesh->vertices.clear();
+            mesh->indices.clear();
+            delete mesh;
+            mesh = nullptr;
+        }
+    }
+    textures.clear();
+    meshes.clear();
 }
 
 Texture* AssetLoader::CreateTexture(const std::string& textureFilePath) {
@@ -22,6 +51,12 @@ Texture* AssetLoader::CreateTexture(const std::string& textureFilePath) {
     SDL_DestroySurface(imageData);
     imageData = converted;
 
+    SDL_PropertiesID props = SDL_CreateProperties();
+    SDL_SetFloatProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_R_FLOAT, 0.0f);
+    SDL_SetFloatProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_G_FLOAT, 0.0f);
+    SDL_SetFloatProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_B_FLOAT, 0.0f);
+    SDL_SetFloatProperty(props, SDL_PROP_GPU_TEXTURE_CREATE_D3D12_CLEAR_A_FLOAT, 1.0f);
+
     SDL_GPUTextureCreateInfo textureCreateInfo{
         .type = SDL_GPU_TEXTURETYPE_2D,
         .format = SDL_GPU_TEXTUREFORMAT_R8G8B8A8_UNORM,
@@ -30,54 +65,73 @@ Texture* AssetLoader::CreateTexture(const std::string& textureFilePath) {
         .height = static_cast<Uint32>(imageData->h),
         .layer_count_or_depth = 1,
         .num_levels = 1,
+        .props = props
     };
 
-    SDL_GPUTexture* texture = SDL_CreateGPUTexture(device, &textureCreateInfo);
+    SDL_GPUTexture* texture = SDL_CreateGPUTexture(appstate.device, &textureCreateInfo);
+    SDL_DestroyProperties(props);
+
     if (!texture) {
         SDL_Log("Failed to create Texture");
         return nullptr;
     }
-    SDL_SetGPUTextureName(device, texture, textureFilePath.c_str());
+
+    SDL_SetGPUTextureName(appstate.device, texture, textureFilePath.c_str());
+
+    const uint32_t PITCH_ALIGNMENT = 256;
+    uint32_t rawPitch = static_cast<uint32_t>(imageData->w) * 4;
+    uint32_t alignedPitch = (rawPitch + PITCH_ALIGNMENT - 1) & ~(PITCH_ALIGNMENT - 1);
+    uint32_t transferSize = alignedPitch * static_cast<uint32_t>(imageData->h);
 
     SDL_GPUTransferBufferCreateInfo transferInfo{};
     transferInfo.usage = SDL_GPU_TRANSFERBUFFERUSAGE_UPLOAD;
-    transferInfo.size = imageData->w * imageData->h * 4;
+    transferInfo.size = transferSize;
 
-    SDL_GPUTransferBuffer* transferBuffer = SDL_CreateGPUTransferBuffer(device, &transferInfo);
+    SDL_GPUTransferBuffer* transferBuffer = SDL_CreateGPUTransferBuffer(appstate.device, &transferInfo);
     if (!transferBuffer) {
         SDL_Log("Failed to create transfer buffer");
         return nullptr;
     }
 
-    void* mapped = SDL_MapGPUTransferBuffer(device, transferBuffer, false);
-    memcpy(mapped, imageData->pixels, transferInfo.size);
-    SDL_UnmapGPUTransferBuffer(device, transferBuffer);
+    uint8_t* mapped = static_cast<uint8_t*>(SDL_MapGPUTransferBuffer(appstate.device, transferBuffer, false));
+    const uint8_t* pixels = static_cast<const uint8_t*>(imageData->pixels);
 
-    SDL_GPUCommandBuffer* uploadCmd = SDL_AcquireGPUCommandBuffer(device);
+    for (int row = 0; row < imageData->h; row++) {
+        memcpy(mapped + row * alignedPitch,
+            pixels + row * rawPitch,
+            rawPitch);
+    }
+
+    SDL_UnmapGPUTransferBuffer(appstate.device, transferBuffer);
+
+    SDL_GPUCommandBuffer* uploadCmd = SDL_AcquireGPUCommandBuffer(appstate.device);
     SDL_GPUCopyPass* copyPass = SDL_BeginGPUCopyPass(uploadCmd);
 
     SDL_GPUTextureTransferInfo src{};
     src.transfer_buffer = transferBuffer;
     src.offset = 0;
-    src.pixels_per_row = imageData->w;
-    src.rows_per_layer = imageData->h;
+    src.pixels_per_row = alignedPitch / 4;
+    src.rows_per_layer = static_cast<uint32_t>(imageData->h);
 
     SDL_GPUTextureRegion dst{};
     dst.texture = texture;
-    dst.w = imageData->w;
-    dst.h = imageData->h;
+    dst.w = static_cast<uint32_t>(imageData->w);
+    dst.h = static_cast<uint32_t>(imageData->h);
     dst.d = 1;
 
     SDL_UploadToGPUTexture(copyPass, &src, &dst, false);
     SDL_EndGPUCopyPass(copyPass);
     SDL_SubmitGPUCommandBuffer(uploadCmd);
-
-    SDL_ReleaseGPUTransferBuffer(device, transferBuffer);
+    SDL_ReleaseGPUTransferBuffer(appstate.device, transferBuffer);
 
     Texture* newTexture = new Texture;
     newTexture->texture = texture;
     newTexture->data = imageData;
     newTexture->texturePath = textureFilePath;
+
+    if (newTexture) {
+        textures.push_back(newTexture);
+    }
 
     return newTexture;
 }
@@ -130,6 +184,11 @@ Mesh* AssetLoader::CreateMesh(const std::string& meshFilePath) {
     aiMatrix4x4 identity;
     ProcessNode(scene->mRootNode, scene, newMesh, identity);
     newMesh->texture = CreateTexture("Content/DefaultTexture.png");
+
+    if (newMesh) {
+        meshes.push_back(newMesh);
+    }
+
     return newMesh;
 }
 

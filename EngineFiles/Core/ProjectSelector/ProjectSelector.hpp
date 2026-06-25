@@ -11,10 +11,11 @@ struct Appstate;
 struct ImGuiIO;
 
 class ProjectSelector {
+	friend class Engine;
 public:
 	ProjectSelector(Appstate& appstate);
 	~ProjectSelector();
-	Game* Run();
+	void Run();
 private:
 	void GetGameDirectory();
 	void SelectGameDirectory();
@@ -25,11 +26,15 @@ private:
 	void RenderOptionsButtons();
 	void RenderCreateGameModel();
 
+	void CreateNewGameFiles(std::string& newGamePath, char* newGameName);
+
 	pugi::xml_document engineConfigDocument;
 	pugi::xml_node gameDirectory;
 
 	std::string configFilePath = "Matrix.config";
 	std::string gameDirectoryString;
+
+	std::string selectedGamePathString = "";
 
 	std::unordered_map<std::filesystem::path, ImTextureID> gameIcons;
 

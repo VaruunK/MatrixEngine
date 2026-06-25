@@ -8,13 +8,11 @@
 #include <thread>
 #include <atomic>
 
-class World;
-
 class Game {
 public:
 	Game();
 	Game(Appstate& appstate);
-	~Game() = default;
+	~Game();
 
 	void Initialize(std::string& name, std::string& iconFilePath);
 	
@@ -29,5 +27,7 @@ private:
 	std::string iconFilePath;
 	std::string name;
 	std::vector<std::thread> threads;
+
+	bool ownsAppstate = false;
 	std::atomic<bool> running = false;
 };

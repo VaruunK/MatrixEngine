@@ -6,28 +6,18 @@
 #include <vector>
 #include <unordered_map>
 #include <filesystem>
-#include <fstream>
-#include <sstream>
-#include <stdexcept>
-#include <functional>
+#include <memory>
 
-struct SDLGPUShaderDeleter {
-    SDL_GPUDevice* device;
-    void operator()(SDL_GPUShader* ptr) const {
-        if (ptr && device) {
-            SDL_ReleaseGPUShader(device, ptr);
-        }
-    }
-};
+struct Appstate;
 
 struct CompiledShader {
     std::vector<uint8_t> bytecode;
-    uint64_t sourceHash;
+    uint64_t sourceHash = 0;
 
-    uint32_t num_samplers;
-    uint32_t num_storage_textures;
-    uint32_t num_storage_buffers;
-    uint32_t num_uniform_buffers;
+    uint32_t num_samplers = 0;
+    uint32_t num_storage_textures = 0;
+    uint32_t num_storage_buffers = 0;
+    uint32_t num_uniform_buffers = 0;
 };
 
 struct ShaderOptions {
@@ -40,10 +30,26 @@ struct ShaderOptions {
 class ShaderManager {
 public:
 
-    ShaderManager(SDL_GPUDevice* device);
+    static ShaderManager& Get() {
+        return *instance;
+    }
 
-    void Initialize();
-    void Shutdown();
+    ~ShaderManager() {
+        if (!isShutdown) {
+            Shutdown();
+        }
+    }
+
+    static void Init(Appstate& appstate) {
+        instance.reset(new ShaderManager(appstate));
+    }
+    
+    static void Shutdown() {
+        if (instance) {
+            instance->ShutdownInternal();
+            instance.reset();
+        }
+    }
 
     SDL_GPUShader* LoadShader(const std::string& shaderPath, const ShaderOptions *options, const std::string& entryPoint = "main");
     SDL_GPUShader* LoadShader(const std::string& shaderPath, const std::string& entryPoint = "main");
@@ -51,10 +57,14 @@ public:
     SDL_GPUShader* GetShader(const std::string& name);
 
     void ClearCache();
-
+    
 private:
-    SDL_GPUDevice* device;
+    ShaderManager(Appstate& appstate);
+    void ShutdownInternal();
+
     std::filesystem::path cacheDir;
+
+    Appstate& appstate;
 
     std::unordered_map<std::string, SDL_GPUShader*> shaderCache;
     std::unordered_map<std::string, CompiledShader> memoryCache;
@@ -74,4 +84,8 @@ private:
     uint64_t HashFile(const std::string& filepath);
     SDL_GPUShaderStage GetTargetStage(const std::string& shaderFileName);
     SDL_ShaderCross_ShaderStage ConvertStage(SDL_GPUShaderStage stage);
+
+    static inline std::unique_ptr<ShaderManager> instance = nullptr;
+
+    bool isShutdown = false;
 };

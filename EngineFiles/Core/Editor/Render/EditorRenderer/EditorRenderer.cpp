@@ -9,6 +9,7 @@
 #include <imgui_impl_sdl3.h>
 #include <imgui_impl_sdlgpu3.h>
 #include <iostream>
+#include <SDL3/SDL_log.h>
 
 EditorRenderer::EditorRenderer(Appstate& appstate, EditorInfo& info, WorldRenderer& worldRenderer) 
     : appstate(appstate), info(info) {

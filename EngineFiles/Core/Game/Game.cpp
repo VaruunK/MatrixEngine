@@ -4,11 +4,18 @@
 
 
 Game::Game() : appstate{ CreateDevice(), CreateWindow() }, world(appstate) {
-
+    ownsAppstate = true;
 }
 
 Game::Game(Appstate& appstate) : appstate(appstate), world(appstate) {
 
+}
+
+Game::~Game() {
+    if (ownsAppstate) {
+        SDL_DestroyGPUDevice(appstate.device);
+        SDL_DestroyWindow(appstate.window);
+    }
 }
 
 void Game::Initialize(std::string& name, std::string& iconFilePath) {

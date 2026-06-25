@@ -1,5 +1,6 @@
 #include "WorldRenderer.hpp"
 #include "Core/Structs/RenderStructs.hpp"
+#include "Core/ShaderManager/ShaderManager.hpp"
 #include "Core/Structs/View.hpp"
 #include "Core/Structs/Appstate.hpp"
 #include "Core/GameObject/Entity/Entity.hpp"
@@ -10,13 +11,34 @@
 #include <Core/Event/EventBUS/EngineEventBUS.hpp>
 // #include <iostream>
 
-std::unique_ptr<ShaderManager> WorldRenderer::shaderManager = nullptr;
-
 WorldRenderer::WorldRenderer(Appstate& appstate) : appstate(appstate) {
+    
+    GEventBUS.Subscribe(SDL_EVENT_WINDOW_RESIZED, [this]() {
+        SDL_WaitForGPUIdle(this->appstate.device);
 
+        SDL_ReleaseGPUTexture(this->appstate.device, depthStencilTexture);
+        depthStencilTexture = nullptr;
+        
+        SDL_ReleaseGPUTexture(this->appstate.device, msaaTexture);
+        msaaTexture = nullptr;
+        
+        SDL_ReleaseGPUTexture(this->appstate.device, offscreenTexture);
+        offscreenTexture = nullptr;
+
+        CreateDepthStencil();
+        CreateMSAATexture();
+        CreateOffscreenTexture(); }
+    );
 }
 
 WorldRenderer::~WorldRenderer() {
+
+    spriteTextures.clear();
+    meshes.clear();
+
+    meshDrawInfo.clear();
+    spriteDrawInfo.clear();
+
     if (appstate.device) {
         SDL_WaitForGPUIdle(appstate.device);
     }
@@ -54,23 +76,6 @@ WorldRenderer::~WorldRenderer() {
         }
     }
     pipelines.clear();
-
-    if (shaderManager) {
-        shaderManager->Shutdown();
-        shaderManager.reset();
-    }
-
-    GEventBUS.Subscribe(SDL_EVENT_WINDOW_RESIZED, [this]() {
-        SDL_WaitForGPUIdle(appstate.device);
-
-        SDL_ReleaseGPUTexture(appstate.device, depthStencilTexture);
-        SDL_ReleaseGPUTexture(appstate.device, msaaTexture);
-        SDL_ReleaseGPUTexture(appstate.device, offscreenTexture);
-
-        CreateDepthStencil();
-        CreateMSAATexture();
-        CreateOffscreenTexture(); }
-    );
 }
 
 bool WorldRenderer::CreateOffscreenTexture() {
@@ -193,13 +198,6 @@ void WorldRenderer::RenderAndSubmit(FrameData& frame) {
 }
 
 bool WorldRenderer::Initialize() {
-    ShaderManager* rawSM = new ShaderManager(appstate.device);
-    if (!rawSM) {
-        SDL_Log("Failed to create Shader Manager");
-        return false;
-    }
-    shaderManager.reset(rawSM);
-
     std::string vertShader = "shaders/TexturedQuadWithMatrix.vert.hlsl";
     std::string fragShader = "shaders/TexturedQuad.frag.hlsl";
     
@@ -217,10 +215,8 @@ bool WorldRenderer::Initialize() {
         .num_uniform_buffers = 1
     };
 
-    SDL_GPUShader* vert = shaderManager.get()->LoadShader(vertShader, &optionsVert);
-    SDL_GPUShader* frag = shaderManager.get()->LoadShader(fragShader, &optionsFrag);
-
-    // Window* window = Engine::GetEngine().GetWindowManager().GetMainWindow();
+    SDL_GPUShader* vert = ShaderManager::Get().LoadShader(vertShader, &optionsVert);
+    SDL_GPUShader* frag = ShaderManager::Get().LoadShader(fragShader, &optionsFrag);
     
     if (!InitializePipelines(vert, frag)) {
         SDL_Log("Failed to create Pipelines");
@@ -406,7 +402,6 @@ bool WorldRenderer::InitializePipelines(SDL_GPUShader* vertexShader, SDL_GPUShad
 
     SDL_Log("Pipeline created successfully!");
     pipelines[PIPELINE_TYPE::FILL_PIPELINE] = pipeline;
-
     return true;
 }
 
@@ -611,7 +606,6 @@ void WorldRenderer::DeregisterSprite(SpriteComponent* sprite) {
     vec.erase(std::ranges::find(vec, sprite));
 
     if (vec.empty()) {
-        // SDL_ReleaseGPUTexture(appstate.device, texture->texture);
         spriteTextures.erase(it);
     }
 }
@@ -638,7 +632,6 @@ void WorldRenderer::DeregisterMesh(MeshComponent* mesh) {
     vec.erase(std::ranges::find(vec, mesh));
 
     if (vec.empty()) {
-        // SDL_ReleaseGPUTexture(appstate.device, m->texture->texture);
         meshes.erase(it);
     }
 }

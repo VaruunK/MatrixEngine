@@ -1,5 +1,6 @@
 #include "ViewportRenderer.hpp"
 #include "Core/Editor/Viewport/Viewport.hpp"
+#include "Core/ShaderManager/ShaderManager.hpp"
 #include "Core/Editor/Render/WorldRenderer/WorldRenderer.hpp"
 #include "Core/Structs/Appstate.hpp"
 #include "Core/Structs/FrameData.hpp"
@@ -12,21 +13,11 @@
 #include <imgui_impl_sdlgpu3.h>
 #include <glm/glm.hpp>
 
-std::unique_ptr<ShaderManager> ViewportRenderer::shaderManager = nullptr;
-
 ViewportRenderer::ViewportRenderer(Appstate& appstate, Viewport* viewport, WorldRenderer& worldRenderer) 
     : appstate(appstate), worldRenderer(worldRenderer) {
     this->viewport = viewport;
 
-    ShaderManager* rawSM = new ShaderManager(appstate.device);
-    if (!rawSM) {
-        SDL_Log("Failed to create Shader Manager");
-        return;
-    }
-
     io = &ImGui::GetIO();
-
-    shaderManager.reset(rawSM);
 
     ShaderOptions optionsVert = {
         .num_samplers = 0,
@@ -45,8 +36,8 @@ ViewportRenderer::ViewportRenderer(Appstate& appstate, Viewport* viewport, World
     std::string vertShader = "shaders/SelectProxy.vert.hlsl";
     std::string fragShader = "shaders/SelectProxy.frag.hlsl";
 
-    SDL_GPUShader* vert = shaderManager.get()->LoadShader(vertShader, &optionsVert);
-    SDL_GPUShader* frag = shaderManager.get()->LoadShader(fragShader, &optionsFrag);
+    SDL_GPUShader* vert = ShaderManager::Get().LoadShader(vertShader, &optionsVert);
+    SDL_GPUShader* frag = ShaderManager::Get().LoadShader(fragShader, &optionsFrag);
 
     if (!CreateSelectProxyDepthTexture()) {
         SDL_Log("Failed to initialize Select Proxy Depth Texture");
@@ -72,7 +63,10 @@ ViewportRenderer::ViewportRenderer(Appstate& appstate, Viewport* viewport, World
         SDL_WaitForGPUIdle(this->appstate.device);
 
         SDL_ReleaseGPUTexture(this->appstate.device, selectProxyTexture);
+        selectProxyTexture = nullptr;
+
         SDL_ReleaseGPUTexture(this->appstate.device, selectProxyDepthTexture);
+        selectProxyDepthTexture = nullptr;
 
         CreateSelectProxyTexture();
         CreateSelectProxyDepthTexture(); }
@@ -87,16 +81,20 @@ ViewportRenderer::~ViewportRenderer() {
         SDL_ReleaseGPUTexture(appstate.device, selectProxyTexture);
         selectProxyTexture = nullptr;
     }
+    if (defaultSampler) {
+        SDL_ReleaseGPUSampler(appstate.device, defaultSampler);
+        defaultSampler = nullptr;
+    }
     if (selectProxyDepthTexture) {
         SDL_ReleaseGPUTexture(appstate.device, selectProxyDepthTexture);
         selectProxyDepthTexture = nullptr;
     }
-    SDL_ReleaseGPUGraphicsPipeline(appstate.device, selectProxyPipeline);
-
-    if (shaderManager) {
-        shaderManager->Shutdown();
-        shaderManager.reset();
+    if (selectProxyPipeline) {
+        SDL_ReleaseGPUGraphicsPipeline(appstate.device, selectProxyPipeline);
+        selectProxyPipeline = nullptr;
     }
+
+    ResetIds();
 }
 
 void ViewportRenderer::Render(FrameData& frame) {
@@ -128,7 +126,9 @@ void ViewportRenderer::Render(FrameData& frame) {
         ImGui::PushStyleColor(ImGuiCol_Button, (ImVec4)ImColor::HSV(2 / 7.0f, 0.6f, 0.6f));
         ImGui::PushStyleColor(ImGuiCol_ButtonHovered, (ImVec4)ImColor::HSV(2 / 7.0f, 0.7f, 0.7f));
         ImGui::PushStyleColor(ImGuiCol_ButtonActive, (ImVec4)ImColor::HSV(2 / 7.0f, 0.8f, 0.8f));
+
         static int clicked = 0;
+        
         if (ImGui::Button("Play"))
             clicked++;
         if (clicked & 1) {
@@ -376,7 +376,11 @@ bool ViewportRenderer::InitializeSelectProxyPipeline(SDL_GPUShader* vertexShader
     pipelineCreateInfo.depth_stencil_state = depthStencilState;
 
     selectProxyPipeline = SDL_CreateGPUGraphicsPipeline(appstate.device, &pipelineCreateInfo);
-    SDL_Log("Pipeline result: %p, error: %s", selectProxyPipeline, SDL_GetError());
+
+    if (!selectProxyPipeline) {
+        SDL_Log("Pipeline result: %p, error: %s", selectProxyPipeline, SDL_GetError());
+    }
+
     return selectProxyPipeline != nullptr;
 }
 
@@ -390,7 +394,6 @@ bool ViewportRenderer::CreateSelectProxyDepthTexture() {
 
     SDL_GPUTextureCreateInfo info{};
     info.format = GetDepthStencilFormat();
-    SDL_Log("Creating select proxy depth texture with format: %d", (int)info.format);
     info.usage = SDL_GPU_TEXTUREUSAGE_DEPTH_STENCIL_TARGET;
     info.width = static_cast<uint32_t>(w);
     info.height = static_cast<uint32_t>(h);

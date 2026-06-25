@@ -22,6 +22,10 @@ World::World(Appstate& appstate) : GameObject(), renderer(appstate) {
     }
 }
 
+World::~World() {
+    loadedLevels.clear();
+}
+
 Level* World::Initialize(const std::string& startLevelName) {
     Level* level = CreateInitialLevel(startLevelName);
 

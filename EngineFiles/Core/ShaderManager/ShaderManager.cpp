@@ -1,24 +1,13 @@
 #include "ShaderManager.hpp"
+#include "Core/Structs/Appstate.hpp"
 #include <iostream>
+#include <fstream>
 
-ShaderManager::ShaderManager(SDL_GPUDevice* device) : device(device) {
-    if (!device) {
-        throw std::runtime_error("Couldn't get Device");
-    }
+ShaderManager::ShaderManager(Appstate& appstate)
+    : appstate(appstate), 
+    cacheDir("shaderCache") {
 
-    cacheDir = "shaderCache";
     std::filesystem::create_directories(cacheDir);
-}
-
-void ShaderManager::Initialize() {
-
-}
-
-void ShaderManager::Shutdown() {
-    for (auto& [key, shader] : shaderCache) {
-        SDL_ReleaseGPUShader(device, shader);
-    }
-    shaderCache.clear();
 }
 
 void ShaderManager::ClearCache() {
@@ -27,6 +16,14 @@ void ShaderManager::ClearCache() {
     std::filesystem::create_directories(cacheDir);
 }
 
+void ShaderManager::ShutdownInternal() {
+    for (auto& [str, shader] : shaderCache) {
+        SDL_ReleaseGPUShader(appstate.device, shader);
+    }
+    shaderCache.clear();
+
+    isShutdown = true;
+}
 
 //SDL_GPUComputePipeline* ShaderManager::CreateComputePipelineFromShader(SDL_GPUDevice *device, 
 //    const string& sourcePath, const string& entrypoint, SDL_GPUComputePipelineCreateInfo *createInfo) {
@@ -180,7 +177,7 @@ SDL_GPUShader* ShaderManager::CreateShaderFromSPIRV(const CompiledShader& compil
     resourceInfo.num_uniform_buffers = compiled.num_uniform_buffers;
 
     SDL_GPUShader* shader = SDL_ShaderCross_CompileGraphicsShaderFromSPIRV(
-        device,
+        appstate.device,
         &spirvInfo,
         &resourceInfo,
         0
@@ -252,7 +249,7 @@ SDL_GPUShader* ShaderManager::CompileShader(const std::string& sourcePath, SDL_G
     spirvInfo.props = 0;
 
     SDL_GPUShader* shader = SDL_ShaderCross_CompileGraphicsShaderFromSPIRV(
-        device,
+        appstate.device,
         &spirvInfo,
         &metadata->resource_info,
         0

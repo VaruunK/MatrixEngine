@@ -14,6 +14,7 @@
 #include <SDL3/SDL_gpu.h>
 #include <glm/ext/vector_float4.hpp>
 #include <Core/Assets/AssetLoader/AssetLoader.hpp>
+#include <fstream>
 
 ProjectSelector::ProjectSelector(Appstate& appstate) : appstate(appstate) {
     io = &ImGui::GetIO();
@@ -40,7 +41,7 @@ ProjectSelector::~ProjectSelector() {
     gameIcons.clear();
 }
 
-Game* ProjectSelector::Run() {
+void ProjectSelector::Run() {
 
     running = true;
 
@@ -53,10 +54,8 @@ Game* ProjectSelector::Run() {
                 break;
             };
         }
-
         Render();
     }
-    return nullptr;
 }
 
 void ProjectSelector::Render() {
@@ -160,19 +159,26 @@ void ProjectSelector::RenderGameDirectory() {
 
     ImGuiWindowFlags gameDirectoryFlags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize;
     if (ImGui::Begin("Games", NULL, gameDirectoryFlags)) {
+        // loops through folders in game directory
         for (const std::filesystem::directory_entry& entry : std::filesystem::directory_iterator(gameDirectoryString)) {
             if (entry.is_directory()) {
-                if (!gameIcons.contains(entry.path())) {
-                    auto* tex = GAssetLoader.CreateTexture("Engine.png");
-                    if (tex && tex->texture) {
-                        gameIcons[entry.path()] = (ImTextureID)(intptr_t)tex->texture;
-                    }
-                    else {
-                        SDL_Log("Failed to load Engine.png texture");
-                        gameIcons[entry.path()] = NULL;
+                // loops through folders in folder
+                for (const std::filesystem::directory_entry& file : std::filesystem::directory_iterator(entry.path())) {
+                    // has .mtrx game file
+                    if (file.is_regular_file() && (file.path().extension().string().compare(".mtrx") == 0)) {
+                        if (!gameIcons.contains(entry.path())) {
+                            auto* tex = AssetLoader::Get().CreateTexture("Engine.png");
+                            if (tex && tex->texture) {
+                                gameIcons[entry.path()] = (ImTextureID)(intptr_t)tex->texture;
+                            }
+                            else {
+                                SDL_Log("Failed to load Engine.png texture");
+                                gameIcons[entry.path()] = NULL;
+                            }
+                        }
+                        RenderGameButton(entry);
                     }
                 }
-                RenderGameButton(entry);
             }
         }
     }
@@ -183,7 +189,8 @@ void ProjectSelector::RenderGameButton(const std::filesystem::directory_entry& e
     ImGui::PushID(entry.path().string().c_str());
 
     if (ImGui::InvisibleButton("GameCard", ImVec2(-FLT_MIN, ImGui::GetWindowHeight() * 0.1f))) {
-
+        selectedGamePathString = entry.path().string();
+        running = false;
     }
 
     ImDrawList* drawList = ImGui::GetWindowDrawList();
@@ -294,11 +301,11 @@ void ProjectSelector::RenderCreateGameModel() {
                 errorMessage = "Project name cannot be empty";
             }
             else if (std::filesystem::exists(newGamePath)) {
-                errorMessage = "Project name already exists, choose a different name";
+                errorMessage = "File path already exists, choose a different name";
             }
             else {
                 errorMessage = "";
-                std::filesystem::create_directory(newGamePath);
+                CreateNewGameFiles(newGamePath, newGameName);
                 ImGui::CloseCurrentPopup();
             }
         }
@@ -315,4 +322,15 @@ void ProjectSelector::RenderCreateGameModel() {
 
         ImGui::EndPopup();
     }
+}
+
+void ProjectSelector::CreateNewGameFiles(std::string& newGamePath, char* newGameName) {
+    std::filesystem::create_directory(newGamePath);
+    
+    std::ofstream ofs(newGamePath + "\\" + newGameName + ".mtrx");
+    ofs << "this is some text in the new file\n";
+    ofs.close();
+
+    std::filesystem::create_directory(newGamePath + "\\Content");
+
 }

@@ -53,7 +53,7 @@ Mesh* DefaultCube() {
 
     mesh->vertices = vertices;
     mesh->indices = indices;
-    mesh->texture = GAssetLoader.CreateTexture("Content/DefaultTexture.png");
+    mesh->texture = AssetLoader::Get().CreateTexture("Content/DefaultTexture.png");
 
     return mesh;
 }

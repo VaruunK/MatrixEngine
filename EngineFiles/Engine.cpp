@@ -5,6 +5,7 @@
 #include "Core/GameObject/World/World.hpp"
 #include "Core/GameObject/World/Level/Level.hpp"
 #include "Core/Editor/Render/WorldRenderer/WorldRenderer.hpp"
+#include "Core/ShaderManager/ShaderManager.hpp"
 #include "Core/Structs/AssetStructs.hpp"
 #include "Core/Assets/AssetLoader/AssetLoader.hpp"
 #include "Core/Assets/DefaultAssets/DefaultAssets.hpp"
@@ -15,9 +16,11 @@
 #include <imgui_impl_sdl3.h>
 #include <nfd.hpp>
 #include <cstdio>
+#include <iostream>
 #include <SDL3_image/SDL_image.h>
 #include <SDL3/sdl_gpu.h>
 #include <imgui_impl_sdlgpu3.h>
+#include <d3d12sdklayers.h>
 
 Engine::Engine() {
     if (!SDL_WasInit(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD)) {
@@ -29,12 +32,12 @@ Engine::Engine() {
 
     appstate = {
         .device = CreateDevice(),
-        .window = CreateWindow()
+        .window = CreateSDLWindow()
     };
 
     NFD_Init();
-
-    SDL_Surface* icon = IMG_Load("Engine.png");
+    
+    icon = IMG_Load("Engine.png");
 
     if (!icon) {
         SDL_Log("couldn't load icon: %s", SDL_GetError());
@@ -77,8 +80,13 @@ Engine::Engine() {
         return;
     }
 
-    GAssetLoader.device = appstate.device;
+    ShaderManager::Init(appstate);
+
+    AssetLoader::Init(appstate);
+    
     projectSelector = new ProjectSelector(appstate);
+
+    &ID3D12DebugDevice::ReportLiveDeviceObjects;
 }
 
 SDL_GPUDevice* Engine::CreateDevice() {
@@ -96,7 +104,7 @@ SDL_GPUDevice* Engine::CreateDevice() {
     return device;
 }
 
-SDL_Window* Engine::CreateWindow() {
+SDL_Window* Engine::CreateSDLWindow() {
     // SDL_WINDOW_FULLSCREEN
     // SDL_WINDOW_BORDERLESS
     SDL_Window* window = SDL_CreateWindow("Matrix Engine", 1080, 720, SDL_WINDOW_RESIZABLE);
@@ -109,7 +117,15 @@ SDL_Window* Engine::CreateWindow() {
 
 int Engine::Run() {
 
-    game = projectSelector->Run();
+    projectSelector->Run();
+    std::string& selectedGamePath = projectSelector->selectedGamePathString;
+
+    if (selectedGamePath.compare("") == 0) {
+        Shutdown();
+        return 0;
+    }
+
+    std::cout << selectedGamePath << std::endl;
 
     game = new Game(appstate);
     projectSelector->~ProjectSelector();
@@ -129,8 +145,8 @@ int Engine::Run() {
     
     SpriteComponent* spriteComponent = nullptr;
 
-    Mesh* freddy = GAssetLoader.CreateMesh("Content/freddy.gltf", "Content/freddy.png");
-    Mesh* mogus = GAssetLoader.CreateMesh("Content/mogus/mogus.fbx", "Content/mogus/mogus.jpg");
+    Mesh* freddy = AssetLoader::Get().CreateMesh("Content/freddy.gltf", "Content/freddy.png");
+    Mesh* mogus = AssetLoader::Get().CreateMesh("Content/mogus/mogus.fbx", "Content/mogus/mogus.jpg");
 
     Transform transform1 = {
         .location = glm::vec3(0.0f, 0.0f, 0.0f),
@@ -207,13 +223,30 @@ int Engine::Run() {
         }
     }
 
-    editor->~Editor();
+    Shutdown();
+    return 0;
+}
+
+void Engine::Shutdown() {
+    delete editor;  
+    editor = nullptr;
+    
+    delete game;
+    game = nullptr;
+
+    AssetLoader::Shutdown();
+    ShaderManager::Shutdown();
+
+    if (icon) {
+        SDL_DestroySurface(icon);
+    }
+    
     NFD_Quit();
+    
     SDL_ShaderCross_Quit();
     SDL_DestroyGPUDevice(appstate.device);
     SDL_DestroyWindow(appstate.window);
     SDL_Quit();
-    return 0;
 }
 
 int main() {

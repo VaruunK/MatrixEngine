@@ -4,8 +4,6 @@
 #include "Core/Event/EventBUS/EngineEventBUS.hpp"
 #include <iostream>
 
-// from there, how do items communicate? BUS? input router? 
-// how should state be managed? enum? bool? where does state come from? how is it passed along the chain?
 // does editor need selected objects? or viewport? 
 // what owns gizmos? gizmo state?
 

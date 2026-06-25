@@ -1,6 +1,4 @@
 #pragma once
-#include "Core/ShaderManager/ShaderManager.hpp"
-#include "Core/Enums/PipelineEnums.hpp"
 #include "Core/Structs/RenderStructs.hpp"
 #include <string>
 #include <unordered_map>
@@ -16,6 +14,14 @@ class SpriteComponent;
 struct ImGuiIO;
 struct FrameData;
 struct Appstate;
+
+struct SDL_GPUCommandBuffer;
+struct SDL_GPUShader;
+struct SDL_GPUSampler;
+struct SDL_GPUTexture;
+struct SDL_GPUGraphicsPipeline;
+
+enum SDL_GPUTextureFormat;
 
 class ViewportRenderer {
 public:
@@ -44,7 +50,6 @@ private:
 	ImGuiIO* io = nullptr;
 	Viewport* viewport;
 	WorldRenderer& worldRenderer;
-	static std::unique_ptr<ShaderManager> shaderManager;
 
 	SDL_GPUSampler* defaultSampler = nullptr;
 
@@ -55,7 +60,7 @@ private:
 	std::unordered_map<uint32_t, Entity*> idToEntity;
 
 	// ID mapping
-	std::unordered_map<uint32_t, MeshComponent*>   idToMesh;
+	std::unordered_map<uint32_t, MeshComponent*> idToMesh;
 	std::unordered_map<uint32_t, SpriteComponent*> idToSprite;
 	uint32_t nextId = 1;
 
