@@ -4,7 +4,6 @@
 #include "Core/Structs/Appstate.hpp"
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
-#include <Engine.hpp>
 #include <SDL3/SDL_gpu.h>
 #include <SDL3_image/SDL_image.h>
 

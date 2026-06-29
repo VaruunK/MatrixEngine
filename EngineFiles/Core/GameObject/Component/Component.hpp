@@ -1,16 +1,25 @@
 #pragma once
 
+#include "Core/MatrixAPI.hpp"
 #include "Core/GameObject/GameObject.hpp"
 #include "Core/Structs/Transform.hpp"
 #include <glm/glm.hpp>
 
 class Entity;
 
-class Component : public GameObject {
+class MATRIX_API Component : public GameObject {
 	friend class Entity;
 public:
 
 	Component(Entity* owner);
+
+	// No copy
+	Component(const Component&) = delete;
+	Component& operator=(const Component&) = delete;
+
+	// No move
+	Component(Component&&) = delete;
+	Component& operator=(Component&&) = delete;
 
 	virtual void Start() override;
 	virtual void Tick(uint64_t deltaTime) override;

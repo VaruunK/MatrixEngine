@@ -42,6 +42,17 @@ void Game::Start() {
     }
 }
 
+void Game::Tick(float deltaTime) {
+    world.Tick(deltaTime);
+}
+
+void Game::Shutdown() {
+    if (ownsAppstate) {
+        SDL_DestroyGPUDevice(appstate.device);
+        SDL_DestroyWindow(appstate.window);
+    }
+}
+
 SDL_GPUDevice* Game::CreateDevice() {
     SDL_GPUDevice* device = SDL_CreateGPUDevice(
         SDL_GPU_SHADERFORMAT_SPIRV | SDL_GPU_SHADERFORMAT_DXIL | SDL_GPU_SHADERFORMAT_MSL,
@@ -65,10 +76,3 @@ SDL_Window* Game::CreateWindow() {
 
     return window;
 }
-
-//int main() {
-//    Game* game = new Game();
-//    game->Start();
-//
-//	return 0;
-//}

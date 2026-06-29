@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Core/MatrixAPI.hpp"
 #include "Core/GameObject/Entity/Entity.hpp"
 
 class SpriteComponent;
@@ -7,7 +8,7 @@ class MeshComponent;
 //class MovementComponent;
 //class PhysicsComponent;
 
-class Agent : public Entity {
+class MATRIX_API Agent : public Entity {
 public:
 	Agent(Level* level);
 

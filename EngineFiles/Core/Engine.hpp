@@ -8,6 +8,7 @@
 
 class Editor;
 class ProjectSelector;
+class ProjectLoader;
 class Game;
 
 struct SDL_Surface;
@@ -42,6 +43,7 @@ private:
 	const int MAX_PHYSICS_FRAMES = 60;
 	
 	ProjectSelector* projectSelector;
+	ProjectLoader* projectLoader;
 	Editor* editor;
 
 	Game* game;

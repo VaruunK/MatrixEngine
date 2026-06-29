@@ -2,18 +2,19 @@
 #include "Core/Structs/Appstate.hpp"
 #include "Core/Structs/FrameData.hpp"
 #include "Core/Structs/AssetStructs.hpp"
+#include "Core/Assets/AssetLoader/AssetLoader.hpp"
 #include <nfd.hpp>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
 #include <iostream>
 #include <SDL3/SDL_log.h>
+#include <imgui.h>
 #include <imgui_impl_sdl3.h>
 #include <SDL3/SDL_events.h>
 #include <SDL3/SDL_timer.h>
 #include <SDL3/SDL_gpu.h>
 #include <glm/ext/vector_float4.hpp>
-#include <Core/Assets/AssetLoader/AssetLoader.hpp>
 #include <fstream>
 
 ProjectSelector::ProjectSelector(Appstate& appstate) : appstate(appstate) {
@@ -189,7 +190,9 @@ void ProjectSelector::RenderGameButton(const std::filesystem::directory_entry& e
     ImGui::PushID(entry.path().string().c_str());
 
     if (ImGui::InvisibleButton("GameCard", ImVec2(-FLT_MIN, ImGui::GetWindowHeight() * 0.1f))) {
-        selectedGamePathString = entry.path().string();
+        auto& entryPath = entry.path();
+        selectedGameNameString = entryPath.filename().string();
+        selectedGamePathString = entryPath.string();
         running = false;
     }
 
@@ -234,9 +237,9 @@ void ProjectSelector::RenderGameButton(const std::filesystem::directory_entry& e
 static int FilterGameName(ImGuiInputTextCallbackData* data) {
     char c = (char)data->EventChar;
 
-    if (std::isalnum((unsigned char)c) || c == '_' || c == '-')
+    if (std::isalnum((unsigned char)c) || c == '_' || c == '-') {
         return 0;
-
+    }
     return 1;
 }
 
@@ -331,6 +334,72 @@ void ProjectSelector::CreateNewGameFiles(std::string& newGamePath, char* newGame
     ofs << "this is some text in the new file\n";
     ofs.close();
 
-    std::filesystem::create_directory(newGamePath + "\\Content");
+    std::ofstream hpp(newGamePath + "\\" + newGameName + ".hpp");
+    hpp << "#pragma once\n\n";
+    hpp << "#include <Core/Game/Game.hpp>\n";
+    hpp << "class " << newGameName << " : public Game {\n";
+    hpp << "public:\n";
+    hpp << "\tusing Game::Game;\n";
+    hpp << "\tvoid Start() override;\n";
+    hpp << "\tvoid Tick(float deltaTime) override;\n";
+    hpp << "\tvoid Shutdown() override;\n";
+    hpp << "};";
+    hpp.close();
 
+    std::ofstream cpp(newGamePath + "\\" + newGameName + ".cpp");
+    cpp << "#include \"" << newGameName << ".hpp\"\n\n";
+    cpp << "void " << newGameName << "::Start() {}\n\n";
+    cpp << "void " << newGameName << "::Tick(float deltaTime) {}\n\n";
+    cpp << "void " << newGameName << "::Shutdown() {}\n\n";
+    cpp << "extern \"C\" __declspec(dllexport) Game* CreateGame(Appstate& appstate) {\n";
+    cpp << "\treturn new " << newGameName << "(appstate);\n";
+    cpp << "}\n";
+    cpp.close();
+
+    std::ofstream cmake(newGamePath + "\\" + "CMakeLists.txt");
+    cmake << "cmake_minimum_required(VERSION 3.31)\n";
+    cmake << "project(" << newGameName << " LANGUAGES C CXX)\n\n";
+    cmake << "set(CMAKE_CXX_STANDARD 23)\n\n";
+    cmake << "set(MATRIX_ENGINE_INSTALL \"C:/Users/varuu/development/Engine/install\" CACHE PATH \"\")\n\n";
+
+    cmake << "add_library(MatrixEngineLib SHARED IMPORTED GLOBAL)\n";
+    cmake << "set_target_properties(MatrixEngineLib PROPERTIES\n";
+    cmake << "\tIMPORTED_LOCATION_DEBUG          \"${MATRIX_ENGINE_INSTALL}/lib/MatrixEngineLib.dll\"\n";
+    cmake << "\tIMPORTED_LOCATION_RELEASE        \"${MATRIX_ENGINE_INSTALL}/lib/MatrixEngineLib.dll\"\n";
+    cmake << "\tIMPORTED_LOCATION_MINSIZEREL     \"${MATRIX_ENGINE_INSTALL}/lib/MatrixEngineLib.dll\"\n";
+    cmake << "\tIMPORTED_LOCATION_RELWITHDEBINFO \"${MATRIX_ENGINE_INSTALL}/lib/MatrixEngineLib.dll\"\n";
+    cmake << "\tIMPORTED_IMPLIB_DEBUG            \"${MATRIX_ENGINE_INSTALL}/lib/MatrixEngineLib.lib\"\n";
+    cmake << "\tIMPORTED_IMPLIB_RELEASE          \"${MATRIX_ENGINE_INSTALL}/lib/MatrixEngineLib.lib\"\n";
+    cmake << "\tIMPORTED_IMPLIB_MINSIZEREL       \"${MATRIX_ENGINE_INSTALL}/lib/MatrixEngineLib.lib\"\n";
+    cmake << "\tIMPORTED_IMPLIB_RELWITHDEBINFO   \"${MATRIX_ENGINE_INSTALL}/lib/MatrixEngineLib.lib\"\n";
+    cmake << "\tINTERFACE_INCLUDE_DIRECTORIES    \"${MATRIX_ENGINE_INSTALL}/include/MatrixEngine;${MATRIX_ENGINE_INSTALL}/include\"\n";
+    cmake << "\tINTERFACE_LINK_LIBRARIES         \"${MATRIX_ENGINE_INSTALL}/lib/SDL3d.lib;${MATRIX_ENGINE_INSTALL}/lib/SDL3_image-staticd.lib;${MATRIX_ENGINE_INSTALL}/lib/zlibstaticd.lib;${MATRIX_ENGINE_INSTALL}/lib/assimp-vc143-mtd.lib;${MATRIX_ENGINE_INSTALL}/lib/SDL3_shadercrossd.lib;${MATRIX_ENGINE_INSTALL}/lib/pugixmld.lib\"\n";
+    cmake << ")\n\n";
+
+    cmake << "file(GLOB_RECURSE SOURCE_FILES \"${CMAKE_SOURCE_DIR}/Source/*.cpp\")\n\n";
+
+    cmake << "add_library(" << newGameName << " SHARED\n";
+    cmake << "\t\"" << newGameName << ".cpp\"\n";
+    cmake << "\t${SOURCE_FILES}\n";
+    cmake << ")\n\n";
+
+    cmake << "target_compile_features(" << newGameName << " PRIVATE cxx_std_23)\n";
+    cmake << "target_include_directories(" << newGameName << " PRIVATE ${CMAKE_SOURCE_DIR})\n";
+    cmake << "target_link_libraries(" << newGameName << " PRIVATE MatrixEngineLib)\n\n";
+
+    cmake << "add_custom_command(TARGET " << newGameName << " POST_BUILD\n";
+    cmake << "\tCOMMAND ${CMAKE_COMMAND} -E copy_if_different\n";
+    cmake << "\t\t\"${MATRIX_ENGINE_INSTALL}/lib/MatrixEngineLib.dll\"\n";
+    cmake << "\t\t\"${MATRIX_ENGINE_INSTALL}/lib/SDL3d.dll\"\n";
+    cmake << "\t\t$<TARGET_FILE_DIR:" << newGameName << ">\n";
+    cmake << "\tCOMMAND ${CMAKE_COMMAND} -E copy_if_different\n";
+    cmake << "\t\t\"${MATRIX_ENGINE_INSTALL}/lib/SDL3_shadercrossd.dll\"\n";
+    cmake << "\t\t$<TARGET_FILE_DIR:" << newGameName << ">\n";
+    cmake << "\tCOMMENT \"Copying runtime DLLs\"\n";
+    cmake << ")\n";
+    cmake.close();
+
+    std::filesystem::create_directory(newGamePath + "\\Source");
+    std::filesystem::create_directory(newGamePath + "\\Content");
+    std::filesystem::create_directory(newGamePath + "\\build");
 }

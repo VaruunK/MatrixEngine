@@ -1,8 +1,9 @@
 #pragma once
 
-#include "Level/Level.hpp"
+#include "Core/MatrixAPI.hpp"
 #include "Core/GameObject/GameObject.hpp"
 #include "Core/Editor/Render/WorldRenderer/WorldRenderer.hpp"
+#include "Level/Level.hpp"
 #include <atomic>
 #include <string>
 #include <memory>
@@ -19,10 +20,18 @@ struct SDL_GPUCommandBuffer;
 struct SDL_GPUTexture;
 struct FrameData;
 
-class World : public GameObject {
+class MATRIX_API World : public GameObject {
 public:
 	World(Appstate& appstate);
 	~World();
+
+	// No copy
+	World(const World&) = delete;
+	World& operator=(const World&) = delete;
+
+	// No move
+	World(World&&) = delete;
+	World& operator=(World&&) = delete;
 
 	Level* Initialize(const std::string& startLevelName);
 	void Start() override;

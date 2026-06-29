@@ -1,4 +1,6 @@
 #pragma once
+
+#include "Core/MatrixAPI.hpp"
 #include "Core/GameObject/GameObject.hpp"
 #include <vector>
 #include <unordered_map>
@@ -9,7 +11,7 @@
 using KeyBindingList = std::unordered_map<SDL_Scancode, std::function<void()>>;
 using MouseButtonBindingList = std::unordered_map<uint8_t, std::function<void()>>;
 
-class Controller : public GameObject {
+class MATRIX_API Controller : public GameObject {
 public:
 	Controller();
 	~Controller() = default;

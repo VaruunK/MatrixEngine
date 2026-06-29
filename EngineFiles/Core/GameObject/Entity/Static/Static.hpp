@@ -1,10 +1,13 @@
-#include "GameObject/Entity/Entity.hpp"
+#pragma once
+
+#include "Core/MatrixAPI.hpp"
+#include "Core/GameObject/Entity/Entity.hpp"
 #include <memory>
 
 class ImageComponent;
 class MovementComponent;
 
-class Static : public Entity {
+class MATRIX_API Static : public Entity {
 public:
 
 	Static(Level* level);

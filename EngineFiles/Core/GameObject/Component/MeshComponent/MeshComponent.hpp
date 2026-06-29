@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Core/MatrixAPI.hpp"
 #include "Core/GameObject/Component/Component.hpp"
 
 class Entity;
@@ -7,7 +8,7 @@ class Entity;
 struct Mesh;
 struct Texture;
 
-class MeshComponent : public Component {
+class MATRIX_API MeshComponent : public Component {
 public:
     MeshComponent(Entity* owner);
 

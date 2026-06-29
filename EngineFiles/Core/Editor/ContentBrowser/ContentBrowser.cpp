@@ -1,5 +1,6 @@
 #include "ContentBrowser.hpp"
 #include "Core/Event/EventBUS/EngineEventBUS.hpp"
+#include <imgui_impl_sdlgpu3.h>
 
 ContentBrowser::ContentBrowser() : controller(this) {
     controller.Start();

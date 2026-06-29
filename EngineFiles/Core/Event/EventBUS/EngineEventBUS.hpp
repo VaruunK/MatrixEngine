@@ -1,4 +1,9 @@
 #pragma once
+
+// this class will NOT be included in the game eventually, once a legitimate game event system is made
+// remove the MATRIX_API 
+
+#include "Core/MatrixAPI.hpp"
 #include <functional>
 #include <map>
 #include <list>
@@ -13,7 +18,7 @@ enum {
 	EVENT_CONTENT_BROWSER_HOVERED = 0x8003,
 };
 
-class EngineEventBUS {
+class MATRIX_API EngineEventBUS {
 public:
 	EngineEventBUS();
 	void Subscribe(uint32_t eventType, std::function<void()> callback);

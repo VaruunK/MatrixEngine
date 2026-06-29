@@ -1,5 +1,4 @@
 #include "World.hpp"
-#include "Engine.hpp"
 #include "Core/TickManager/TickManager.hpp"
 #include "Core/GameObject/World/Level/Level.hpp"
 #include "Core/Editor/Render/WorldRenderer/WorldRenderer.hpp"

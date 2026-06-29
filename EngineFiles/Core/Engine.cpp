@@ -1,5 +1,6 @@
 #include "Engine.hpp"
-#include "Core/ProjectSelector/ProjectSelector.hpp"
+#include "Core/Editor/ProjectSelector/ProjectSelector.hpp"
+#include "Core/Editor/ProjectLoader/ProjectLoader.hpp"
 #include "Core/Editor/Editor.hpp"
 #include "Core/Game/Game.hpp"
 #include "Core/GameObject/World/World.hpp"
@@ -52,6 +53,11 @@ Engine::Engine() {
         // throw runtime error
     }
 
+    if (!SDL_ShaderCross_Init()) {
+        SDL_Log("ERROR: SDL_ShaderCross_Init failed!");
+        // throw runtime error
+    }
+
     float main_scale = SDL_GetDisplayContentScale(SDL_GetPrimaryDisplay());
 
     IMGUI_CHECKVERSION();
@@ -72,12 +78,12 @@ Engine::Engine() {
 
     if (!ImGui_ImplSDLGPU3_Init(&init_info)) {
         SDL_Log("Failed to initialize ImGui SDLGPU3 backend");
-        return;
+        // throw runtime error
     }
 
     if (!ImGui_ImplSDL3_InitForSDLGPU(appstate.window)) {
         SDL_Log("Failed to initialize ImGui SDL3 backend");
-        return;
+        // throw runtime error
     }
 
     ShaderManager::Init(appstate);
@@ -85,6 +91,7 @@ Engine::Engine() {
     AssetLoader::Init(appstate);
     
     projectSelector = new ProjectSelector(appstate);
+    projectLoader = new ProjectLoader(appstate);
 
     &ID3D12DebugDevice::ReportLiveDeviceObjects;
 }
@@ -119,16 +126,18 @@ int Engine::Run() {
 
     projectSelector->Run();
     std::string& selectedGamePath = projectSelector->selectedGamePathString;
-
+    std::string& selectedGameName = projectSelector->selectedGameNameString;
     if (selectedGamePath.compare("") == 0) {
         Shutdown();
         return 0;
     }
 
+    projectLoader->LoadProject(selectedGamePath, selectedGameName);
+
     std::cout << selectedGamePath << std::endl;
 
     game = new Game(appstate);
-    projectSelector->~ProjectSelector();
+
     std::string levelName = "Mainlevel";
     std::string filePath = "";
     game->Initialize(levelName, filePath);
@@ -228,11 +237,20 @@ int Engine::Run() {
 }
 
 void Engine::Shutdown() {
-    delete editor;  
-    editor = nullptr;
-    
-    delete game;
-    game = nullptr;
+    if (projectSelector) {
+        delete projectSelector;
+        projectSelector = nullptr;
+    }
+
+    if (editor) {
+        delete editor;
+        editor = nullptr;
+    }
+
+    if (game) {
+        delete game;
+        game = nullptr;
+    }
 
     AssetLoader::Shutdown();
     ShaderManager::Shutdown();
@@ -247,30 +265,4 @@ void Engine::Shutdown() {
     SDL_DestroyGPUDevice(appstate.device);
     SDL_DestroyWindow(appstate.window);
     SDL_Quit();
-}
-
-int main() {
-    // Redirect SDL logs to a file
-    FILE* logFile = fopen("engine_log.txt", "w");
-    if (logFile) {
-        SDL_SetLogOutputFunction([](void* userdata, int category, SDL_LogPriority priority, const char* message) {
-            FILE* file = static_cast<FILE*>(userdata);
-            fprintf(file, "[%d] %s\n", priority, message);
-            fflush(file);
-            }, logFile);
-    }
-    SDL_SetLogPriorities(SDL_LOG_PRIORITY_VERBOSE);
-    // Initialize ShaderCross (REQUIRED for runtime shader compilation!)
-    if (!SDL_ShaderCross_Init()) {
-        SDL_Log("ERROR: SDL_ShaderCross_Init failed!");
-        if (logFile) fclose(logFile);
-        return -1;
-    }
-
-    int result = Engine::GetEngine().Run();
-    if (logFile) {
-        fclose(logFile);
-    }
-
-    return 0;
 }

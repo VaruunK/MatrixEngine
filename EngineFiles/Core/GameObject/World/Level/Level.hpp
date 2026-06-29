@@ -1,15 +1,25 @@
 #pragma once
 
+#include "Core/MatrixAPI.hpp"
+#include "Core/GameObject/Entity/Entity.hpp"
 #include <vector>
 #include <memory>
-#include "Core/GameObject/Entity/Entity.hpp"
+
 class World;
 
 struct Transform;
 
-class Level {
+class MATRIX_API Level {
 public:
 	Level(World* world);
+
+	// No copy
+	Level(const Level&) = delete;
+	Level& operator=(const Level&) = delete;
+
+	// No move
+	Level(Level&&) = delete;
+	Level& operator=(Level&&) = delete;
 	
 	void Load();
 	void Unload();

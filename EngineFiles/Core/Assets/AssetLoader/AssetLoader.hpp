@@ -1,9 +1,12 @@
 #pragma once
 
+#include "Core/MatrixAPI.hpp"
 #include <string>
 #include <assimp/Importer.hpp>
 #include <assimp/mesh.h>
 #include <memory>
+
+// currently not sure if asset loader needs the matrix api call? better safe than sorry but need to reevaluate and test
 
 struct Mesh;
 struct Texture;
@@ -11,7 +14,7 @@ struct Appstate;
 
 struct SDL_GPUDevice;
 
-class AssetLoader {
+class MATRIX_API AssetLoader {
 public:
     static AssetLoader& Get() {
         return *instance;

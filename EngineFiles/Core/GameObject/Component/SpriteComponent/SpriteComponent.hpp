@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Core/MatrixAPI.hpp"
 #include "Core/GameObject/Component/Component.hpp"
 #include <string>
 
@@ -9,7 +10,7 @@ struct Texture;
 
 class Entity;
 
-class SpriteComponent : public Component {
+class MATRIX_API SpriteComponent : public Component {
 public:
     SpriteComponent(Entity* owner);
 

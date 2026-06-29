@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Core/MatrixAPI.hpp"
 #include "Core/GameObject/GameObject.hpp"
 #include "Core/GameObject/Component/Component.hpp"
 #include "Core/Structs/Transform.hpp"
@@ -11,8 +12,16 @@
 
 class Level;
 
-class Entity : public GameObject {
+class MATRIX_API Entity : public GameObject {
 public:
+
+	// No copy
+	Entity(const Entity&) = delete;
+	Entity& operator=(const Entity&) = delete;
+
+	// No move
+	Entity(Entity&&) = delete;
+	Entity& operator=(Entity&&) = delete;
 
 	Entity(Level* level);
 	~Entity() = default;

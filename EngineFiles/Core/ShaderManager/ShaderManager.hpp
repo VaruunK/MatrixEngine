@@ -1,5 +1,8 @@
 #pragma once
 
+// this class should be seperated into an engine shader manager and game shader manager eventually
+// once seperated REMOVE THE MATRIX_API
+#include "Core/MatrixAPI.hpp"
 #include <SDL3/SDL.h>
 #include <SDL3_shadercross/SDL_shadercross.h>
 #include <string>
@@ -10,7 +13,7 @@
 
 struct Appstate;
 
-struct CompiledShader {
+struct MATRIX_API CompiledShader {
     std::vector<uint8_t> bytecode;
     uint64_t sourceHash = 0;
 
@@ -20,14 +23,14 @@ struct CompiledShader {
     uint32_t num_uniform_buffers = 0;
 };
 
-struct ShaderOptions {
+struct MATRIX_API ShaderOptions {
     uint32_t num_samplers = 0;
     uint32_t num_storage_textures = 0;
     uint32_t num_storage_buffers = 0;
     uint32_t num_uniform_buffers = 0;
 };
 
-class ShaderManager {
+class MATRIX_API ShaderManager {
 public:
 
     static ShaderManager& Get() {

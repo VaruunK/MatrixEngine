@@ -1,6 +1,5 @@
 #pragma once
 #include "Core/Editor/ContentBrowser/ContentBrowserController/ContentBrowserController.hpp"
-#include <imgui.h>
 #include <filesystem>
 
 class ContentBrowser {

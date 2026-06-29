@@ -1,4 +1,6 @@
 #pragma once
+
+#include "Core/MatrixAPI.hpp"
 #include "Core/Structs/AssetStructs.hpp"
 #include "Core/Enums/PipelineEnums.hpp"
 #include "Core/Structs/RenderStructs.hpp"
@@ -15,7 +17,7 @@ class MeshComponent;
 struct FrameData;
 struct Appstate;
 
-class WorldRenderer {
+class MATRIX_API WorldRenderer {
     friend class ViewportRenderer;
 public:
     WorldRenderer(Appstate& appstate);

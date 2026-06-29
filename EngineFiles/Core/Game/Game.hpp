@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Core/MatrixAPI.hpp"
 #include "Core/Structs/Appstate.hpp"
 #include "Core/GameObject/World/World.hpp"
 #include <SDL3/SDL_gpu.h>
@@ -8,15 +9,26 @@
 #include <thread>
 #include <atomic>
 
-class Game {
+class MATRIX_API Game {
 public:
 	Game();
 	Game(Appstate& appstate);
 	~Game();
 
+	// No copy
+	Game(const Game&) = delete;
+	Game& operator=(const Game&) = delete;
+
+	// No move
+	Game(Game&&) = delete;
+	Game& operator=(Game&&) = delete;
+
 	void Initialize(std::string& name, std::string& iconFilePath);
 	
-	void Start();
+	virtual void Start();
+	virtual void Tick(float deltaTime);
+	virtual void Shutdown();
+
 	World world;
 private:
 	SDL_GPUDevice* CreateDevice();

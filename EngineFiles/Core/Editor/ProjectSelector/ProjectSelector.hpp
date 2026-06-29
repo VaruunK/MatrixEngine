@@ -1,9 +1,12 @@
 #pragma once
-#include <imgui_impl_sdlgpu3.h>
+
+#ifdef MATRIX_EDITOR
+
 #include <string>
 #include <pugixml.hpp>
 #include <filesystem>
 #include <unordered_map>
+#include <imgui_impl_sdlgpu3.h>
 
 class Game;
 
@@ -35,6 +38,7 @@ private:
 	std::string gameDirectoryString;
 
 	std::string selectedGamePathString = "";
+	std::string selectedGameNameString = "";
 
 	std::unordered_map<std::filesystem::path, ImTextureID> gameIcons;
 
@@ -44,3 +48,5 @@ private:
 
 	Appstate& appstate;
 };
+
+#endif // MATRIX_EDITOR
