@@ -35,7 +35,6 @@ public:
 
     bool resized = false;
 
-    
 private:
     bool InitializeBuffers();
     bool InitializePipelines(SDL_GPUShader* vertexShader, SDL_GPUShader* fragmentShader);

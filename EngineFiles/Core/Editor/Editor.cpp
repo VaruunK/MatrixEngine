@@ -61,5 +61,4 @@ void Editor::Tick(float deltaTime) {
 	default:
 		break;
 	}
-	
 }

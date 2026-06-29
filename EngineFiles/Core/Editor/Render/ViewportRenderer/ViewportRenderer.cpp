@@ -464,10 +464,3 @@ SDL_GPUTextureFormat ViewportRenderer::GetDepthStencilFormat() {
         return SDL_GPU_TEXTUREFORMAT_INVALID;
     }
 }
-
-void ViewportRenderer::Shutdown() {
-    SDL_WaitForGPUIdle(appstate.device);
-    ImGui_ImplSDL3_Shutdown();
-    ImGui_ImplSDLGPU3_Shutdown();
-    ImGui::DestroyContext();
-}

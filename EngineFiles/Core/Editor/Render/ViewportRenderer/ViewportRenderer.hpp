@@ -32,8 +32,6 @@ public:
 	void RenderSelectProxy(SDL_GPUCommandBuffer* commandBuffer);
 	
 	Entity* ReadPixel(SDL_GPUCommandBuffer* commandBuffer, int x, int y);
-
-	void Shutdown();
 	bool resized = false;
 	
 private:
@@ -78,8 +76,6 @@ private:
 	uint32_t DecodeId(uint8_t r, uint8_t g, uint8_t b) {
 		return (uint32_t)r | ((uint32_t)g << 8) | ((uint32_t)b << 16);
 	}
-
-	bool msaaEnabled = true;
 
 	bool show_demo_window = true;
 

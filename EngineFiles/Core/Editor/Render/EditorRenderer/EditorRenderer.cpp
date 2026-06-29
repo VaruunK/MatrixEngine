@@ -17,6 +17,8 @@ EditorRenderer::EditorRenderer(Appstate& appstate, EditorInfo& info, WorldRender
     io = &ImGui::GetIO();
     io->ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
     io->ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
+
+    SDL_SetGPUTextureName(appstate.device, swapchainTexture, "Swapcahin Texture");
 }
 
 void EditorRenderer::Render() {
@@ -24,12 +26,12 @@ void EditorRenderer::Render() {
     SDL_GPUCommandBuffer* commandBuffer = SDL_AcquireGPUCommandBuffer(appstate.device);
     if (!commandBuffer) return;
 
-    SDL_GPUTexture* swapchain = nullptr;
-    SDL_WaitAndAcquireGPUSwapchainTexture(commandBuffer, appstate.window, &swapchain, nullptr, nullptr);
+    swapchainTexture = nullptr;
+    SDL_WaitAndAcquireGPUSwapchainTexture(commandBuffer, appstate.window, &swapchainTexture, nullptr, nullptr);
 
     FrameData frame{};
     frame.commandBuffer = commandBuffer;
-    frame.swapchainTexture = swapchain;
+    frame.swapchainTexture = swapchainTexture;
 
     if (frame.commandBuffer && frame.swapchainTexture) {
         ImGui_ImplSDLGPU3_NewFrame();
@@ -134,4 +136,8 @@ void EditorRenderer::RenderMenuBar() {
     }
 }
 
-
+void EditorRenderer::Shutdown() {
+    if (swapchainTexture) {
+        SDL_ReleaseGPUTexture(appstate.device, swapchainTexture);
+    }
+}

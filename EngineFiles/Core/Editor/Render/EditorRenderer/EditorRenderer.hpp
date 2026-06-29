@@ -8,6 +8,7 @@ class SpriteComponent;
 struct EditorInfo;
 struct ImGuiIO;
 struct Appstate;
+struct SDL_GPUTexture;
 
 class EditorRenderer {
 public:
@@ -24,6 +25,8 @@ private:
 	ImGuiIO* io = nullptr;
 
 	EditorInfo& info;
+
+	SDL_GPUTexture* swapchainTexture = nullptr;
 
 	bool contentBrowserOpen = true;
 	bool contentBrowserViewOption = false;

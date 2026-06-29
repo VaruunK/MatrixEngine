@@ -15,6 +15,17 @@ Viewport::Viewport(Appstate& appstate, WorldRenderer& worldRenderer)
     controller.Start();
 }
 
+Viewport::~Viewport() {
+    if (offscreenTexture) {
+        SDL_ReleaseGPUTexture(appstate.device, offscreenTexture);
+        offscreenTexture = nullptr;
+    }
+    if (offscreenSampler) {
+        SDL_ReleaseGPUSampler(appstate.device, offscreenSampler);
+        offscreenSampler = nullptr;
+    }
+}
+
 void Viewport::Render(FrameData& frame) {
     
     frame.view = &GetCameraView();

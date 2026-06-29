@@ -132,7 +132,7 @@ int Engine::Run() {
         return 0;
     }
 
-    projectLoader->LoadProject(selectedGamePath, selectedGameName);
+    Game* loadedGame = projectLoader->LoadProject(selectedGamePath, selectedGameName);
 
     std::cout << selectedGamePath << std::endl;
 
@@ -231,6 +231,8 @@ int Engine::Run() {
             thread.join();
         }
     }
+    delete loadedGame;
+    loadedGame = nullptr;
 
     Shutdown();
     return 0;
@@ -261,6 +263,9 @@ void Engine::Shutdown() {
     
     NFD_Quit();
     
+    ImGui_ImplSDL3_Shutdown();
+    ImGui_ImplSDLGPU3_Shutdown();
+    ImGui::DestroyContext();
     SDL_ShaderCross_Quit();
     SDL_DestroyGPUDevice(appstate.device);
     SDL_DestroyWindow(appstate.window);

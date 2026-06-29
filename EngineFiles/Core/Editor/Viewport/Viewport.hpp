@@ -14,7 +14,7 @@ class Editor;
 class Viewport {
 public:
 	Viewport(Appstate& appstate, WorldRenderer& worldRenderer);
-	~Viewport() = default;
+	~Viewport();
 
 	void Tick(float deltaTime);
 	void Render(FrameData& frame);
