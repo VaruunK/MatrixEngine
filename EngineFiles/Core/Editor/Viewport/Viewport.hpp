@@ -1,6 +1,6 @@
 #pragma once
 #include "Core/Editor/Viewport/ViewportController/ViewportController.hpp"
-#include "Core/Editor/Render/ViewportRenderer/ViewportRenderer.hpp"
+#include "Core/Editor/Viewport/ViewportRenderer/ViewportRenderer.hpp"
 #include "Core/Editor/Viewport/ViewportCamera/ViewportCamera.hpp"
 #include "Core/Structs/FrameData.hpp"
 
@@ -45,8 +45,6 @@ private:
 
 	SDL_GPUTexture* offscreenTexture = nullptr;
 	SDL_GPUSampler* offscreenSampler = nullptr;
-
-	WorldRenderer& worldRenderer;
 
 	int mouseClickX = -1;
 	int mouseClickY = -1;

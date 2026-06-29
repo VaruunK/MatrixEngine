@@ -1,7 +1,6 @@
 #include "World.hpp"
 #include "Core/TickManager/TickManager.hpp"
 #include "Core/GameObject/World/Level/Level.hpp"
-#include "Core/Editor/Render/WorldRenderer/WorldRenderer.hpp"
 #include "Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
 #include "Core/GameObject/Component/SpriteComponent/SpriteComponent.hpp"
 #include "Core/Structs/View.hpp"

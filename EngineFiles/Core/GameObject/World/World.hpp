@@ -2,7 +2,7 @@
 
 #include "Core/MatrixAPI.hpp"
 #include "Core/GameObject/GameObject.hpp"
-#include "Core/Editor/Render/WorldRenderer/WorldRenderer.hpp"
+#include "Core/GameObject/World/WorldRenderer/WorldRenderer.hpp"
 #include "Level/Level.hpp"
 #include <atomic>
 #include <string>

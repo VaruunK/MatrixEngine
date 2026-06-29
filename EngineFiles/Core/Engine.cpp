@@ -5,7 +5,6 @@
 #include "Core/Game/Game.hpp"
 #include "Core/GameObject/World/World.hpp"
 #include "Core/GameObject/World/Level/Level.hpp"
-#include "Core/Editor/Render/WorldRenderer/WorldRenderer.hpp"
 #include "Core/ShaderManager/ShaderManager.hpp"
 #include "Core/Structs/AssetStructs.hpp"
 #include "Core/Assets/AssetLoader/AssetLoader.hpp"
@@ -42,8 +41,7 @@ Engine::Engine() {
 
     if (!icon) {
         SDL_Log("couldn't load icon: %s", SDL_GetError());
-    }
-    else {
+    } else {
         SDL_SetWindowIcon(appstate.window, icon);
         SDL_DestroySurface(icon);
     }

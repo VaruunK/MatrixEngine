@@ -35,7 +35,7 @@ add_library(MatrixEngineLib SHARED
 
     # Rendering
     "EngineFiles/Core/ShaderManager/ShaderManager.cpp"
-    "EngineFiles/Core/Editor/Render/WorldRenderer/WorldRenderer.cpp"
+    "EngineFiles/Core/GameObject/World/WorldRenderer/WorldRenderer.cpp"
 
     # GameObject system
     "EngineFiles/Core/GameObject/GameObject.cpp"
@@ -84,8 +84,8 @@ add_library(MatrixEditorLib STATIC
     "EngineFiles/Core/Editor/Viewport/Viewport.cpp"
     "EngineFiles/Core/Editor/Viewport/ViewportController/ViewportController.cpp"
     "EngineFiles/Core/Editor/Viewport/ViewportCamera/ViewportCamera.cpp"
-    "EngineFiles/Core/Editor/Render/ViewportRenderer/ViewportRenderer.cpp"
-    "EngineFiles/Core/Editor/Render/EditorRenderer/EditorRenderer.cpp"
+    "EngineFiles/Core/Editor/Viewport/ViewportRenderer/ViewportRenderer.cpp"
+    "EngineFiles/Core/Editor/EditorRenderer/EditorRenderer.cpp"
     "EngineFiles/Core/Editor/ContentBrowser/ContentBrowser.cpp"
     "EngineFiles/Core/Editor/ContentBrowser/ContentBrowserController/ContentBrowserController.cpp"
     "EngineFiles/Core/Editor/ProjectSelector/ProjectSelector.cpp"

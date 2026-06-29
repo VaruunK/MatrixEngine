@@ -1,14 +1,12 @@
 #include "Viewport.hpp"
-#include "Core/Editor/Render/WorldRenderer/WorldRenderer.hpp"
 #include "Core/Structs/Appstate.hpp"
 #include "Core/Structs/View.hpp"
 #include "Core/Structs/FrameData.hpp"
-#include "Core/Event/EventBUS/EngineEventBUS.hpp"
+#include <SDL3/SDL_gpu.h>
 #include <iostream>
 
 Viewport::Viewport(Appstate& appstate, WorldRenderer& worldRenderer) 
     : appstate(appstate), 
-	worldRenderer(worldRenderer), 
 	viewportRenderer(appstate, this, worldRenderer), 
 	controller(this) {
 
@@ -27,10 +25,7 @@ Viewport::~Viewport() {
 }
 
 void Viewport::Render(FrameData& frame) {
-    
     frame.view = &GetCameraView();
-
-    worldRenderer.Render(frame);
     viewportRenderer.Render(frame);
 }
 

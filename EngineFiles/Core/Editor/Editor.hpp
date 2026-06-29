@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/Editor/Render/EditorRenderer/EditorRenderer.hpp"
+#include "Core/Editor/EditorRenderer/EditorRenderer.hpp"
 #include "Core/Editor/Viewport/Viewport.hpp"
 #include "Core/Editor/ContentBrowser/ContentBrowser.hpp"
 #include "Core/Structs/EditorInfo.hpp"

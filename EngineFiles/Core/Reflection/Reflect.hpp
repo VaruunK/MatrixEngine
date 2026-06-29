@@ -1,6 +1,7 @@
 #pragma once
 
-#define M_CLASS()
-#define M_FUNCTION()
-#define M_FIELD()
-#define M_STRUCT()
+#define CLASS()
+#define FUNCTION()
+#define FIELD()
+#define STRUCT()
+#define ENUM()

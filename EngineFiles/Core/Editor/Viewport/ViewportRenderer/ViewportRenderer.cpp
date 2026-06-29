@@ -1,7 +1,7 @@
 #include "ViewportRenderer.hpp"
 #include "Core/Editor/Viewport/Viewport.hpp"
 #include "Core/ShaderManager/ShaderManager.hpp"
-#include "Core/Editor/Render/WorldRenderer/WorldRenderer.hpp"
+#include "Core/GameObject/World/WorldRenderer/WorldRenderer.hpp"
 #include "Core/Structs/Appstate.hpp"
 #include "Core/Structs/FrameData.hpp"
 #include "Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
@@ -98,6 +98,9 @@ ViewportRenderer::~ViewportRenderer() {
 }
 
 void ViewportRenderer::Render(FrameData& frame) {
+
+    worldRenderer.Render(frame);
+
     if (show_demo_window)
         ImGui::ShowDemoWindow(&show_demo_window);
 
