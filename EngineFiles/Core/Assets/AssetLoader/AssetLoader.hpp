@@ -1,20 +1,22 @@
 #pragma once
 
-#include "Core/MatrixAPI.hpp"
+#ifdef MATRIX_EDITOR
+
 #include <string>
 #include <assimp/Importer.hpp>
 #include <assimp/mesh.h>
 #include <memory>
-
-// currently not sure if asset loader needs the matrix api call? better safe than sorry but need to reevaluate and test
+#include <filesystem>
 
 struct Mesh;
 struct Texture;
+struct Material;
 struct Appstate;
 
 struct SDL_GPUDevice;
+struct SDL_GPUTexture;
 
-class MATRIX_API AssetLoader {
+class AssetLoader {
 public:
     static AssetLoader& Get() {
         return *instance;
@@ -37,11 +39,25 @@ public:
         }
     }
 
-	Texture* CreateTexture(const std::string& textureFilePath);
-	Mesh* CreateMesh(const std::string& meshFilePath);
-	Mesh* CreateMesh(const std::string& meshFilePath, const std::string& textureFilePath);
+    Texture* ImportTexture(const std::filesystem::path& textureFilePath);
+    
+    Mesh* ImportMesh(const std::filesystem::path& meshFilePath);
+    void WriteMesh(const std::filesystem::path& meshFilePath, Mesh* mesh);
+
+    Mesh* ReadMesh(const std::filesystem::path& meshFilePath);
+
 private:
+    struct MeshFileHeader {
+        uint32_t magic = 0x4D455348;
+        uint32_t version = 1;
+        uint32_t vertexCount = 0;
+        uint32_t indexCount = 0;
+    };
+
 	AssetLoader(Appstate& appstate);
+
+    void WriteTexture(const std::filesystem::path& meshFilePath, Material* texture);
+
     void ShutdownInternal();
 
 	void ProcessNode(aiNode* node, const aiScene* scene, Mesh* newMesh, const aiMatrix4x4& parentTransform);
@@ -49,10 +65,11 @@ private:
 
     Appstate& appstate;
 
-	std::vector<Mesh*> meshes;
-	std::vector<Texture*> textures;
-
     bool isShutdown = false;
+
+    // Material* defaultMaterial = nullptr;
 
     static inline std::unique_ptr<AssetLoader> instance = nullptr;
 };
+
+#endif

@@ -42,6 +42,7 @@ private:
     bool CreateDepthStencil();
     bool CreateMSAATexture();
     bool CreateOffscreenTexture();
+    bool CreateDefaultTextures();
 
     DrawInfo UploadVertices(const std::vector<Vertex> &vertices, const std::vector<uint32_t> &indices);
 
@@ -52,12 +53,17 @@ private:
 
     SDL_GPUSampler* defaultSampler = nullptr;
     SDL_GPUTexture* depthStencilTexture = nullptr;
-    SDL_GPUTexture* msaaTexture = nullptr;    
+    SDL_GPUTexture* msaaTexture = nullptr;
 
     SDL_GPUBuffer* vertexBuffer = nullptr;
     SDL_GPUBuffer* indexBuffer = nullptr;
     uint32_t vertexBufferOffset = 0;
     uint32_t indexBufferOffset = 0;
+
+    SDL_GPUTexture* defaultBaseColor = nullptr;
+    SDL_GPUTexture* defaultNormal = nullptr;
+    SDL_GPUTexture* defaultEmissive = nullptr;
+    SDL_GPUTexture* defaultORM = nullptr;
 
     SDL_GPUSampleCount sampleCount = SDL_GPU_SAMPLECOUNT_8;
 

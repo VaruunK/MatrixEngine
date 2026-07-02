@@ -53,7 +53,15 @@ Mesh* DefaultCube() {
 
     mesh->vertices = vertices;
     mesh->indices = indices;
-    mesh->texture = AssetLoader::Get().CreateTexture("Content/DefaultTexture.png");
+    mesh->material = DefaultMaterial();
 
     return mesh;
 }
+
+Material* DefaultMaterial() {
+    Material* defaultMaterial = new Material;
+    defaultMaterial->normal = AssetLoader::Get().ImportTexture("Content/defaultTexture.png");
+
+    return defaultMaterial;
+}
+

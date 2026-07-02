@@ -168,7 +168,7 @@ void ProjectSelector::RenderGameDirectory() {
                     // has .mtrx game file
                     if (file.is_regular_file() && (file.path().extension().string().compare(".mtrx") == 0)) {
                         if (!gameIcons.contains(entry.path())) {
-                            auto* tex = AssetLoader::Get().CreateTexture("Engine.png");
+                            auto* tex = AssetLoader::Get().ImportTexture("Engine.png");
                             if (tex && tex->texture) {
                                 gameIcons[entry.path()] = (ImTextureID)(intptr_t)tex->texture;
                             }
@@ -397,6 +397,12 @@ void ProjectSelector::CreateNewGameFiles(std::string& newGamePath, char* newGame
     cmake << "\t\t$<TARGET_FILE_DIR:" << newGameName << ">\n";
     cmake << "\tCOMMENT \"Copying runtime DLLs\"\n";
     cmake << ")\n";
+    //cmake << "add_custom_command(TARGET " << newGameName << " POST_BUILD\n";
+    //cmake << "\tCOMMAND ${CMAKE_COMMAND} -E copy_if_different\n";
+    //cmake << "\t\t\"${CMAKE_SOURCE_DIR}/Content\"\n";
+    //cmake << "\t\t$<TARGET_FILE_DIR:" << newGameName << ">\n";
+    //cmake << "\tCOMMENT \"Copying Content\"\n";
+    //cmake << ")\n";
     cmake.close();
 
     std::filesystem::create_directory(newGamePath + "\\Source");

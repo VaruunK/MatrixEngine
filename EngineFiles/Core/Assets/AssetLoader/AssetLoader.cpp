@@ -1,45 +1,25 @@
 #include "AssetLoader.hpp"
+#include "Core/Assets/DefaultAssets/DefaultAssets.hpp"
 #include "Core/Structs/RenderStructs.hpp"
 #include "Core/Structs/AssetStructs.hpp"
 #include "Core/Structs/Appstate.hpp"
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
+#include <fstream>
 #include <SDL3/SDL_gpu.h>
 #include <SDL3_image/SDL_image.h>
+#include <iostream>
 
 AssetLoader::AssetLoader(Appstate& appstate) : appstate(appstate) {
 
 }
 
 void AssetLoader::ShutdownInternal() {
-    for (auto* texture : textures) {
-        if (texture) {
-            if (texture->texture) {
-                SDL_ReleaseGPUTexture(appstate.device, texture->texture);
-                texture->texture = nullptr;
-            }
-            if (texture->data) {
-                SDL_DestroySurface(texture->data);
-                texture->data = nullptr;
-            }
-            delete texture;
-            texture = nullptr;
-        }
-    }
-    for (auto* mesh : meshes) {
-        if (mesh) {
-            mesh->vertices.clear();
-            mesh->indices.clear();
-            delete mesh;
-            mesh = nullptr;
-        }
-    }
-    textures.clear();
-    meshes.clear();
+    
 }
 
-Texture* AssetLoader::CreateTexture(const std::string& textureFilePath) {
-    SDL_Surface* imageData = IMG_Load(textureFilePath.c_str());
+Texture* AssetLoader::ImportTexture(const std::filesystem::path& textureFilePath) {
+    SDL_Surface* imageData = IMG_Load(textureFilePath.string().c_str());
 
     if (!imageData) {
         SDL_Log("Failed to load image data: %s", SDL_GetError());
@@ -75,7 +55,7 @@ Texture* AssetLoader::CreateTexture(const std::string& textureFilePath) {
         return nullptr;
     }
 
-    SDL_SetGPUTextureName(appstate.device, texture, textureFilePath.c_str());
+    SDL_SetGPUTextureName(appstate.device, texture, textureFilePath.string().c_str());
 
     const uint32_t PITCH_ALIGNMENT = 256;
     uint32_t rawPitch = static_cast<uint32_t>(imageData->w) * 4;
@@ -126,11 +106,7 @@ Texture* AssetLoader::CreateTexture(const std::string& textureFilePath) {
     Texture* newTexture = new Texture;
     newTexture->texture = texture;
     newTexture->data = imageData;
-    newTexture->texturePath = textureFilePath;
-
-    if (newTexture) {
-        textures.push_back(newTexture);
-    }
+    newTexture->filePath = textureFilePath;
 
     return newTexture;
 }
@@ -168,12 +144,13 @@ void AssetLoader::ProcessNode(aiNode* node, const aiScene* scene, Mesh* newMesh,
     }
 }
 
-Mesh* AssetLoader::CreateMesh(const std::string& meshFilePath) {
+Mesh* AssetLoader::ImportMesh(const std::filesystem::path& meshFilePath) {
     int flags = aiProcess_Triangulate;
-    if (meshFilePath.ends_with(".fbx") || meshFilePath.ends_with(".FBX")) {
+    auto extension = meshFilePath.filename().extension();
+    if (extension.compare(".fbx") == 0 || extension.compare(".FBX") == 0) {
         flags |= aiProcess_FlipUVs;
     }
-    const aiScene* scene = importer.ReadFile(meshFilePath.c_str(), flags);
+    const aiScene* scene = importer.ReadFile(meshFilePath.string().c_str(), flags);
     if (!scene) {
         SDL_Log("Failed to load model: %s", importer.GetErrorString());
         return nullptr;
@@ -182,24 +159,55 @@ Mesh* AssetLoader::CreateMesh(const std::string& meshFilePath) {
     Mesh* newMesh = new Mesh;
     aiMatrix4x4 identity;
     ProcessNode(scene->mRootNode, scene, newMesh, identity);
-    newMesh->texture = CreateTexture("Content/DefaultTexture.png");
-
-    if (newMesh) {
-        meshes.push_back(newMesh);
-    }
+    newMesh->material = DefaultMaterial();
+    newMesh->filePath = meshFilePath;
 
     return newMesh;
 }
 
-Mesh* AssetLoader::CreateMesh(const std::string& meshFilePath, const std::string& textureFilePath) {
-    Mesh *mesh = CreateMesh(meshFilePath);
-    if (!mesh) {
-        return nullptr;
+void AssetLoader::WriteMesh(const std::filesystem::path& meshFilePath, Mesh* mesh) {
+    std::ofstream asset(meshFilePath, std::ios::binary);
+    if (!asset) throw std::runtime_error("Failed to open file for writing: " + meshFilePath.string());
+
+    MeshFileHeader header;
+    header.vertexCount = static_cast<uint32_t>(mesh->vertices.size());
+    header.indexCount = static_cast<uint32_t>(mesh->indices.size());
+
+    asset.write(reinterpret_cast<const char*>(&header), sizeof(header));
+
+    asset.write(reinterpret_cast<const char*>(mesh->vertices.data()),
+        header.vertexCount * sizeof(Vertex));
+
+    asset.write(reinterpret_cast<const char*>(mesh->indices.data()),
+        header.indexCount * sizeof(uint32_t));
+
+    asset.close();
+}
+
+Mesh* AssetLoader::ReadMesh(const std::filesystem::path& meshFilePath) {
+    std::ifstream asset(meshFilePath, std::ios::binary);
+    if (!asset) {
+        throw std::runtime_error("Failed to open file for reading: " + meshFilePath.string());
     }
-    Texture* texture = CreateTexture(textureFilePath);
-    if (!texture) {
-        return nullptr;
+    MeshFileHeader header;
+    asset.read(reinterpret_cast<char*>(&header), sizeof(header));
+
+    if (header.magic != 0x4D455348) {
+        throw std::runtime_error("Invalid mesh file: " + meshFilePath.string());
     }
-    mesh->texture = texture;
+    if (header.version != 1) {
+        throw std::runtime_error("Unsupported mesh file version: " + meshFilePath.string());
+    }
+
+    Mesh* mesh = new Mesh;
+    mesh->vertices.resize(header.vertexCount);
+    mesh->indices.resize(header.indexCount);
+
+    asset.read(reinterpret_cast<char*>(mesh->vertices.data()),
+        header.vertexCount * sizeof(Vertex));
+
+    asset.read(reinterpret_cast<char*>(mesh->indices.data()),
+        header.indexCount * sizeof(uint32_t));
+
     return mesh;
 }

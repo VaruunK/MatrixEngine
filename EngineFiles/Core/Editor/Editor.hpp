@@ -1,5 +1,7 @@
 #pragma once
 
+#ifdef MATRIX_EDITOR
+
 #include "Core/Editor/EditorRenderer/EditorRenderer.hpp"
 #include "Core/Editor/Viewport/Viewport.hpp"
 #include "Core/Editor/ContentBrowser/ContentBrowser.hpp"
@@ -10,6 +12,9 @@ class Entity;
 class Game;
 
 struct Appstate;
+struct Texture;
+struct Material;
+struct Mesh;
 
 class Editor {
 public:
@@ -37,9 +42,15 @@ private:
 
 	std::set<Entity*> selectedEntities;
 	
+	std::unordered_map<std::filesystem::path, Mesh*> meshes;
+	std::unordered_map<std::filesystem::path, Texture*> textures;
+	std::unordered_map<std::filesystem::path, Material*> materials;
+
 	Viewport viewport;
 	ContentBrowser contentBrowser;
 
 	Appstate& appstate;
 	Game* game;
 };
+
+#endif

@@ -130,11 +130,11 @@ int Engine::Run() {
         return 0;
     }
 
-    Game* loadedGame = projectLoader->LoadProject(selectedGamePath, selectedGameName);
+    Game* game = projectLoader->LoadProject(selectedGamePath, selectedGameName);
+
+    appstate.gamePath = selectedGamePath;
 
     std::cout << selectedGamePath << std::endl;
-
-    game = new Game(appstate);
 
     std::string levelName = "Mainlevel";
     std::string filePath = "";
@@ -152,8 +152,16 @@ int Engine::Run() {
     
     SpriteComponent* spriteComponent = nullptr;
 
-    Mesh* freddy = AssetLoader::Get().CreateMesh("Content/freddy.gltf", "Content/freddy.png");
-    Mesh* mogus = AssetLoader::Get().CreateMesh("Content/mogus/mogus.fbx", "Content/mogus/mogus.jpg");
+    Mesh* freddy = AssetLoader::Get().ImportMesh("Content/freddy.gltf");
+    Material* freddyMat = new Material{};
+    freddyMat->baseColor = AssetLoader::Get().ImportTexture("Content/freddy.png");
+    freddy->material = freddyMat;
+
+    Mesh* mogus = AssetLoader::Get().ImportMesh("Content/mogus/mogus.fbx");
+    Material* mogusMat = new Material{};
+    mogusMat->baseColor = AssetLoader::Get().ImportTexture("Content/mogus/mogus.jpg");
+    mogusMat->normal = AssetLoader::Get().ImportTexture("Content/mogus/textures/normal.jpg");
+    mogus->material = mogusMat;
 
     Transform transform1 = {
         .location = glm::vec3(0.0f, 0.0f, 0.0f),
@@ -229,8 +237,6 @@ int Engine::Run() {
             thread.join();
         }
     }
-    delete loadedGame;
-    loadedGame = nullptr;
 
     Shutdown();
     return 0;

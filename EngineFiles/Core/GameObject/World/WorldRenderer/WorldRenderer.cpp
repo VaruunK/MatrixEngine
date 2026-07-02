@@ -145,17 +145,21 @@ void WorldRenderer::Render(FrameData& frame) {
 
     float aspectRatio = static_cast<float>(windowWidth) / static_cast<float>(windowHeight);
 
-    for (auto& [mesh, components] : meshes) {
-        if (!mesh->texture) continue;
+    SDL_GPUTextureSamplerBinding bindings[4]{};
 
-        SDL_GPUTextureSamplerBinding binding{ mesh->texture->texture, defaultSampler };
-        SDL_BindGPUFragmentSamplers(pass, 0, &binding, 1);
+    for (auto& [mesh, components] : meshes) {
+        if (!mesh->material) continue;
+
+        bindings[0] = { mesh->material->baseColor ? mesh->material->baseColor->texture : defaultBaseColor, defaultSampler };
+        bindings[1] = { mesh->material->normal ? mesh->material->normal->texture : defaultNormal, defaultSampler };
+        bindings[2] = { mesh->material->orm ? mesh->material->orm->texture : defaultORM, defaultSampler };
+        bindings[3] = { mesh->material->emissive ? mesh->material->emissive->texture : defaultEmissive, defaultSampler };
+
+        SDL_BindGPUFragmentSamplers(pass, 0, bindings, 4);
 
         const DrawInfo& di = meshDrawInfo[mesh];
-
         for (auto* component : components) {
             auto model = component->GetModelMatrix(aspectRatio);
-
             auto mvp = frame.view->projectionMatrix * frame.view->viewMatrix * model;
             SDL_PushGPUVertexUniformData(frame.commandBuffer, 0, &mvp, sizeof(mvp));
             SDL_DrawGPUIndexedPrimitives(pass, di.indexCount, 1, di.firstIndex, di.vertexOffset, 0);
@@ -198,11 +202,11 @@ void WorldRenderer::RenderAndSubmit(FrameData& frame) {
 }
 
 bool WorldRenderer::Initialize() {
-    std::string vertShader = "shaders/TexturedQuadWithMatrix.vert.hlsl";
-    std::string fragShader = "shaders/TexturedQuad.frag.hlsl";
+    std::string vertShader = "shaders/MaterialQuadWithMatrix.vert.hlsl";
+    std::string fragShader = "shaders/MaterialQuad.frag.hlsl";
     
     ShaderOptions optionsFrag = {
-        .num_samplers = 1,
+        .num_samplers = 4,
         .num_storage_textures = 0,
         .num_storage_buffers = 0,
         .num_uniform_buffers = 0
@@ -234,12 +238,12 @@ bool WorldRenderer::Initialize() {
         SDL_Log("Failed to create Depth Stencils");
         return false;
     }
-
-    if (!CreateOffscreenTexture()) {
-        SDL_Log("Failed to create offscreen texture");
+    
+    if (!CreateDefaultTextures()) {
+        SDL_Log("Failed to create default textures");
         return false;
     }
-    
+
     if (!InitializeSamplers()) {
         SDL_Log("Failed to create Samplers");
         return false;
@@ -247,6 +251,11 @@ bool WorldRenderer::Initialize() {
 
     if (!InitializeBuffers()) {
         SDL_Log("Failed to create Buffers");
+        return false;
+    }
+
+    if (!CreateOffscreenTexture()) {
+        SDL_Log("Failed to create offscreen texture");
         return false;
     }
 
@@ -284,9 +293,11 @@ bool WorldRenderer::InitializeBuffers() {
 bool WorldRenderer::RenderTexture(const Texture* texture) {
     int w = texture->data->w;
     int h = texture->data->h;
-    uint32_t size = w * 4 * h;
 
-    uint32_t alignedSize = (size + 255) & ~255;
+
+    uint32_t rowPitch = w * 4;
+    uint32_t alignedRowPitch = (rowPitch + 255) & ~255;
+    uint32_t alignedSize = alignedRowPitch * h;
 
     SDL_GPUTransferBufferCreateInfo transferInfo{};
     transferInfo.size = alignedSize;
@@ -305,7 +316,10 @@ bool WorldRenderer::RenderTexture(const Texture* texture) {
         return false; 
     }
 
-    std::memcpy(ptr, texture->data->pixels, size);
+    uint8_t* srcPixels = static_cast<uint8_t*>(texture->data->pixels);
+    for (int row = 0; row < h; row++) {
+        std::memcpy(ptr + row * alignedRowPitch, srcPixels + row * rowPitch, rowPitch);
+    }
     SDL_UnmapGPUTransferBuffer(appstate.device, textureTransferBuffer);
 
     SDL_GPUCommandBuffer* cmd = SDL_AcquireGPUCommandBuffer(appstate.device);
@@ -495,6 +509,104 @@ bool WorldRenderer::CreateDepthStencil() {
     return true;
 }
 
+bool WorldRenderer::CreateDefaultTextures() {
+
+    uint8_t blue[4] = { 0, 168, 243, 255 };
+    // uint8_t white[4] = { 255, 255, 255, 255 };
+    uint8_t black[4] = { 0, 0, 0, 255 };
+    uint8_t normal[4] = { 128, 128, 255, 255 };
+    uint8_t orm[4] = { 255, 255, 0, 255 };
+
+    SDL_GPUTextureCreateInfo tex_info = {
+        .type = SDL_GPU_TEXTURETYPE_2D,
+        .format = SDL_GPU_TEXTUREFORMAT_R8G8B8A8_UNORM,
+        .usage = SDL_GPU_TEXTUREUSAGE_SAMPLER,
+        .width = 1,
+        .height = 1,
+        .layer_count_or_depth = 1,
+        .num_levels = 1,
+        .sample_count = SDL_GPU_SAMPLECOUNT_1,
+    };
+
+    if (!(defaultBaseColor = SDL_CreateGPUTexture(appstate.device, &tex_info))) {
+        SDL_Log("Failed to create default base color texture");
+        return false;
+    }
+
+    if (!(defaultNormal = SDL_CreateGPUTexture(appstate.device, &tex_info))) {
+        SDL_Log("Failed to create default normal texture");
+        return false;
+    }
+
+    if (!(defaultEmissive = SDL_CreateGPUTexture(appstate.device, &tex_info))) {
+        SDL_Log("Failed to create default emissive texture");
+        return false;
+    }
+    
+    if (!(defaultORM = SDL_CreateGPUTexture(appstate.device, &tex_info))) {
+        SDL_Log("Failed to create default orm texture");
+        return false;
+    }
+
+    uint32_t total_size = sizeof(blue) + sizeof(black) + sizeof(normal) + sizeof(orm);
+    SDL_GPUTransferBufferCreateInfo tb_info = {
+        .usage = SDL_GPU_TRANSFERBUFFERUSAGE_UPLOAD,
+        .size = total_size,
+    };
+
+    SDL_GPUTransferBuffer* tbuf = SDL_CreateGPUTransferBuffer(appstate.device, &tb_info);
+
+    uint8_t* ptr = (Uint8*)SDL_MapGPUTransferBuffer(appstate.device, tbuf, false);
+    uint32_t offset_blue = 0;
+    // uint32_t offset_white = offset_blue + sizeof(white);
+    uint32_t offset_black = offset_blue + sizeof(black);
+    uint32_t offset_normal = offset_black + sizeof(normal);
+    uint32_t offset_orm = offset_black + sizeof(orm);
+
+    SDL_memcpy(ptr + offset_blue, blue, sizeof(blue));
+    // SDL_memcpy(ptr + offset_white, white, sizeof(white));
+    SDL_memcpy(ptr + offset_black, black, sizeof(black));
+    SDL_memcpy(ptr + offset_normal, normal, sizeof(normal));
+    SDL_memcpy(ptr + offset_orm, orm, sizeof(orm));
+
+    SDL_UnmapGPUTransferBuffer(appstate.device, tbuf);
+
+    SDL_GPUCommandBuffer* cmd = SDL_AcquireGPUCommandBuffer(appstate.device);
+    SDL_GPUCopyPass* copy_pass = SDL_BeginGPUCopyPass(cmd);
+
+    SDL_GPUTextureTransferInfo src = { .transfer_buffer = tbuf };
+    SDL_GPUTextureRegion dst = { .w = 1, .h = 1, .d = 1 };
+
+    src.offset = offset_blue;
+    dst.texture = defaultBaseColor;
+    SDL_UploadToGPUTexture(copy_pass, &src, &dst, false);
+
+   /* src.offset = offset_white;
+    dst.texture = defaultAlbedo;
+    SDL_UploadToGPUTexture(copy_pass, &src, &dst, false);*/
+
+    src.offset = offset_black;
+    dst.texture = defaultEmissive;
+    SDL_UploadToGPUTexture(copy_pass, &src, &dst, false);
+
+    src.offset = offset_normal;
+    dst.texture = defaultNormal;
+    SDL_UploadToGPUTexture(copy_pass, &src, &dst, false);
+
+    src.offset = offset_orm;
+    dst.texture = defaultORM;
+    SDL_UploadToGPUTexture(copy_pass, &src, &dst, false);
+
+    SDL_EndGPUCopyPass(copy_pass);
+    if (!SDL_SubmitGPUCommandBuffer(cmd)) {
+        SDL_ReleaseGPUTransferBuffer(appstate.device, tbuf);
+        return false;
+    }
+
+    SDL_ReleaseGPUTransferBuffer(appstate.device, tbuf);
+    return true;
+}
+
 bool WorldRenderer::CreateMSAATexture() {
     int windowWidth, windowHeight;
     SDL_GetWindowSize(appstate.window, &windowWidth, &windowHeight);
@@ -530,6 +642,10 @@ bool WorldRenderer::CreateMSAATexture() {
 }
 
 DrawInfo WorldRenderer::UploadVertices(const std::vector<Vertex>& vertices, const std::vector<uint32_t>& indices) {
+    if (!vertexBuffer || !indexBuffer) {
+        SDL_Log("UploadVertices called before buffers were initialized!");
+        return {};
+    }
     uint32_t verticesSize = vertices.size() * sizeof(Vertex);
     uint32_t indicesSize = indices.size() * sizeof(uint32_t);
 
@@ -615,7 +731,21 @@ void WorldRenderer::RegisterMesh(MeshComponent* mesh) {
     if (!m) return;
 
     if (!meshes.contains(m)) {
-        if (m->texture) RenderTexture(m->texture);
+        Material* mat = m->material;
+        if (mat) {
+            if (mat->normal) {
+                RenderTexture(mat->normal);
+            }
+            if (mat->albedo) {
+                RenderTexture(mat->albedo);
+            }
+            if (mat->emissive) {
+                RenderTexture(mat->emissive);
+            }
+            if (mat->orm) {
+                RenderTexture(mat->orm);
+            }
+        }
         meshDrawInfo[m] = UploadVertices(m->vertices, m->indices);
     }
     meshes[m].push_back(mesh);

@@ -29,10 +29,6 @@ add_library(MatrixEngineLib SHARED
     # Core engine runtime
     "EngineFiles/Core/Game/Game.cpp"
 
-    # Asset pipeline
-    "EngineFiles/Core/Assets/AssetLoader/AssetLoader.cpp"
-    "EngineFiles/Core/Assets/DefaultAssets/DefaultAssets.cpp"
-
     # Rendering
     "EngineFiles/Core/ShaderManager/ShaderManager.cpp"
     "EngineFiles/Core/GameObject/World/WorldRenderer/WorldRenderer.cpp"
@@ -89,12 +85,19 @@ add_library(MatrixEditorLib STATIC
     "EngineFiles/Core/Editor/ContentBrowser/ContentBrowser.cpp"
     "EngineFiles/Core/Editor/ContentBrowser/ContentBrowserController/ContentBrowserController.cpp"
     "EngineFiles/Core/Editor/ProjectSelector/ProjectSelector.cpp"
- "EngineFiles/Core/Editor/ProjectLoader/ProjectLoader.cpp")
+    "EngineFiles/Core/Editor/ProjectLoader/ProjectLoader.cpp"
+
+    # Asset pipeline
+    "EngineFiles/Core/Assets/AssetLoader/AssetLoader.cpp"
+    "EngineFiles/Core/Assets/DefaultAssets/DefaultAssets.cpp"
+
+)
 
 target_link_libraries(MatrixEditorLib
     PUBLIC
         MatrixEngineLib
         imgui::imgui
+#       imguizmo::imguizmo
         nfd::nfd
 )
 
@@ -214,6 +217,7 @@ set(SDL_SHADERCROSS_MSL ON CACHE BOOL "" FORCE)
 add_subdirectory(${MATRIX_ENGINE_ROOT}/vendored/SDL_shadercross EXCLUDE_FROM_ALL)
 add_subdirectory(${MATRIX_ENGINE_ROOT}/vendored/glm EXCLUDE_FROM_ALL)
 add_subdirectory(${MATRIX_ENGINE_ROOT}/vendored/imgui EXCLUDE_FROM_ALL)
+# add_subdirectory(${MATRIX_ENGINE_ROOT}/vendored/ImGuizmo EXCLUDE_FROM_ALL)
 add_subdirectory(${MATRIX_ENGINE_ROOT}/vendored/nfd_extended EXCLUDE_FROM_ALL)
 add_subdirectory(${MATRIX_ENGINE_ROOT}/vendored/pugixml EXCLUDE_FROM_ALL)
 
@@ -237,11 +241,11 @@ install(TARGETS MatrixEngineLib
     RUNTIME DESTINATION lib    # the .dll
 )
 
-# Vendored static libs — use ARCHIVE for static, check exact target names
+# Vendored static libs
 install(FILES
     $<TARGET_FILE:SDL3-shared>
     $<TARGET_LINKER_FILE:SDL3-shared>
-    $<TARGET_FILE:SDL3_image-static>
+    # $<TARGET_FILE:SDL3_image-static>
     $<TARGET_FILE:zlibstatic>
     $<TARGET_FILE:assimp>
     $<TARGET_FILE:SDL3_shadercross-shared>

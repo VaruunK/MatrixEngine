@@ -196,7 +196,6 @@ bool ViewportRenderer::InitializeSamplers() {
     return true;
 }
 
-
 void ViewportRenderer::RenderSelectProxy(SDL_GPUCommandBuffer* commandBuffer) {
     ResetIds();
 

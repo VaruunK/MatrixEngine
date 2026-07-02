@@ -8,7 +8,7 @@
 // what owns gizmos? gizmo state?
 
 Editor::Editor(Appstate& appstate, Game* game)
-	: appstate(appstate),
+	: appstate(appstate), contentBrowser(appstate),
 	viewport(appstate, game->world.GetWorldRenderer()),
 	editorRenderer(appstate, info, game->world.GetWorldRenderer()) {
 
@@ -42,6 +42,39 @@ Editor::Editor(Appstate& appstate, Game* game)
 }
 
 Editor::~Editor() {
+	for (auto& [path, texture] : textures) {
+		if (texture) {
+			if (texture->texture) {
+				SDL_ReleaseGPUTexture(appstate.device, texture->texture);
+				texture->texture = nullptr;
+			}
+			if (texture->data) {
+				SDL_DestroySurface(texture->data);
+				texture->data = nullptr;
+			}
+			delete texture;
+			texture = nullptr;
+		}
+	}
+	for (auto& [path, mesh] : meshes) {
+		if (mesh) {
+			mesh->vertices.clear();
+			mesh->indices.clear();
+			delete mesh;
+			mesh = nullptr;
+		}
+	}
+
+	for (auto& [path, material] : materials) {
+		if (material) {
+			delete material;
+			material = nullptr;
+		}
+	}
+	textures.clear();
+	meshes.clear();
+	materials.clear();
+
 	selectedEntities.clear();
 }
 
