@@ -165,9 +165,9 @@ Mesh* AssetLoader::ImportMesh(const std::filesystem::path& meshFilePath) {
     return newMesh;
 }
 
-void AssetLoader::WriteMesh(const std::filesystem::path& meshFilePath, Mesh* mesh) {
-    std::ofstream asset(meshFilePath, std::ios::binary);
-    if (!asset) throw std::runtime_error("Failed to open file for writing: " + meshFilePath.string());
+void AssetLoader::WriteMesh(const std::filesystem::path& filePath, Mesh* mesh) {
+    std::ofstream asset(filePath, std::ios::binary);
+    if (!asset) throw std::runtime_error("Failed to open file for writing: " + filePath.string());
 
     MeshFileHeader header;
     header.vertexCount = static_cast<uint32_t>(mesh->vertices.size());

@@ -46,6 +46,8 @@ private:
 	SDL_GPUTexture* offscreenTexture = nullptr;
 	SDL_GPUSampler* offscreenSampler = nullptr;
 
+	bool moveMode = false;
+
 	int mouseClickX = -1;
 	int mouseClickY = -1;
 };

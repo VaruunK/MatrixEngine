@@ -137,7 +137,7 @@ void ProjectSelector::SelectGameDirectory() {
     };
     nfdresult_t result = NFD_PickFolderU8_With(&outPath, &args);
     if (result == NFD_OKAY) {
-        printf("Selected folder: %s\n", outPath);
+        // printf("Selected folder: %s\n", outPath);
 
         gameDirectory.text().set(outPath);
         gameDirectoryString = std::string(outPath);

@@ -42,7 +42,7 @@ public:
     Texture* ImportTexture(const std::filesystem::path& textureFilePath);
     
     Mesh* ImportMesh(const std::filesystem::path& meshFilePath);
-    void WriteMesh(const std::filesystem::path& meshFilePath, Mesh* mesh);
+    void WriteMesh(const std::filesystem::path& filePath, Mesh* mesh);
 
     Mesh* ReadMesh(const std::filesystem::path& meshFilePath);
 

@@ -1,17 +1,17 @@
 #pragma once
+
+#ifdef MATRIX_EDITOR
 #include "Core/GameObject/Controller/Controller.hpp"
 
-class ContentBrowser;
-
 class ContentBrowserController : public Controller {
-	friend class ContentBrowser;
 public:
-	ContentBrowserController(ContentBrowser* contentBrowser);
+	ContentBrowserController();
 
 	void Start() override;
 	void Tick(uint64_t deltaTime) override;
 
 	void DestroyGameObject() override;
 private:
-	ContentBrowser* contentBrowser;
 };
+
+#endif

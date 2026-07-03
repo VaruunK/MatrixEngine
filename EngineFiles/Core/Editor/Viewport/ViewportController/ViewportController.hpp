@@ -6,7 +6,7 @@ class Viewport;
 
 class ViewportController : public Controller {
 public:
-	ViewportController(Viewport* viewport);
+	ViewportController();
 	~ViewportController() = default;
 
 	void Start() override;
@@ -14,8 +14,4 @@ public:
 	
 	void DestroyGameObject() override;
 private:
-	Viewport* viewport;
-
-	bool leftClicking = false;
-	bool moveMode = false;
 };

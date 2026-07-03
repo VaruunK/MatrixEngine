@@ -9,28 +9,55 @@ public:
 	ContentBrowser(Appstate& appstate);
 	void Render(bool* active);
 	void Tick(float deltaTime);
-
-	void OpenLockPopup();
-	void CloseLockPopup();
 private:
 	enum AssetType {
-		MESH, 
+		MESH,
 		TEXTURE,
 		MATERIAL,
 		NONE
 	};
 
-	void RenderLockPopup();
+	void ImportNewAsset();
+
+	void RenderBreadcrumb();
 	void RenderContentFolder(const std::filesystem::path& path);
 	
+	void RenderRightClickPopup();
+	void RenderImportMeshModel();
+	void RenderDeleteFileModel();
+
+	void RenderRenaming(const std::filesystem::path& path, std::string& name);
+	void SetRenamePath();
+	void SetDeletePath();
+
+	std::filesystem::path importFile;
+	std::filesystem::path renamingFile;
+	std::filesystem::path deleteFile;
+	
+	AssetType importAssetType = NONE;
+
+	std::vector<std::filesystem::path> history;
+	size_t historyIndex = 0;
+	std::filesystem::path currentPath;
+
+	std::filesystem::path hoveredItem;   // item under the mouse this frame
+	std::filesystem::path selectedItem;  // item the user clicked
+
 	ContentBrowserController controller;
 
 	Appstate& appstate;
 
-	bool wasFocused = false;
-	
+	char importAssetName[64]{};
+	char renameBuffer[64]{};
+
+	bool renameFocusRequested = false;
+
 	bool locked = false;
 	bool unlocked = true;
-	bool lockPopup = false;
 
+	bool f2RenamePending = false;
+	bool wasFocused = false;
+
+	bool popup = false;
+	bool deleteFilePopup = false;
 };
