@@ -1,4 +1,6 @@
 #pragma once
+
+#ifdef MATRIX_EDITOR
 #include "Core/Structs/View.hpp"
 #include <glm/glm.hpp>
 
@@ -42,3 +44,5 @@ private:
 
 	View view;
 };
+
+#endif

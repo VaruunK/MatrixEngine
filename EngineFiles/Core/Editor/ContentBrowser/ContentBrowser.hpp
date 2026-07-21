@@ -1,4 +1,6 @@
 #pragma once
+
+#ifdef MATRIX_EDITOR
 #include "Core/Editor/ContentBrowser/ContentBrowserController/ContentBrowserController.hpp"
 #include <filesystem>
 
@@ -61,3 +63,5 @@ private:
 	bool popup = false;
 	bool deleteFilePopup = false;
 };
+
+#endif

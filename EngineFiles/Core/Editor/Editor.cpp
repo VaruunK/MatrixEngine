@@ -3,6 +3,8 @@
 #include "Core/GameObject/World/World.hpp"
 #include "Core/Event/EventBUS/EngineEventBUS.hpp"
 #include <iostream>
+#include <array>
+#include <string>
 
 // does editor need selected objects? or viewport? 
 // what owns gizmos? gizmo state?
@@ -32,13 +34,53 @@ Editor::Editor(Appstate& appstate, Game* game)
 			} else {
 				selectedEntities.insert(entity);
 			}
-			for (Entity* e : selectedEntities) {
-				std::cout << e << std::endl;
+			std::array ar = { "public", "protected", "private" };
+			for (auto* entity : selectedEntities) {
+				const ReflectedClass& rc = entity->GetClass();
+
+				std::cout << "Name: " << rc.name << std::endl;
+				std::cout << "Parent: " << rc.parent << std::endl;
+
+				for (auto& access : ar) {
+					std::cout << access << " fields" << std::endl;
+					auto it = rc.fields.find(access);
+					if (it != rc.fields.end()) {
+						for (auto& field : it->second) {
+							std::cout << field.typeName << ": " << field.name << std::endl;
+						}
+					}
+					std::cout << "\n" << std::endl;
+				}
+
+				for (auto& access : ar) {
+					std::cout << access << " functions" << std::endl;
+					auto it = rc.functions.find(access);
+					if (it != rc.functions.end()) {
+						for (auto& func : it->second) {
+							std::cout << func.returnType << ": " << func.name << std::endl;
+							if (func.arguments.size() > 0) {
+								for (auto& [name, argType] : func.arguments) {
+									std::cout << "\t" << argType << ": " << name << std::endl;
+								}
+							}
+						}
+					}
+					std::cout << "\n" << std::endl;
+				}
 			}
+			
 		} else {
 			selectedEntities.clear();
 		}
 	});
+
+	GEventBUS.Subscribe(EVENT_GAME_START, [this]() {
+		this->game->Start();
+		});
+
+	GEventBUS.Subscribe(EVENT_GAME_END, [this]() {
+		this->game->Quit();
+		});
 }
 
 Editor::~Editor() {

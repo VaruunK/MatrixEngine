@@ -1,4 +1,7 @@
 #pragma once
+
+#ifdef MATRIX_EDITOR
+
 #include "Core/Structs/RenderStructs.hpp"
 #include <string>
 #include <unordered_map>
@@ -83,3 +86,5 @@ private:
 	bool wasFocused = false;
 	int speed = 1;
 };
+
+#endif

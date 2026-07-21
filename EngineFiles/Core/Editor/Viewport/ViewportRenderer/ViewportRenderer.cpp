@@ -126,17 +126,29 @@ void ViewportRenderer::Render(FrameData& frame) {
         }
 
         ImGui::SameLine();
-        ImGui::PushStyleColor(ImGuiCol_Button, (ImVec4)ImColor::HSV(2 / 7.0f, 0.6f, 0.6f));
-        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, (ImVec4)ImColor::HSV(2 / 7.0f, 0.7f, 0.7f));
-        ImGui::PushStyleColor(ImGuiCol_ButtonActive, (ImVec4)ImColor::HSV(2 / 7.0f, 0.8f, 0.8f));
 
         static int clicked = 0;
         
-        if (ImGui::Button("Play"))
-            clicked++;
-        if (clicked & 1) {
+        if (clicked == 0) {
+            ImGui::PushStyleColor(ImGuiCol_Button, (ImVec4)ImColor::HSV(2 / 7.0f, 0.6f, 0.6f));
+            ImGui::PushStyleColor(ImGuiCol_ButtonHovered, (ImVec4)ImColor::HSV(2 / 7.0f, 0.7f, 0.7f));
+            ImGui::PushStyleColor(ImGuiCol_ButtonActive, (ImVec4)ImColor::HSV(2 / 7.0f, 0.8f, 0.8f));
 
+            if (ImGui::Button("Play")) {
+                clicked = ((clicked++) % 2);
+                GEventBUS.Notify(EVENT_GAME_START);
+            }
+        } else {
+            ImGui::PushStyleColor(ImGuiCol_Button, (ImVec4)ImColor::HSV(0 / 7.0f, 0.6f, 0.6f));
+            ImGui::PushStyleColor(ImGuiCol_ButtonHovered, (ImVec4)ImColor::HSV(0 / 7.0f, 0.7f, 0.7f));
+            ImGui::PushStyleColor(ImGuiCol_ButtonActive, (ImVec4)ImColor::HSV(0 / 7.0f, 0.8f, 0.8f));
+
+            if (ImGui::Button("Quit")) {
+                clicked = ((clicked++) % 2);
+                GEventBUS.Notify(EVENT_GAME_END);
+            }
         }
+        
         ImGui::PopStyleColor(3);
 
         ImVec2 imagePos = ImGui::GetCursorScreenPos();

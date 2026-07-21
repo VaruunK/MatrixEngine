@@ -12,6 +12,8 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIG>")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIG>/lib")
 set(CMAKE_COMPILE_PDB_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIG>/lib")
 set(CMAKE_PDB_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIG>/lib")
+set(REFLECTOR_BUILD_DIR "${CMAKE_BINARY_DIR}/reflector")
+set(REFLECTOR_SOURCE_DIR "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/Reflection")
 
 foreach(CONFIG_TYPE ${CMAKE_CONFIGURATION_TYPES})
     string(TOUPPER ${CONFIG_TYPE} CONFIG_TYPE_UPPER)
@@ -21,6 +23,63 @@ foreach(CONFIG_TYPE ${CMAKE_CONFIGURATION_TYPES})
     set(CMAKE_COMPILE_PDB_OUTPUT_DIRECTORY_${CONFIG_TYPE_UPPER} "${CMAKE_BINARY_DIR}/${CONFIG_TYPE}/lib")
     set(CMAKE_PDB_OUTPUT_DIRECTORY_${CONFIG_TYPE_UPPER} "${CMAKE_BINARY_DIR}/${CONFIG_TYPE}/lib")
 endforeach()
+
+message(STATUS "Configuring Reflector tool...")
+execute_process(
+    COMMAND ${CMAKE_COMMAND} -S "${REFLECTOR_SOURCE_DIR}" -B "${REFLECTOR_BUILD_DIR}"
+    RESULT_VARIABLE REFLECTOR_CONFIGURE_RESULT
+)
+if(NOT REFLECTOR_CONFIGURE_RESULT EQUAL 0)
+    message(FATAL_ERROR "Failed to configure Reflector tool")
+endif()
+
+message(STATUS "Building Reflector tool...")
+execute_process(
+    COMMAND ${CMAKE_COMMAND} --build "${REFLECTOR_BUILD_DIR}" --config Release
+    RESULT_VARIABLE REFLECTOR_BUILD_RESULT
+)
+if(NOT REFLECTOR_BUILD_RESULT EQUAL 0)
+    message(FATAL_ERROR "Failed to build Reflector tool")
+endif()
+
+find_program(REFLECTOR_EXECUTABLE
+    NAMES Reflector
+    PATHS "${REFLECTOR_BUILD_DIR}/Release" "${REFLECTOR_BUILD_DIR}"
+    NO_DEFAULT_PATH
+)
+if(NOT REFLECTOR_EXECUTABLE)
+    message(FATAL_ERROR "Could not find built Reflector executable")
+endif()
+
+set(REFLECTED_HEADERS
+    # Game required headers
+    "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/GameObject/GameObject.hpp"
+    "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/GameObject/World/World.hpp"
+    "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/GameObject/Controller/Controller.hpp"
+    "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/GameObject/Entity/Entity.hpp"
+
+    # Components
+    "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/GameObject/Component/Component.hpp"
+    "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
+    "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/GameObject/Component/SpriteComponent/SpriteComponent.hpp"
+)
+
+message(STATUS "Running Reflector over engine headers...")
+execute_process(
+    COMMAND "${REFLECTOR_EXECUTABLE}" "${CMAKE_BINARY_DIR}/.reflected" ${REFLECTED_HEADERS}
+    RESULT_VARIABLE REFLECTOR_RUN_RESULT
+)
+if(NOT REFLECTOR_RUN_RESULT EQUAL 0)
+    message(FATAL_ERROR "Reflector tool failed to run")
+endif()
+
+file(GLOB REFLECTED_SOURCES "${CMAKE_BINARY_DIR}/.reflected/*.reflected.cpp")
+message(STATUS "Found reflected sources:")
+foreach(REFLECTED ${REFLECTED_SOURCES})
+    message(STATUS "  ${REFLECTED}")
+endforeach()
+
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS ${REFLECTED_HEADERS})
 
 # -----------------------------
 # Engine LIBRARY
@@ -48,8 +107,7 @@ add_library(MatrixEngineLib SHARED
     "EngineFiles/Core/Event/EventBUS/EngineEventBUS.cpp"
     "EngineFiles/Core/TickManager/TickManager.cpp"
 
-    # Reflection
-    "EngineFiles/Core/Reflection/Read/ReflectFileReader.cpp"
+    ${REFLECTED_SOURCES}
 )
 
 target_compile_definitions(MatrixEngineLib
@@ -224,6 +282,7 @@ add_subdirectory(${MATRIX_ENGINE_ROOT}/vendored/pugixml EXCLUDE_FROM_ALL)
 target_include_directories(MatrixEngineLib
     PUBLIC
         ${MATRIX_ENGINE_ROOT}/EngineFiles
+        ${CMAKE_BINARY_DIR}/.reflected
 )
 
 target_include_directories(MatrixEditorLib

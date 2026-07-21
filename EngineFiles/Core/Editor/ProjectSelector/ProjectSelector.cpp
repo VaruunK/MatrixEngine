@@ -340,17 +340,19 @@ void ProjectSelector::CreateNewGameFiles(std::string& newGamePath, char* newGame
     hpp << "class " << newGameName << " : public Game {\n";
     hpp << "public:\n";
     hpp << "\tusing Game::Game;\n";
+    hpp << "\tvoid Initialize(std::string& name, std::string& iconFilePath) override;\n";
     hpp << "\tvoid Start() override;\n";
     hpp << "\tvoid Tick(float deltaTime) override;\n";
-    hpp << "\tvoid Shutdown() override;\n";
+    hpp << "\tvoid Quit() override;\n";
     hpp << "};";
     hpp.close();
 
     std::ofstream cpp(newGamePath + "\\" + newGameName + ".cpp");
     cpp << "#include \"" << newGameName << ".hpp\"\n\n";
-    cpp << "void " << newGameName << "::Start() {}\n\n";
-    cpp << "void " << newGameName << "::Tick(float deltaTime) {}\n\n";
-    cpp << "void " << newGameName << "::Shutdown() {}\n\n";
+    cpp << "void " << newGameName << "::Initialize(std::string& name, std::string& iconFilePath) {\nGame::Initialize(name, iconFilePath);\n}\n\n";
+    cpp << "void " << newGameName << "::Start() {\nGame::Start();\n}\n\n";
+    cpp << "void " << newGameName << "::Tick(float deltaTime) {\nGame::Tick(deltaTime);\n}\n\n";
+    cpp << "void " << newGameName << "::Quit() {\nGame::Quit();\n}\n\n";
     cpp << "extern \"C\" __declspec(dllexport) Game* CreateGame(Appstate& appstate) {\n";
     cpp << "\treturn new " << newGameName << "(appstate);\n";
     cpp << "}\n";
@@ -397,12 +399,9 @@ void ProjectSelector::CreateNewGameFiles(std::string& newGamePath, char* newGame
     cmake << "\t\t$<TARGET_FILE_DIR:" << newGameName << ">\n";
     cmake << "\tCOMMENT \"Copying runtime DLLs\"\n";
     cmake << ")\n";
-    //cmake << "add_custom_command(TARGET " << newGameName << " POST_BUILD\n";
-    //cmake << "\tCOMMAND ${CMAKE_COMMAND} -E copy_if_different\n";
-    //cmake << "\t\t\"${CMAKE_SOURCE_DIR}/Content\"\n";
-    //cmake << "\t\t$<TARGET_FILE_DIR:" << newGameName << ">\n";
-    //cmake << "\tCOMMENT \"Copying Content\"\n";
-    //cmake << ")\n";
+
+
+
     cmake.close();
 
     std::filesystem::create_directory(newGamePath + "\\Source");

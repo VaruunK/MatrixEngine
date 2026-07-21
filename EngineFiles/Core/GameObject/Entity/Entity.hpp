@@ -9,12 +9,16 @@
 #include <type_traits>
 #include <optional>
 #include <memory>
+#include "Entity.reflected.hpp"
 
 class Level;
 
+CLASS()
 class MATRIX_API Entity : public GameObject {
-public:
+	
+	REFLECTION()
 
+public:
 	// No copy
 	Entity(const Entity&) = delete;
 	Entity& operator=(const Entity&) = delete;
@@ -26,20 +30,40 @@ public:
 	Entity(Level* level);
 	~Entity() = default;
 
+	FUNCTION()
 	virtual void Start() override;
+	
+	FUNCTION()
 	virtual void Tick(uint64_t deltaTime) override;
+
+	FUNCTION()
 	virtual void DestroyGameObject() override;
 
+	FUNCTION()
 	Transform GetTransform() const { return transform; }
+	
+	FUNCTION()
 	glm::vec3 GetLocation() const { return transform.location; }
+	
+	FUNCTION()
 	glm::vec3 GetRotation() const { return transform.rotation; }
+	
+	FUNCTION()
 	glm::vec3 GetScale() const { return transform.scale; }
 
+	FUNCTION()
 	Transform SetTransform(Transform transform);
+	
+	FUNCTION()
 	glm::vec3 SetLocation(glm::vec3 location);
+	
+	FUNCTION()
 	glm::vec3 SetRotation(glm::vec3 rotation);
+	
+	FUNCTION()
 	glm::vec3 SetScale(glm::vec3 scale);
 
+	FUNCTION()
 	Level* GetLevel() { return currentLevel; }
 
 	template<typename ComponentType>
@@ -69,9 +93,15 @@ public:
 	}
 
 protected:
+
+	FIELD()
 	Transform transform;
 private:
 	void UpdateComponentTransforms();
+	
+	FIELD()
 	std::unordered_map<std::type_index, std::unique_ptr<Component>> components;
+	
+	FIELD()
 	Level* currentLevel;
 };

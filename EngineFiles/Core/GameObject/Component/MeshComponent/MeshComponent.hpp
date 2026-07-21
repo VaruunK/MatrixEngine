@@ -2,26 +2,38 @@
 
 #include "Core/MatrixAPI.hpp"
 #include "Core/GameObject/Component/Component.hpp"
+#include "MeshComponent.reflected.hpp"
 
 class Entity;
 
 struct Mesh;
 struct Texture;
 
+CLASS()
 class MATRIX_API MeshComponent : public Component {
+    REFLECTION()
 public:
     MeshComponent(Entity* owner);
 
+    FUNCTION()
     void Start() override;
+    FUNCTION()
     void Tick(uint64_t deltaTime) override {}
+    FUNCTION()
     void DestroyGameObject() override;
 
-    const Mesh* GetMesh() { return mesh; }
-    const glm::mat4 GetModelMatrix(float windowAspectRatio);
+    FUNCTION()
+    Mesh* GetMesh() { return mesh; }
 
+    FUNCTION()
+    glm::mat4 GetModelMatrix(float windowAspectRatio);
+
+    FUNCTION()
     void SetMesh(Mesh* mesh);
-    void SetTexture(Texture* texture);
+    /*FUNCTION()
+    void SetTexture(Texture* texture);*/
 
 private:
+    FIELD()
 	Mesh* mesh = nullptr;
 };

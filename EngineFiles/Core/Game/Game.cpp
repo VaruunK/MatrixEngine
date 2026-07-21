@@ -28,22 +28,27 @@ void Game::Start() {
 
     SDL_Surface* icon = IMG_Load("Engine.png");
 
-    if (!icon) {
-        SDL_Log("couldn't load icon: %s", SDL_GetError());
-    }
-    else {
-        SDL_SetWindowIcon(appstate.window, icon);
-        SDL_DestroySurface(icon);
-    }
+    //if (!icon) {
+    //    SDL_Log("couldn't load icon: %s", SDL_GetError());
+    //}
+    //else {
+    //    SDL_SetWindowIcon(appstate.window, icon);
+    //    SDL_DestroySurface(icon);
+    //}
 
-    if (!SDL_ClaimWindowForGPUDevice(appstate.device, appstate.window)) {
-        SDL_Log("Failed to claim window: %s", SDL_GetError());
-        // throw runtime error
-    }
+    //if (!SDL_ClaimWindowForGPUDevice(appstate.device, appstate.window)) {
+    //    SDL_Log("Failed to claim window: %s", SDL_GetError());
+    //    // throw runtime error
+    //}
 }
 
 void Game::Tick(float deltaTime) {
     world.Tick(deltaTime);
+}
+
+void Game::Quit() {
+    running.store(false);
+    Shutdown();
 }
 
 void Game::Shutdown() {

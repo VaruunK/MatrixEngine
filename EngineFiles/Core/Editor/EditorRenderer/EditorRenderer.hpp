@@ -1,5 +1,7 @@
 #pragma once
 
+#ifdef MATRIX_EDITOR
+
 class WorldRenderer;
 class Entity;
 class MeshComponent;
@@ -34,3 +36,5 @@ private:
 
 	Appstate& appstate;
 };
+
+#endif

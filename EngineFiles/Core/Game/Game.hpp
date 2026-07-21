@@ -23,14 +23,16 @@ public:
 	Game(Game&&) = delete;
 	Game& operator=(Game&&) = delete;
 
-	void Initialize(std::string& name, std::string& iconFilePath);
+	virtual void Initialize(std::string& name, std::string& iconFilePath);
 	
 	virtual void Start();
 	virtual void Tick(float deltaTime);
-	virtual void Shutdown();
+	virtual void Quit();
 
 	World world;
 private:
+	void Shutdown();
+
 	SDL_GPUDevice* CreateDevice();
 	SDL_Window* CreateWindow();
 	

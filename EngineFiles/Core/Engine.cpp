@@ -136,21 +136,14 @@ int Engine::Run() {
 
     std::cout << selectedGamePath << std::endl;
 
-    std::string levelName = "Mainlevel";
-    std::string filePath = "";
-    game->Initialize(levelName, filePath);
-
     editor = new Editor(appstate, game);
 
     Level* level = game->world.GetLevel("Mainlevel");
+
     running.store(true);
-    // threads.emplace_back(&PhysicsManager::Run, physicsManager.get(), MAX_PHYSICS_FRAMES);
-    // world->Start();
 
     Uint64 frequency = SDL_GetPerformanceFrequency();
     Uint64 lastCounter = SDL_GetPerformanceCounter();
-    
-    SpriteComponent* spriteComponent = nullptr;
 
     Mesh* freddy = AssetLoader::Get().ImportMesh("Content/freddy.gltf");
     Material* freddyMat = new Material{};
@@ -229,8 +222,8 @@ int Engine::Run() {
             }
         }*/
 
-        agent1->SetRotation(glm::vec3(agent1->GetRotation().x, agent1->GetRotation().y + 1, agent1->GetRotation().z));
-        agent2->SetRotation(glm::vec3(agent2->GetRotation().x, agent2->GetRotation().y + 1, agent2->GetRotation().z));
+        /*agent1->SetRotation(glm::vec3(agent1->GetRotation().x, agent1->GetRotation().y + 1, agent1->GetRotation().z));
+        agent2->SetRotation(glm::vec3(agent2->GetRotation().x, agent2->GetRotation().y + 1, agent2->GetRotation().z));*/
     }
     for (auto& thread : threads) {
         if (thread.joinable()) {

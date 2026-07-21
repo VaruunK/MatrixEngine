@@ -1,12 +1,17 @@
 #pragma once
 
 #include "Core/MatrixAPI.hpp"
+#include "Core/GameObject/Macros/GameObjectMacros.hpp"
 #include <cstdint>
+#include "GameObject.reflected.hpp"
 
 class World;
 class Level;
+class ReflectedClass;
 
+CLASS()
 class MATRIX_API GameObject {
+	REFLECTION()
 public:
 	GameObject();
 
@@ -18,12 +23,20 @@ public:
 	GameObject(GameObject&&) = delete;
 	GameObject& operator=(GameObject&&) = delete;
 
+	FUNCTION()
 	virtual void Start();
+	
+	FUNCTION()
 	virtual void Tick(uint64_t deltaTime);
+	
+	FUNCTION()
 	virtual void DestroyGameObject();
 
+	FIELD()
 	bool canTick;
 protected:
 private:
+
+	FIELD()
 	bool hasStarted;
 };

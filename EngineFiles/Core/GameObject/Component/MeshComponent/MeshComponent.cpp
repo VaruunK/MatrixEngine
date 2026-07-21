@@ -15,7 +15,7 @@ void MeshComponent::DestroyGameObject() {
     owner->GetLevel()->GetWorld()->DeregisterMesh(this);
 }
 
-const glm::mat4 MeshComponent::GetModelMatrix(float windowAspectRatio) {
+glm::mat4 MeshComponent::GetModelMatrix(float windowAspectRatio) {
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, GetComponentLocation());
 

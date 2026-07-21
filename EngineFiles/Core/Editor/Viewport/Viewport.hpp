@@ -1,4 +1,6 @@
 #pragma once
+
+#ifdef MATRIX_EDITOR
 #include "Core/Editor/Viewport/ViewportController/ViewportController.hpp"
 #include "Core/Editor/Viewport/ViewportRenderer/ViewportRenderer.hpp"
 #include "Core/Editor/Viewport/ViewportCamera/ViewportCamera.hpp"
@@ -51,3 +53,5 @@ private:
 	int mouseClickX = -1;
 	int mouseClickY = -1;
 };
+
+#endif

@@ -3,12 +3,14 @@
 #include "Core/MatrixAPI.hpp"
 #include "Core/GameObject/GameObject.hpp"
 #include "Core/GameObject/World/WorldRenderer/WorldRenderer.hpp"
+#include "Core/GameObject/Macros/GameObjectMacros.hpp"
 #include "Level/Level.hpp"
 #include <atomic>
 #include <string>
 #include <memory>
 #include <mutex>
 #include <unordered_map>
+#include "World.reflected.hpp"
 
 class TickManager;
 class WorldRenderer;
@@ -20,7 +22,11 @@ struct SDL_GPUCommandBuffer;
 struct SDL_GPUTexture;
 struct FrameData;
 
+CLASS()
 class MATRIX_API World : public GameObject {
+
+	REFLECTION()
+
 public:
 	World(Appstate& appstate);
 	~World();
@@ -34,32 +40,48 @@ public:
 	World& operator=(World&&) = delete;
 
 	Level* Initialize(const std::string& startLevelName);
+	
+	FUNCTION()
 	void Start() override;
+	
+	FUNCTION()
 	void Tick(uint64_t deltaTime);
+	
+	FUNCTION()
 	void DestroyGameObject() override;
 	
+	FUNCTION()
 	bool IsRunning() { return running.load(); }
 	
 	void Render();
 
-	std::unordered_map<std::string, Level*>& GetAllLevels() { return levels; }
-	
+	FUNCTION()
 	Level* GetLevel(const std::string& levelName);
+	
 	Level* CreateLevel(const std::string& levelName);
 
+	// FUNCTION()
 	bool LoadLevel(const std::string& levelName);
+	
+	// FUNCTION()
 	bool LoadLevel(Level* level);
 
+	// FUNCTION()
 	void SwitchToLevel(std::string& levelName);
+	
+	// FUNCTION()
 	void SwitchToLevel(Level* level);
+
+	void SetDeltaTime(uint64_t deltaTime) { deltaSeconds = deltaTime; }
+
+	FIELD()
+	std::unordered_map<std::string, Level*> levels;
 
 	void RegisterMesh(MeshComponent* mesh);
 	void DeregisterMesh(MeshComponent* mesh);
 
 	void RegisterSprite(SpriteComponent* sprite);
 	void DeregisterSprite(SpriteComponent* sprite);
-
-	void SetDeltaTime(uint64_t deltaTime) { deltaSeconds = deltaTime; }
 
 	WorldRenderer& GetWorldRenderer() { return renderer; }
 protected:
@@ -72,7 +94,7 @@ private:
 	std::atomic<bool> running = false;
 	std::atomic<bool> paused = false;
 
-	std::unordered_map<std::string, Level*> levels;
+
 	std::vector<Level*> loadedLevels;
 	Level* mainLevel = nullptr;
 

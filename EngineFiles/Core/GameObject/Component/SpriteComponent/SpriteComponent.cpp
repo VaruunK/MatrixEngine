@@ -15,7 +15,7 @@ void SpriteComponent::DestroyGameObject() {
     owner->GetLevel()->GetWorld()->DeregisterSprite(this);
 }
 
-const glm::mat4 SpriteComponent::GetModelMatrix(float windowAspectRatio) {
+glm::mat4 SpriteComponent::GetModelMatrix(float windowAspectRatio) {
     
     float imageAspectRatio = static_cast<float>(texture->data->w) /
         static_cast<float>(texture->data->h);
