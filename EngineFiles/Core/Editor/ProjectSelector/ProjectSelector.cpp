@@ -366,16 +366,16 @@ void ProjectSelector::CreateNewGameFiles(std::string& newGamePath, char* newGame
 
     cmake << "add_library(MatrixEngineLib SHARED IMPORTED GLOBAL)\n";
     cmake << "set_target_properties(MatrixEngineLib PROPERTIES\n";
-    cmake << "\tIMPORTED_LOCATION_DEBUG          \"${MATRIX_ENGINE_INSTALL}/lib/MatrixEngineLib.dll\"\n";
-    cmake << "\tIMPORTED_LOCATION_RELEASE        \"${MATRIX_ENGINE_INSTALL}/lib/MatrixEngineLib.dll\"\n";
-    cmake << "\tIMPORTED_LOCATION_MINSIZEREL     \"${MATRIX_ENGINE_INSTALL}/lib/MatrixEngineLib.dll\"\n";
-    cmake << "\tIMPORTED_LOCATION_RELWITHDEBINFO \"${MATRIX_ENGINE_INSTALL}/lib/MatrixEngineLib.dll\"\n";
-    cmake << "\tIMPORTED_IMPLIB_DEBUG            \"${MATRIX_ENGINE_INSTALL}/lib/MatrixEngineLib.lib\"\n";
-    cmake << "\tIMPORTED_IMPLIB_RELEASE          \"${MATRIX_ENGINE_INSTALL}/lib/MatrixEngineLib.lib\"\n";
-    cmake << "\tIMPORTED_IMPLIB_MINSIZEREL       \"${MATRIX_ENGINE_INSTALL}/lib/MatrixEngineLib.lib\"\n";
-    cmake << "\tIMPORTED_IMPLIB_RELWITHDEBINFO   \"${MATRIX_ENGINE_INSTALL}/lib/MatrixEngineLib.lib\"\n";
-    cmake << "\tINTERFACE_INCLUDE_DIRECTORIES    \"${MATRIX_ENGINE_INSTALL}/include/MatrixEngine;${MATRIX_ENGINE_INSTALL}/include\"\n";
-    cmake << "\tINTERFACE_LINK_LIBRARIES         \"${MATRIX_ENGINE_INSTALL}/lib/SDL3d.lib;${MATRIX_ENGINE_INSTALL}/lib/SDL3_image-staticd.lib;${MATRIX_ENGINE_INSTALL}/lib/zlibstaticd.lib;${MATRIX_ENGINE_INSTALL}/lib/assimp-vc143-mtd.lib;${MATRIX_ENGINE_INSTALL}/lib/SDL3_shadercrossd.lib;${MATRIX_ENGINE_INSTALL}/lib/pugixmld.lib\"\n";
+    cmake << "\tIMPORTED_LOCATION_DEBUG          \"${MATRIX_ENGINE_INSTALL}/Debug/lib/MatrixEngineLib.dll\"\n";
+    cmake << "\tIMPORTED_LOCATION_RELEASE        \"${MATRIX_ENGINE_INSTALL}/Release/lib/MatrixEngineLib.dll\"\n";
+    cmake << "\tIMPORTED_LOCATION_MINSIZEREL     \"${MATRIX_ENGINE_INSTALL}/Release/lib/MatrixEngineLib.dll\"\n";
+    cmake << "\tIMPORTED_LOCATION_RELWITHDEBINFO \"${MATRIX_ENGINE_INSTALL}/Release/lib/MatrixEngineLib.dll\"\n";
+    cmake << "\tIMPORTED_IMPLIB_DEBUG            \"${MATRIX_ENGINE_INSTALL}/Debug/lib/MatrixEngineLib.lib\"\n";
+    cmake << "\tIMPORTED_IMPLIB_RELEASE          \"${MATRIX_ENGINE_INSTALL}/Release/lib/MatrixEngineLib.lib\"\n";
+    cmake << "\tIMPORTED_IMPLIB_MINSIZEREL       \"${MATRIX_ENGINE_INSTALL}/Release/lib/MatrixEngineLib.lib\"\n";
+    cmake << "\tIMPORTED_IMPLIB_RELWITHDEBINFO   \"${MATRIX_ENGINE_INSTALL}/Release/lib/MatrixEngineLib.lib\"\n";
+    cmake << "\tINTERFACE_INCLUDE_DIRECTORIES    \"$<$<CONFIG:Debug>:${MATRIX_ENGINE_INSTALL}/Debug/include/MatrixEngine;${MATRIX_ENGINE_INSTALL}/Debug/include>$<$<CONFIG:Release>:${MATRIX_ENGINE_INSTALL}/Release/include/MatrixEngine;${MATRIX_ENGINE_INSTALL}/Release/include>\"\n";
+    cmake << "\tINTERFACE_LINK_LIBRARIES         \"$<$<CONFIG:Debug>:${MATRIX_ENGINE_INSTALL}/Debug/lib/SDL3d.lib>$<$<CONFIG:Release>:${MATRIX_ENGINE_INSTALL}/Release/lib/SDL3.lib>;$<$<CONFIG:Debug>:${MATRIX_ENGINE_INSTALL}/Debug/lib/SDL3_image-staticd.lib>$<$<CONFIG:Release>:${MATRIX_ENGINE_INSTALL}/Release/lib/SDL3_image-static.lib>;$<$<CONFIG:Debug>:${MATRIX_ENGINE_INSTALL}/Debug/lib/zlibstaticd.lib>$<$<CONFIG:Release>:${MATRIX_ENGINE_INSTALL}/Release/lib/zlibstatic.lib>;$<$<CONFIG:Debug>:${MATRIX_ENGINE_INSTALL}/Debug/lib/assimp-vc143-mtd.lib>$<$<CONFIG:Release>:${MATRIX_ENGINE_INSTALL}/Release/lib/assimp-vc143-mt.lib>;$<$<CONFIG:Debug>:${MATRIX_ENGINE_INSTALL}/Debug/lib/SDL3_shadercrossd.lib>$<$<CONFIG:Release>:${MATRIX_ENGINE_INSTALL}/Release/lib/SDL3_shadercross.lib>;$<$<CONFIG:Debug>:${MATRIX_ENGINE_INSTALL}/Debug/lib/pugixmld.lib>$<$<CONFIG:Release>:${MATRIX_ENGINE_INSTALL}/Release/lib/pugixml.lib>\"\n";
     cmake << ")\n\n";
 
     cmake << "file(GLOB_RECURSE SOURCE_FILES \"${CMAKE_SOURCE_DIR}/Source/*.cpp\")\n\n";
@@ -391,16 +391,16 @@ void ProjectSelector::CreateNewGameFiles(std::string& newGamePath, char* newGame
 
     cmake << "add_custom_command(TARGET " << newGameName << " POST_BUILD\n";
     cmake << "\tCOMMAND ${CMAKE_COMMAND} -E copy_if_different\n";
-    cmake << "\t\t\"${MATRIX_ENGINE_INSTALL}/lib/MatrixEngineLib.dll\"\n";
-    cmake << "\t\t\"${MATRIX_ENGINE_INSTALL}/lib/SDL3d.dll\"\n";
+    cmake << "\t\t\"$<$<CONFIG:Debug>:${MATRIX_ENGINE_INSTALL}/Debug/lib/MatrixEngineLib.dll>$<$<CONFIG:Release>:${MATRIX_ENGINE_INSTALL}/Release/lib/MatrixEngineLib.dll>\"\n";
     cmake << "\t\t$<TARGET_FILE_DIR:" << newGameName << ">\n";
     cmake << "\tCOMMAND ${CMAKE_COMMAND} -E copy_if_different\n";
-    cmake << "\t\t\"${MATRIX_ENGINE_INSTALL}/lib/SDL3_shadercrossd.dll\"\n";
+    cmake << "\t\t\"$<$<CONFIG:Debug>:${MATRIX_ENGINE_INSTALL}/Debug/lib/SDL3d.dll>$<$<CONFIG:Release>:${MATRIX_ENGINE_INSTALL}/Release/lib/SDL3.dll>\"\n";
+    cmake << "\t\t$<TARGET_FILE_DIR:" << newGameName << ">\n";
+    cmake << "\tCOMMAND ${CMAKE_COMMAND} -E copy_if_different\n";
+    cmake << "\t\t\"$<$<CONFIG:Debug>:${MATRIX_ENGINE_INSTALL}/Debug/lib/SDL3_shadercrossd.dll>$<$<CONFIG:Release>:${MATRIX_ENGINE_INSTALL}/Release/lib/SDL3_shadercross.dll>\"\n";
     cmake << "\t\t$<TARGET_FILE_DIR:" << newGameName << ">\n";
     cmake << "\tCOMMENT \"Copying runtime DLLs\"\n";
     cmake << ")\n";
-
-
 
     cmake.close();
 

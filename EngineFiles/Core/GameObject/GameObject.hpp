@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Core/MatrixAPI.hpp"
-#include "Core/GameObject/Macros/GameObjectMacros.hpp"
+#include "Core/ReflectionMacros.hpp"
 #include <cstdint>
 #include "GameObject.reflected.hpp"
 

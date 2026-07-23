@@ -34,6 +34,10 @@ private:
 	bool contentBrowserViewOption = false;
 	bool contentBrowserLocked = true;
 
+	bool detailsPanelOpen = true;
+	bool detailsPanelViewOption = false;
+	bool detailsPanelLocked = true;
+
 	Appstate& appstate;
 };
 

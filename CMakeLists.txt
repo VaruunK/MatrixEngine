@@ -62,6 +62,11 @@ set(REFLECTED_HEADERS
     "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/GameObject/Component/Component.hpp"
     "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
     "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/GameObject/Component/SpriteComponent/SpriteComponent.hpp"
+
+    # Structs
+    "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/Structs/Transform.hpp"
+    "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/Structs/View.hpp"
+    "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/Structs/AssetStructs.hpp"
 )
 
 message(STATUS "Running Reflector over engine headers...")
@@ -142,14 +147,15 @@ add_library(MatrixEditorLib STATIC
     "EngineFiles/Core/Editor/EditorRenderer/EditorRenderer.cpp"
     "EngineFiles/Core/Editor/ContentBrowser/ContentBrowser.cpp"
     "EngineFiles/Core/Editor/ContentBrowser/ContentBrowserController/ContentBrowserController.cpp"
+    "EngineFiles/Core/Editor/GameObjectDetailsPanel/GameObjectDetailsPanel.cpp"
+    "EngineFiles/Core/Editor/GameObjectDetailsPanel/GameObjectDetailsPanelController/GameObjectDetailsPanelController.cpp"
     "EngineFiles/Core/Editor/ProjectSelector/ProjectSelector.cpp"
     "EngineFiles/Core/Editor/ProjectLoader/ProjectLoader.cpp"
 
     # Asset pipeline
     "EngineFiles/Core/Assets/AssetLoader/AssetLoader.cpp"
     "EngineFiles/Core/Assets/DefaultAssets/DefaultAssets.cpp"
-
-)
+ )
 
 target_link_libraries(MatrixEditorLib
     PUBLIC
@@ -304,7 +310,7 @@ install(TARGETS MatrixEngineLib
 install(FILES
     $<TARGET_FILE:SDL3-shared>
     $<TARGET_LINKER_FILE:SDL3-shared>
-    # $<TARGET_FILE:SDL3_image-static>
+    $<TARGET_FILE:SDL3_image::SDL3_image>
     $<TARGET_FILE:zlibstatic>
     $<TARGET_FILE:assimp>
     $<TARGET_FILE:SDL3_shadercross-shared>
@@ -317,6 +323,11 @@ install(FILES
 install(DIRECTORY ${MATRIX_ENGINE_ROOT}/EngineFiles/
     DESTINATION include/MatrixEngine
     FILES_MATCHING PATTERN "*.hpp"
+)
+
+install(DIRECTORY ${CMAKE_BINARY_DIR}/.reflected/
+    DESTINATION include/MatrixEngine
+    FILES_MATCHING PATTERN "*.reflected.hpp"
 )
 
 # Vendored headers
@@ -362,7 +373,7 @@ add_custom_command(TARGET MatrixEngineLib POST_BUILD
     COMMAND ${CMAKE_COMMAND} 
         --install ${CMAKE_BINARY_DIR}
         --config $<CONFIG>
-        --prefix ${MATRIX_ENGINE_ROOT}/install
+        --prefix ${MATRIX_ENGINE_ROOT}/install/$<CONFIG>
     COMMENT "Installing MatrixEngineLib to install directory..."
 )
 

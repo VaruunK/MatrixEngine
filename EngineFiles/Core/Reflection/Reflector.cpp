@@ -21,6 +21,12 @@ enum class TokenKind {
 
 enum class FieldState { Scanning, ParsingArgs, ParsingDeclType, ParsingDeclName, Done };
 enum class FunctionState { Scanning, ParsingArgs, ParsingRetType, ParsingFuncArgs, Done };
+enum class StructState { Scanning, ParsingArgs, ParsingStructName, ParsingMemberType, ParsingMemberName, Done };
+
+struct ParsedItems {
+    std::vector<ReflectedClass> classes;
+    std::vector<ReflectedStruct> structs;
+};
 
 struct Token {
     TokenKind kind;
@@ -290,7 +296,6 @@ static ReflectedFunction parseFunction(TokenStream& ts) {
     return current;
 }
 
-// extract is only good for UPROPERTY types, need functions, classes, enums, structs, etc 
 static ReflectedField parseField(TokenStream& ts) {
     FieldState state = FieldState::Scanning;
 
@@ -360,9 +365,6 @@ static ReflectedField parseField(TokenStream& ts) {
 
                     for (size_t i = 0; i < typeTokens.size(); i++) {
                         Token& typeTok = typeTokens[i];
-                        /*if (i > 0 && typeTokens[i - 1].length() > 0 && typeTok.length() > 0) {
-                            current.type += " ";
-                        }*/
                         if (typeTok.kind == TokenKind::Identifier && typeTok.text == "const") {
                             current.isConst = true;
                             continue;
@@ -407,6 +409,124 @@ static ReflectedField parseField(TokenStream& ts) {
     return current;
 }
 
+static ReflectedStruct parseStruct(TokenStream& ts) {
+    StructState state = StructState::Scanning;
+    ReflectedStruct current;
+    std::vector<Token> typeTokens;
+    std::string currentMemberName;
+    int parenDepth = 0;
+    int angleDepth = 0;
+    while (!ts.atEnd()) {
+        const Token& tok = ts.peek();
+        switch (state) {
+        case StructState::Scanning:
+            if (tok.kind == TokenKind::Identifier) {
+                current = ReflectedStruct{};
+                typeTokens.clear();
+                bool nextIsParen = ((ts.peek(1).kind != TokenKind::EndOfFile) && (ts.peek(1).kind == TokenKind::OpenParen));
+                if (nextIsParen) {
+                    state = StructState::ParsingArgs;
+                }
+            }
+            break;
+        case StructState::ParsingArgs: {
+            if (tok.kind == TokenKind::OpenParen) { parenDepth++; }
+            if (tok.kind == TokenKind::CloseParen) {
+                parenDepth--;
+                if (parenDepth == 0) {
+                    state = StructState::ParsingStructName;
+                }
+            }
+            if (tok.kind == TokenKind::Identifier) {
+                std::string key = tok.text;
+                std::string value = "true";
+                if ((ts.peek(1).kind != TokenKind::EndOfFile) && (ts.peek(1).kind == TokenKind::Assignment)) {
+                    if (ts.peek(2).kind != TokenKind::EndOfFile) {
+                        value = ts.skip(2).text;
+                    }
+                }
+                current.specifiers[key] = value;
+            }
+            break;
+        }
+        case StructState::ParsingStructName:
+            if (tok.kind == TokenKind::Identifier && tok.text == "struct") {
+                ts.advance(); // consume "struct"
+                if (ts.peek().kind == TokenKind::Identifier && ts.peek().text == "MATRIX_API") {
+                    ts.advance();
+                }
+                current.name = ts.advance().text;
+                while (!ts.atEnd() && ts.peek().text != "{") {
+                    ts.advance();
+                }
+                ts.advance(); // consume '{'
+
+                if (!ts.atEnd() && ts.peek().kind == TokenKind::Identifier && ts.peek().text == "REFLECT_STRUCT") {
+                    ts.advance(); // consume "REFLECT_STRUCT"
+                    if (!ts.atEnd() && ts.peek().kind == TokenKind::OpenParen) {
+                        ts.advance(); // consume '('
+                        if (!ts.atEnd() && ts.peek().kind == TokenKind::CloseParen) {
+                            ts.advance(); // consume ')'
+                        }
+                    }
+                }
+
+                state = StructState::ParsingMemberType;
+                continue;
+            }
+            break;
+        case StructState::ParsingMemberType:
+            if (tok.kind == TokenKind::OpenAngle) { angleDepth++; typeTokens.push_back(tok); break; }
+            if (tok.kind == TokenKind::CloseAngle) { angleDepth--; typeTokens.push_back(tok); break; }
+            if (tok.text == "}") {
+                state = StructState::Done;
+                continue;
+            }
+            if (angleDepth == 0 && tok.kind == TokenKind::Identifier) {
+                TokenKind peek1Kind = ts.peek(1).kind;
+                bool nextIsEndOfDecl =
+                    (peek1Kind != TokenKind::EndOfFile) &&
+                    (peek1Kind == TokenKind::Semicolon || peek1Kind == TokenKind::Assignment);
+                if (nextIsEndOfDecl) {
+                    std::string memberType;
+                    for (auto& t : typeTokens) memberType += t.text;
+                    currentMemberName = tok.text;
+                    current.members.emplace_back(currentMemberName, memberType);
+                    typeTokens.clear();
+                    state = StructState::ParsingMemberName;
+                    break;
+                }
+            }
+            typeTokens.push_back(tok);
+            break;
+        case StructState::ParsingMemberName:
+            if (tok.kind == TokenKind::Semicolon) {
+                state = StructState::ParsingMemberType;
+                break;
+            }
+            else if (tok.kind == TokenKind::Assignment) {
+                ts.advance(); // consume '='
+                std::string argValue;
+                int localParenDepth = 0;
+                while (!ts.atEnd()) {
+                    const Token& v = ts.peek();
+                    if (v.kind == TokenKind::Semicolon && localParenDepth == 0) break;
+                    if (v.kind == TokenKind::OpenParen) localParenDepth++;
+                    if (v.kind == TokenKind::CloseParen) localParenDepth--;
+                    argValue += v.text;
+                    ts.advance();
+                }
+                current.defaultMemberValues.emplace_back(currentMemberName, argValue);
+                continue;
+            }
+            break;
+        case StructState::Done:
+            return current;
+        }
+        ts.advance();
+    }
+    return current;
+}
 static ReflectedClass parseClass(TokenStream& ts) {
     ReflectedClass cls;
     ts.advance();
@@ -455,19 +575,20 @@ static ReflectedClass parseClass(TokenStream& ts) {
     return cls;
 }
 
-static std::vector<ReflectedClass> parseFile(TokenStream& ts) {
-    std::vector<ReflectedClass> classes;
-
+static ParsedItems parseFile(TokenStream& ts) {
+    ParsedItems items = {};
+    
     while (!ts.atEnd()) {
         if (ts.peek().text == "CLASS") {
             ts.skip(4);
-            classes.push_back(parseClass(ts)); // consumes through the closing brace
-        }
-        else {
+            items.classes.push_back(parseClass(ts)); // consumes through the closing brace
+        } else if (ts.peek().text == "STRUCT") {
+            items.structs.push_back(parseStruct(ts));
+        } else {
             ts.advance(); // skip anything at global scope we don't care about yet
         }
     }
-    return classes;
+    return items;
 }
 
 static std::string toIncludePath(const std::string& fullPath) {
@@ -479,7 +600,7 @@ static std::string toIncludePath(const std::string& fullPath) {
         return std::filesystem::path(fullPath).filename().string();
     }
 
-    std::string relative = fullPath.substr(pos + marker.size());
+    std::string relative = fullPath.substr(pos);
 
     while (!relative.empty() && (relative.front() == '\\' || relative.front() == '/')) {
         relative.erase(relative.begin());
@@ -617,6 +738,60 @@ static std::vector<Token> tokenize(const std::string& source) {
     return tokens;
 }
 
+static void writeStruct(ReflectedStruct& rs, char* filepath, std::string outputDir) {
+    std::string& structName = rs.name;
+
+    std::ofstream hppFile(outputDir + "/" + structName + ".reflected.hpp");
+    hppFile << "#pragma once\n";
+    hppFile << "#include \"Core/Structs/ReflectionStructs.hpp\"\n";
+    hppFile << "#include <cstring>\n\n";
+    hppFile << "#ifdef REFLECT_STRUCT\n";
+    hppFile << "#undef REFLECT_STRUCT\n";
+    hppFile << "#endif\n\n";
+    hppFile << "#define REFLECT_STRUCT() \\\n";
+    hppFile << "public: \\\n";
+    hppFile << "\tstatic const ReflectedStruct& StaticStruct(); \\\n";
+
+   /* hppFile << "\tinline void GetStructMemberValue(const ReflectedStruct& structInfo, const std::string& memberName, const void* obj, void* out) { \\\n";
+    hppFile << "\t\tsize_t offset = structInfo.memberOffsets.at(memberName); \\\n";
+    hppFile << "\t\tsize_t size = structInfo.memberSizes.at(memberName); \\\n";
+    hppFile << "\t\tconst void* fieldPtr = static_cast<const uint8_t*>(obj) + offset; \\\n";
+    hppFile << "\t\tmemcpy(out, fieldPtr, size); \\\n";
+    hppFile << "\t} \\\n";
+    
+    hppFile << "\tinline void SetStructMemberValue(const ReflectedStruct& structInfo, const std::string& memberName, void* obj, const void* in) { \\\n";
+    hppFile << "\t\tsize_t offset = structInfo.memberOffsets.at(memberName); \\\n";
+    hppFile << "\t\tsize_t size = structInfo.memberSizes.at(memberName); \\\n";
+    hppFile << "\t\tvoid* fieldPtr = static_cast<uint8_t*>(obj) + offset; \\\n";
+    hppFile << "\t\tmemcpy(fieldPtr, in, size); \\\n";
+    hppFile << "\t} \\";*/
+    hppFile.close();
+
+    std::ofstream cppFile(outputDir + "/" + structName + ".reflected.cpp");
+    cppFile << "#include \"" << toIncludePath(filepath) << "\"\n\n";
+    cppFile << "const ReflectedStruct& " << structName << "::StaticStruct() {\n";
+    cppFile << "\tstatic ReflectedStruct info = []() {\n";
+    cppFile << "\t\tReflectedStruct s;\n";
+    cppFile << "\t\ts.name = \"" << structName << "\";\n";
+    cppFile << "\t\ts.size = sizeof(" << structName << ");\n\n";
+
+    for (auto& [memberName, memberType] : rs.members) {
+        cppFile << "\t\ts.members.emplace_back(\"" << memberName << "\", \"" << memberType << "\");\n";
+        cppFile << "\t\ts.memberOffsets[\"" << memberName << "\"] = offsetof(" << structName << ", " << memberName << ");\n";
+        cppFile << "\t\ts.memberSizes[\"" << memberName << "\"] = sizeof(" << memberType << ");\n\n";
+    }
+
+    for (auto& [memberName, defaultValue] : rs.defaultMemberValues) {
+        cppFile << "\t\ts.defaultMemberValues.emplace_back(\"" << memberName << "\", \"" << defaultValue << "\");\n";
+    }
+
+    cppFile << "\n\t\treturn s;\n";
+    cppFile << "\t}();\n";
+    cppFile << "\treturn info;\n";
+    cppFile << "}\n";
+    cppFile.close();
+}
+
 static void writeClass(ReflectedClass& rc, char* filepath, std::string outputDir) {
     std::string& className = rc.name;
     std::array ar = { "public", "protected", "private" };
@@ -646,6 +821,19 @@ static void writeClass(ReflectedClass& rc, char* filepath, std::string outputDir
     hppFile << "\tstatic const ReflectedClass& StaticClass(); \\\n";
     if (rc.parent == "None") {
         hppFile << "\tvirtual const ReflectedClass& GetClass() const = 0; \\\n";
+        
+        hppFile << "\tinline void GetFieldValue(const ReflectedField& field, const void* obj, void* out) { \\\n";
+        hppFile << "\t\tconst void* fieldPtr = static_cast<const uint8_t*>(obj) + field.offset; \\\n";
+        hppFile << "\t\tmemcpy(out, fieldPtr, field.size); \\\n";
+        hppFile << "\t} \\\n";
+
+        hppFile << "\tinline void SetFieldValue(const ReflectedField& field, void* obj, const void* in) { \\\n";
+        hppFile << "\t\tif (field.isConst) { \\\n";
+        hppFile << "\t\t\treturn; \\\n";
+        hppFile << "\t\t} \\\n";
+        hppFile << "\t\tvoid* fieldPtr = static_cast<uint8_t*>(obj) + field.offset; \\\n";
+        hppFile << "\t\tmemcpy(fieldPtr, in, field.size); \\\n";
+        hppFile << "\t} \\\n";
     }
     else {
         hppFile << "\tvirtual const ReflectedClass& GetClass() const override; \\\n";
@@ -800,35 +988,13 @@ int main(int argc, char* argv[]) {
             std::cout << tok.text << std::endl;
         }*/
 
-        std::vector<ReflectedClass> classes = parseFile(ts);
+        ParsedItems items = parseFile(ts);
 
-        for (auto& rc : classes) {
+        for (auto& rc : items.classes) {
             writeClass(rc, argv[i], outputDir);
-            /*std::cout << "Name: " << rc.name << std::endl;
-            std::cout << "Parent: " << rc.parent << std::endl;
-
-            std::array ar = { "public", "protected", "private" };
-
-            for (auto& access : ar) {
-                std::cout << access << " fields" << std::endl;
-                for (auto& field : rc.fields[access]) {
-                    std::cout << field.typeName << ": " << field.name << std::endl;
-                }
-                std::cout << "\n" << std::endl;
-            }
-
-            for (auto& access : ar) {
-                std::cout << access << " functions" << std::endl;
-                for (auto& func : rc.functions[access]) {
-                    std::cout << func.returnType << ": " << func.name << std::endl;
-                    if (func.arguments.size() > 0) {
-                        for (auto& [name, argType] : func.arguments) {
-                            std::cout << "\t" << argType << ": " << name << std::endl;
-                        }
-                    }
-                }
-                std::cout << "\n" << std::endl;
-            }*/
+        }
+        for (auto& rs : items.structs) {
+            writeStruct(rs, argv[i], outputDir);
         }
     }
 

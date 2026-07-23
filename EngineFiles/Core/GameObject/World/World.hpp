@@ -3,7 +3,6 @@
 #include "Core/MatrixAPI.hpp"
 #include "Core/GameObject/GameObject.hpp"
 #include "Core/GameObject/World/WorldRenderer/WorldRenderer.hpp"
-#include "Core/GameObject/Macros/GameObjectMacros.hpp"
 #include "Level/Level.hpp"
 #include <atomic>
 #include <string>

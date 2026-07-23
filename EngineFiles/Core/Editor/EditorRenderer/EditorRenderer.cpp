@@ -2,6 +2,7 @@
 #include "Core/Structs/EditorInfo.hpp"
 #include "Core/Editor/Viewport/Viewport.hpp"
 #include "Core/Editor/ContentBrowser/ContentBrowser.hpp"
+#include "Core/Editor/GameObjectDetailsPanel/GameObjectDetailsPanel.hpp"
 #include "Core/Structs/Appstate.hpp"
 #include "Core/Structs/FrameData.hpp"
 #include "Core/Event/EventBUS/EngineEventBUS.hpp"
@@ -65,6 +66,15 @@ void EditorRenderer::Render() {
 
                 if (contentBrowserOpen) {   
                     info.contentBrowser.Render(&contentBrowserOpen);
+                }
+
+                if (detailsPanelViewOption && !detailsPanelOpen) {
+                    detailsPanelOpen = true;
+                    detailsPanelViewOption = false;
+                }
+
+                if (detailsPanelOpen) {
+                    info.detailsPanel.Render(&detailsPanelOpen);
                 }
                 
                 ImGuiWindowFlags viewportFlags = ImGuiWindowFlags_NoCollapse |
@@ -132,6 +142,7 @@ void EditorRenderer::RenderMenuBar() {
     }
     if (ImGui::BeginMenu("View")) {
         if (ImGui::MenuItem("Content Browser", nullptr, &contentBrowserViewOption)) {}
+        if (ImGui::MenuItem("Details Panel", nullptr, &detailsPanelViewOption)) {}
         ImGui::EndMenu();
     }
 }

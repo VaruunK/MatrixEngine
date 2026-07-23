@@ -2,7 +2,6 @@
 
 #include "Core/MatrixAPI.hpp"
 #include "Core/GameObject/GameObject.hpp"
-#include "Core/GameObject/Macros/GameObjectMacros.hpp"
 #include <vector>
 #include <unordered_map>
 #include <functional>

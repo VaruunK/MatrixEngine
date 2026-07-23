@@ -5,6 +5,7 @@
 #include "Core/Editor/EditorRenderer/EditorRenderer.hpp"
 #include "Core/Editor/Viewport/Viewport.hpp"
 #include "Core/Editor/ContentBrowser/ContentBrowser.hpp"
+#include "Core/Editor/GameObjectDetailsPanel/GameObjectDetailsPanel.hpp"
 #include "Core/Structs/EditorInfo.hpp"
 #include <set>
 
@@ -23,18 +24,18 @@ public:
 
 	void Tick(float deltaTime);
 	void Render();
-
-	EditorRenderer editorRenderer;
 private:
 
 	EditorInfo info = {
 		.viewport = viewport,
-		.contentBrowser = contentBrowser
+		.contentBrowser = contentBrowser,
+		.detailsPanel = detailsPanel
 	};
 
 	enum EditorItem {
 		VIEWPORT,
 		CONTENT_BROWSER,
+		CLASS_DETAILS_PANEL,
 		NONE
 	};
 
@@ -46,8 +47,10 @@ private:
 	std::unordered_map<std::filesystem::path, Texture*> textures;
 	std::unordered_map<std::filesystem::path, Material*> materials;
 
+	EditorRenderer editorRenderer;
 	Viewport viewport;
 	ContentBrowser contentBrowser;
+	GameObjectDetailsPanel detailsPanel;
 
 	Appstate& appstate;
 	Game* game;
