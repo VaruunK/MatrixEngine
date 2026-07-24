@@ -108,8 +108,13 @@ add_library(MatrixEngineLib SHARED
     "EngineFiles/Core/GameObject/World/World.cpp"
     "EngineFiles/Core/GameObject/World/Level/Level.cpp"
 
-    # Events, ticking, need to be changed to editor later
+    # Type Registry, needed for gameplay actions potentially
+    "EngineFiles/Core/TypeRegistry/TypeRegistry.cpp"
+
+    # Events, need to be changed to editor later
     "EngineFiles/Core/Event/EventBUS/EngineEventBUS.cpp"
+    
+    # Ticking, more systems to be added later
     "EngineFiles/Core/TickManager/TickManager.cpp"
 
     ${REFLECTED_SOURCES}
@@ -147,8 +152,8 @@ add_library(MatrixEditorLib STATIC
     "EngineFiles/Core/Editor/EditorRenderer/EditorRenderer.cpp"
     "EngineFiles/Core/Editor/ContentBrowser/ContentBrowser.cpp"
     "EngineFiles/Core/Editor/ContentBrowser/ContentBrowserController/ContentBrowserController.cpp"
-    "EngineFiles/Core/Editor/GameObjectDetailsPanel/GameObjectDetailsPanel.cpp"
-    "EngineFiles/Core/Editor/GameObjectDetailsPanel/GameObjectDetailsPanelController/GameObjectDetailsPanelController.cpp"
+    "EngineFiles/Core/Editor/DetailsPanel/DetailsPanel.cpp"
+    "EngineFiles/Core/Editor/DetailsPanel/DetailsPanelController/DetailsPanelController.cpp"
     "EngineFiles/Core/Editor/ProjectSelector/ProjectSelector.cpp"
     "EngineFiles/Core/Editor/ProjectLoader/ProjectLoader.cpp"
 

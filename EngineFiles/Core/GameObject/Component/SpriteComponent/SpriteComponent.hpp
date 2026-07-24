@@ -13,7 +13,7 @@ class Entity;
 
 CLASS()
 class MATRIX_API SpriteComponent : public Component {
-    REFLECTION()
+    REFLECT_CLASS()
 public:
     SpriteComponent(Entity* owner);
 

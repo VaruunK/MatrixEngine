@@ -11,7 +11,7 @@ struct Texture;
 
 CLASS()
 class MATRIX_API MeshComponent : public Component {
-    REFLECTION()
+    REFLECT_CLASS()
 public:
     MeshComponent(Entity* owner);
 

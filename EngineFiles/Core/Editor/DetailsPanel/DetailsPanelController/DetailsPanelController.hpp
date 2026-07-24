@@ -4,9 +4,9 @@
 #include "Core/GameObject/Controller/Controller.hpp"
 
 CLASS()
-class GameObjectDetailsPanelController : public Controller {
+class DetailsPanelController : public Controller {
 public:
-	GameObjectDetailsPanelController();
+	DetailsPanelController();
 
 	FUNCTION()
 	void Start() override;

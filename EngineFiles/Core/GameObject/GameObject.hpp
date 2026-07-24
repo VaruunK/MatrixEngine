@@ -11,7 +11,7 @@ class ReflectedClass;
 
 CLASS()
 class MATRIX_API GameObject {
-	REFLECTION()
+	REFLECT_CLASS()
 public:
 	GameObject();
 

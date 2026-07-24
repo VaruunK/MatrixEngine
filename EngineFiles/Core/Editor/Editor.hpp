@@ -5,7 +5,7 @@
 #include "Core/Editor/EditorRenderer/EditorRenderer.hpp"
 #include "Core/Editor/Viewport/Viewport.hpp"
 #include "Core/Editor/ContentBrowser/ContentBrowser.hpp"
-#include "Core/Editor/GameObjectDetailsPanel/GameObjectDetailsPanel.hpp"
+#include "Core/Editor/DetailsPanel/DetailsPanel.hpp"
 #include "Core/Structs/EditorInfo.hpp"
 #include <set>
 
@@ -35,7 +35,7 @@ private:
 	enum EditorItem {
 		VIEWPORT,
 		CONTENT_BROWSER,
-		CLASS_DETAILS_PANEL,
+		DETAILS_PANEL,
 		NONE
 	};
 
@@ -50,7 +50,7 @@ private:
 	EditorRenderer editorRenderer;
 	Viewport viewport;
 	ContentBrowser contentBrowser;
-	GameObjectDetailsPanel detailsPanel;
+	DetailsPanel detailsPanel;
 
 	Appstate& appstate;
 	Game* game;

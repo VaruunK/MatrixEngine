@@ -25,7 +25,7 @@ Editor::Editor(Appstate& appstate, Game* game)
 	);
 
 	GEventBUS.Subscribe(EVENT_DETAILS_PANEL_HOVERED, [this]() {
-		focusedItem = CLASS_DETAILS_PANEL; }
+		focusedItem = DETAILS_PANEL; }
 	);
 
 	GEventBUS.Subscribe(EVENT_VIEWPORT_CLICKED, [this]() {
@@ -36,17 +36,17 @@ Editor::Editor(Appstate& appstate, Game* game)
 			if (selectedEntities.contains(entity)) {
 				selectedEntities.erase(entity);
 				if (selectedEntities.empty()) {
-					detailsPanel.SetGameObjectToView(nullptr);
+					detailsPanel.SetEntityToView(nullptr);
 				} else {
-					detailsPanel.SetGameObjectToView(*std::prev(selectedEntities.end()));
+					detailsPanel.SetEntityToView(*std::prev(selectedEntities.end()));
 				}
 			} else {
 				selectedEntities.insert(entity);
-				detailsPanel.SetGameObjectToView(entity);
+				detailsPanel.SetEntityToView(entity);
 			}
 		} else {
 			selectedEntities.clear();
-			detailsPanel.SetGameObjectToView(nullptr);
+			detailsPanel.SetEntityToView(nullptr);
 		}
 	});
 
@@ -109,7 +109,7 @@ void Editor::Tick(float deltaTime) {
 	case CONTENT_BROWSER:
 		contentBrowser.Tick(deltaTime);
 		break;
-	case CLASS_DETAILS_PANEL:
+	case DETAILS_PANEL:
 		detailsPanel.Tick(deltaTime);
 		break;
 	default:

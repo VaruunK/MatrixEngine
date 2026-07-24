@@ -14,7 +14,7 @@ using MouseButtonBindingList = std::unordered_map<uint8_t, std::function<void()>
 
 CLASS()
 class MATRIX_API Controller : public GameObject {
-	REFLECTION()
+	REFLECT_CLASS()
 public:
 	Controller();
 	~Controller() = default;

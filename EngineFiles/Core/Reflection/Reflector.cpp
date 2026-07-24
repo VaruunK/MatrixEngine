@@ -24,8 +24,8 @@ enum class FunctionState { Scanning, ParsingArgs, ParsingRetType, ParsingFuncArg
 enum class StructState { Scanning, ParsingArgs, ParsingStructName, ParsingMemberType, ParsingMemberName, Done };
 
 struct ParsedItems {
-    std::vector<ReflectedClass> classes;
-    std::vector<ReflectedStruct> structs;
+    std::vector<Class> classes;
+    std::vector<Struct> structs;
 };
 
 struct Token {
@@ -78,7 +78,7 @@ static std::string joinTokens(const std::vector<std::string>& toks) {
     return result;
 }
 
-static bool tryFinishFunction(TokenStream& ts, ReflectedFunction& current) {
+static bool tryFinishFunction(TokenStream& ts, Function& current) {
     // Skip known trailing qualifiers: const, override, final, noexcept
     while (ts.peek().kind == TokenKind::Identifier) {
         const std::string& kw = ts.peek().text;
@@ -113,10 +113,10 @@ static bool tryFinishFunction(TokenStream& ts, ReflectedFunction& current) {
     return false;
 }
 
-static ReflectedFunction parseFunction(TokenStream& ts) {
+static Function parseFunction(TokenStream& ts) {
     FunctionState state = FunctionState::Scanning;
     
-    ReflectedFunction current;
+    Function current;
     std::vector<std::string> returnTypeTokens;
     std::vector<std::string> argTypeTokens;
 
@@ -131,7 +131,7 @@ static ReflectedFunction parseFunction(TokenStream& ts) {
 
         case FunctionState::Scanning:
             if (tok.kind == TokenKind::Identifier) {
-                current = ReflectedFunction{};
+                current = Function{};
                 current.line = tok.line;
                 returnTypeTokens.clear();
 
@@ -296,10 +296,10 @@ static ReflectedFunction parseFunction(TokenStream& ts) {
     return current;
 }
 
-static ReflectedField parseField(TokenStream& ts) {
+static Field parseField(TokenStream& ts) {
     FieldState state = FieldState::Scanning;
 
-    ReflectedField current;
+    Field current;
     std::vector<Token> typeTokens;
     int parenDepth = 0;
     int angleDepth = 0;
@@ -311,7 +311,7 @@ static ReflectedField parseField(TokenStream& ts) {
 
         case FieldState::Scanning:
             if (tok.kind == TokenKind::Identifier) {
-                current = ReflectedField{};
+                current = Field{};
                 current.line = tok.line;
                 typeTokens.clear();
 
@@ -409,9 +409,9 @@ static ReflectedField parseField(TokenStream& ts) {
     return current;
 }
 
-static ReflectedStruct parseStruct(TokenStream& ts) {
+static Struct parseStruct(TokenStream& ts) {
     StructState state = StructState::Scanning;
-    ReflectedStruct current;
+    Struct current;
     std::vector<Token> typeTokens;
     std::string currentMemberName;
     int parenDepth = 0;
@@ -421,7 +421,7 @@ static ReflectedStruct parseStruct(TokenStream& ts) {
         switch (state) {
         case StructState::Scanning:
             if (tok.kind == TokenKind::Identifier) {
-                current = ReflectedStruct{};
+                current = Struct{};
                 typeTokens.clear();
                 bool nextIsParen = ((ts.peek(1).kind != TokenKind::EndOfFile) && (ts.peek(1).kind == TokenKind::OpenParen));
                 if (nextIsParen) {
@@ -527,8 +527,8 @@ static ReflectedStruct parseStruct(TokenStream& ts) {
     }
     return current;
 }
-static ReflectedClass parseClass(TokenStream& ts) {
-    ReflectedClass cls;
+static Class parseClass(TokenStream& ts) {
+    Class cls;
     ts.advance();
     cls.name = ts.advance().text; // class name
 
@@ -738,7 +738,7 @@ static std::vector<Token> tokenize(const std::string& source) {
     return tokens;
 }
 
-static void writeStruct(ReflectedStruct& rs, char* filepath, std::string outputDir) {
+static void writeStruct(Struct& rs, char* filepath, std::string outputDir) {
     std::string& structName = rs.name;
 
     std::ofstream hppFile(outputDir + "/" + structName + ".reflected.hpp");
@@ -750,29 +750,16 @@ static void writeStruct(ReflectedStruct& rs, char* filepath, std::string outputD
     hppFile << "#endif\n\n";
     hppFile << "#define REFLECT_STRUCT() \\\n";
     hppFile << "public: \\\n";
-    hppFile << "\tstatic const ReflectedStruct& StaticStruct(); \\\n";
+    hppFile << "\tstatic const Struct& StaticStruct(); \\\n";
 
-   /* hppFile << "\tinline void GetStructMemberValue(const ReflectedStruct& structInfo, const std::string& memberName, const void* obj, void* out) { \\\n";
-    hppFile << "\t\tsize_t offset = structInfo.memberOffsets.at(memberName); \\\n";
-    hppFile << "\t\tsize_t size = structInfo.memberSizes.at(memberName); \\\n";
-    hppFile << "\t\tconst void* fieldPtr = static_cast<const uint8_t*>(obj) + offset; \\\n";
-    hppFile << "\t\tmemcpy(out, fieldPtr, size); \\\n";
-    hppFile << "\t} \\\n";
-    
-    hppFile << "\tinline void SetStructMemberValue(const ReflectedStruct& structInfo, const std::string& memberName, void* obj, const void* in) { \\\n";
-    hppFile << "\t\tsize_t offset = structInfo.memberOffsets.at(memberName); \\\n";
-    hppFile << "\t\tsize_t size = structInfo.memberSizes.at(memberName); \\\n";
-    hppFile << "\t\tvoid* fieldPtr = static_cast<uint8_t*>(obj) + offset; \\\n";
-    hppFile << "\t\tmemcpy(fieldPtr, in, size); \\\n";
-    hppFile << "\t} \\";*/
     hppFile.close();
 
     std::ofstream cppFile(outputDir + "/" + structName + ".reflected.cpp");
+    cppFile << "#include \"Core/TypeRegistry/TypeRegistry.hpp\"\n";
     cppFile << "#include \"" << toIncludePath(filepath) << "\"\n\n";
-    cppFile << "const ReflectedStruct& " << structName << "::StaticStruct() {\n";
-    cppFile << "\tstatic ReflectedStruct info = []() {\n";
-    cppFile << "\t\tReflectedStruct s;\n";
-    cppFile << "\t\ts.name = \"" << structName << "\";\n";
+    cppFile << "const Struct& " << structName << "::StaticStruct() {\n";
+    cppFile << "\tstatic Struct info = []() {\n";
+    cppFile << "\t\tStruct s(\"" << structName << "\"); \n";
     cppFile << "\t\ts.size = sizeof(" << structName << ");\n\n";
 
     for (auto& [memberName, memberType] : rs.members) {
@@ -789,10 +776,17 @@ static void writeStruct(ReflectedStruct& rs, char* filepath, std::string outputD
     cppFile << "\t}();\n";
     cppFile << "\treturn info;\n";
     cppFile << "}\n";
+
+    cppFile << "\n";
+    cppFile << "namespace {\n";
+    cppFile << "\tconst bool " << structName << "_typeRegistered = TypeRegistry::RegisterType(\"" << structName << "\", &" << structName << "::StaticStruct());\n";
+    cppFile << "}\n";
+
+
     cppFile.close();
 }
 
-static void writeClass(ReflectedClass& rc, char* filepath, std::string outputDir) {
+static void writeClass(Class& rc, char* filepath, std::string outputDir) {
     std::string& className = rc.name;
     std::array ar = { "public", "protected", "private" };
 
@@ -813,21 +807,21 @@ static void writeClass(ReflectedClass& rc, char* filepath, std::string outputDir
     std::ofstream hppFile(outputDir + "/" + className + ".reflected.hpp");
     hppFile << "#pragma once\n";
     hppFile << "#include \"Core/Structs/ReflectionStructs.hpp\"\n\n";
-    hppFile << "#ifdef REFLECTION\n";
-    hppFile << "#undef REFLECTION\n";
+    hppFile << "#ifdef REFLECT_CLASS\n";
+    hppFile << "#undef REFLECT_CLASS\n";
     hppFile << "#endif\n\n";
-    hppFile << "#define REFLECTION() \\\n";
+    hppFile << "#define REFLECT_CLASS() \\\n";
     hppFile << "public: \\\n";
-    hppFile << "\tstatic const ReflectedClass& StaticClass(); \\\n";
+    hppFile << "\tstatic const Class& StaticClass(); \\\n";
     if (rc.parent == "None") {
-        hppFile << "\tvirtual const ReflectedClass& GetClass() const = 0; \\\n";
+        hppFile << "\tvirtual const Class& GetClass() const = 0; \\\n";
         
-        hppFile << "\tinline void GetFieldValue(const ReflectedField& field, const void* obj, void* out) { \\\n";
+        hppFile << "\tinline void GetFieldValue(const Field& field, const void* obj, void* out) { \\\n";
         hppFile << "\t\tconst void* fieldPtr = static_cast<const uint8_t*>(obj) + field.offset; \\\n";
         hppFile << "\t\tmemcpy(out, fieldPtr, field.size); \\\n";
         hppFile << "\t} \\\n";
 
-        hppFile << "\tinline void SetFieldValue(const ReflectedField& field, void* obj, const void* in) { \\\n";
+        hppFile << "\tinline void SetFieldValue(const Field& field, void* obj, const void* in) { \\\n";
         hppFile << "\t\tif (field.isConst) { \\\n";
         hppFile << "\t\t\treturn; \\\n";
         hppFile << "\t\t} \\\n";
@@ -836,7 +830,7 @@ static void writeClass(ReflectedClass& rc, char* filepath, std::string outputDir
         hppFile << "\t} \\\n";
     }
     else {
-        hppFile << "\tvirtual const ReflectedClass& GetClass() const override; \\\n";
+        hppFile << "\tvirtual const Class& GetClass() const override; \\\n";
     }
 
     for (auto& access : ar) {
@@ -847,12 +841,10 @@ static void writeClass(ReflectedClass& rc, char* filepath, std::string outputDir
     }
     hppFile.close();
 
-    /*std::string filePathString = filepath;
-    std::cout << "LOOK HERE" << filePathString << std::endl;*/
-
     std::ofstream cppFile(outputDir + "/" + className + ".reflected.cpp");
+    cppFile << "#include \"Core/TypeRegistry/TypeRegistry.hpp\"\n";
     cppFile << "#include \"" << toIncludePath(filepath) << "\"\n\n";
-    cppFile << "const ReflectedClass& " << className << "::GetClass() const { return " << className << "::StaticClass(); }\n\n";
+    cppFile << "const Class& " << className << "::GetClass() const { return " << className << "::StaticClass(); }\n\n";
 
     for (auto& access : ar) {
         auto& thunkNames = thunkNamesByAccess[access];
@@ -895,17 +887,16 @@ static void writeClass(ReflectedClass& rc, char* filepath, std::string outputDir
         }
     }
     
-    cppFile << "const ReflectedClass& " << className << "::StaticClass() {\n";
-    cppFile << "\tstatic ReflectedClass info = []() {\n";
-    cppFile << "\t\tReflectedClass c;\n";
-    cppFile << "\t\tc.name = \"" << className << "\";\n";
+    cppFile << "const Class& " << className << "::StaticClass() {\n";
+    cppFile << "\tstatic Class info = []() {\n";
+    cppFile << "\t\tClass c(\"" << className << "\"); \n";
     cppFile << "\t\tc.parent = \"" << rc.parent << "\";\n";
     cppFile << "\t\tc.size = " << rc.size << ";\n\n";
 
     for (auto& access : ar) {
         auto& thunkNames = thunkNamesByAccess[access];
         for (auto& field : rc.fields[access]) {
-            cppFile << "\t\tc.fields[\"" << access << "\"].push_back(ReflectedField{\n";
+            cppFile << "\t\tc.fields[\"" << access << "\"].push_back(Field{\n";
             cppFile << "\t\t\t.name = \"" << field.name << "\",\n";
             cppFile << "\t\t\t.typeName = \"" << field.typeName << "\",\n";
             cppFile << "\t\t\t.isConst = " << std::boolalpha << field.isConst << ",\n";
@@ -917,7 +908,7 @@ static void writeClass(ReflectedClass& rc, char* filepath, std::string outputDir
             auto& func = rc.functions[access][idx];
             const std::string& thunkName = thunkNames[idx];
             
-            cppFile << "\t\tc.functions[\"" << access << "\"].push_back(ReflectedFunction{\n";
+            cppFile << "\t\tc.functions[\"" << access << "\"].push_back(Function{\n";
             cppFile << "\t\t\t.name = \"" << func.name << "\",\n";
             cppFile << "\t\t\t.returnType = \"" << func.returnType << "\",\n";
             cppFile << "\t\t\t.arguments = {";
@@ -949,6 +940,12 @@ static void writeClass(ReflectedClass& rc, char* filepath, std::string outputDir
     cppFile << "\t}();\n";
     cppFile << "\treturn info;\n";
     cppFile << "}\n";
+
+    cppFile << "\n";
+    cppFile << "namespace {\n";
+    cppFile << "\tconst bool " << className << "_typeRegistered = TypeRegistry::RegisterType(\"" << className << "\", &" << className << "::StaticClass());\n";
+    cppFile << "}\n";
+
     cppFile.close();
 }
 

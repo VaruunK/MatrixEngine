@@ -2,7 +2,7 @@
 #include "Core/Structs/EditorInfo.hpp"
 #include "Core/Editor/Viewport/Viewport.hpp"
 #include "Core/Editor/ContentBrowser/ContentBrowser.hpp"
-#include "Core/Editor/GameObjectDetailsPanel/GameObjectDetailsPanel.hpp"
+#include "Core/Editor/DetailsPanel/DetailsPanel.hpp"
 #include "Core/Structs/Appstate.hpp"
 #include "Core/Structs/FrameData.hpp"
 #include "Core/Event/EventBUS/EngineEventBUS.hpp"
@@ -79,8 +79,8 @@ void EditorRenderer::Render() {
                 
                 ImGuiWindowFlags viewportFlags = ImGuiWindowFlags_NoCollapse |
                     ImGuiWindowFlags_NoTitleBar |
-                    ImGuiWindowFlags_NoBackground |
-                    ImGuiWindowFlags_NoResize; // | ImGuiWindowFlags_NoMove;
+                    ImGuiWindowFlags_NoBackground; // |
+                    // ImGuiWindowFlags_NoResize; // | ImGuiWindowFlags_NoMove;
 
                 ImGui::SetNextWindowSize(ImVec2(800, 600), ImGuiCond_FirstUseEver);
                 

@@ -2,10 +2,10 @@
 
 class Viewport;
 class ContentBrowser;
-class GameObjectDetailsPanel;
+class DetailsPanel;
 
 struct EditorInfo {
 	Viewport& viewport;
 	ContentBrowser& contentBrowser;
-	GameObjectDetailsPanel& detailsPanel;
+	DetailsPanel& detailsPanel;
 };

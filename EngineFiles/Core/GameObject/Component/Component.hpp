@@ -12,7 +12,7 @@ CLASS()
 class MATRIX_API Component : public GameObject {
 	friend class Entity;
 
-	REFLECTION()
+	REFLECT_CLASS()
 public:
 
 	Component(Entity* owner);

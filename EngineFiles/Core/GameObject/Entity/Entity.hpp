@@ -16,7 +16,7 @@ class Level;
 CLASS()
 class MATRIX_API Entity : public GameObject {
 	
-	REFLECTION()
+	REFLECT_CLASS()
 
 public:
 	// No copy

@@ -24,7 +24,7 @@ struct FrameData;
 CLASS()
 class MATRIX_API World : public GameObject {
 
-	REFLECTION()
+	REFLECT_CLASS()
 
 public:
 	World(Appstate& appstate);

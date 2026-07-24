@@ -1,12 +1,14 @@
-#include "GameObjectDetailsPanel.hpp"
+#include "DetailsPanel.hpp"
 #include "Core/GameObject/GameObject.hpp"
 #include "Core/Event/EventBUS/EngineEventBUS.hpp"
+#include "Core/Structs/Transform.hpp"
+#include "Core/GameObject/Entity/Entity.hpp"
+#include "Core/TypeRegistry/TypeRegistry.hpp"
 #include <imgui_impl_sdlgpu3.h>
 #include <array>
 #include <iostream>
-#include <Core/Structs/Transform.hpp>
 
-GameObjectDetailsPanel::GameObjectDetailsPanel() {
+DetailsPanel::DetailsPanel() {
     controller.BindMouseButton(SDL_BUTTON_LEFT,
         [this]() { popup = false; }
     );
@@ -18,11 +20,11 @@ GameObjectDetailsPanel::GameObjectDetailsPanel() {
     controller.Start();
 }
 
-void GameObjectDetailsPanel::SetGameObjectToView(GameObject* gameObject) {
-	detailGameObject = gameObject;
+void DetailsPanel::SetEntityToView(Entity* entity) {
+	detailEntity = entity;
 }
 
-void GameObjectDetailsPanel::Render(bool* active) {
+void DetailsPanel::Render(bool* active) {
     ImGuiWindowFlags contentBarFlags = ImGuiWindowFlags_NoCollapse;
     if (locked) {
         contentBarFlags = contentBarFlags | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize;
@@ -43,8 +45,8 @@ void GameObjectDetailsPanel::Render(bool* active) {
             popup = false;
         }
 
-        if (detailGameObject) {
-            const ReflectedClass& rc = detailGameObject->GetClass();
+        if (detailEntity) {
+            const Class& rc = detailEntity->GetClass();
             ImGui::Text("Class: %s", rc.name.c_str());
             ImGui::Text("Parent: %s", rc.parent.c_str());
             ImGui::Separator();
@@ -57,38 +59,60 @@ void GameObjectDetailsPanel::Render(bool* active) {
                             ImGui::Separator();
                             ImGui::Text(field.typeName.c_str());
                             ImGui::SameLine();
-                            if (field.typeName == "Transform") {
+
+                            const Reflection& reflection = TypeRegistry::Get(field.typeName);
+
+                            switch (reflection.type) {
+                            case ReflectionType::STRUCT: {
+                                const Struct& info = static_cast<const Struct&>(reflection);
+
                                 if (ImGui::TreeNode(field.name.c_str())) {
-                                    Transform t;
-                                    detailGameObject->GetFieldValue(field, detailGameObject, &t);
-                                    const ReflectedStruct& info = Transform::StaticStruct();
+                                    void* structPtr = static_cast<uint8_t*>(static_cast<void*>(detailEntity)) + field.offset;
+
                                     for (auto& member : info.members) {
-                                        glm::vec3 vector;
                                         const std::string& memberName = member.first;
                                         const std::string& memberType = member.second;
-                                        GetStructMemberValue(info, memberName, &t, &vector);
-                                        ImGui::Text(memberName.c_str());
-                                        ImGui::Text("X: %.2f Y: %.2f, Z: %.2f", vector.x, vector.y, vector.z);
-                                        ImGui::Separator();
+                                        if (info.name == "Transform") {
+                                            if (memberType == "glm::vec3") {
+                                                glm::vec3 vector;
+                                                GetStructMemberValue(info, memberName, structPtr, &vector);
+
+                                                std::string label = "##" + memberName;
+                                                ImGui::Text("%s", (memberName + ": ").c_str());
+                                                ImGui::SameLine();
+                                                if (ImGui::DragFloat3(label.c_str(), &vector.x, 0.1f, -100000.0f, 100000.0f)) {
+                                                    SetStructMemberValue(info, memberName, structPtr, &vector);
+                                                    detailEntity->SetTransform(*static_cast<Transform*>(structPtr));
+                                                }
+                                            }
+                                        }
                                     }
+
                                     ImGui::TreePop();
                                 }
+                                break;
+                            }
+                            case ReflectionType::CLASS: {
+                                const Class& info = static_cast<const Class&>(reflection);
+                                break;
+                            }
+                            default:
+                                break;
                             }
                         }
                         ImGui::TreePop();
                     }
                 }
             }
-
-            
-        } else {
+        }
+        else {
             ImGui::Text("Class: None");
         }
     }
     ImGui::End();
 }
 
-void GameObjectDetailsPanel::RenderRightClickPopup() {
+void DetailsPanel::RenderRightClickPopup() {
     if (ImGui::BeginPopup("options_popup")) {
 
         // ImGui::Separator();
@@ -109,6 +133,6 @@ void GameObjectDetailsPanel::RenderRightClickPopup() {
     }
 }
 
-void GameObjectDetailsPanel::Tick(float deltaTime) {
+void DetailsPanel::Tick(float deltaTime) {
     controller.Tick(deltaTime);
 }
