@@ -1,0 +1,57 @@
+#pragma once
+
+#ifdef MATRIX_EDITOR
+#include "Editor/Viewport/ViewportController/ViewportController.hpp"
+#include "Editor/Viewport/ViewportRenderer/ViewportRenderer.hpp"
+#include "Editor/Viewport/ViewportCamera/ViewportCamera.hpp"
+#include "Core/Structs/FrameData.hpp"
+
+struct View;
+struct Appstate;
+struct Frame;
+
+class WorldRenderer;
+class Editor;
+
+class Viewport {
+public:
+	Viewport(Appstate& appstate, WorldRenderer& worldRenderer);
+	~Viewport();
+
+	void Tick(float deltaTime);
+	void Render(FrameData& frame);
+	Entity* GetSelectedEntity(int x, int y);
+
+	bool InitializeSelectProxyPipeline(SDL_GPUShader* vertexShader, SDL_GPUShader* fragmentShader);
+	bool CreateSelectProxyTexture();
+	bool CreateSelectProxyDepthTexture();
+
+	SDL_GPUTextureFormat GetDepthStencilFormat();
+
+	void SetCameraSpeed(int& speed);
+
+	void GetClickedPosition(int& x, int& y);
+	void SetClickedPosition(int x, int y);
+
+	const View& GetCameraView() const;
+	ViewportCamera& GetCamera() { return camera; }
+
+	float deltaSeconds = 0.0f;
+private:
+
+	Appstate& appstate;
+
+	ViewportCamera camera;
+	ViewportController controller;
+	ViewportRenderer viewportRenderer;
+
+	SDL_GPUTexture* offscreenTexture = nullptr;
+	SDL_GPUSampler* offscreenSampler = nullptr;
+
+	bool moveMode = false;
+
+	int mouseClickX = -1;
+	int mouseClickY = -1;
+};
+
+#endif

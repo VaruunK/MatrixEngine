@@ -3,6 +3,13 @@ project(Matrix_Engine LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 23)
 
+# Single-config generators (Makefiles/Ninja) need an explicit build type,
+# unlike multi-config generators (Visual Studio) which always have one selected.
+if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+    set(CMAKE_BUILD_TYPE Debug CACHE STRING "Build type" FORCE)
+    set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "RelWithDebInfo" "MinSizeRel")
+endif()
+
 # -----------------------------
 # Global output directories
 # -----------------------------
@@ -13,7 +20,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIG>/lib")
 set(CMAKE_COMPILE_PDB_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIG>/lib")
 set(CMAKE_PDB_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIG>/lib")
 set(REFLECTOR_BUILD_DIR "${CMAKE_BINARY_DIR}/reflector")
-set(REFLECTOR_SOURCE_DIR "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/Reflection")
+set(REFLECTOR_SOURCE_DIR "${MATRIX_ENGINE_ROOT}/Source/Reflection")
 
 foreach(CONFIG_TYPE ${CMAKE_CONFIGURATION_TYPES})
     string(TOUPPER ${CONFIG_TYPE} CONFIG_TYPE_UPPER)
@@ -34,39 +41,43 @@ if(NOT REFLECTOR_CONFIGURE_RESULT EQUAL 0)
 endif()
 
 message(STATUS "Building Reflector tool...")
+
 execute_process(
-    COMMAND ${CMAKE_COMMAND} --build "${REFLECTOR_BUILD_DIR}" --config Release
+    COMMAND ${CMAKE_COMMAND} --build "${REFLECTOR_BUILD_DIR}"
     RESULT_VARIABLE REFLECTOR_BUILD_RESULT
 )
+
 if(NOT REFLECTOR_BUILD_RESULT EQUAL 0)
     message(FATAL_ERROR "Failed to build Reflector tool")
 endif()
 
 find_program(REFLECTOR_EXECUTABLE
     NAMES Reflector
-    PATHS "${REFLECTOR_BUILD_DIR}/Release" "${REFLECTOR_BUILD_DIR}"
+    PATHS "${REFLECTOR_BUILD_DIR}"
     NO_DEFAULT_PATH
 )
+
 if(NOT REFLECTOR_EXECUTABLE)
     message(FATAL_ERROR "Could not find built Reflector executable")
 endif()
 
 set(REFLECTED_HEADERS
     # Game required headers
-    "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/GameObject/GameObject.hpp"
-    "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/GameObject/World/World.hpp"
-    "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/GameObject/Controller/Controller.hpp"
-    "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/GameObject/Entity/Entity.hpp"
+    "${MATRIX_ENGINE_ROOT}/Source/Core/GameObject/GameObject.hpp"
+    "${MATRIX_ENGINE_ROOT}/Source/Core/GameObject/World/World.hpp"
+    "${MATRIX_ENGINE_ROOT}/Source/Core/GameObject/World/Level/Level.hpp"
+    "${MATRIX_ENGINE_ROOT}/Source/Core/GameObject/Controller/Controller.hpp"
+    "${MATRIX_ENGINE_ROOT}/Source/Core/GameObject/Entity/Entity.hpp"
 
     # Components
-    "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/GameObject/Component/Component.hpp"
-    "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
-    "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/GameObject/Component/SpriteComponent/SpriteComponent.hpp"
+    "${MATRIX_ENGINE_ROOT}/Source/Core/GameObject/Component/Component.hpp"
+    "${MATRIX_ENGINE_ROOT}/Source/Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
+    "${MATRIX_ENGINE_ROOT}/Source/Core/GameObject/Component/SpriteComponent/SpriteComponent.hpp"
 
     # Structs
-    "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/Structs/Transform.hpp"
-    "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/Structs/View.hpp"
-    "${MATRIX_ENGINE_ROOT}/EngineFiles/Core/Structs/AssetStructs.hpp"
+    "${MATRIX_ENGINE_ROOT}/Source/Core/Structs/Transform.hpp"
+    "${MATRIX_ENGINE_ROOT}/Source/Core/Structs/View.hpp"
+    "${MATRIX_ENGINE_ROOT}/Source/Core/Structs/AssetStructs.hpp"
 )
 
 message(STATUS "Running Reflector over engine headers...")
@@ -91,31 +102,28 @@ set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS ${REFLECTED_HEADE
 # -----------------------------
 add_library(MatrixEngineLib SHARED
     # Core engine runtime
-    "EngineFiles/Core/Game/Game.cpp"
+    "Source/Core/Game/Game.cpp"
 
     # Rendering
-    "EngineFiles/Core/ShaderManager/ShaderManager.cpp"
-    "EngineFiles/Core/GameObject/World/WorldRenderer/WorldRenderer.cpp"
+    "Source/Core/ShaderManager/ShaderManager.cpp"
+    "Source/Core/GameObject/World/WorldRenderer/WorldRenderer.cpp"
 
     # GameObject system
-    "EngineFiles/Core/GameObject/GameObject.cpp"
-    "EngineFiles/Core/GameObject/Component/Component.cpp"
-    "EngineFiles/Core/GameObject/Component/MeshComponent/MeshComponent.cpp"
-    "EngineFiles/Core/GameObject/Component/SpriteComponent/SpriteComponent.cpp"
-    "EngineFiles/Core/GameObject/Entity/Entity.cpp"
-    "EngineFiles/Core/GameObject/Entity/Agent/Agent.cpp"
-    "EngineFiles/Core/GameObject/Controller/Controller.cpp"
-    "EngineFiles/Core/GameObject/World/World.cpp"
-    "EngineFiles/Core/GameObject/World/Level/Level.cpp"
+    "Source/Core/GameObject/GameObject.cpp"
+    "Source/Core/GameObject/Component/Component.cpp"
+    "Source/Core/GameObject/Component/MeshComponent/MeshComponent.cpp"
+    "Source/Core/GameObject/Component/SpriteComponent/SpriteComponent.cpp"
+    "Source/Core/GameObject/Entity/Entity.cpp"
+    "Source/Core/GameObject/Entity/Agent/Agent.cpp"
+    "Source/Core/GameObject/Controller/Controller.cpp"
+    "Source/Core/GameObject/World/World.cpp"
+    "Source/Core/GameObject/World/Level/Level.cpp"
 
     # Type Registry, needed for gameplay actions potentially
-    "EngineFiles/Core/TypeRegistry/TypeRegistry.cpp"
+    "Source/Core/TypeRegistry/TypeRegistry.cpp"
 
-    # Events, need to be changed to editor later
-    "EngineFiles/Core/Event/EventBUS/EngineEventBUS.cpp"
-    
     # Ticking, more systems to be added later
-    "EngineFiles/Core/TickManager/TickManager.cpp"
+    "Source/Core/TickManager/TickManager.cpp"
 
     ${REFLECTED_SOURCES}
 )
@@ -143,23 +151,25 @@ set_target_properties(MatrixEngineLib PROPERTIES
 # EDITOR
 # -----------------------------
 add_library(MatrixEditorLib STATIC
-    "EngineFiles/Core/Engine.cpp"
-    "EngineFiles/Core/Editor/Editor.cpp"
-    "EngineFiles/Core/Editor/Viewport/Viewport.cpp"
-    "EngineFiles/Core/Editor/Viewport/ViewportController/ViewportController.cpp"
-    "EngineFiles/Core/Editor/Viewport/ViewportCamera/ViewportCamera.cpp"
-    "EngineFiles/Core/Editor/Viewport/ViewportRenderer/ViewportRenderer.cpp"
-    "EngineFiles/Core/Editor/EditorRenderer/EditorRenderer.cpp"
-    "EngineFiles/Core/Editor/ContentBrowser/ContentBrowser.cpp"
-    "EngineFiles/Core/Editor/ContentBrowser/ContentBrowserController/ContentBrowserController.cpp"
-    "EngineFiles/Core/Editor/DetailsPanel/DetailsPanel.cpp"
-    "EngineFiles/Core/Editor/DetailsPanel/DetailsPanelController/DetailsPanelController.cpp"
-    "EngineFiles/Core/Editor/ProjectSelector/ProjectSelector.cpp"
-    "EngineFiles/Core/Editor/ProjectLoader/ProjectLoader.cpp"
+    "Source/Engine.cpp"
+    "Source/Editor/Editor.cpp"
+    "Source/Editor/Viewport/Viewport.cpp"
+    "Source/Editor/Viewport/ViewportController/ViewportController.cpp"
+    "Source/Editor/Viewport/ViewportCamera/ViewportCamera.cpp"
+    "Source/Editor/Viewport/ViewportRenderer/ViewportRenderer.cpp"
+    "Source/Editor/EditorRenderer/EditorRenderer.cpp"
+    "Source/Editor/ContentBrowser/ContentBrowser.cpp"
+    "Source/Editor/ContentBrowser/ContentBrowserController/ContentBrowserController.cpp"
+    "Source/Editor/DetailsPanel/DetailsPanel.cpp"
+    "Source/Editor/DetailsPanel/DetailsPanelController/DetailsPanelController.cpp"
+    "Source/Editor/ProjectSelector/ProjectSelector.cpp"
+    "Source/Editor/ProjectLoader/ProjectLoader.cpp"
 
     # Asset pipeline
-    "EngineFiles/Core/Assets/AssetLoader/AssetLoader.cpp"
-    "EngineFiles/Core/Assets/DefaultAssets/DefaultAssets.cpp"
+    "Source/Core/Assets/AssetLoader/AssetLoader.cpp"
+    "Source/Core/Assets/DefaultAssets/DefaultAssets.cpp"
+
+    "Source/Core/Event/EventBUS/EngineEventBUS.cpp"
  )
 
 target_link_libraries(MatrixEditorLib
@@ -174,7 +184,7 @@ target_link_libraries(MatrixEditorLib
 # Engine EXECUTABLE
 # -----------------------------
 add_executable(Matrix
-    "EngineFiles/main.cpp"
+    "Source/main.cpp"
 )
 
 target_link_libraries(Matrix
@@ -199,7 +209,7 @@ target_compile_definitions(MatrixEditorLib PUBLIC
 # -----------------------------
 target_include_directories(Matrix
     PRIVATE
-        ${MATRIX_ENGINE_ROOT}/EngineFiles
+        ${MATRIX_ENGINE_ROOT}/Source
 )
 
 # -----------------------------
@@ -208,15 +218,6 @@ target_include_directories(Matrix
 
 # --- SDL3 ---
 add_subdirectory(${MATRIX_ENGINE_ROOT}/vendored/SDL3 EXCLUDE_FROM_ALL)
-
-## --- Build zlib once into the EXACT directory SDL_image would use ---
-set(ZLIB_SOURCE_DIR "${MATRIX_ENGINE_ROOT}/vendored/SDL_image/external/zlib")
-set(ZLIB_BINARY_DIR "${CMAKE_BINARY_DIR}/vendored/SDL_image/external/zlib-build")
-add_subdirectory("${ZLIB_SOURCE_DIR}" "${ZLIB_BINARY_DIR}" EXCLUDE_FROM_ALL)
-
-if(NOT TARGET ZLIB::ZLIB)
-    add_library(ZLIB::ZLIB ALIAS zlibstatic)
-endif()
 
 # --- SDL_image ---
 set(SDLIMAGE_AVIF OFF CACHE BOOL "" FORCE)
@@ -229,33 +230,10 @@ set(SDLIMAGE_QOI OFF CACHE BOOL "" FORCE)
 set(SDLIMAGE_RENDER ON CACHE BOOL "" FORCE)
 set(SDLIMAGE_ZLIB OFF CACHE BOOL "" FORCE)
 
-set(ZLIB_FOUND TRUE CACHE BOOL "" FORCE)
-set(ZLIB_LIBRARY zlibstatic CACHE STRING "" FORCE)
-set(ZLIB_INCLUDE_DIR "${ZLIB_SOURCE_DIR};${ZLIB_BINARY_DIR}" CACHE PATH "" FORCE)
-
-# Patch SDL_image's CMakeLists to guard its zlib add_subdirectory
-set(SDLIMAGE_CMAKE "${MATRIX_ENGINE_ROOT}/vendored/SDL_image/CMakeLists.txt")
-file(READ "${SDLIMAGE_CMAKE}" SDLIMAGE_CMAKE_CONTENT)
-if(NOT SDLIMAGE_CMAKE_CONTENT MATCHES "if\\(NOT TARGET zlibstatic\\)")
-    string(REPLACE
-        "add_subdirectory(external/zlib external/zlib-build EXCLUDE_FROM_ALL)"
-        "if(NOT TARGET zlibstatic)\n        add_subdirectory(external/zlib external/zlib-build EXCLUDE_FROM_ALL)\n    endif()"
-        SDLIMAGE_CMAKE_CONTENT "${SDLIMAGE_CMAKE_CONTENT}"
-    )
-    file(WRITE "${SDLIMAGE_CMAKE}" "${SDLIMAGE_CMAKE_CONTENT}")
-    message(STATUS "Patched SDL_image CMakeLists.txt to guard zlib add_subdirectory")
-endif()
-
 add_subdirectory(${MATRIX_ENGINE_ROOT}/vendored/SDL_image EXCLUDE_FROM_ALL)
 
-# Fix bad INTERFACE_INCLUDE_DIRECTORIES set by SDL_image's zlib AFTER it runs
-set_target_properties(zlibstatic PROPERTIES
-    INTERFACE_INCLUDE_DIRECTORIES
-        "$<BUILD_INTERFACE:${ZLIB_SOURCE_DIR}>;$<BUILD_INTERFACE:${ZLIB_BINARY_DIR}>"
-)
-
 # --- assimp ---
-set(ASSIMP_BUILD_ZLIB OFF CACHE BOOL "" FORCE)
+set(ASSIMP_BUILD_ZLIB ON CACHE BOOL "" FORCE)
 set(ASSIMP_BUILD_ALL_IMPORTERS_BY_DEFAULT OFF CACHE BOOL "" FORCE)
 set(ASSIMP_BUILD_ALL_EXPORTERS_BY_DEFAULT OFF CACHE BOOL "" FORCE)
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
@@ -274,16 +252,37 @@ set(ASSIMP_BUILD_GLTF_EXPORTER ON CACHE BOOL "" FORCE)
 
 add_subdirectory(${MATRIX_ENGINE_ROOT}/vendored/assimp EXCLUDE_FROM_ALL)
 
-target_link_libraries(assimp PRIVATE zlibstatic)
+# target_link_libraries(assimp PRIVATE zlibstatic)
 
 # --- SDL_shadercross ---
+# if compilation / hot reloading shaders becomes necessary later(probably) remove if statement and build dxcompiler directly via vendored
+if(WIN32)
+    set(SDL_SHADERCROSS_HLSL ON CACHE BOOL "" FORCE)
+else()
+    set(SDL_SHADERCROSS_HLSL OFF CACHE BOOL "" FORCE)
+endif()
+
 set(SDLSHADERCROSS_VENDORED ON CACHE BOOL "" FORCE)
 set(SDL_SHADERCROSS_SPIRV ON CACHE BOOL "" FORCE)
 set(SDL_SHADERCROSS_GLSL ON CACHE BOOL "" FORCE)
-set(SDL_SHADERCROSS_HLSL ON CACHE BOOL "" FORCE)
 set(SDL_SHADERCROSS_MSL ON CACHE BOOL "" FORCE)
 
 add_subdirectory(${MATRIX_ENGINE_ROOT}/vendored/SDL_shadercross EXCLUDE_FROM_ALL)
+
+if(TARGET dxcompiler AND NOT WIN32)
+    add_custom_target(dxcompiler_symlink
+        COMMAND ${CMAKE_COMMAND} -E create_symlink
+            $<TARGET_FILE_NAME:dxcompiler>
+            ${CMAKE_BINARY_DIR}/vendored/SDL_shadercross/external/DirectXShaderCompiler/lib/libdxcompiler.so
+        COMMENT "Creating unsuffixed symlink for dxcompiler SONAME mismatch"
+    )
+    add_dependencies(dxcompiler_symlink dxcompiler)
+
+    if(TARGET SDL3_shadercross-shared)
+        add_dependencies(SDL3_shadercross-shared dxcompiler_symlink)
+    endif()
+endif()
+
 add_subdirectory(${MATRIX_ENGINE_ROOT}/vendored/glm EXCLUDE_FROM_ALL)
 add_subdirectory(${MATRIX_ENGINE_ROOT}/vendored/imgui EXCLUDE_FROM_ALL)
 # add_subdirectory(${MATRIX_ENGINE_ROOT}/vendored/ImGuizmo EXCLUDE_FROM_ALL)
@@ -292,13 +291,13 @@ add_subdirectory(${MATRIX_ENGINE_ROOT}/vendored/pugixml EXCLUDE_FROM_ALL)
 
 target_include_directories(MatrixEngineLib
     PUBLIC
-        ${MATRIX_ENGINE_ROOT}/EngineFiles
+        ${MATRIX_ENGINE_ROOT}/Source
         ${CMAKE_BINARY_DIR}/.reflected
 )
 
 target_include_directories(MatrixEditorLib
     PUBLIC
-        ${MATRIX_ENGINE_ROOT}/EngineFiles
+        ${MATRIX_ENGINE_ROOT}/Source
 )
 
 # -----------------------------
@@ -307,8 +306,9 @@ target_include_directories(MatrixEditorLib
 
 # Engine lib
 install(TARGETS MatrixEngineLib
-    ARCHIVE DESTINATION lib    # the .lib import file
-    RUNTIME DESTINATION lib    # the .dll
+    ARCHIVE DESTINATION lib
+    RUNTIME DESTINATION lib
+    LIBRARY DESTINATION lib
 )
 
 # Vendored static libs
@@ -325,7 +325,7 @@ install(FILES
 )
 
 # Engine headers
-install(DIRECTORY ${MATRIX_ENGINE_ROOT}/EngineFiles/
+install(DIRECTORY ${MATRIX_ENGINE_ROOT}/Source/
     DESTINATION include/MatrixEngine
     FILES_MATCHING PATTERN "*.hpp"
 )
@@ -339,20 +339,25 @@ install(DIRECTORY ${CMAKE_BINARY_DIR}/.reflected/
 install(DIRECTORY ${MATRIX_ENGINE_ROOT}/vendored/glm/glm/
     DESTINATION include/glm
 )
+
 install(DIRECTORY ${MATRIX_ENGINE_ROOT}/vendored/SDL3/include/SDL3/
     DESTINATION include/SDL3
 )
+
 install(DIRECTORY ${MATRIX_ENGINE_ROOT}/vendored/SDL_image/include/
     DESTINATION include
 )
+
 install(DIRECTORY ${MATRIX_ENGINE_ROOT}/vendored/assimp/include/
     DESTINATION include
 )
-install(FILES ${CMAKE_BINARY_DIR}/vendored/assimp/include/assimp/config.h
-    DESTINATION include/assimp
-)
+
 install(DIRECTORY ${MATRIX_ENGINE_ROOT}/vendored/SDL_shadercross/include/
     DESTINATION include
+)
+
+install(FILES ${CMAKE_BINARY_DIR}/vendored/assimp/include/assimp/config.h
+    DESTINATION include/assimp
 )
 
 # -----------------------------
@@ -374,12 +379,19 @@ add_custom_target(CopyShaders ALL
 # -----------------------------
 # Auto-install after build
 # -----------------------------
+
+if(CMAKE_CONFIGURATION_TYPES)
+    set(INSTALL_CONFIG_ARGS --config $<CONFIG>)
+else()
+    set(INSTALL_CONFIG_ARGS --config ${CMAKE_BUILD_TYPE})
+endif()
+
 add_custom_command(TARGET MatrixEngineLib POST_BUILD
-    COMMAND ${CMAKE_COMMAND} 
+    COMMAND ${CMAKE_COMMAND}
         --install ${CMAKE_BINARY_DIR}
-        --config $<CONFIG>
-        --prefix ${MATRIX_ENGINE_ROOT}/install/$<CONFIG>
-    COMMENT "Installing MatrixEngineLib to install directory..."
+        --prefix "${CMAKE_BINARY_DIR}/$<CONFIG>"
+        ${INSTALL_CONFIG_ARGS}
+    COMMENT "Installing MatrixEngineLib to build output directory..."
 )
 
 # -----------------------------
@@ -390,7 +402,7 @@ add_custom_command(TARGET Matrix POST_BUILD
         ${MATRIX_ENGINE_ROOT}/Content
         $<TARGET_FILE_DIR:Matrix>/Content
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        ${MATRIX_ENGINE_ROOT}/EngineFiles/Engine.png
+        ${MATRIX_ENGINE_ROOT}/Source/Engine.png
         $<TARGET_FILE_DIR:Matrix>/Engine.png
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
         ${MATRIX_ENGINE_ROOT}/Matrix.config
