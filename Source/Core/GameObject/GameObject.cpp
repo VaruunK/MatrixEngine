@@ -1,8 +1,11 @@
 #include "GameObject.hpp"
 
+static long long IDCounter = 0;
+
 GameObject::GameObject() {
 	canTick = true;
 	hasStarted = false;
+	id = IDCounter++;
 	// Engine::GetEngine().GetWorld();
 }
 

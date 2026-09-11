@@ -21,8 +21,8 @@ DetailsPanel::DetailsPanel() {
     controller.Start();
 }
 
-void DetailsPanel::SetEntityToView(Entity* entity) {
-	detailEntity = entity;
+void DetailsPanel::SetGameObjectToView(GameObject* gameObject) {
+	detailGameObject = gameObject;
 }
 
 void DetailsPanel::Render(bool* active) {
@@ -46,22 +46,19 @@ void DetailsPanel::Render(bool* active) {
             popup = false;
         }
 
-        if (detailEntity) {
-            const Class& rc = detailEntity->GetClass();
+        if (detailGameObject) {
+            const Class& rc = detailGameObject->GetClass();
             ImGui::Text("Class: %s", rc.typeInfo->typeName.c_str());
             ImGui::Text("Parent: %s", rc.parent.c_str());
-            ImGui::Separator();
-            
-            for (auto& access : accessTypes) {
-                if (rc.fields.contains(access)) {
-                    if (ImGui::TreeNode(access.c_str())) {
-                        for (const Field& field : rc.fields.at(access)) {
-                            RenderField(field);
-                        }
-                        ImGui::TreePop();
-                    }
-                }
+
+            if (const Field* idField = FindFieldByName(rc, "id")) {
+                long long idValue = 0;
+                void* objPtr = static_cast<void*>(detailGameObject);
+                detailGameObject->GetFieldValue(*idField, objPtr, &idValue);
+                ImGui::Text("ID: %lld", idValue);
             }
+
+            RenderInheritedFields(rc, true);
         }
         else {
             ImGui::Text("Class: None");
@@ -70,10 +67,30 @@ void DetailsPanel::Render(bool* active) {
     ImGui::End();
 }
 
+void DetailsPanel::RenderInheritedFields(const Class& rc, bool renderProtected) {
+    for (auto& access : accessTypes) {
+        if (rc.fields.contains(access)) {
+            for (const Field& field : rc.fields.at(access)) {
+                if(!renderProtected && access == "protected") continue;
+                if (field.fieldName == "id") continue;
+                RenderField(field);
+            }
+        }
+    }
+
+    // Walk up to the parent class and render its fields too, recursively.
+    if (rc.parent != "None") {
+        const Reflection& parentReflection = TypeRegistry::Get(rc.parent);
+        if (parentReflection.type == ReflectionType::CLASS) {
+            const Class& parentClass = static_cast<const Class&>(parentReflection);
+            RenderInheritedFields(parentClass, false);
+        }
+    }
+}
+
 void DetailsPanel::RenderField(const Field& field) {
     const std::shared_ptr<TypeInfo> typeInfo = field.typeInfo;
     ImGui::Separator();
-    
     
     // container type switch, singles, maps, arrays, sets, etc, need to be handled differently
     switch (typeInfo->containerType) {
@@ -107,7 +124,7 @@ void DetailsPanel::RenderField(const Field& field) {
 
     case ContainerType::MAP: {
         std::shared_ptr<MapTypeInfo> mapInfo = std::static_pointer_cast<MapTypeInfo>(typeInfo);
-        void* mapPtr = static_cast<uint8_t*>(static_cast<void*>(detailEntity)) + field.offset;
+        void* mapPtr = static_cast<uint8_t*>(static_cast<void*>(detailGameObject)) + field.offset;
 
         if (mapInfo->forEachEntry) {
             
@@ -156,7 +173,7 @@ void DetailsPanel::RenderField(const Field& field) {
 
 void DetailsPanel::RenderStructField(const Field& field, const Struct& reflection) {
     
-    void* structPtr = static_cast<uint8_t*>(static_cast<void*>(detailEntity)) + field.offset;
+    void* structPtr = static_cast<uint8_t*>(static_cast<void*>(detailGameObject)) + field.offset;
 
     for (auto& member : reflection.members) {
         const std::string& memberName = member.first;
@@ -171,7 +188,7 @@ void DetailsPanel::RenderStructField(const Field& field, const Struct& reflectio
                 ImGui::SameLine();
                 if (ImGui::DragFloat3(label.c_str(), &vector.x, 0.1f, -100000.0f, 100000.0f)) {
                     SetStructMemberValue(reflection, memberName, structPtr, &vector);
-                    detailEntity->SetTransform(*static_cast<Transform*>(structPtr));
+                    detailGameObject->SetTransform(*static_cast<Transform*>(structPtr));
                 }
             }
         } else {
@@ -182,6 +199,28 @@ void DetailsPanel::RenderStructField(const Field& field, const Struct& reflectio
 
 void DetailsPanel::RenderClassField(const Field& field, const Class& reflection) {
     
+}
+
+const Field* DetailsPanel::FindFieldByName(const Class& rc, const std::string& name) {
+    for (auto& access : accessTypes) {
+        if (rc.fields.contains(access)) {
+            for (const Field& field : rc.fields.at(access)) {
+                if (field.fieldName == name) {
+                    return &field;
+                }
+            }
+        }
+    }
+
+    if (rc.parent != "None") {
+        const Reflection& parentReflection = TypeRegistry::Get(rc.parent);
+        if (parentReflection.type == ReflectionType::CLASS) {
+            const Class& parentClass = static_cast<const Class&>(parentReflection);
+            return FindFieldByName(parentClass, name);
+        }
+    }
+
+    return nullptr;
 }
 
 void DetailsPanel::RenderRightClickPopup() {

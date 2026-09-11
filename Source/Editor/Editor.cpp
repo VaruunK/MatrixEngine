@@ -38,17 +38,17 @@ Editor::Editor(Appstate& appstate, Game* game)
 			if (selectedEntities.contains(entity)) {
 				selectedEntities.erase(entity);
 				if (selectedEntities.empty()) {
-					detailsPanel.SetEntityToView(nullptr);
+					detailsPanel.SetGameObjectToView(nullptr);
 				} else {
-					detailsPanel.SetEntityToView(*std::prev(selectedEntities.end()));
+					detailsPanel.SetGameObjectToView(*std::prev(selectedEntities.end()));
 				}
 			} else {
 				selectedEntities.insert(entity);
-				detailsPanel.SetEntityToView(entity);
+				detailsPanel.SetGameObjectToView(entity);
 			}
 		} else {
 			selectedEntities.clear();
-			detailsPanel.SetEntityToView(nullptr);
+			detailsPanel.SetGameObjectToView(nullptr);
 		}
 	});
 

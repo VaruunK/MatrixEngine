@@ -36,6 +36,11 @@ public:
 	bool canTick;
 protected:
 private:
+	FIELD()
+	long long id;
+
+	FIELD()
+	std::string name;
 
 	FIELD()
 	bool hasStarted;
