@@ -4,7 +4,7 @@
 // #include "Entity/Component/PhysicsComponent/PhysicsComponent.hpp"
 // #include "Entity/Component/MovementComponent/MovementComponent.hpp"
 
-Agent::Agent(Level* level) : Entity(level) {
+Agent::Agent() : Entity() {
 	canTick = true;
 
 	/*spriteComponent = AddComponent<SpriteComponent>();

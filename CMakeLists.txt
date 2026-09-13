@@ -125,6 +125,8 @@ add_library(MatrixEngineLib SHARED
     # Ticking, more systems to be added later
     "Source/Core/TickManager/TickManager.cpp"
 
+    "Source/Core/Statics/GameStatics.cpp"
+
     ${REFLECTED_SOURCES}
 )
 
@@ -164,6 +166,8 @@ add_library(MatrixEditorLib STATIC
     "Source/Editor/DetailsPanel/DetailsPanelController/DetailsPanelController.cpp"
     "Source/Editor/ProjectSelector/ProjectSelector.cpp"
     "Source/Editor/ProjectLoader/ProjectLoader.cpp"
+    "Source/Editor/OutlinerPanel/OutlinerPanel.cpp"
+    "Source/Editor/OutlinerPanel/OutlinerPanelController/OutlinerPanelController.cpp"
 
     # Asset pipeline
     "Source/Core/Assets/AssetLoader/AssetLoader.cpp"

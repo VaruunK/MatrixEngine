@@ -2,6 +2,9 @@
 
 #ifdef MATRIX_EDITOR
 
+#include <unordered_map>
+#include <string>
+
 class WorldRenderer;
 class Entity;
 class MeshComponent;
@@ -37,6 +40,10 @@ private:
 	bool detailsPanelOpen = true;
 	bool detailsPanelViewOption = false;
 	bool detailsPanelLocked = true;
+
+	bool outlinerPanelOpen = true;
+	bool outlinerPanelViewOption = false;
+	bool outlinerPanelLocked = true;
 
 	Appstate& appstate;
 };

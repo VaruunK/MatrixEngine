@@ -2,6 +2,7 @@
 #include "Core/Game/Game.hpp"
 #include "Core/GameObject/World/World.hpp"
 #include "Core/Event/EventBUS/EngineEventBUS.hpp"
+#include "Core/Statics/GameStatics.hpp"
 #include <iostream>
 #include <array>
 #include <string>
@@ -11,9 +12,12 @@
 // does editor need selected objects? or viewport? 
 // what owns gizmos? gizmo state?
 
-Editor::Editor(Appstate& appstate, Game* game)
-	: appstate(appstate), contentBrowser(appstate),
+Editor::Editor(Appstate& appstate, Game* game) : 
+	appstate(appstate), 
+	contentBrowser(appstate),
 	viewport(appstate, game->world.GetWorldRenderer()),
+	detailsPanel(&entityNames, &selectedEntities),
+	outlinerPanel(&entityNames, &selectedEntities),
 	editorRenderer(appstate, info, game->world.GetWorldRenderer()) {
 
 	this->game = game;
@@ -30,25 +34,30 @@ Editor::Editor(Appstate& appstate, Game* game)
 		focusedItem = DETAILS_PANEL; }
 	);
 
+	GEventBUS.Subscribe(EVENT_OUTLINER_PANEL_HOVERED, [this]() {
+		focusedItem = OUTLINER_PANEL; }
+	);
+
+	// idea for handling multiple selection possibilities. 
+	// rather than exposing editor or details panels to outliner panel and to each other creating tight coupling
+	// pass in selected entities
+	// this can be done via pointer passed in during construction or through tick(probably not good idea)
+	// details panels then can handle setting gameobject to view by itself without getting rid of need for events
+	// outliner can then update pointer where differences can then be displayed by details panel in next tick
+
 	GEventBUS.Subscribe(EVENT_VIEWPORT_CLICKED, [this]() {
 		int x, y;
 		viewport.GetClickedPosition(x, y);
 		Entity* entity = viewport.GetSelectedEntity(x, y);
 		if (entity) {
-			if (selectedEntities.contains(entity)) {
-				selectedEntities.erase(entity);
-				if (selectedEntities.empty()) {
-					detailsPanel.SetGameObjectToView(nullptr);
-				} else {
-					detailsPanel.SetGameObjectToView(*std::prev(selectedEntities.end()));
-				}
-			} else {
-				selectedEntities.insert(entity);
-				detailsPanel.SetGameObjectToView(entity);
-			}
+			if(selectedEntities.empty()) {
+                selectedEntities.insert(entity);
+            } else {
+            	selectedEntities.clear();
+                selectedEntities.insert(entity);
+                }
 		} else {
 			selectedEntities.clear();
-			detailsPanel.SetGameObjectToView(nullptr);
 		}
 	});
 
@@ -59,6 +68,12 @@ Editor::Editor(Appstate& appstate, Game* game)
 	GEventBUS.Subscribe(EVENT_GAME_END, [this]() {
 		this->game->Quit(); }
 	);
+
+	for(const auto& [entityClass, entityList] : currentLevel->GetAllEntities()) {
+		for(Entity* entity : entityList) {
+			FirstEntityName(entity);
+		}
+	}
 }
 
 Editor::~Editor() {
@@ -102,6 +117,26 @@ void Editor::Render() {
 	editorRenderer.Render();
 }
 
+void Editor::FirstEntityName(Entity* entity) {
+	std::string typeName = entity->GetClass().typeInfo.get()->typeName;
+    std::string entityName;
+
+	entityName = typeName + "(" + std::to_string(entityNames[typeName].size()) + ")";
+
+	entityNames[typeName][entity] = entityName;
+}
+
+// std::string Editor::GetEntityName(Entity *entity) {
+// 	std::string typeName = entity->GetClass().typeInfo.get()->typeName;
+    
+// 	if(entityNames.contains(typeName)) {
+// 		if(entityNames[typeName].contains(entity)) {
+// 			return entityNames[typeName][entity];
+// 		}
+// 	}
+// 	return "";
+// }
+
 void Editor::Tick(float deltaTime) {
 	switch(focusedItem) {
 	
@@ -113,6 +148,9 @@ void Editor::Tick(float deltaTime) {
 		break;
 	case DETAILS_PANEL:
 		detailsPanel.Tick(deltaTime);
+		break;
+	case OUTLINER_PANEL:
+		outlinerPanel.Tick(deltaTime);
 		break;
 	default:
 		break;

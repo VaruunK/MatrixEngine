@@ -1,5 +1,6 @@
 #include "MeshComponent.hpp"
 #include "Core/GameObject/World/World.hpp"
+#include "Core/Statics/GameStatics.hpp"
 #include <glm/ext/matrix_transform.hpp>
 // #include <iostream>
 
@@ -12,7 +13,7 @@ void MeshComponent::Start() {
 }
 
 void MeshComponent::DestroyGameObject() {
-    owner->GetLevel()->GetWorld()->DeregisterMesh(this);
+    world->DeregisterMesh(this);
 }
 
 glm::mat4 MeshComponent::GetModelMatrix(float windowAspectRatio) {
@@ -32,12 +33,13 @@ void MeshComponent::SetMesh(Mesh* mesh) {
     if (!mesh) return;
 
     if (this->mesh) {
-        owner->GetLevel()->GetWorld()->DeregisterMesh(this);
+        world->DeregisterMesh(this);
     }
     
     this->mesh = mesh;
 
-    owner->GetLevel()->GetWorld()->RegisterMesh(this);
+    World* worldPtr = world;
+    world->RegisterMesh(this);
 }
 
 //void MeshComponent::SetTexture(const std::string& texturePath) {

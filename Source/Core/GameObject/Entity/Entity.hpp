@@ -27,7 +27,7 @@ public:
 	Entity(Entity&&) = delete;
 	Entity& operator=(Entity&&) = delete;
 
-	Entity(Level* level);
+	Entity();
 	~Entity() = default;
 
 	FUNCTION()
@@ -63,9 +63,6 @@ public:
 	FUNCTION()
 	glm::vec3 SetScale(glm::vec3 scale);
 
-	FUNCTION()
-	Level* GetLevel() { return currentLevel; }
-
 	template<typename ComponentType>
 	ComponentType* GetComponent() {
     	static_assert(std::is_base_of_v<Component, ComponentType>, "Type does not inherit from Component");
@@ -90,7 +87,6 @@ public:
 	}
 
 protected:
-
 	FIELD()
 	Transform transform;
 private:
@@ -98,7 +94,4 @@ private:
 	
 	FIELD()
 	HashMap<std::type_index, Component*> components;
-	
-	FIELD()
-	Level* currentLevel;
 };

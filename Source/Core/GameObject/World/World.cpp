@@ -6,6 +6,7 @@
 #include "Core/Structs/View.hpp"
 #include "Core/Structs/FrameData.hpp"
 #include <SDL3/SDL.h>
+#include <unordered_map>
 #include <iostream>
 
 World::World(Appstate& appstate) : GameObject(), renderer(appstate) {
@@ -39,10 +40,15 @@ void World::Start() {
     }
     
     for (Level* level : loadedLevels) {
-        const std::vector<Entity*> entities = level->GetAllEntities();
-        for (Entity* entity : entities) {
-            entity->Start();
+        // const std::vector<Entity*> entities = level->GetAllEntities();
+        for (const auto& [entityClass, entityList] : level->GetAllEntities()) {
+            for (Entity* entity : entityList) {
+                entity->Start();
+            }
         }
+        // for (Entity* entity : entities) {
+            
+        // }
     }
 
     SDL_Log("World Started");
@@ -51,9 +57,9 @@ void World::Start() {
 void World::Tick(uint64_t deltaTime) {
     GameObject::Tick(deltaTime);
     for (Level* level : loadedLevels) {
-        const std::vector<Entity*> entities = level->GetAllEntities();
-        for (Entity* entity : entities) {
-
+        for (const auto& [entityClass, entityList]: level->GetAllEntities()) {
+            for (Entity* entity : entityList) {
+            }
         }
     }
     //eventManager.ProcessEvents();

@@ -1,12 +1,14 @@
 #include "GameObject.hpp"
 
+#include "Core/Statics/GameStatics.hpp"
+#include "Core/GameObject/World/Level/Level.hpp"
+
 static long long IDCounter = 0;
 
 GameObject::GameObject() {
 	canTick = true;
 	hasStarted = false;
 	id = IDCounter++;
-	// Engine::GetEngine().GetWorld();
 }
 
 void GameObject::Start() {

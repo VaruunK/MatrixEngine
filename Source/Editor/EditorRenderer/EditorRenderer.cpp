@@ -3,6 +3,7 @@
 #include "Editor/Viewport/Viewport.hpp"
 #include "Editor/ContentBrowser/ContentBrowser.hpp"
 #include "Editor/DetailsPanel/DetailsPanel.hpp"
+#include "Editor/OutlinerPanel/OutlinerPanel.hpp"
 #include "Core/Structs/Appstate.hpp"
 #include "Core/Structs/FrameData.hpp"
 #include "Core/Event/EventBUS/EngineEventBUS.hpp"
@@ -63,7 +64,7 @@ void EditorRenderer::Render() {
 
                 if (contentBrowserViewOption && !contentBrowserOpen) {
                     contentBrowserOpen = true;
-                    contentBrowserViewOption = false;
+                    contentBrowserViewOption = true;
                 }
 
                 if (contentBrowserOpen) {   
@@ -72,11 +73,20 @@ void EditorRenderer::Render() {
 
                 if (detailsPanelViewOption && !detailsPanelOpen) {
                     detailsPanelOpen = true;
-                    detailsPanelViewOption = false;
+                    detailsPanelViewOption = true;
                 }
 
                 if (detailsPanelOpen) {
                     info.detailsPanel.Render(&detailsPanelOpen);
+                }
+
+                if (outlinerPanelViewOption && !outlinerPanelOpen) {
+                    outlinerPanelOpen = true;
+                    outlinerPanelViewOption = true;
+                }
+
+                if (outlinerPanelOpen) {
+                    info.outlinerPanel.Render(&outlinerPanelOpen);
                 }
                 
                 ImGuiWindowFlags viewportFlags = ImGuiWindowFlags_NoCollapse |
@@ -144,7 +154,8 @@ void EditorRenderer::RenderMenuBar() {
     }
     if (ImGui::BeginMenu("View")) {
         if (ImGui::MenuItem("Content Browser", nullptr, &contentBrowserViewOption)) {}
-        if (ImGui::MenuItem("Details Panel", nullptr, &detailsPanelViewOption)) {}
+        if (ImGui::MenuItem("Details", nullptr, &detailsPanelViewOption)) {}
+        if (ImGui::MenuItem("Outliner", nullptr, &outlinerPanelViewOption)) {}
         ImGui::EndMenu();
     }
 }

@@ -10,7 +10,7 @@ class MeshComponent;
 
 class MATRIX_API Agent : public Entity {
 public:
-	Agent(Level* level);
+	Agent();
 
 	void Start() override;
 	void Tick(uint64_t deltaTime) override;

@@ -4,9 +4,11 @@
 #include "Core/GameObject/Entity/Entity.hpp"
 #include <vector>
 #include <memory>
+#include <unordered_map>
 #include "Level.reflected.hpp"
 
 class World;
+class Class;
 
 struct Transform;
 
@@ -34,9 +36,10 @@ public:
 	template<typename ClassType>
 	ClassType* AddEntityToLevel(Transform& transform) {
 		static_assert(std::is_base_of_v<Entity, ClassType>, "ClassType does not inherit from Entity");
-		auto newEntity = new ClassType(this);
+		auto newEntity = new ClassType();
 		newEntity->SetTransform(transform);
-		entities.push_back(newEntity);
+		entities[newEntity->GetClass().typeInfo.get()->typeName].push_back(newEntity);
+		// entities.push_back(newEntity);
 		return newEntity;
 	}
 
@@ -50,9 +53,14 @@ public:
 	FUNCTION()
 	World* GetWorld() { return world; }
 
-	const std::vector<Entity*>& GetAllEntities() { return entities; }
+	const std::vector<Entity*>& GetEntitiesByClass(const Class& entityClass);
+	
+	const std::unordered_map<std::string, std::vector<Entity*>>& GetAllEntities() const { return entities; }
+	// const std::vector<Entity*>& GetAllEntities() { return entities; }
 protected:
 private:
 	World* world;
-	std::vector<Entity*> entities;
+	
+	std::unordered_map<std::string, std::vector<Entity*>> entities;
+	//std::vector<Entity*> entities;
 };

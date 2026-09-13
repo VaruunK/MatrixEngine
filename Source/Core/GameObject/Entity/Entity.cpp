@@ -1,8 +1,7 @@
 #include "Entity.hpp"
 #include "Core/GameObject/Component/Component.hpp"
 
-Entity::Entity(Level* level) {
-	this->currentLevel = level;
+Entity::Entity() {
 }
 
 void Entity::Start() {

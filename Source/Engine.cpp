@@ -13,6 +13,7 @@
 #include "Core/GameObject/Component/SpriteComponent/SpriteComponent.hpp"
 #include "Core/GameObject/Component/MeshComponent/MeshComponent.hpp"
 #include "Core/Event/EventBUS/EngineEventBUS.hpp"
+#include "Core/Statics/GameStatics.hpp"
 #include <filesystem>
 #include <imgui_impl_sdl3.h>
 #include <nfd.hpp>
@@ -145,12 +146,14 @@ int Engine::Run() {
     
     appstate.gamePath = selectedGamePath;
 
-    std::cout << selectedGamePath << std::endl;
+    // std::cout << selectedGamePath << std::endl;
 
-    editor = new Editor(appstate, game);
+    world = &game->world;
+    currentLevel = world->GetCurrentLevel();
+    // Level* level = game->world.GetLevel("Mainlevel");
 
-    Level* level = game->world.GetLevel("Mainlevel");
-
+    // editor = new Editor(appstate, game);
+    
     running.store(true);
 
     Uint64 frequency = SDL_GetPerformanceFrequency();
@@ -179,13 +182,15 @@ int Engine::Run() {
         .scale = glm::vec3(10.0f, 10.0f, 10.0f)
     };
 
-    Agent* agent1 = level->SpawnFromClass<Agent>(transform1);
+    Agent* agent1 = currentLevel->SpawnFromClass<Agent>(transform1);
     MeshComponent* a1meshComponent = agent1->AddComponent<MeshComponent>();
     a1meshComponent->SetMesh(mogus);
 
-    Agent* agent2 = level->SpawnFromClass<Agent>(transform2);
+    Agent* agent2 = currentLevel->SpawnFromClass<Agent>(transform2);
     MeshComponent* a2meshComponent = agent2->AddComponent<MeshComponent>();
     a2meshComponent->SetMesh(freddy);
+
+    editor = new Editor(appstate, game);
 
     float scaleMax = 100.0f;
     float scaleMin = 1.0f;

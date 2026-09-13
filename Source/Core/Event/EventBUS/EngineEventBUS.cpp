@@ -1,7 +1,9 @@
 #include "EngineEventBUS.hpp"
 
+#ifdef MATRIX_EDITOR
+
 EngineEventBUS::EngineEventBUS() {
-    SDL_RegisterEvents(4);
+    SDL_RegisterEvents(7);
 }
 
 void EngineEventBUS::Subscribe(uint32_t eventType, std::function<void()> callback) {
@@ -24,3 +26,5 @@ void EngineEventBUS::ProcessEvent(SDL_Event *event) {
         }
     }
 }
+
+#endif

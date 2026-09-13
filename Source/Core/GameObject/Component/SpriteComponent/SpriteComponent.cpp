@@ -1,6 +1,7 @@
 #include "SpriteComponent.hpp"
 #include "Core/Structs/AssetStructs.hpp"
 #include "Core/GameObject/World/World.hpp"
+#include "Core/Statics/GameStatics.hpp"
 #include <glm/ext/matrix_transform.hpp>
 // #include <iostream>
 
@@ -12,7 +13,7 @@ void SpriteComponent::Start() {
 }
 
 void SpriteComponent::DestroyGameObject() {
-    owner->GetLevel()->GetWorld()->DeregisterSprite(this);
+    world->DeregisterSprite(this);
 }
 
 glm::mat4 SpriteComponent::GetModelMatrix(float windowAspectRatio) {
@@ -38,7 +39,7 @@ glm::mat4 SpriteComponent::GetModelMatrix(float windowAspectRatio) {
 }
 
 void SpriteComponent::SetTexture(Texture* texture) {
-    owner->GetLevel()->GetWorld()->DeregisterSprite(this);
+    world->DeregisterSprite(this);
 
     if (this->texture) {
         free(this->texture);
@@ -46,5 +47,5 @@ void SpriteComponent::SetTexture(Texture* texture) {
 
     this->texture = texture;
 
-    owner->GetLevel()->GetWorld()->RegisterSprite(this);
+    world->RegisterSprite(this);
 }

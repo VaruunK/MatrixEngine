@@ -59,6 +59,8 @@ public:
 	
 	Level* CreateLevel(const std::string& levelName);
 
+	Level* GetCurrentLevel() { return mainLevel; }
+
 	// FUNCTION()
 	bool LoadLevel(const std::string& levelName);
 	
@@ -85,14 +87,12 @@ public:
 	WorldRenderer& GetWorldRenderer() { return renderer; }
 protected:
 private:
-
 	WorldRenderer renderer;
 
 	Level* CreateInitialLevel(const std::string& startLevelName);
 
 	std::atomic<bool> running = false;
 	std::atomic<bool> paused = false;
-
 
 	std::vector<Level*> loadedLevels;
 	Level* mainLevel = nullptr;

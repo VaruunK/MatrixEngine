@@ -1,15 +1,20 @@
 #include "DetailsPanel.hpp"
 #include "Core/GameObject/GameObject.hpp"
+#include "Core/GameObject/Entity/Entity.hpp"
 #include "Core/Event/EventBUS/EngineEventBUS.hpp"
 #include "Core/Structs/Transform.hpp"
-#include "Core/GameObject/Entity/Entity.hpp"
 #include "Core/TypeRegistry/TypeRegistry.hpp"
 #include <imgui_impl_sdlgpu3.h>
 #include <iostream>
 
 #ifdef MATRIX_EDITOR
 
-DetailsPanel::DetailsPanel() {
+DetailsPanel::DetailsPanel(std::unordered_map<std::string, std::unordered_map<Entity*, std::string>>* entityNames, 
+    std::set<Entity*>* selectedEntities) : 
+    
+    entityNames(entityNames),
+    selectedEntities(selectedEntities) {
+    
     controller.BindMouseButton(SDL_BUTTON_LEFT,
         [this]() { popup = false; }
     );
@@ -21,11 +26,19 @@ DetailsPanel::DetailsPanel() {
     controller.Start();
 }
 
-void DetailsPanel::SetGameObjectToView(GameObject* gameObject) {
+void DetailsPanel::SetGameObjectToView(GameObject* gameObject, const std::string& name) {
 	detailGameObject = gameObject;
+    gameObjectName = name;
 }
 
 void DetailsPanel::Render(bool* active) {
+
+    if (selectedEntities->empty()) {
+    	SetGameObjectToView(nullptr, "");
+    } else {
+    	SetGameObjectToView(*std::prev(selectedEntities->end()), GetEntityName(*std::prev(selectedEntities->end())));
+    }
+
     ImGuiWindowFlags contentBarFlags = ImGuiWindowFlags_NoCollapse;
     if (locked) {
         contentBarFlags = contentBarFlags | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize;
@@ -50,13 +63,8 @@ void DetailsPanel::Render(bool* active) {
             const Class& rc = detailGameObject->GetClass();
             ImGui::Text("Class: %s", rc.typeInfo->typeName.c_str());
             ImGui::Text("Parent: %s", rc.parent.c_str());
-
-            if (const Field* idField = FindFieldByName(rc, "id")) {
-                long long idValue = 0;
-                void* objPtr = static_cast<void*>(detailGameObject);
-                detailGameObject->GetFieldValue(*idField, objPtr, &idValue);
-                ImGui::Text("ID: %lld", idValue);
-            }
+            ImGui::Text("Name: %s", gameObjectName.c_str());
+            ImGui::Separator();
 
             RenderInheritedFields(rc, true);
         }
@@ -86,6 +94,18 @@ void DetailsPanel::RenderInheritedFields(const Class& rc, bool renderProtected) 
             RenderInheritedFields(parentClass, false);
         }
     }
+}
+
+std::string DetailsPanel::GetEntityName(Entity* entity) {
+    std::string typeName = entity->GetClass().typeInfo.get()->typeName;
+
+    if (entityNames->contains(typeName)) {
+        if ((*entityNames)[typeName].contains(entity)) {
+            return (*entityNames)[typeName][entity];
+        }
+    }
+
+    return "";
 }
 
 void DetailsPanel::RenderField(const Field& field) {
@@ -188,7 +208,7 @@ void DetailsPanel::RenderStructField(const Field& field, const Struct& reflectio
                 ImGui::SameLine();
                 if (ImGui::DragFloat3(label.c_str(), &vector.x, 0.1f, -100000.0f, 100000.0f)) {
                     SetStructMemberValue(reflection, memberName, structPtr, &vector);
-                    detailGameObject->SetTransform(*static_cast<Transform*>(structPtr));
+                    static_cast<Entity*>(detailGameObject)->SetTransform(*static_cast<Transform*>(structPtr));
                 }
             }
         } else {
